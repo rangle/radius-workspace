@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "target": "ES5",
+    "outDir": "dist"
+  },
+  "include": ["lib/**/*.ts", "src/**/*.ts"],
+  "exclude": [
+    "node_modules/**/*",
+    ".webpack/**/*",
+    "_warmup/**/*",
+    ".vscode/**/*",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
+}
