@@ -1,13 +1,17 @@
-# `cli`
+# Radius Command-line Interface
 
-> TODO: description
+A modular tool to generate and manage Design Systems and other Accelerated Projects.
 
 ## Usage
 
 ```
-npm -g i cli
+npm -g i @radius/cli
 
-cli --help
+radius <command> [options]
 
-// TODO: DEMONSTRATE API
+radius --help
 ```
+
+## Commands:
+  radius styles <url> [<outputDir>]         Generate/update styles for a Design System based on a Design Source
+
