@@ -30,6 +30,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
+    "figma-api": "^1.6.2",
     "yargs": "^17.1.1"
   }
 }
