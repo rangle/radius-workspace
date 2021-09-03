@@ -3,7 +3,8 @@
   "compilerOptions": {
     "noEmit": false,
     "target": "ES5",
-    "outDir": "dist"
+    "outDir": "dist",
+    "resolveJsonModule": true
   },
   "include": ["lib/**/*.ts", "src/**/*.ts"],
   "exclude": [

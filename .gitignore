@@ -5,6 +5,7 @@
 **/*.cache/
 /dist
 /storybook-static
+dist
 
 # testing
 /coverage

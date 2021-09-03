@@ -6,6 +6,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "sourceMap": true,
     "strict": true,
