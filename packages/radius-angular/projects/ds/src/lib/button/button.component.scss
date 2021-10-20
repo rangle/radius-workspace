@@ -1,0 +1,133 @@
+:host.ds-button {
+  border-style: solid;
+  border-radius: 0;
+  border-width: 1px;
+  position: relative;
+  cursor: pointer;
+  padding-top: var(--ds-space-2);
+  padding-bottom: var(--ds-space-2);
+  padding-left: var(--ds-space-7);
+  padding-right: var(--ds-space-7);
+
+  &--primary {
+    background-color: var(--ds-color--ui-primary-colour);
+    border-color: transparent;
+    color: var(--ds-color--text-inverse-colour);
+
+    svg {
+      color: var(--ds-color--text-inverse-colour);
+    }
+
+    &:hover {
+      background-color: var(--ds-color-brand-primary-main);
+    }
+
+    &:active,
+    &:focus {
+      background-color: var(--ds-color-brand-primary-dark);
+    }
+
+    &:disabled {
+      background-color: var(--ds-color--ui-disabled-colour);
+      color: var(--ds-color--text-inverse-colour);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--ds-color--text-inverse-colour);
+    border-color: var(--ds-color-brand-primary);
+    color: var(--ds-color-brand-primary);
+
+    svg {
+      color: var(--ds-color-brand-primary);
+    }
+
+    &:hover {
+      color: var(--ds-color--text-inverse-colour);
+      background-color: var(--ds-color-brand-primary-main);
+    }
+
+    &:active,
+    &:focus {
+      color: var(--ds-color--text-inverse-colour);
+      background-color: var(--ds-color-brand-primary-dark);
+    }
+
+    &:disabled {
+      background-color: var(--ds-color--ui-disabled-colour);
+      color: var(--ds-color--text-inverse-colour);
+    }
+  }
+
+  &--chevron {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--ds-color-brand-primary);
+
+    svg {
+      color: var(--ds-color-brand-primary);
+    }
+
+    &:hover {
+      color: var(--ds-color-brand-primary-main);
+    }
+
+    &:active,
+    &:focus {
+      color: var(--ds-color-brand-primary-dark);
+    }
+
+    &:disabled {
+      color: var(--ds-color--ui-disabled-colour);
+    }
+  }
+
+  &--icon {
+    background-color: var(--ds-color--ui-primary-colour);
+    border-color: transparent;
+    color: var(--ds-color--text-inverse-colour);
+    padding-top: var(--ds-space-3);
+    padding-bottom: var(--ds-space-3);
+    padding-left: var(--ds-space-3);
+    padding-right: var(--ds-space-3);
+  
+
+    svg {
+      color: var(--ds-color--text-inverse-colour);
+    }
+
+    &:hover {
+      background-color: var(--ds-color-brand-primary-main);
+    }
+
+    &:active,
+    &:focus {
+      background-color: var(--ds-color-brand-primary-dark);
+    }
+
+    &:disabled {
+      background-color: var(--ds-color--ui-disabled-colour);
+      color: var(--ds-color--text-inverse-colour);
+    }
+  }
+
+  &--small {
+    font-size: var(--ds--label-s-font-size);
+    font-weight: var(--ds--label-s-font-weight);
+    line-height: var(--ds--label-s-line-height);
+  }
+
+  &--medium {
+    font-size: var(--ds--label-m-font-size);
+    font-weight: var(--ds--label-m-font-weight);
+    line-height: var(--ds--label-m-line-height);
+    padding-left: var(--ds-space-5);
+    padding-right: var(--ds-space-5);  
+  }
+
+  &--large {
+    font-size: var(--ds--label-m-font-size);
+    font-weight: var(--ds--label-m-font-weight);
+    line-height: var(--ds--label-m-line-height);
+  }
+}

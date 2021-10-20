@@ -1,0 +1,22 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { space as spaceScale, sizes as sizeScale } from './theme';
+
+<Meta title="Foundations/Breakpoints" />
+
+# Breakpoints
+
+Breakpoints are CSS lengths intended for use in media queries. In Styled System the breakpoints scale is used to create mobile-first responsive media queries based on array values.
+
+For example, using a margin value of `[ 2, 3, 4 ]` creates styles with multiple mobile-first min-width media queries.
+
+```js
+ {
+   margin: '8px',
+   '@media screen and (min-width: 40em)': {
+     margin: '16px',
+   },
+   '@media screen and (min-width: 56em)': {
+     margin: '32px',
+   },
+ }
+```

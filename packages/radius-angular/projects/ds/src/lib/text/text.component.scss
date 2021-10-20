@@ -1,0 +1,55 @@
+:host.ds-text {
+  &--l {
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 125%;
+  }
+
+  &--xl {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 125%;
+  }
+
+  &--2xl {
+    font-size: 1.75rem;
+    font-weight: bold;
+    line-height: 125%;
+  }
+
+
+  &--3xl {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 125%;
+  }
+
+
+  &--4xl {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 125%;
+  }
+
+
+  &--5xl {
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 125%;
+  }
+
+  &--small {
+    font-size: var(--ds-fs0);
+    padding: var(--ds-space-1);
+  }
+
+  &--medium {
+    font-size: var(--ds-fs1);
+    padding: var(--ds-space-3);
+  }
+
+  &--large {
+    font-size: var(--ds-fs2);
+    padding: var(--ds-space-5);
+  }
+}

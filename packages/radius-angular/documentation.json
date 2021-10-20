@@ -1,0 +1,1636 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [
+        {
+            "name": "DsService",
+            "id": "injectable-DsService-8e24f906b1e5014cee4fd4ae5723a7b8",
+            "file": "projects/ds/src/lib/ds.service.ts",
+            "properties": [],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class DsService {\n\n  constructor() { }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-3f7fdb3ad32fa6011e602d52fb60adff",
+            "file": "projects/demo/src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.css']\n})\nexport class AppComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.component.css"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<button type=\"button\" ds-button=\"small\">Primary Small</button>\n<hr />\n<button type=\"button\" ds-button>Primary Medium</button>\n<hr />\n<button type=\"button\" ds-button=\"large\" disabled>Primary Large Disabled</button>\n<hr />\n<button type=\"button\" ds-button=\"secondary small\">Secondary Small</button>\n<hr />\n<button type=\"button\" ds-button=\"secondary\">Secondary Medium</button>\n<hr />\n<button type=\"button\" ds-button=\"secondary large\" disabled>Secondary Large\n  Disabled</button>\n<hr />\n<button type=\"button\" ds-button=\"chevron small\">Chevron Small</button>\n<hr />\n<button type=\"button\" ds-button=\"chevron\">Chevron Medium</button>\n<hr />\n<button type=\"button\" ds-button=\"chevron large\" disabled>Chevron Large\n  Disabled</button>\n<hr />\n<button type=\"button\" ds-button=\"icon small\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\"\n    viewBox=\"0 0 20 20\" fill=\"currentColor\">\n    <path fill-rule=\"evenodd\"\n      d=\"M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z\"\n      clip-rule=\"evenodd\" />\n  </svg>\n</button>\n<hr />\n<button type=\"button\" ds-button=\"icon\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\"\n    viewBox=\"0 0 20 20\" fill=\"currentColor\">\n    <path fill-rule=\"evenodd\"\n      d=\"M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z\"\n      clip-rule=\"evenodd\" />\n  </svg>\n</button>\n<hr />\n<button type=\"button\" ds-button=\"icon large\" disabled>\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\"\n    viewBox=\"0 0 20 20\" fill=\"currentColor\">\n    <path fill-rule=\"evenodd\"\n      d=\"M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z\"\n      clip-rule=\"evenodd\" />\n  </svg>\n</button>\n<hr />"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-99c1280c507329ad163a20d07951e9f9",
+            "file": "projects/ds/src/lib/button/button.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "styleUrls": [
+                "./button.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "selector",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_classNames",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 43,
+                    "modifierKind": [
+                        120
+                    ]
+                },
+                {
+                    "name": "_size",
+                    "defaultValue": "'medium'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ButtonSize",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        120
+                    ]
+                },
+                {
+                    "name": "_variant",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ButtonVariant",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        120
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  HostBinding,\n  Input\n} from '@angular/core';\n\nconst selector = 'ds-button';\n\nconst BUTTON_VARIANTS = ['primary', 'secondary', 'chevron', 'icon'] as const;\nexport type ButtonVariant = typeof BUTTON_VARIANTS[number];\n\nconst BUTTON_SIZES = ['small', 'medium', 'large'] as const;\nexport type ButtonSize = typeof BUTTON_SIZES[number];\n\n@Component({\n  selector: `button[${selector}]`,\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  private _variant: ButtonVariant = 'primary';\n  private _size: ButtonSize = 'medium';\n\n  @Input(selector)\n  @HostBinding('class')\n  public set classNames(value: string) {\n    if (this._classNames === value) {\n      return;\n    }\n\n    this._classNames = value;\n\n    this._variant = BUTTON_VARIANTS.find(variant => this._classNames.includes(variant)) || 'primary';\n    this._size = BUTTON_SIZES.find(size => this._classNames.includes(size)) || 'medium';\n\n  }\n\n  public get classNames(): string {\n    return `${selector} ${selector}--${this._variant} ${selector}--${this._size}`;\n  }\n  private _classNames!: string;\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host.ds-button {\n  border-style: solid;\n  border-radius: 0;\n  border-width: 1px;\n  position: relative;\n  cursor: pointer;\n  padding-top: var(--ds-space-2);\n  padding-bottom: var(--ds-space-2);\n  padding-left: var(--ds-space-7);\n  padding-right: var(--ds-space-7);\n\n  &--primary {\n    background-color: var(--ds-color--ui-primary-colour);\n    border-color: transparent;\n    color: var(--ds-color--text-inverse-colour);\n\n    svg {\n      color: var(--ds-color--text-inverse-colour);\n    }\n\n    &:hover {\n      background-color: var(--ds-color-brand-primary-main);\n    }\n\n    &:active,\n    &:focus {\n      background-color: var(--ds-color-brand-primary-dark);\n    }\n\n    &:disabled {\n      background-color: var(--ds-color--ui-disabled-colour);\n      color: var(--ds-color--text-inverse-colour);\n    }\n  }\n\n  &--secondary {\n    background-color: var(--ds-color--text-inverse-colour);\n    border-color: var(--ds-color-brand-primary);\n    color: var(--ds-color-brand-primary);\n\n    svg {\n      color: var(--ds-color-brand-primary);\n    }\n\n    &:hover {\n      color: var(--ds-color--text-inverse-colour);\n      background-color: var(--ds-color-brand-primary-main);\n    }\n\n    &:active,\n    &:focus {\n      color: var(--ds-color--text-inverse-colour);\n      background-color: var(--ds-color-brand-primary-dark);\n    }\n\n    &:disabled {\n      background-color: var(--ds-color--ui-disabled-colour);\n      color: var(--ds-color--text-inverse-colour);\n    }\n  }\n\n  &--chevron {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--ds-color-brand-primary);\n\n    svg {\n      color: var(--ds-color-brand-primary);\n    }\n\n    &:hover {\n      color: var(--ds-color-brand-primary-main);\n    }\n\n    &:active,\n    &:focus {\n      color: var(--ds-color-brand-primary-dark);\n    }\n\n    &:disabled {\n      color: var(--ds-color--ui-disabled-colour);\n    }\n  }\n\n  &--icon {\n    background-color: var(--ds-color--ui-primary-colour);\n    border-color: transparent;\n    color: var(--ds-color--text-inverse-colour);\n    padding-top: var(--ds-space-3);\n    padding-bottom: var(--ds-space-3);\n    padding-left: var(--ds-space-3);\n    padding-right: var(--ds-space-3);\n  \n\n    svg {\n      color: var(--ds-color--text-inverse-colour);\n    }\n\n    &:hover {\n      background-color: var(--ds-color-brand-primary-main);\n    }\n\n    &:active,\n    &:focus {\n      background-color: var(--ds-color-brand-primary-dark);\n    }\n\n    &:disabled {\n      background-color: var(--ds-color--ui-disabled-colour);\n      color: var(--ds-color--text-inverse-colour);\n    }\n  }\n\n  &--small {\n    font-size: var(--ds--label-s-font-size);\n    font-weight: var(--ds--label-s-font-weight);\n    line-height: var(--ds--label-s-line-height);\n  }\n\n  &--medium {\n    font-size: var(--ds--label-m-font-size);\n    font-weight: var(--ds--label-m-font-weight);\n    line-height: var(--ds--label-m-line-height);\n    padding-left: var(--ds-space-5);\n    padding-right: var(--ds-space-5);  \n  }\n\n  &--large {\n    font-size: var(--ds--label-m-font-size);\n    font-weight: var(--ds--label-m-font-weight);\n    line-height: var(--ds--label-m-line-height);\n  }\n}\n",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classNames": {
+                    "name": "classNames",
+                    "setSignature": {
+                        "name": "classNames",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 28,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "classNames",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 40
+                    }
+                }
+            },
+            "templateData": "<ng-content></ng-content>"
+        },
+        {
+            "name": "DsComponent",
+            "id": "component-DsComponent-243bcdc4c24879dcba9426bf9fe4b02a",
+            "file": "projects/ds/src/lib/ds.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "lib-ds",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<p>\n  ds works!asda\n</p>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'lib-ds',\n  template: `\n    <p>\n      ds works!asda\n    </p>\n  `,\n  styles: [\n  ]\n})\nexport class DsComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 13
+            },
+            "implements": [
+                "OnInit"
+            ]
+        },
+        {
+            "name": "HelloComponent",
+            "id": "component-HelloComponent-f9ccd0e222c108cd67b287eca6b885e3",
+            "file": "projects/ds/src/lib/hello/hello.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "lib-hello",
+            "styleUrls": [
+                "./hello.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./hello.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'lib-hello',\n  templateUrl: './hello.component.html',\n  styleUrls: ['./hello.component.scss'],\n})\nexport class HelloComponent implements OnInit {\n  constructor() { }\n\n  ngOnInit(): void { }\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./hello.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<h1>hello works!</h1>"
+        },
+        {
+            "name": "TextComponent",
+            "id": "component-TextComponent-ecfc7408ebbc953a30e9a074a364f839",
+            "file": "projects/ds/src/lib/text/text.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "styleUrls": [
+                "./text.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./text.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "selector",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_classNames",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 41,
+                    "modifierKind": [
+                        120
+                    ]
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'l'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TextVariant",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        122
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  HostBinding,\n  Input\n} from '@angular/core';\n\nconst selector = 'ds-text';\n\nconst TEXT_VARIANTS = ['l', 'xl', '2xl', '3xl', '4xl', '5xl'] as const;\nexport type TextVariant = typeof TEXT_VARIANTS[number];\n\n@Component({\n  selector: `p[${selector}]`,\n  templateUrl: './text.component.html',\n  styleUrls: ['./text.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class TextComponent {\n  public variant: TextVariant = 'l';\n\n  @Input(selector)\n  @HostBinding('class')\n  public set classNames(value: string) {\n    if (this._classNames === value) {\n      return;\n    }\n\n    this._classNames = value;\n\n    this.variant = TEXT_VARIANTS.find(variant => {\n      console.log('variant11', variant);\n      return this._classNames === variant;\n    }) || 'l';\n    console.log('this._classNames', value, this._classNames, this.variant);\n  }\n  public get classNames(): string {\n    console.log(`${selector} ${selector}--${this.variant}`);\n    return `${selector} ${selector}--${this.variant}`;\n  }\n  private _classNames!: string;\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host.ds-text {\n  &--l {\n    font-size: 1.25rem;\n    font-weight: bold;\n    line-height: 125%;\n  }\n\n  &--xl {\n    font-size: 1.5rem;\n    font-weight: bold;\n    line-height: 125%;\n  }\n\n  &--2xl {\n    font-size: 1.75rem;\n    font-weight: bold;\n    line-height: 125%;\n  }\n\n\n  &--3xl {\n    font-size: 2rem;\n    font-weight: bold;\n    line-height: 125%;\n  }\n\n\n  &--4xl {\n    font-size: 2.5rem;\n    font-weight: bold;\n    line-height: 125%;\n  }\n\n\n  &--5xl {\n    font-size: 3rem;\n    font-weight: bold;\n    line-height: 125%;\n  }\n\n  &--small {\n    font-size: var(--ds-fs0);\n    padding: var(--ds-space-1);\n  }\n\n  &--medium {\n    font-size: var(--ds-fs1);\n    padding: var(--ds-space-3);\n  }\n\n  &--large {\n    font-size: var(--ds-fs2);\n    padding: var(--ds-space-5);\n  }\n}\n",
+                    "styleUrl": "./text.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classNames": {
+                    "name": "classNames",
+                    "setSignature": {
+                        "name": "classNames",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 24,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "classNames",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 37
+                    }
+                }
+            },
+            "templateData": "<ng-content></ng-content>"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "id": "module-AppModule-054b4d02dbe0dce3456452606633a7ce",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/demo/src/app/app.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\n\nimport { DsModule } from 'ds'\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    DsModule,\n    AppRoutingModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        },
+                        {
+                            "name": "DsModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "id": "module-AppRoutingModule-3c1d721cfd0753406a1cfde101c59380",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/demo/src/app/app-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "DsModule",
+            "id": "module-DsModule-dc78319468cb7b024e1cb894a16684d8",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/ds/src/lib/ds.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\n\nimport { ButtonComponent } from './button/button.component';\nimport { HelloComponent } from './hello/hello.component';\n\n@NgModule({\n  declarations: [\n    ButtonComponent,\n    HelloComponent\n  ],\n  imports: [\n  ],\n  exports: [\n    ButtonComponent,\n    HelloComponent\n  ]\n})\nexport class DsModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "HelloComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "HelloComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "breakpoints",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "['40em', '56em', '64em']"
+            },
+            {
+                "name": "BUTTON_SIZES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "['small', 'medium', 'large'] as const"
+            },
+            {
+                "name": "BUTTON_VARIANTS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "['primary', 'secondary', 'chevron', 'icon'] as const"
+            },
+            {
+                "name": "Chevron",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: args,\n  template: '<button ds-button=\"chevron\">Chevron Medium</button>',\n})"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/demo/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/demo/src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/demo/src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "fonts",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  body: '\"Helvetica Neue\", Roboto, sans-serif',\n  heading: '\"Roboto\", sans-serif',\n  monospace: 'Menlo, monospace',\n}"
+            },
+            {
+                "name": "fontSizes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\n  '0.625rem',\n  '0.750rem',\n  '1.000rem',\n  '1.125rem',\n  '1.250rem',\n  '1.500rem',\n  '1.750rem',\n  '2.000rem',\n  '2.500rem',\n  '3.000rem',\n]"
+            },
+            {
+                "name": "fontWeights",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  regular: 400,\n  medium: 500,\n  bold: 700,\n}"
+            },
+            {
+                "name": "icon",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "`<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n<path fill-rule=\"evenodd\" d=\"M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z\" clip-rule=\"evenodd\" />\n</svg>`"
+            },
+            {
+                "name": "Icon",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: args,\n  template: `\n    <button ds-button=\"icon\">Icon ${icon}</button>\n  `\n})"
+            },
+            {
+                "name": "letterSpacings",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  default: 'normal',\n  tracked: '0.04em',\n}"
+            },
+            {
+                "name": "lineHeights",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  solid: 1,\n  title: 1.25,\n  copy: 1.5,\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: args,\n  template: `\n  <button ds-button>\n    Primary Medium\n  </button>`,\n})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/demo/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            },
+            {
+                "name": "Secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: args,\n  template: '<button ds-button=\"secondary\">Secondary Medium</button>',\n})"
+            },
+            {
+                "name": "selector",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'ds-button'"
+            },
+            {
+                "name": "selector",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'ds-text'"
+            },
+            {
+                "name": "sizes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[8, 16, 32, 64, 128, 256, 512, 768, 1024, 1536]"
+            },
+            {
+                "name": "space",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[0, 4, 8, 16, 32, 64, 128, 256, 512]"
+            },
+            {
+                "name": "TEXT_2XL",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TextComponent>",
+                "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"2xl\">\n    The quick brown fox jumps over the lazy dog\n  </p>`,\n})"
+            },
+            {
+                "name": "TEXT_3XL",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TextComponent>",
+                "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"3xl\">\n    The quick brown fox jumps over the lazy dog\n  </p>`,\n})"
+            },
+            {
+                "name": "TEXT_4XL",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TextComponent>",
+                "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"4xl\">\n    The quick brown fox jumps over the lazy dog\n  </p>`,\n})"
+            },
+            {
+                "name": "TEXT_5XL",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TextComponent>",
+                "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"5xl\">\n    The quick brown fox jumps over the lazy dog\n  </p>`,\n})"
+            },
+            {
+                "name": "TEXT_L",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TextComponent>",
+                "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"l\">\n    L Text\n  </p>`,\n})"
+            },
+            {
+                "name": "TEXT_VARIANTS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "['l', 'xl', '2xl', '3xl', '4xl', '5xl'] as const"
+            },
+            {
+                "name": "TEXT_XL",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TextComponent>",
+                "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"xl\">\n    The quick brown fox jumps over the lazy dog\n  </p>`,\n})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "ButtonSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "",
+                "file": "projects/ds/src/lib/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 190
+            },
+            {
+                "name": "ButtonVariant",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "",
+                "file": "projects/ds/src/lib/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 190
+            },
+            {
+                "name": "TextVariant",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "",
+                "file": "projects/ds/src/lib/text/text.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 190
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/ds/src/docs/theme.ts": [
+                {
+                    "name": "breakpoints",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "['40em', '56em', '64em']"
+                },
+                {
+                    "name": "fonts",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  body: '\"Helvetica Neue\", Roboto, sans-serif',\n  heading: '\"Roboto\", sans-serif',\n  monospace: 'Menlo, monospace',\n}"
+                },
+                {
+                    "name": "fontSizes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\n  '0.625rem',\n  '0.750rem',\n  '1.000rem',\n  '1.125rem',\n  '1.250rem',\n  '1.500rem',\n  '1.750rem',\n  '2.000rem',\n  '2.500rem',\n  '3.000rem',\n]"
+                },
+                {
+                    "name": "fontWeights",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  regular: 400,\n  medium: 500,\n  bold: 700,\n}"
+                },
+                {
+                    "name": "letterSpacings",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  default: 'normal',\n  tracked: '0.04em',\n}"
+                },
+                {
+                    "name": "lineHeights",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  solid: 1,\n  title: 1.25,\n  copy: 1.5,\n}"
+                },
+                {
+                    "name": "sizes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[8, 16, 32, 64, 128, 256, 512, 768, 1024, 1536]"
+                },
+                {
+                    "name": "space",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[0, 4, 8, 16, 32, 64, 128, 256, 512]"
+                }
+            ],
+            "projects/ds/src/lib/button/button.component.ts": [
+                {
+                    "name": "BUTTON_SIZES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "['small', 'medium', 'large'] as const"
+                },
+                {
+                    "name": "BUTTON_VARIANTS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "['primary', 'secondary', 'chevron', 'icon'] as const"
+                },
+                {
+                    "name": "selector",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'ds-button'"
+                }
+            ],
+            "projects/ds/src/lib/button/button.stories.ts": [
+                {
+                    "name": "Chevron",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\n  props: args,\n  template: '<button ds-button=\"chevron\">Chevron Medium</button>',\n})"
+                },
+                {
+                    "name": "icon",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n<path fill-rule=\"evenodd\" d=\"M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z\" clip-rule=\"evenodd\" />\n</svg>`"
+                },
+                {
+                    "name": "Icon",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\n  props: args,\n  template: `\n    <button ds-button=\"icon\">Icon ${icon}</button>\n  `\n})"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\n  props: args,\n  template: `\n  <button ds-button>\n    Primary Medium\n  </button>`,\n})"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\n  props: args,\n  template: '<button ds-button=\"secondary\">Secondary Medium</button>',\n})"
+                }
+            ],
+            "projects/demo/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/demo/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/demo/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ],
+            "projects/ds/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ],
+            "projects/demo/src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/demo/src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "projects/demo/src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/demo/src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "projects/ds/src/lib/text/text.component.ts": [
+                {
+                    "name": "selector",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'ds-text'"
+                },
+                {
+                    "name": "TEXT_VARIANTS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "['l', 'xl', '2xl', '3xl', '4xl', '5xl'] as const"
+                }
+            ],
+            "projects/ds/src/lib/text/text.stories.ts": [
+                {
+                    "name": "TEXT_2XL",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TextComponent>",
+                    "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"2xl\">\n    The quick brown fox jumps over the lazy dog\n  </p>`,\n})"
+                },
+                {
+                    "name": "TEXT_3XL",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TextComponent>",
+                    "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"3xl\">\n    The quick brown fox jumps over the lazy dog\n  </p>`,\n})"
+                },
+                {
+                    "name": "TEXT_4XL",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TextComponent>",
+                    "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"4xl\">\n    The quick brown fox jumps over the lazy dog\n  </p>`,\n})"
+                },
+                {
+                    "name": "TEXT_5XL",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TextComponent>",
+                    "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"5xl\">\n    The quick brown fox jumps over the lazy dog\n  </p>`,\n})"
+                },
+                {
+                    "name": "TEXT_L",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TextComponent>",
+                    "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"l\">\n    L Text\n  </p>`,\n})"
+                },
+                {
+                    "name": "TEXT_XL",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TextComponent>",
+                    "defaultValue": "(args: TextComponent) => ({\n  props: args,\n  template: `\n  <p ds-text=\"xl\">\n    The quick brown fox jumps over the lazy dog\n  </p>`,\n})"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "projects/ds/src/lib/button/button.component.ts": [
+                {
+                    "name": "ButtonSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "",
+                    "file": "projects/ds/src/lib/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 190
+                },
+                {
+                    "name": "ButtonVariant",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "",
+                    "file": "projects/ds/src/lib/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 190
+                }
+            ],
+            "projects/ds/src/lib/text/text.component.ts": [
+                {
+                    "name": "TextVariant",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "",
+                    "file": "projects/ds/src/lib/text/text.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 190
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "projects/demo/src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/demo/src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "breakpoints",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "fonts",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "fontSizes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "fontWeights",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "letterSpacings",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "lineHeights",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "sizes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "space",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BUTTON_SIZES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BUTTON_VARIANTS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selector",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Chevron",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "icon",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Icon",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/ds.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/ds.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "DsService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/hello/hello.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HelloComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TextComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selector",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TEXT_VARIANTS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TEXT_2XL",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TEXT_3XL",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TEXT_4XL",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TEXT_5XL",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TEXT_L",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TEXT_XL",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

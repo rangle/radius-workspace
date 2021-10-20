@@ -1,0 +1,19 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { space as spaceScale, sizes as sizeScale } from './theme';
+
+<Meta title="Foundations/Size Tokens" />
+
+# Size Tokens
+
+Intended for use with layout-related CSS properties such as width and height. A size scale can be defined as either a plain object or an array, but by convention an array is preferred. This is an intentional constraint that makes it difficult to add _one-off_ or _in-between_ sizes that could lead to unwanted and rippling affects to layout.
+
+<>
+  {sizeScale.map((v, idx) => (
+    <Flex key={v + idx} mb={4} alignItems="center">
+      <Text variant="body" minWidth={4}>
+        {idx} <Text as="span" variant="body" color="text.secondary">{`(${v}px)`}</Text>
+      </Text>
+      <Box bg="text.primary" height={2} style={{ width: v }} />
+    </Flex>
+  ))}
+</>

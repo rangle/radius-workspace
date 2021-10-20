@@ -1,0 +1,52 @@
+import {
+  Meta,
+  Subtitle,
+  ColorPalette,
+  ColorItem,
+} from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Color Tokens" />
+
+
+# Color Tokens
+
+<Subtitle>
+  Colors are designed to communicate actions, state and direction within the
+  interface. We provide light and dark color modes. However, the shape of the
+  colors object is same for each mode. This allows us to build components with a
+  consistent API.
+</Subtitle>
+
+<ColorPalette>
+    <ColorItem title="brand.primary.main" subtitle="Main" colors={['#D44527']}/>
+    <ColorItem title="brand.primary.light" subtitle="Light" colors={['#EA5435']}/>
+    <ColorItem title="brand.primary.dark" subtitle="Dark" colors={['#B73B20']}/>
+    <ColorItem title="brand.primary.darker" subtitle="Darker" colors={['#A3331A']}/>
+    <ColorItem title="brand.secondary.main" subtitle="Main" colors={['#262626']}/>
+    <ColorItem title="brand.secondary.light" subtitle="Light" colors={['#3E3E3E']}/>
+    <ColorItem title="brand.secondary.dark" subtitle="Dark" colors={['#1A1919']}/>
+    <ColorItem title="brand.secondary.darker" subtitle="Darker" colors={['#0E0E0E']}/>
+    <ColorItem title="ui.primary" subtitle="Primary" colors={['#262626']}/>
+    <ColorItem title="ui.secondary" subtitle="Secondary" colors={['#828181']}/>
+    <ColorItem title="ui.tertiary" subtitle="Tertiary" colors={['#EDEDED']}/>
+    <ColorItem title="ui.quaternary" subtitle="Quaternary" colors={['#FFFFFF']}/>
+    <ColorItem title="ui.disabled" subtitle="Disabled" colors={['#DEDEDE']}/>
+    <ColorItem title="ui.error-default" subtitle="Error Default" colors={['#D60000']}/>
+    <ColorItem title="ui.error-light" subtitle="Error Light" colors={['#ED1A1A']}/>
+    <ColorItem title="ui.error-dark" subtitle="Error Dark" colors={['#AB1010']}/>
+    <ColorItem title="ui.success-default" subtitle="Success Default" colors={['#138000']}/>
+    <ColorItem title="ui.success-light" subtitle="Success Light" colors={['#34AF1F']}/>
+    <ColorItem title="ui.success-dark" subtitle="Success Dark" colors={['#105E03']}/>
+    <ColorItem title="ui.alert-light" subtitle="Alert Light" colors={['#EF9827']}/>
+    <ColorItem title="ui.alert-default" subtitle="Alert Default" colors={['#DB7C00']}/>
+    <ColorItem title="ui.alert-dark" subtitle="Alert Dark" colors={['#B16400']}/>
+    <ColorItem title="background.one" subtitle="Background One" colors={['#FFFFFF']}/>
+    <ColorItem title="background.two" subtitle="Background Two" colors={['#F1F1F1']}/>
+    <ColorItem title="text.primary" subtitle="Text Primary" colors={['#262626']}/>
+    <ColorItem title="text.primary" subtitle="Text Secondary" colors={['#757575']}/>
+    <ColorItem title="text.primary" subtitle="Text Disabled" colors={['#9C9C9C']}/>
+    <ColorItem title="text.primary" subtitle="Text Inverse" colors={['#FFFFFF']}/>
+    <ColorItem title="text.primary" subtitle="Text Error" colors={['#D0421B']}/>
+    <ColorItem title="text.primary" subtitle="Text Success" colors={['#138000']}/>
+    <ColorItem title="text.primary" subtitle="Text Link" colors={['#0366D6']}/>
+</ColorPalette>
