@@ -12,7 +12,7 @@
   "license": "MIT",
   "main": "lib/cli.ts",
   "bin": {
-    "cli": "bin/cli"
+    "cli": "bin/radius"
   },
   "directories": {
     "lib": "lib",
