@@ -46,7 +46,7 @@ export const styles: CommandModule<Options, Options> = {
   },
 
   handler: (args) => {
-    console.log("GENERATING RADIUS's STYLES", args);
+    console.log("GENERATING RADIUS's STYLES");
     const { dryRun, url, outputDir, template } = args;
     const userToken = process.env["FIGMA_TOKEN"];
     if (!userToken) {
@@ -55,6 +55,9 @@ export const styles: CommandModule<Options, Options> = {
       );
       process.exit(1);
     }
+    console.log("source:", args["source"]);
+    console.log("url:", args["url"]);
+    console.log("template:", args["template"]);
     generateGlobalStyles({
       url,
       dryRun,

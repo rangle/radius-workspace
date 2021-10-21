@@ -186,18 +186,18 @@ const colorToHex = ({ r, g, b }: ColorToken["color"]) =>
 
 export const getTokens = (data: any) =>
   Promise.resolve(data)
-    .then((x) => {
-      console.log("=================================");
-      console.log("WRITING FIGMA DATA TO FILESYSTEM");
-      console.log("=================================");
-      console.log(x);
-      console.log("=================================");
-      writeFileSync(
-        `${__dirname}/../LIB/__mocks__/figma-file-${new Date().toISOString()}.json`,
-        JSON.stringify(x, undefined, 2)
-      );
-      return x;
-    })
+    // .then((x) => {
+    //   console.log("=================================");
+    //   console.log("WRITING FIGMA DATA TO FILESYSTEM");
+    //   console.log("=================================");
+    //   console.log(x);
+    //   console.log("=================================");
+    //   writeFileSync(
+    //     `${__dirname}/../LIB/__mocks__/figma-file-${new Date().toISOString()}.json`,
+    //     JSON.stringify(x, undefined, 2)
+    //   );
+    //   return x;
+    // })
     .then(extractFirstNode)
     .then((x) => {
       //console.log(">>>FIRST_NODE", x);
