@@ -20,8 +20,9 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
         .join("\n")}
     
   }
-  ${queries.map(({ viewPort, value }) => {
-    return `
+  ${queries
+    .map(({ viewPort, value }) => {
+      return `
     /* typography tokens for ${viewPort} (${value}) */
     @media screen and (min-width: ${value}) {
         :root {
@@ -33,7 +34,8 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
           .join("\n")}        
         }
     }`;
-  })}
+    })
+    .join("\n")}
   `,
   ] as const;
 };

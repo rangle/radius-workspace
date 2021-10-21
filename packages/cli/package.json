@@ -27,10 +27,15 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "start": ". .env && FIGMA_TOKEN=$FIGMA_TOKEN ./bin/radius styles $FIGMA_URL",
+    "dev": ". .env && RADIUS_MODE=development FIGMA_TOKEN=$FIGMA_TOKEN ts-node ./bin/radius styles $FIGMA_URL",
+    "test": "jest"
   },
   "dependencies": {
     "figma-api": "^1.6.2",
     "yargs": "^17.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.1"
   }
 }

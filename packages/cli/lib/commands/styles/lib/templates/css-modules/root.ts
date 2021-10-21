@@ -16,10 +16,12 @@ const entries = mapKeys<DesignTokenGroup>([
 const rootTemplate: RenderTokenGroupFile = (tokenGroup) => [
   `./styles/theme.css`,
   `
-  ${entries(tokenGroup).map(
-    ([type]) => `
+  ${entries(tokenGroup)
+    .filter(([, tokens]) => Array.isArray(tokens) && tokens.length > 0)
+    .map(
+      ([type]) => `
   @import url('./_${type}.css');`
-  )}
+    )}
   `,
 ];
 
@@ -27,12 +29,14 @@ export const fileTemplates: RenderTokenGroup = (tokenGroup) => {
   const context = createTokenContext(tokenGroup);
   return [
     rootTemplate(tokenGroup),
-    ...entries(tokenGroup).map(([type, tokens]) =>
-      type === "typography"
-        ? typography(tokens, type, context)
-        : type === "grid"
-        ? grid(tokens, type, context)
-        : template(tokens, type, context)
-    ),
+    ...entries(tokenGroup)
+      .filter(([, tokens]) => Array.isArray(tokens) && tokens.length > 0)
+      .map(([type, tokens]) =>
+        type === "typography"
+          ? typography(tokens, type, context)
+          : type === "grid"
+          ? grid(tokens, type, context)
+          : template(tokens, type, context)
+      ),
   ];
 };

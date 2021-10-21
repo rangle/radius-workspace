@@ -4,7 +4,8 @@
     "noEmit": false,
     "target": "ES5",
     "outDir": "dist",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types"]
   },
   "include": ["lib/**/*.ts", "src/**/*.ts"],
   "exclude": [

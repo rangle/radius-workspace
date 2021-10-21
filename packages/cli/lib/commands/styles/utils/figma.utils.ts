@@ -1,7 +1,7 @@
 import * as Figma from "figma-api";
 import { GroupOf, toKebabCase } from "./common.utils";
 
-//import { writeFileSync } from "fs";
+import { writeFileSync } from "fs";
 
 export const setup = (key: string) => {
   const api = new Figma.Api({
@@ -45,7 +45,6 @@ export const processFigmaUrl = ({ url, token }: FigmaInputData): FigmaData => {
   return data;
 };
 
-// type Unpromise<T extends Promise<any>> = T extends Promise<infer X> ? X : never;
 type FigmaFileNodes = {
   nodes: {
     [key: string]: NodeRoot;
@@ -147,6 +146,9 @@ export type DesignToken = {
 
 export type DesignTokenGroup = GroupOf<DesignToken, "type">;
 
+// TODO: extract types to their own file
+// TODO: when our Figma conventions are solid, extract decisions to a DSL and reduce the mechanism
+
 const extractFirstNode = <T extends FigmaFileNodes>({ nodes }: T) =>
   Object.keys(nodes)
     .map((nodeId) => nodes[nodeId as keyof typeof nodes])
@@ -185,11 +187,15 @@ const colorToHex = ({ r, g, b }: ColorToken["color"]) =>
 export const getTokens = (data: any) =>
   Promise.resolve(data)
     .then((x) => {
-      //console.log(">>>ALL_NODES", x);
-      // writeFileSync(
-      //   `${__dirname}/figma-file-${new Date().toISOString()}.json`,
-      //   JSON.stringify(x, undefined, 2)
-      // );
+      console.log("=================================");
+      console.log("WRITING FIGMA DATA TO FILESYSTEM");
+      console.log("=================================");
+      console.log(x);
+      console.log("=================================");
+      writeFileSync(
+        `${__dirname}/../LIB/__mocks__/figma-file-${new Date().toISOString()}.json`,
+        JSON.stringify(x, undefined, 2)
+      );
       return x;
     })
     .then(extractFirstNode)
