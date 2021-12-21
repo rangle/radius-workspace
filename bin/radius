@@ -1,0 +1,4 @@
+#! /bin/bash
+echo "Radius Command-line Interface"
+BASE=/Users/jasonsantos/work/radius-workspace/packages/cli
+. ${BASE}/.env && FIGMA_TOKEN=$FIGMA_TOKEN FIGMA_URL=$FIGMA_URL ${BASE}//bin/radius $@
