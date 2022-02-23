@@ -1,14 +1,8 @@
-import React from 'react';
-import styles from "./box.module.scss";
+import styled from '@emotion/styled';
 
-export type DsBoxProps = {
-  children: JSX.Element | string;
-};
-
-const DsBox = ({ children }: DsBoxProps) => {
-  return <div className={styles.box}>
-    {children}
-  </div>
-};
-
-export default DsBox;
+export const DsBox = styled.div(
+  {
+    boxSizing: 'border-box',
+    minWidth: 0,
+  },
+);

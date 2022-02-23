@@ -16,7 +16,6 @@ module.exports = {
   staticDirs: ['../src/imgs'],
   stories: ['../src/**/*.stories.@(js|tsx|mdx)'],
   addons: [
-    "@storybook/preset-scss",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-a11y",
