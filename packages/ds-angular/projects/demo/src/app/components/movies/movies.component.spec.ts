@@ -12,7 +12,7 @@ describe('MoviesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DsModule],
-      declarations: [ListComponent, ListItemComponent, MoviesComponent]
+      declarations: [MoviesComponent, ListComponent, ListItemComponent]
     })
       .compileComponents();
   });

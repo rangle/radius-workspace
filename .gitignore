@@ -3,6 +3,7 @@
 /.pnp
 .pnp.js
 **/*.cache/
+**/*.log
 **/dist
 **/storybook-static
 dist

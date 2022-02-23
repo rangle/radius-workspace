@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DsModule } from '../../../../../ds/src/public-api';
 
 import { EditorRowComponent } from './editor-row.component';
 
@@ -8,9 +9,10 @@ describe('EditorRowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditorRowComponent ]
+      imports: [DsModule],
+      declarations: [EditorRowComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-93f4f0817bc3f1db2e91989e8d4a46a8",
+            "id": "component-AppComponent-9db52f2855ddbedd67cf684ac66399bf25b78e116a0262628eaee937a625a66128fc3e92b198866d65fbca145d0a22f3c44adf64f97bf9b0c49d8eca64bbbc5b",
             "file": "projects/demo/src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -78,7 +78,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-b95fae0acc585c0ce9eb15dfa6f8c8ad",
+            "id": "component-ButtonComponent-ad44299371b3c91a174a36a6c2eee8e5aa1315f8581859fd7d4fb1025f6ceb21cf1d2eb195542f5a5937775f2357e4d662d9fa7b3cf0c81e9b9c383204fca4f6",
             "file": "projects/ds/src/lib/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -99,26 +99,31 @@
                     "name": "selector",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
-                    "type": "string"
+                    "line": 37,
+                    "type": "string",
+                    "decorators": []
                 },
                 {
                     "name": "size",
                     "defaultValue": "'medium'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "Sets the size of the button.",
+                    "rawdescription": "\n\nSets the size of the button.\n",
                     "description": "<p>Sets the size of the button.</p>\n",
-                    "line": 28,
-                    "type": "\"small\" | \"medium\" | \"large\""
+                    "line": 31,
+                    "type": "\"small\" | \"medium\" | \"large\"",
+                    "decorators": []
                 },
                 {
                     "name": "variant",
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
-                    "type": "\"primary\" | \"secondary\" | \"chevron\" | \"icon\""
+                    "rawdescription": "\n\nSets the variant of the button.\n",
+                    "description": "<p>Sets the variant of the button.</p>\n",
+                    "line": 25,
+                    "type": "\"primary\" | \"secondary\" | \"chevron\" | \"icon\"",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
@@ -130,9 +135,9 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 33,
                     "modifierKind": [
-                        120
+                        121
                     ]
                 }
             ],
@@ -144,7 +149,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  HostBinding,\n  Input\n} from '@angular/core';\n\nconst selector = 'ds-button';\n\nconst BUTTON_VARIANTS = ['primary', 'secondary', 'chevron', 'icon'] as const;\nconst BUTTON_SIZES = ['small', 'medium', 'large'] as const;\n\n@Component({\n  selector: `button,a[${selector}]`,\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n\n  @Input()\n  variant: 'primary' | 'secondary' | 'chevron' | 'icon' = 'primary';\n\n  /**\n  Sets the size of the button.\n  */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  private _classNames!: string;\n\n  @Input(selector)\n  @HostBinding('class')\n  public set classNames(value: string) {\n    if (this._classNames === value) {\n      return;\n    }\n\n    this._classNames = value;\n\n    this.variant = BUTTON_VARIANTS.find(variant => this._classNames.includes(variant)) || 'primary';\n    this.size = BUTTON_SIZES.find(size => this._classNames.includes(size)) || 'medium';\n  }\n\n  public get classNames(): string {\n    return `${selector} ${selector}--${this.variant} ${selector}--${this.size}`;\n  }\n\n}",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  HostBinding,\n  Input\n} from '@angular/core';\n\nconst selector = 'ds-button';\n\nconst BUTTON_VARIANTS = ['primary', 'secondary', 'chevron', 'icon'] as const;\nconst BUTTON_SIZES = ['small', 'medium', 'large'] as const;\n\n@Component({\n  selector: `button,a[${selector}]`,\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n\n  /**\n  Sets the variant of the button.\n  */\n  @Input()\n  variant: 'primary' | 'secondary' | 'chevron' | 'icon' = 'primary';\n\n  /**\n  Sets the size of the button.\n  */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  private _classNames!: string;\n\n  @Input(selector)\n  @HostBinding('class')\n  public set classNames(value: string) {\n    if (this._classNames === value) {\n      return;\n    }\n\n    this._classNames = value;\n\n    this.variant = BUTTON_VARIANTS.find(variant => this._classNames.includes(variant)) || 'primary';\n    this.size = BUTTON_SIZES.find(size => this._classNames.includes(size)) || 'medium';\n  }\n\n  public get classNames(): string {\n    return `${selector} ${selector}--${this.variant} ${selector}--${this.size}`;\n  }\n\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -170,7 +175,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 34,
+                        "line": 37,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -187,7 +192,7 @@
                         "name": "classNames",
                         "type": "string",
                         "returnType": "string",
-                        "line": 45
+                        "line": 48
                     }
                 }
             },
@@ -195,7 +200,7 @@
         },
         {
             "name": "EditorComponent",
-            "id": "component-EditorComponent-86cdb0bc15c46173e0f7c5a2031a5f35",
+            "id": "component-EditorComponent-53174d1beb8727f3ca67284c491b08858523044dbaa70462fbdc6d2cbc79a228e245c01c00e19d18d7c49c1a38cf095a48e9492e92d5637cff73245b69440ef2",
             "file": "projects/demo/src/app/editor/editor/editor.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -315,7 +320,7 @@
         },
         {
             "name": "EditorRowComponent",
-            "id": "component-EditorRowComponent-9dc57bf9e2e829ad5e2862e434723296",
+            "id": "component-EditorRowComponent-557504d7d17ab4c1fb8ab017b7b09185e29796e145d545af73f9a8773a247116a8c3848b33115e73b428ddfd420ac1c2a62f33e42981f99c20405bdc7fd7cec5",
             "file": "projects/demo/src/app/editor/editor-row/editor-row.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -338,21 +343,24 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 11,
-                    "type": "\"color\" | \"text\""
+                    "type": "\"color\" | \"text\"",
+                    "decorators": []
                 },
                 {
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 10,
-                    "type": "string"
+                    "type": "string",
+                    "decorators": []
                 },
                 {
                     "name": "variable",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 9,
-                    "type": "string"
+                    "type": "string",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
@@ -407,7 +415,7 @@
         },
         {
             "name": "ListComponent",
-            "id": "component-ListComponent-e81bf36a87e53e4b907c082a429b7b5b",
+            "id": "component-ListComponent-a8f26d35897131e1be6a0c01589aed9158cf2ead7ba2730d6d6964f5a29e868fe468470765c419f24b00e169588d4c6cd2efab2a0b26850390752460bf5c3b21",
             "file": "projects/demo/src/app/components/list/list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -469,7 +477,7 @@
         },
         {
             "name": "ListItemComponent",
-            "id": "component-ListItemComponent-1032881977de544ae57cb128d052d6dd",
+            "id": "component-ListItemComponent-2db0e0f3d85447d13c5f586a8ad3667c952f8d3fc1ab6587186ea8982fbe405d13161a5a712f5a79f214e9f23e4ce4c0b0e4f73a9cc0ede551f7418e0c62ec87",
             "file": "projects/demo/src/app/components/list-item/list-item.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -491,7 +499,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 10,
-                    "type": "literal type"
+                    "type": "literal type",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
@@ -513,11 +522,11 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<article class=\"container\">\n  <img [src]=\"movie.image\" class=\"img\" />\n  <div style=\"width: 100%;\">\n    <div class=\"content\">\n      <p ds-text size=\"l\">{{ movie.title }}</p>\n      <div style=\"display: flex; align-items: center;\">\n        <svg width=\"16\" height=\"22\" fill=\"currentColor\">\n          <path\n            d=\"M7.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118L.98 9.483c-.784-.57-.381-1.81.587-1.81H5.03a1 1 0 00.95-.69L7.05 3.69z\" />\n        </svg>\n        &nbsp;&nbsp;\n        <p ds-text>{{ movie.starRating }}</p>\n      </div>\n    </div>\n    <div class=\"content-details\">\n      <ds-tag type=\"secondary\">{{ movie.rating }}</ds-tag>\n      <p ds-text>{{ movie.year }}</p>\n      <p ds-text>{{ movie.genre }}</p>\n      <p ds-text>{{ movie.runtime }}</p>\n    </div>\n    <p ds-text size=\"s\" class=\"txt-cast\">{{movie.cast}}</p>\n  </div>\n</article>"
+            "templateData": "<article class=\"container\" *ngIf=\"movie\">\n  <img [src]=\"movie.image\" class=\"img\" />\n  <div style=\"width: 100%;\">\n    <div class=\"content\">\n      <p ds-text size=\"l\">{{ movie.title }}</p>\n      <div style=\"display: flex; align-items: center;\">\n        <svg width=\"16\" height=\"22\" fill=\"currentColor\">\n          <path\n            d=\"M7.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118L.98 9.483c-.784-.57-.381-1.81.587-1.81H5.03a1 1 0 00.95-.69L7.05 3.69z\" />\n        </svg> &nbsp;&nbsp;\n        <p ds-text>{{ movie.starRating }}</p>\n      </div>\n    </div>\n    <div class=\"content-details\">\n      <ds-tag type=\"secondary\">{{ movie.rating }}</ds-tag>\n      <p ds-text>{{ movie.year }}</p>\n      <p ds-text>{{ movie.genre }}</p>\n      <p ds-text>{{ movie.runtime }}</p>\n    </div>\n    <p ds-text size=\"s\" class=\"txt-cast\">{{movie.cast}}</p>\n  </div>\n</article>"
         },
         {
             "name": "MoviesComponent",
-            "id": "component-MoviesComponent-bd9a8ef8f38043ab78ec1d434b5bc7b4",
+            "id": "component-MoviesComponent-209f9684b0a8caec11b19d6b0b540e18653e761c49385b3d61a6f122095d62d062b9ee7f6fe124cca4ecb6d51c19e6bd95e4d4e9e1b8453c18072568bc155e00",
             "file": "projects/demo/src/app/components/movies/movies.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -540,7 +549,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 9,
-                    "type": "literal type[]"
+                    "type": "literal type[]",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
@@ -566,7 +576,7 @@
         },
         {
             "name": "NavComponent",
-            "id": "component-NavComponent-efded6259d8eca27c760119ffc7aa467",
+            "id": "component-NavComponent-7196718a5929f347dfb002063fe3d82b814d0e5529e617eb76ebf3ac02a7cbc56ee1507e0cd2270348f6a97a7a724f9920bb0b0ecb26726d616da4b911748f83",
             "file": "projects/demo/src/app/components/nav/nav.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -628,7 +638,7 @@
         },
         {
             "name": "NavItemComponent",
-            "id": "component-NavItemComponent-f544afbde6e651cd4b69eadeacae9bf5",
+            "id": "component-NavItemComponent-d7d78b2c58bf21b0b837da85e63feda67d6f4d23ea73255e905c506ad195dd85b0eab03e975a25580c175d26f132f00f6772c8b6e8a99bd3a934d5b2ab6703de",
             "file": "projects/demo/src/app/components/nav-item/nav-item.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -650,7 +660,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 10,
-                    "type": "string"
+                    "type": "string",
+                    "decorators": []
                 },
                 {
                     "name": "isActive",
@@ -658,7 +669,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 11,
-                    "type": "boolean"
+                    "type": "boolean",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
@@ -684,7 +696,7 @@
         },
         {
             "name": "TagComponent",
-            "id": "component-TagComponent-7512c70cdf8594ec4fc7c7a901eddfcc",
+            "id": "component-TagComponent-30edd11e7c87596b2c1c69c3059853136ec2383bf7948af18045307b1c34fcd82df3429c5d5ead8cadaf8fcbd87b6767e9f2d07fb1d738d5e2ff3bdef78c67cc",
             "file": "projects/ds/src/lib/tag/tag.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -707,7 +719,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 22,
-                    "type": "string"
+                    "type": "string",
+                    "decorators": []
                 },
                 {
                     "name": "type",
@@ -715,7 +728,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 13,
-                    "type": "\"primary\" | \"secondary\" | \"error\" | \"success\" | \"alert\""
+                    "type": "\"primary\" | \"secondary\" | \"error\" | \"success\" | \"alert\"",
+                    "decorators": []
                 },
                 {
                     "name": "variant",
@@ -723,7 +737,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 16,
-                    "type": "\"solid\" | \"outline\""
+                    "type": "\"solid\" | \"outline\"",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
@@ -737,7 +752,7 @@
                     "description": "",
                     "line": 18,
                     "modifierKind": [
-                        120
+                        121
                     ]
                 }
             ],
@@ -800,7 +815,7 @@
         },
         {
             "name": "TextComponent",
-            "id": "component-TextComponent-f0a7e9b2246d723cebbe0e32a95ba131",
+            "id": "component-TextComponent-ce0f1d44494816e13189819546aaae9572dfe438808611995c7a0b31f3710a38727ad17da1aab1c6484f3b52c2279f3e8e5bebd739e91b9e3393a52ecf95d559",
             "file": "projects/ds/src/lib/text/text.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -822,7 +837,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 23,
-                    "type": "string"
+                    "type": "string",
+                    "decorators": []
                 },
                 {
                     "name": "size",
@@ -830,7 +846,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 17,
-                    "type": "\"5xl\" | \"4xl\" | \"3xl\" | \"2xl\" | \"l\" | \"m\" | \"s\" | \"xs\""
+                    "type": "\"5xl\" | \"4xl\" | \"3xl\" | \"2xl\" | \"l\" | \"m\" | \"s\" | \"xs\"",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
@@ -844,7 +861,7 @@
                     "description": "",
                     "line": 19,
                     "modifierKind": [
-                        120
+                        121
                     ]
                 }
             ],
@@ -909,7 +926,7 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-d68970b6d103395bb6a2e2ecf169971f",
+            "id": "module-AppModule-13acd045b97fe2322367f48c7e0d81f0e3590e2f8ee803bd8084f9099f9db961f718ebd9e7ad0a50195c60a06e0ecf6ab83f7efa3e2a5fdac678ee038bd3fe9a",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -978,7 +995,7 @@
         },
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-3c1d721cfd0753406a1cfde101c59380",
+            "id": "module-AppRoutingModule-78922b3ae99d2c5249b333980bd5afde1b120b2cc6fedfd41b8b2cc90f279797cb4b22e183bf7e1d1dfab8c6100e77e7812c110234d81f866f544f28a3e18b15",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -1014,7 +1031,7 @@
         },
         {
             "name": "DsModule",
-            "id": "module-DsModule-ede9ba1ab00fea88a72659ace223ff91",
+            "id": "module-DsModule-69e231bddc1fe9754729ce90e941d93215163010e75421994bc1faae9a959e912445b7806551ab5114979c472ee6c731ce7ad51492df8607c4ceb8684359ee35",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -1070,7 +1087,7 @@
         },
         {
             "name": "EditorModule",
-            "id": "module-EditorModule-39255eb4dcb5c9915df0eb2de79dd307",
+            "id": "module-EditorModule-f084ddeaab4738bd6703c6717096bd993359ea16cdc0f6bd8bacc835166cf4c3a4e84f59b7ead99cede8743a5fb3064508986a340e979eec6c7c546eca64c01e",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -1346,21 +1363,21 @@
                 "name": "selector",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ds/src/lib/tag/tag.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "'ds-tag'"
-            },
-            {
-                "name": "selector",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ds/src/lib/text/text.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "string",
                 "defaultValue": "'ds-text'"
+            },
+            {
+                "name": "selector",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/tag/tag.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'ds-tag'"
             },
             {
                 "name": "sizes",
@@ -1416,21 +1433,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ds/src/lib/tag/tag.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `\n      <ds-tag type=\"${args.type}\" variant=\"${args.variant}\">\n        ${args.label}\n      </ds-tag>`,\n  }\n}"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ds/src/lib/text/text.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `<h1 ds-text size=\"${args.size}\">${args.text}</h1>`,\n  }\n}"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `\n      <ds-tag type=\"${args.type}\" variant=\"${args.variant}\">\n        ${args.label}\n      </ds-tag>`,\n  }\n}"
             },
             {
                 "name": "THEME_1",
@@ -1484,7 +1501,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 174
+                "kind": 177
             },
             {
                 "name": "ConfigureFn",
@@ -1495,7 +1512,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 175
+                "kind": 178
             }
         ],
         "enumerations": [],
@@ -1818,18 +1835,6 @@
                     "defaultValue": "() => {\n  let storage: { [key: string]: string } = {};\n  return {\n    getItem: (key: string) => (key in storage ? storage[key] : null),\n    setItem: (key: string, value: string) => (storage[key] = value || ''),\n    removeItem: (key: string) => delete storage[key],\n    clear: () => (storage = {}),\n  };\n}"
                 }
             ],
-            "projects/ds/src/lib/tag/tag.component.ts": [
-                {
-                    "name": "selector",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ds/src/lib/tag/tag.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "'ds-tag'"
-                }
-            ],
             "projects/ds/src/lib/text/text.component.ts": [
                 {
                     "name": "selector",
@@ -1840,6 +1845,18 @@
                     "deprecationMessage": "",
                     "type": "string",
                     "defaultValue": "'ds-text'"
+                }
+            ],
+            "projects/ds/src/lib/tag/tag.component.ts": [
+                {
+                    "name": "selector",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/tag/tag.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'ds-tag'"
                 }
             ],
             "projects/demo/src/app/app.component.ts": [
@@ -1888,7 +1905,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 174
+                    "kind": 177
                 },
                 {
                     "name": "ConfigureFn",
@@ -1899,7 +1916,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 175
+                    "kind": 178
                 }
             ]
         }
@@ -2129,9 +2146,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 20,
-                "coverageCount": "1/5",
-                "status": "low"
+                "coveragePercent": 40,
+                "coverageCount": "2/5",
+                "status": "medium"
             },
             {
                 "filePath": "projects/ds/src/lib/button/button.component.ts",
