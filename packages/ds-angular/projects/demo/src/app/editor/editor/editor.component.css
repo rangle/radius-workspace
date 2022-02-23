@@ -1,0 +1,7 @@
+.content {
+  padding: var(--ds-space-4);
+}
+
+.content-buttons {
+  display: flex;
+}

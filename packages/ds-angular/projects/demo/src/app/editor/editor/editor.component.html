@@ -1,0 +1,42 @@
+<div class="content">
+  <div class="content-buttons">
+    <button ds-button [variant]="editorIndex === 0 ? 'primary': 'secondary'"
+      size="small" (click)="setEditor(0)">Colors</button>
+    &nbsp;&nbsp;
+    <button ds-button [variant]="editorIndex === 1 ? 'primary': 'secondary'"
+      size="small" (click)="setEditor(1)">Spaces</button>
+    &nbsp;&nbsp;
+    <button ds-button [variant]="editorIndex === 2 ? 'primary': 'secondary'"
+      size="small" (click)="setEditor(2)">Borders</button>
+    &nbsp;&nbsp;
+    <button ds-button [variant]="editorIndex === 3 ? 'primary': 'secondary'"
+      size="small" (click)="setEditor(3)">Typography</button>
+  </div>
+  <br />
+  <ng-container *ngIf="editorIndex === 0">
+    <ng-container *ngFor="let color of colors">
+      <app-editor-row type="color" [variable]="color.variable"
+        [value]="color.value">
+      </app-editor-row>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="editorIndex === 1">
+    <ng-container *ngFor="let space of spaces">
+      <app-editor-row [variable]="space.variable" [value]="space.value">
+      </app-editor-row>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="editorIndex === 2">
+    <ng-container *ngFor="let border of borders">
+      <app-editor-row [variable]="border.variable" [value]="border.value">
+      </app-editor-row>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="editorIndex === 3">
+    <ng-container *ngFor="let typography of typographies">
+      <app-editor-row [variable]="typography.variable"
+        [value]="typography.value">
+      </app-editor-row>
+    </ng-container>
+  </ng-container>
+</div>

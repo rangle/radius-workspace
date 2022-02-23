@@ -1,0 +1,10 @@
+<div class="editor-row">
+  <p ds-text>{{variable}}</p>
+  &nbsp;&nbsp;
+  <ng-container [ngSwitch]="type">
+    <input *ngSwitchCase="'color'" type="color" [value]="value"
+      (change)="onChangeEvent($event)" />
+    <input *ngSwitchDefault [value]="value" (change)="onChangeEvent($event)" />
+  </ng-container>
+
+</div>

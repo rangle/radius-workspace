@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import 'styles/index.scss';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--ds-color--ui-background-1);
+}
+
+/* getComputedStyle(document.documentElement)
+    .getPropertyValue('--fontface--Bitstream'); */

@@ -1,0 +1,2376 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-93f4f0817bc3f1db2e91989e8d4a46a8",
+            "file": "projects/demo/src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "applyTheme",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 83,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\nconst THEME_DEFAULT = [{\n  variable: '--ds-color--ui-primary',\n  value: '#262626'\n}, {\n  variable: '--ds-color--text-inverse',\n  value: '#FFFFFF'\n}, {\n  variable: '--ds-color--text-primary',\n  value: '#262626'\n}, {\n  variable: '--ds-color--ui-background-1',\n  value: '#dee2e6'\n}, {\n  variable: '--ds-color--ui-background-2',\n  value: '#ced4da'\n}, {\n  variable: '--ds-color-brand-secondary-main',\n  value: '#262626'\n}, {\n  variable: '--ds-border-radius-m',\n  value: '8px'\n}];\n\nconst THEME_1 = [{\n  variable: '--ds-color--ui-primary',\n  value: '#e63946'\n}, {\n  variable: '--ds-color--text-inverse',\n  value: '#f1faee'\n}, {\n  variable: '--ds-color--text-primary',\n  value: '#457b9d'\n}, {\n  variable: '--ds-color--ui-background-1',\n  value: '#f1faee'\n}, {\n  variable: '--ds-color--ui-background-2',\n  value: '#a8dadc'\n}, {\n  variable: '--ds-color-brand-secondary-main',\n  value: '#0466c8'\n}, {\n  variable: '--ds-border-radius-m',\n  value: '25px'\n}];\n\n\nconst THEME_2 = [{\n  variable: '--ds-color--ui-primary',\n  value: '#a9005b'\n}, {\n  variable: '--ds-color-brand-primary-main',\n  value: '#a9005b'\n}, {\n  variable: '--ds-color--text-inverse',\n  value: '#ffaffb'\n}, {\n  variable: '--ds-color--text-primary',\n  value: '#a9005b'\n}, {\n  variable: '--ds-color--ui-background-1',\n  value: '#acf8cb'\n}, {\n  variable: '--ds-color--ui-background-2',\n  value: '#ffaffb'\n}, {\n  variable: '--ds-color-brand-secondary-main',\n  value: '#acf8cb'\n}, {\n  variable: '--ds-border-radius-m',\n  value: '0px'\n}];\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.css']\n})\nexport class AppComponent {\n\n  applyTheme(index: number): void {\n    let tokens = THEME_DEFAULT;\n    if (index === 1) {\n      tokens = THEME_1;\n    } else if (index === 2) {\n      tokens = THEME_2;\n    }\n    tokens.forEach((token) => {\n      document.documentElement.style\n        .setProperty(token.variable, token.value);\n    })\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.component.css"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div style=\"display: flex;\">\n  <button ds-button (click)=\"applyTheme(0)\">Reset Theme One</button>\n  &nbsp;&nbsp;\n  <button ds-button (click)=\"applyTheme(1)\">Apply Theme One</button>\n  &nbsp;&nbsp;\n  <button ds-button (click)=\"applyTheme(2)\">Apply Theme Two</button>\n</div>\n<div style=\"display: flex;\">\n  <app-movies></app-movies>\n  <app-editor></app-editor>\n</div>"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-b95fae0acc585c0ce9eb15dfa6f8c8ad",
+            "file": "projects/ds/src/lib/button/button.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "styleUrls": [
+                "./button.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "selector",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "string"
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "Sets the size of the button.",
+                    "description": "<p>Sets the size of the button.</p>\n",
+                    "line": 28,
+                    "type": "\"small\" | \"medium\" | \"large\""
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "\"primary\" | \"secondary\" | \"chevron\" | \"icon\""
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_classNames",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "modifierKind": [
+                        120
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  HostBinding,\n  Input\n} from '@angular/core';\n\nconst selector = 'ds-button';\n\nconst BUTTON_VARIANTS = ['primary', 'secondary', 'chevron', 'icon'] as const;\nconst BUTTON_SIZES = ['small', 'medium', 'large'] as const;\n\n@Component({\n  selector: `button,a[${selector}]`,\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n\n  @Input()\n  variant: 'primary' | 'secondary' | 'chevron' | 'icon' = 'primary';\n\n  /**\n  Sets the size of the button.\n  */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  private _classNames!: string;\n\n  @Input(selector)\n  @HostBinding('class')\n  public set classNames(value: string) {\n    if (this._classNames === value) {\n      return;\n    }\n\n    this._classNames = value;\n\n    this.variant = BUTTON_VARIANTS.find(variant => this._classNames.includes(variant)) || 'primary';\n    this.size = BUTTON_SIZES.find(size => this._classNames.includes(size)) || 'medium';\n  }\n\n  public get classNames(): string {\n    return `${selector} ${selector}--${this.variant} ${selector}--${this.size}`;\n  }\n\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host.ds-button {\n  border-style: none;\n  position: relative;\n  cursor: pointer;\n  display: flex;\n  vertical-align: middle;\n  padding-top: var(--ds-space-2);\n  padding-bottom: var(--ds-space-2);\n  padding-left: var(--ds-space-7);\n  padding-right: var(--ds-space-7);\n  border-radius: var(--ds-border-radius-m);\n\n  &--primary {\n    background-color: var(--ds-color--ui-primary);\n    color: var(--ds-color--text-inverse);\n\n    svg {\n      color: var(--ds-color--text-inverse);\n    }\n\n    &:hover {\n      background-color: var(--ds-color-brand-primary-main);\n    }\n\n    &:active,\n    &:focus {\n      background-color: var(--ds-color-brand-primary-dark);\n    }\n\n    &:disabled {\n      background-color: var(--ds-color--ui-disabled);\n      color: var(--ds-color--text-inverse);\n    }\n  }\n\n  &--secondary {\n    background-color: var(--ds-color--text-inverse);\n    border-color: var(--ds-color--ui-primary);\n    color: var(--ds-color--ui-primary);\n\n    svg {\n      color: var(--ds-color--ui-primary);\n    }\n\n    &:hover {\n      color: var(--ds-color--text-inverse);\n      background-color: var(--ds-color-brand-primary-main);\n    }\n\n    &:active,\n    &:focus {\n      color: var(--ds-color--text-inverse);\n      background-color: var(--ds-color-brand-primary-dark);\n    }\n\n    &:disabled {\n      background-color: var(--ds-color--ui-disabled);\n      color: var(--ds-color--text-inverse);\n    }\n  }\n\n  &--chevron {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--ds-color--ui-primary);\n\n    svg {\n      color: var(--ds-color--ui-primary);\n    }\n\n    &:hover {\n      color: var(--ds-color-brand-primary-main);\n    }\n\n    &:active,\n    &:focus {\n      color: var(--ds-color-brand-primary-dark);\n    }\n\n    &:disabled {\n      color: var(--ds-color--ui-disabled);\n    }\n  }\n\n  &--icon {\n    background-color: var(--ds-color--ui-primary);\n    border-color: transparent;\n    color: var(--ds-color--text-inverse);\n    padding-top: var(--ds-space-3);\n    padding-bottom: var(--ds-space-3);\n    padding-left: var(--ds-space-3);\n    padding-right: var(--ds-space-3);\n  \n\n    svg {\n      color: var(--ds-color--text-inverse);\n    }\n\n    &:hover {\n      background-color: var(--ds-color-brand-primary-main);\n    }\n\n    &:active,\n    &:focus {\n      background-color: var(--ds-color-brand-primary-dark);\n    }\n\n    &:disabled {\n      background-color: var(--ds-color--ui-disabled);\n      color: var(--ds-color--text-inverse);\n    }\n  }\n\n  &--small {\n    font-size: var(--ds-typography-scale-s);\n    padding-left: var(--ds-space-5);\n    padding-right: var(--ds-space-5);  \n  }\n\n  &--medium {\n    font-size: var(--ds-typography-scale-m);\n  }\n\n  &--large {\n    font-size: var(--ds-typography-scale-l);\n    padding-left: var(--ds-space-9);\n    padding-right: var(--ds-space-9);  \n  }\n}\n",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classNames": {
+                    "name": "classNames",
+                    "setSignature": {
+                        "name": "classNames",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 34,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "classNames",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 45
+                    }
+                }
+            },
+            "templateData": "<ng-content></ng-content>"
+        },
+        {
+            "name": "EditorComponent",
+            "id": "component-EditorComponent-86cdb0bc15c46173e0f7c5a2031a5f35",
+            "file": "projects/demo/src/app/editor/editor/editor.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-editor",
+            "styleUrls": [
+                "./editor.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./editor.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "borders",
+                    "defaultValue": "[\n    { variable: \"--ds-border-radius-s\", value: \"4px\" },\n    { variable: \"--ds-border-radius-m\", value: \"8px\" },\n    { variable: \"--ds-border-radius-l\", value: \"16px\" },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 45
+                },
+                {
+                    "name": "colors",
+                    "defaultValue": "[\n    { variable: \"--ds-color-brand-primary-main\", value: \"#D44527\" },\n    { variable: \"--ds-color-brand-primary-light\", value: \"#EA5435\" },\n    { variable: \"--ds-color-brand-primary-dark\", value: \"#B73B20\" },\n    { variable: \"--ds-color-brand-primary-darker\", value: \"#A3331A\" },\n    { variable: \"--ds-color-brand-secondary-main\", value: \"#262626\" },\n    { variable: \"--ds-color-brand-secondary-light\", value: \"#3E3E3E\" },\n    { variable: \"--ds-color-brand-secondary-dark\", value: \"#1A1919\" },\n    { variable: \"--ds-color-brand-secondary-darker\", value: \"#0E0E0E\" },\n    { variable: \"--ds-color--ui-primary\", value: \"#262626\" },\n    { variable: \"--ds-color--ui-secondary\", value: \"#828181\" },\n    { variable: \"--ds-color--ui-tertiary\", value: \"#EDEDED\" },\n    { variable: \"--ds-color--ui-quaternary\", value: \"#FFFFFF\" },\n    { variable: \"--ds-color--ui-disabled\", value: \"#DEDEDE\" },\n    { variable: \"--ds-color--ui-error-default\", value: \"#D60000\" },\n    { variable: \"--ds-color--ui-error-light\", value: \"#ED1A1A\" },\n    { variable: \"--ds-color--ui-error-dark\", value: \"#AB1010\" },\n    { variable: \"--ds-color--ui-success-default\", value: \"#138000\" },\n    { variable: \"--ds-color--ui-success-light\", value: \"#34AF1F\" },\n    { variable: \"--ds-color--ui-success-dark\", value: \"#105E03\" },\n    { variable: \"--ds-color--ui-alert-default\", value: \"#DB7C00\" },\n    { variable: \"--ds-color--ui-alert-light\", value: \"#EF9827\" },\n    { variable: \"--ds-color--ui-alert-dark\", value: \"#B16400\" },\n    { variable: \"--ds-color--ui-background-1\", value: \"#FFFFFF\" },\n    { variable: \"--ds-color--ui-background-2\", value: \"#F1F1F1\" },\n    { variable: \"--ds-color--text-primary\", value: \"#262626\" },\n    { variable: \"--ds-color--text-secondary\", value: \"#757575\" },\n    { variable: \"--ds-color--text-disabled\", value: \"#9C9C9C\" },\n    { variable: \"--ds-color--text-inverse\", value: \"#FFFFFF\" },\n    { variable: \"--ds-color--text-error\", value: \"#D0421B\" },\n    { variable: \"--ds-color--text-success\", value: \"#138000\" },\n    { variable: \"--ds-color--text-link\", value: \"#0366D6\" },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "editorIndex",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "spaces",
+                    "defaultValue": "[\n    { variable: \"--ds-space-1\", value: \"0.25rem\" },\n    { variable: \"--ds-space-2\", value: \"0.5rem\" },\n    { variable: \"--ds-space-3\", value: \".75rem\" },\n    { variable: \"--ds-space-4\", value: \"1rem\" },\n    { variable: \"--ds-space-5\", value: \"1.25rem\" },\n    { variable: \"--ds-space-6\", value: \"1.5rem\" },\n    { variable: \"--ds-space-7\", value: \"2rem\" },\n    { variable: \"--ds-space-8\", value: \"2.5rem\" },\n    { variable: \"--ds-space-9\", value: \"3rem\" },\n    { variable: \"--ds-space-10\", value: \"4rem\" },\n    { variable: \"--ds-space-11\", value: \"6rem\" },\n    { variable: \"--ds-space-12\", value: \"8rem\" },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 51
+                },
+                {
+                    "name": "typographies",
+                    "defaultValue": "[\n    { variable: \"--ds-typography-scale-5xl\", value: \"3rem\" },\n    { variable: \"--ds-typography-scale-4xl\", value: \"2.5rem\" },\n    { variable: \"--ds-typography-scale-3xl\", value: \"2rem\" },\n    { variable: \"--ds-typography-scale-2xl\", value: \"1.75rem\" },\n    { variable: \"--ds-typography-scale-xl\", value: \"1.5rem\" },\n    { variable: \"--ds-typography-scale-l\", value: \"1.25rem\" },\n    { variable: \"--ds-typography-scale-m\", value: \"1rem\" },\n    { variable: \"--ds-typography-scale-s\", value: \"0.75rem\" },\n    { variable: \"--ds-typography-scale-xs\", value: \"0.625rem\" },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 66
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "setEditor",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-editor',\n  templateUrl: './editor.component.html',\n  styleUrls: ['./editor.component.css']\n})\nexport class EditorComponent {\n  editorIndex = 0;\n\n  colors = [\n    { variable: \"--ds-color-brand-primary-main\", value: \"#D44527\" },\n    { variable: \"--ds-color-brand-primary-light\", value: \"#EA5435\" },\n    { variable: \"--ds-color-brand-primary-dark\", value: \"#B73B20\" },\n    { variable: \"--ds-color-brand-primary-darker\", value: \"#A3331A\" },\n    { variable: \"--ds-color-brand-secondary-main\", value: \"#262626\" },\n    { variable: \"--ds-color-brand-secondary-light\", value: \"#3E3E3E\" },\n    { variable: \"--ds-color-brand-secondary-dark\", value: \"#1A1919\" },\n    { variable: \"--ds-color-brand-secondary-darker\", value: \"#0E0E0E\" },\n    { variable: \"--ds-color--ui-primary\", value: \"#262626\" },\n    { variable: \"--ds-color--ui-secondary\", value: \"#828181\" },\n    { variable: \"--ds-color--ui-tertiary\", value: \"#EDEDED\" },\n    { variable: \"--ds-color--ui-quaternary\", value: \"#FFFFFF\" },\n    { variable: \"--ds-color--ui-disabled\", value: \"#DEDEDE\" },\n    { variable: \"--ds-color--ui-error-default\", value: \"#D60000\" },\n    { variable: \"--ds-color--ui-error-light\", value: \"#ED1A1A\" },\n    { variable: \"--ds-color--ui-error-dark\", value: \"#AB1010\" },\n    { variable: \"--ds-color--ui-success-default\", value: \"#138000\" },\n    { variable: \"--ds-color--ui-success-light\", value: \"#34AF1F\" },\n    { variable: \"--ds-color--ui-success-dark\", value: \"#105E03\" },\n    { variable: \"--ds-color--ui-alert-default\", value: \"#DB7C00\" },\n    { variable: \"--ds-color--ui-alert-light\", value: \"#EF9827\" },\n    { variable: \"--ds-color--ui-alert-dark\", value: \"#B16400\" },\n    { variable: \"--ds-color--ui-background-1\", value: \"#FFFFFF\" },\n    { variable: \"--ds-color--ui-background-2\", value: \"#F1F1F1\" },\n    { variable: \"--ds-color--text-primary\", value: \"#262626\" },\n    { variable: \"--ds-color--text-secondary\", value: \"#757575\" },\n    { variable: \"--ds-color--text-disabled\", value: \"#9C9C9C\" },\n    { variable: \"--ds-color--text-inverse\", value: \"#FFFFFF\" },\n    { variable: \"--ds-color--text-error\", value: \"#D0421B\" },\n    { variable: \"--ds-color--text-success\", value: \"#138000\" },\n    { variable: \"--ds-color--text-link\", value: \"#0366D6\" },\n  ];\n\n  borders = [\n    { variable: \"--ds-border-radius-s\", value: \"4px\" },\n    { variable: \"--ds-border-radius-m\", value: \"8px\" },\n    { variable: \"--ds-border-radius-l\", value: \"16px\" },\n  ];\n\n  spaces = [\n    { variable: \"--ds-space-1\", value: \"0.25rem\" },\n    { variable: \"--ds-space-2\", value: \"0.5rem\" },\n    { variable: \"--ds-space-3\", value: \".75rem\" },\n    { variable: \"--ds-space-4\", value: \"1rem\" },\n    { variable: \"--ds-space-5\", value: \"1.25rem\" },\n    { variable: \"--ds-space-6\", value: \"1.5rem\" },\n    { variable: \"--ds-space-7\", value: \"2rem\" },\n    { variable: \"--ds-space-8\", value: \"2.5rem\" },\n    { variable: \"--ds-space-9\", value: \"3rem\" },\n    { variable: \"--ds-space-10\", value: \"4rem\" },\n    { variable: \"--ds-space-11\", value: \"6rem\" },\n    { variable: \"--ds-space-12\", value: \"8rem\" },\n  ];\n\n  typographies = [\n    { variable: \"--ds-typography-scale-5xl\", value: \"3rem\" },\n    { variable: \"--ds-typography-scale-4xl\", value: \"2.5rem\" },\n    { variable: \"--ds-typography-scale-3xl\", value: \"2rem\" },\n    { variable: \"--ds-typography-scale-2xl\", value: \"1.75rem\" },\n    { variable: \"--ds-typography-scale-xl\", value: \"1.5rem\" },\n    { variable: \"--ds-typography-scale-l\", value: \"1.25rem\" },\n    { variable: \"--ds-typography-scale-m\", value: \"1rem\" },\n    { variable: \"--ds-typography-scale-s\", value: \"0.75rem\" },\n    { variable: \"--ds-typography-scale-xs\", value: \"0.625rem\" },\n  ]\n\n  setEditor(index: number): void {\n    this.editorIndex = index;\n  }\n}\n\n\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".content {\n  padding: var(--ds-space-4);\n}\n\n.content-buttons {\n  display: flex;\n}",
+                    "styleUrl": "./editor.component.css"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"content\">\n  <div class=\"content-buttons\">\n    <button ds-button [variant]=\"editorIndex === 0 ? 'primary': 'secondary'\"\n      size=\"small\" (click)=\"setEditor(0)\">Colors</button>\n    &nbsp;&nbsp;\n    <button ds-button [variant]=\"editorIndex === 1 ? 'primary': 'secondary'\"\n      size=\"small\" (click)=\"setEditor(1)\">Spaces</button>\n    &nbsp;&nbsp;\n    <button ds-button [variant]=\"editorIndex === 2 ? 'primary': 'secondary'\"\n      size=\"small\" (click)=\"setEditor(2)\">Borders</button>\n    &nbsp;&nbsp;\n    <button ds-button [variant]=\"editorIndex === 3 ? 'primary': 'secondary'\"\n      size=\"small\" (click)=\"setEditor(3)\">Typography</button>\n  </div>\n  <br />\n  <ng-container *ngIf=\"editorIndex === 0\">\n    <ng-container *ngFor=\"let color of colors\">\n      <app-editor-row type=\"color\" [variable]=\"color.variable\"\n        [value]=\"color.value\">\n      </app-editor-row>\n    </ng-container>\n  </ng-container>\n  <ng-container *ngIf=\"editorIndex === 1\">\n    <ng-container *ngFor=\"let space of spaces\">\n      <app-editor-row [variable]=\"space.variable\" [value]=\"space.value\">\n      </app-editor-row>\n    </ng-container>\n  </ng-container>\n  <ng-container *ngIf=\"editorIndex === 2\">\n    <ng-container *ngFor=\"let border of borders\">\n      <app-editor-row [variable]=\"border.variable\" [value]=\"border.value\">\n      </app-editor-row>\n    </ng-container>\n  </ng-container>\n  <ng-container *ngIf=\"editorIndex === 3\">\n    <ng-container *ngFor=\"let typography of typographies\">\n      <app-editor-row [variable]=\"typography.variable\"\n        [value]=\"typography.value\">\n      </app-editor-row>\n    </ng-container>\n  </ng-container>\n</div>"
+        },
+        {
+            "name": "EditorRowComponent",
+            "id": "component-EditorRowComponent-9dc57bf9e2e829ad5e2862e434723296",
+            "file": "projects/demo/src/app/editor/editor-row/editor-row.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-editor-row",
+            "styleUrls": [
+                "./editor-row.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./editor-row.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "type",
+                    "defaultValue": "'text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "\"color\" | \"text\""
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string"
+                },
+                {
+                    "name": "variable",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "onChangeEvent",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-editor-row',\n  templateUrl: './editor-row.component.html',\n  styleUrls: ['./editor-row.component.css']\n})\nexport class EditorRowComponent {\n  @Input() variable!: string;\n  @Input() value!: string;\n  @Input() type: 'color' | 'text' = 'text';\n\n  onChangeEvent(event: any) {\n    document.documentElement.style\n      .setProperty(this.variable, event.target.value);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".editor-row {\n  display: flex;\n  justify-content: space-between;\n  padding-bottom: var(--ds-space-2);\n  margin-bottom: var(--ds-space-2);\n  border-bottom: 1px solid var(--ds-color--ui-primary);\n}",
+                    "styleUrl": "./editor-row.component.css"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"editor-row\">\n  <p ds-text>{{variable}}</p>\n  &nbsp;&nbsp;\n  <ng-container [ngSwitch]=\"type\">\n    <input *ngSwitchCase=\"'color'\" type=\"color\" [value]=\"value\"\n      (change)=\"onChangeEvent($event)\" />\n    <input *ngSwitchDefault [value]=\"value\" (change)=\"onChangeEvent($event)\" />\n  </ng-container>\n\n</div>"
+        },
+        {
+            "name": "ListComponent",
+            "id": "component-ListComponent-e81bf36a87e53e4b907c082a429b7b5b",
+            "file": "projects/demo/src/app/components/list/list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-list",
+            "styleUrls": [
+                "./list.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./list.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-list',\n  templateUrl: './list.component.html',\n  styleUrls: ['./list.component.css']\n})\nexport class ListComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./list.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"divide-y divide-slate-100\">\n  <ng-content></ng-content>\n</div>"
+        },
+        {
+            "name": "ListItemComponent",
+            "id": "component-ListItemComponent-1032881977de544ae57cb128d052d6dd",
+            "file": "projects/demo/src/app/components/list-item/list-item.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-list-item",
+            "styleUrls": [
+                "./list-item.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./list-item.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "movie",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "literal type"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-list-item',\n  templateUrl: './list-item.component.html',\n  styleUrls: ['./list-item.component.scss']\n})\nexport class ListItemComponent {\n\n  @Input() movie!: {\n    image: string\n    title: string\n    starRating: string\n    rating: string\n    year: string\n    genre: string\n    runtime: string\n    cast: string\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".container {\n  display: flex;\n  border-top: 1px solid;\n  border-color: var(--ds-color-brand-secondary-main);\n  padding: var(--ds-space-4);\n  align-items: center;\n}\n\n.img {\n  width: 60px;\n  height: 88px;\n  border-radius: var(--ds-border-radius-m);\n  margin-right: var(--ds-space-4);\n}\n\n.content {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  padding-top: var(--ds-space-2);\n}\n\n.content-details {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: var(--ds-space-2) 0;\n}\n\n.txt-cast {\n  padding-top: var(--ds-space-2);\n  color: var(--ds-color-brand-secondary-light);\n}",
+                    "styleUrl": "./list-item.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<article class=\"container\">\n  <img [src]=\"movie.image\" class=\"img\" />\n  <div style=\"width: 100%;\">\n    <div class=\"content\">\n      <p ds-text size=\"l\">{{ movie.title }}</p>\n      <div style=\"display: flex; align-items: center;\">\n        <svg width=\"16\" height=\"22\" fill=\"currentColor\">\n          <path\n            d=\"M7.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118L.98 9.483c-.784-.57-.381-1.81.587-1.81H5.03a1 1 0 00.95-.69L7.05 3.69z\" />\n        </svg>\n        &nbsp;&nbsp;\n        <p ds-text>{{ movie.starRating }}</p>\n      </div>\n    </div>\n    <div class=\"content-details\">\n      <ds-tag type=\"secondary\">{{ movie.rating }}</ds-tag>\n      <p ds-text>{{ movie.year }}</p>\n      <p ds-text>{{ movie.genre }}</p>\n      <p ds-text>{{ movie.runtime }}</p>\n    </div>\n    <p ds-text size=\"s\" class=\"txt-cast\">{{movie.cast}}</p>\n  </div>\n</article>"
+        },
+        {
+            "name": "MoviesComponent",
+            "id": "component-MoviesComponent-bd9a8ef8f38043ab78ec1d434b5bc7b4",
+            "file": "projects/demo/src/app/components/movies/movies.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-movies",
+            "styleUrls": [
+                "./movies.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./movies.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "movies",
+                    "defaultValue": "[{\n    image: 'https://tailwindcss.com/_next/static/media/prognosis-negative.a3c55fb717747ce6804f7375a2147a76.jpg',\n    title: 'Prognosis Negative',\n    starRating: '2.66',\n    rating: 'PG-13',\n    year: '2021',\n    genre: 'Comedy',\n    runtime: '1h 46m',\n    cast: 'Simon Pegg, Zach Galifianakis'\n  }, {\n    image: 'https://tailwindcss.com/_next/static/media/rochelle-rochelle.3dafce5e8fef150b65e158fc34a74769.jpg',\n    title: 'Rochelle, Rochelle',\n    starRating: '3.25',\n    rating: 'R',\n    year: '2021',\n    genre: 'Romance',\n    runtime: '1h 46m',\n    cast: 'Emilia Clarke'\n  }, {\n    image: 'https://tailwindcss.com/_next/static/media/death-blow.8f06f1c002165401a49a4c6ec95e6500.jpg',\n    title: 'Death Blow',\n    starRating: '4.95',\n    rating: '18A',\n    year: '2020',\n    genre: 'Action',\n    runtime: '2h 46m',\n    cast: 'Idris Elba, John Cena, Thandiwe Newton'\n  }]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "literal type[]"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-movies',\n  templateUrl: './movies.component.html',\n  styleUrls: ['./movies.component.css']\n})\nexport class MoviesComponent {\n  @Input() movies: {\n    image: string\n    title: string\n    starRating: string\n    rating: string\n    year: string\n    genre: string\n    runtime: string\n    cast: string\n  }[] = [{\n    image: 'https://tailwindcss.com/_next/static/media/prognosis-negative.a3c55fb717747ce6804f7375a2147a76.jpg',\n    title: 'Prognosis Negative',\n    starRating: '2.66',\n    rating: 'PG-13',\n    year: '2021',\n    genre: 'Comedy',\n    runtime: '1h 46m',\n    cast: 'Simon Pegg, Zach Galifianakis'\n  }, {\n    image: 'https://tailwindcss.com/_next/static/media/rochelle-rochelle.3dafce5e8fef150b65e158fc34a74769.jpg',\n    title: 'Rochelle, Rochelle',\n    starRating: '3.25',\n    rating: 'R',\n    year: '2021',\n    genre: 'Romance',\n    runtime: '1h 46m',\n    cast: 'Emilia Clarke'\n  }, {\n    image: 'https://tailwindcss.com/_next/static/media/death-blow.8f06f1c002165401a49a4c6ec95e6500.jpg',\n    title: 'Death Blow',\n    starRating: '4.95',\n    rating: '18A',\n    year: '2020',\n    genre: 'Action',\n    runtime: '2h 46m',\n    cast: 'Idris Elba, John Cena, Thandiwe Newton'\n  }]\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".container {\n  width: max-content;\n  background-color: var(--ds-color--ui-background-2);\n  border-radius: var(--ds-border-radius-m);\n  border: 1px solid;\n  border-color: var(--ds-color-brand-secondary-main);\n  box-shadow: var(--ds-shadow-100);\n  margin: var(--ds-space-4);\n}\n\n.nav {\n  display: flex;\n  padding: var(--ds-space-4);\n}",
+                    "styleUrl": "./movies.component.css"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"container\">\n  <div class=\"nav\">\n    <a ds-button>\n      New Releases\n    </a>\n    &nbsp;&nbsp;\n    <a ds-button variant=\"secondary\">\n      Top Rated\n    </a>\n    &nbsp;&nbsp;\n    <a ds-button variant=\"secondary\">\n      Editor's Pick\n    </a>\n  </div>\n  <app-list>\n    <app-list-item *ngFor=\"let movie of movies\" [movie]=\"movie\"></app-list-item>\n  </app-list>\n</div>"
+        },
+        {
+            "name": "NavComponent",
+            "id": "component-NavComponent-efded6259d8eca27c760119ffc7aa467",
+            "file": "projects/demo/src/app/components/nav/nav.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-nav",
+            "styleUrls": [
+                "./nav.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./nav.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-nav',\n  templateUrl: './nav.component.html',\n  styleUrls: ['./nav.component.css']\n})\nexport class NavComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./nav.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<nav class=\"py-4 px-6 text-sm font-medium\">\n  <div class=\"flex space-x-3\">\n    <ng-content></ng-content>\n  </div>\n</nav>"
+        },
+        {
+            "name": "NavItemComponent",
+            "id": "component-NavItemComponent-f544afbde6e651cd4b69eadeacae9bf5",
+            "file": "projects/demo/src/app/components/nav-item/nav-item.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-nav-item",
+            "styleUrls": [
+                "./nav-item.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./nav-item.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "href",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string"
+                },
+                {
+                    "name": "isActive",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "boolean"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-nav-item',\n  templateUrl: './nav-item.component.html',\n  styleUrls: ['./nav-item.component.css']\n})\nexport class NavItemComponent {\n\n  @Input() href!: string\n  @Input() isActive: boolean = false\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./nav-item.component.css"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<a ds-button>{{href}}</a>"
+        },
+        {
+            "name": "TagComponent",
+            "id": "component-TagComponent-7512c70cdf8594ec4fc7c7a901eddfcc",
+            "file": "projects/ds/src/lib/tag/tag.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ds-tag",
+            "styleUrls": [
+                "./tag.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tag.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "selector",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "string"
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "\"primary\" | \"secondary\" | \"error\" | \"success\" | \"alert\""
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'solid'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "\"solid\" | \"outline\""
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_classNames",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        120
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';\n\nconst selector = 'ds-tag';\n@Component({\n  selector: 'ds-tag',\n  templateUrl: './tag.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  styleUrls: ['./tag.component.scss'],\n})\nexport class TagComponent {\n\n  @Input()\n  type: 'primary' | 'secondary' | 'error' | 'success' | 'alert' = 'primary';\n\n  @Input()\n  variant: 'solid' | 'outline' = 'solid';\n\n  private _classNames!: string;\n\n  @Input(selector)\n  @HostBinding('class')\n  public set classNames(value: string) {\n    if (this._classNames === value) {\n      return;\n    }\n\n    this._classNames = value;\n  }\n\n  public get classNames(): string {\n    return `${selector} ${selector}--${this.type}--${this.variant}`;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host.ds-tag {\n  height: fit-content;\n  display: inline-block;\n  padding: 0 var(--ds-space-2);\n  white-space: nowrap;\n  border-radius: var(--ds-border-radius-m);\n  border-style: solid;\n  border-width: 1px;\n  font-size: 11px;\n  border-color: transparent;\n  \n  &--primary {\n    &--solid {\n      background-color: var(--ds-color--ui-primary);\n      color: var(--ds-color--text-inverse);\n    }\n    \n    &--outline {\n        border-color: var(--ds-color--ui-primary);\n        color: var(--ds-color--ui-primary);\n    }\n  }\n\n  &--secondary {\n    &--solid {\n      background-color: var(--ds-color-brand-primary-main);\n      color: var(--ds-color--text-inverse);\n    }\n    &--outline {\n      border-color: var(--ds-color-brand-primary-main);\n      color: var(--ds-color-brand-primary-main);\n  }\n  }\n\n  &--error {\n    &--solid {\n      background-color: var(--ds-color--ui-error-default);\n      color: var(--ds-color--text-inverse);\n    }\n    &--outline {\n      border-color: var(--ds-color--ui-error-default);\n      color: var(--ds-color--ui-error-default);\n    }\n  }\n\n  &--success {\n    &--solid {\n      background-color: var(--ds-color--ui-success-default);\n      color: var(--ds-color--text-inverse);\n    }\n    &--outline {\n      border-color: var(--ds-color--ui-success-default);\n      color: var(--ds-color--ui-success-default);\n    }\n  }\n\n  &--alert {\n    &--solid {\n      background-color: var(--ds-color--ui-alert-default);\n      color: var(--ds-color--text-inverse);\n    }\n    &--outline {\n      border-color: var(--ds-color--ui-alert-default);\n      color: var(--ds-color--ui-alert-default);\n    }\n  }\n}",
+                    "styleUrl": "./tag.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classNames": {
+                    "name": "classNames",
+                    "setSignature": {
+                        "name": "classNames",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 22,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "classNames",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 30
+                    }
+                }
+            },
+            "templateData": "<ng-content></ng-content>"
+        },
+        {
+            "name": "TextComponent",
+            "id": "component-TextComponent-f0a7e9b2246d723cebbe0e32a95ba131",
+            "file": "projects/ds/src/lib/text/text.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "styleUrls": [
+                "./text.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./text.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "selector",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "string"
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'m'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "\"5xl\" | \"4xl\" | \"3xl\" | \"2xl\" | \"l\" | \"m\" | \"s\" | \"xs\""
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_classNames",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        120
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  HostBinding,\n  Input\n} from '@angular/core';\n\nconst selector = 'ds-text';\n\n@Component({\n  selector: `h1,h2,h3,h4,h5,p,label[${selector}]`,\n  templateUrl: './text.component.html',\n  styleUrls: ['./text.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class TextComponent {\n  @Input() size: '5xl' | '4xl' | '3xl' | '2xl' | 'l' | 'm' | 's' | 'xs' = 'm';\n\n  private _classNames!: string;\n\n  @Input(selector)\n  @HostBinding('class')\n  public set classNames(value: string) {\n    if (this._classNames === value) {\n      return;\n    }\n    this._classNames = value;\n  }\n\n  public get classNames(): string {\n    return `${selector} ${selector}--${this.size}`;\n  }\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host.ds-text {\n  color: var(--ds-color--text-primary);\n\n  &--l {\n    font-size: var(--ds-typography-scale-l);\n    font-weight: var(--ds-typography-weight-bold);\n    line-height: var(--ds-typography-line-height-125);\n  }\n\n  &--xl {\n    font-size: var(--ds-typography-scale-xl);\n    font-weight: var(--ds-typography-weight-bold);\n    line-height: var(--ds-typography-line-height-125);\n  }\n\n  &--2xl {\n    font-size: var(--ds-typography-scale-2xl);\n    font-weight: var(--ds-typography-weight-bold);\n    line-height: var(--ds-typography-line-height-125);\n  }\n\n\n  &--3xl {\n    font-size: var(--ds-typography-scale-3xl);\n    font-weight: var(--ds-typography-weight-bold);\n    line-height: var(--ds-typography-line-height-125);\n  }\n\n\n  &--4xl {\n    font-size: var(--ds-typography-scale-4xl);\n    font-weight: var(--ds-typography-weight-bold);\n    line-height: var(--ds-typography-line-height-125);\n  }\n\n\n  &--5xl {\n    font-size: var(--ds-typography-scale-5xl);\n    font-weight: var(--ds-typography-weight-bold);\n    line-height: var(--ds-typography-line-height-125);\n  }\n\n  &--m {\n    font-size: var(--ds-typography-scale-m);\n    line-height: var(--ds-typography-line-height-150);\n  }\n\n  &--s {\n    font-size: var(--ds-typography-scale-s);\n    line-height: var(--ds-typography-line-height-150);\n  }\n\n  &--xs {\n    font-size: var(--ds-typography-scale-xs);\n  }\n}\n",
+                    "styleUrl": "./text.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classNames": {
+                    "name": "classNames",
+                    "setSignature": {
+                        "name": "classNames",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 23,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "classNames",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 30
+                    }
+                }
+            },
+            "templateData": "<ng-content></ng-content>\n<!-- <ng-container [ngSwitch]=\"type\">\n  <h1 [ngClass]=\"classNames\" *ngSwitchCase=\"'heading'\">{{label}}</h1>\n  <label [ngClass]=\"classNames\" *ngSwitchCase=\"'label'\">{{label}}</label>\n  <p [ngClass]=\"classNames\" *ngSwitchDefault>{{label}}</p>\n</ng-container> -->"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "id": "module-AppModule-d68970b6d103395bb6a2e2ecf169971f",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/demo/src/app/app.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { NavComponent } from './components/nav/nav.component';\nimport { NavItemComponent } from './components/nav-item/nav-item.component';\nimport { ListComponent } from './components/list/list.component';\nimport { ListItemComponent } from './components/list-item/list-item.component';\nimport { MoviesComponent } from './components/movies/movies.component';\n\nimport { DsModule } from '../../../ds/src/public-api';\nimport { EditorModule } from './editor/editor.module';\n@NgModule({\n  declarations: [\n    AppComponent,\n    NavComponent,\n    NavItemComponent,\n    ListComponent,\n    ListItemComponent,\n    MoviesComponent\n  ],\n  imports: [\n    BrowserModule,\n    DsModule,\n    EditorModule,\n    AppRoutingModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        },
+                        {
+                            "name": "ListComponent"
+                        },
+                        {
+                            "name": "ListItemComponent"
+                        },
+                        {
+                            "name": "MoviesComponent"
+                        },
+                        {
+                            "name": "NavComponent"
+                        },
+                        {
+                            "name": "NavItemComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        },
+                        {
+                            "name": "DsModule"
+                        },
+                        {
+                            "name": "EditorModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "id": "module-AppRoutingModule-3c1d721cfd0753406a1cfde101c59380",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/demo/src/app/app-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "DsModule",
+            "id": "module-DsModule-ede9ba1ab00fea88a72659ace223ff91",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/ds/src/lib/ds.module.ts",
+            "methods": [],
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\n\nimport { ButtonComponent } from './button/button.component';\nimport { TextComponent } from './text/text.component';\nimport { TagComponent } from './tag/tag.component';\n\n@NgModule({\n  declarations: [\n    ButtonComponent,\n    TextComponent,\n    TagComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n    ButtonComponent,\n    TagComponent,\n    TextComponent\n  ]\n})\nexport class DsModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "TagComponent"
+                        },
+                        {
+                            "name": "TextComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "TagComponent"
+                        },
+                        {
+                            "name": "TextComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "EditorModule",
+            "id": "module-EditorModule-39255eb4dcb5c9915df0eb2de79dd307",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/demo/src/app/editor/editor.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { EditorRowComponent } from './editor-row/editor-row.component';\nimport { EditorComponent } from './editor/editor.component';\nimport { DsModule } from '../../../../ds/src/public-api';\n\n@NgModule({\n  declarations: [\n    EditorRowComponent,\n    EditorComponent\n  ],\n  imports: [\n    CommonModule,\n    DsModule\n  ],\n  exports: [\n    EditorComponent\n  ]\n})\nexport class EditorModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "EditorComponent"
+                        },
+                        {
+                            "name": "EditorRowComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "DsModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "EditorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "Alert",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "breakpoints",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "['40em', '56em', '64em']"
+            },
+            {
+                "name": "BUTTON_SIZES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "['small', 'medium', 'large'] as const"
+            },
+            {
+                "name": "BUTTON_VARIANTS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "['primary', 'secondary', 'chevron', 'icon'] as const"
+            },
+            {
+                "name": "configureTests",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "test-config.helper.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(configure: ConfigureFn, compilerOptions: CompilerOptions = {}) => {\n  const compilerConfig: CompilerOptions = {\n    preserveWhitespaces: false,\n    ...compilerOptions,\n  };\n\n  const configuredTestBed = TestBed.configureCompiler(compilerConfig);\n\n  configure(configuredTestBed);\n\n  return configuredTestBed.compileComponents().then(() => configuredTestBed);\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "DUMMY_TEXT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'The quick brown fox jumps over the lazy dog'"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/demo/src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/demo/src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "Error",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "fonts",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  body: '\"Helvetica Neue\", Roboto, sans-serif',\n  heading: '\"Roboto\", sans-serif',\n  monospace: 'Menlo, monospace',\n}"
+            },
+            {
+                "name": "fontSizes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\n  '0.625rem',\n  '0.750rem',\n  '1.000rem',\n  '1.125rem',\n  '1.250rem',\n  '1.500rem',\n  '1.750rem',\n  '2.000rem',\n  '2.500rem',\n  '3.000rem',\n]"
+            },
+            {
+                "name": "fontWeights",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  regular: 400,\n  medium: 500,\n  bold: 700,\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "icon",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "`<svg width=\"15px\" height=\"15px\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n<path fill-rule=\"evenodd\" d=\"M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z\" clip-rule=\"evenodd\" />\n</svg>`"
+            },
+            {
+                "name": "letterSpacings",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  default: 'normal',\n  tracked: '0.04em',\n}"
+            },
+            {
+                "name": "lineHeights",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  solid: 1,\n  title: 1.25,\n  copy: 1.5,\n}"
+            },
+            {
+                "name": "mock",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "setup-jest.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => {\n  let storage: { [key: string]: string } = {};\n  return {\n    getItem: (key: string) => (key in storage ? storage[key] : null),\n    setItem: (key: string, value: string) => (storage[key] = value || ''),\n    removeItem: (key: string) => delete storage[key],\n    clear: () => (storage = {}),\n  };\n}"
+            },
+            {
+                "name": "Paragraph",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "selector",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'ds-button'"
+            },
+            {
+                "name": "selector",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/tag/tag.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'ds-tag'"
+            },
+            {
+                "name": "selector",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'ds-text'"
+            },
+            {
+                "name": "sizes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[8, 16, 32, 64, 128, 256, 512, 768, 1024, 1536]"
+            },
+            {
+                "name": "Sizes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => {\n  return {\n    template: `\n      <div style=\"display: flex; justify-content: space-between;\">\n        <button ds-button size=\"small\" variant=\"primary\">\n          Small Button\n        </button>\n        <button ds-button size=\"medium\" variant=\"primary\">\n          Medium Button\n        </button>\n        <button ds-button size=\"large\" variant=\"primary\">\n          Large Button\n        </button>\n      </div>`,\n  }\n}"
+            },
+            {
+                "name": "space",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/docs/theme.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[0, 4, 8, 16, 32, 64, 128, 256, 512]"
+            },
+            {
+                "name": "Success",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `\n      <button ds-button variant=\"${args.variant}\" size=\"${args.size}\">\n        ${args.label}\n      </button>`,\n  }\n}"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `\n      <ds-tag type=\"${args.type}\" variant=\"${args.variant}\">\n        ${args.label}\n      </ds-tag>`,\n  }\n}"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `<h1 ds-text size=\"${args.size}\">${args.text}</h1>`,\n  }\n}"
+            },
+            {
+                "name": "THEME_1",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/demo/src/app/app.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[{\n  variable: '--ds-color--ui-primary',\n  value: '#e63946'\n}, {\n  variable: '--ds-color--text-inverse',\n  value: '#f1faee'\n}, {\n  variable: '--ds-color--text-primary',\n  value: '#457b9d'\n}, {\n  variable: '--ds-color--ui-background-1',\n  value: '#f1faee'\n}, {\n  variable: '--ds-color--ui-background-2',\n  value: '#a8dadc'\n}, {\n  variable: '--ds-color-brand-secondary-main',\n  value: '#0466c8'\n}, {\n  variable: '--ds-border-radius-m',\n  value: '25px'\n}]"
+            },
+            {
+                "name": "THEME_2",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/demo/src/app/app.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[{\n  variable: '--ds-color--ui-primary',\n  value: '#a9005b'\n}, {\n  variable: '--ds-color-brand-primary-main',\n  value: '#a9005b'\n}, {\n  variable: '--ds-color--text-inverse',\n  value: '#ffaffb'\n}, {\n  variable: '--ds-color--text-primary',\n  value: '#a9005b'\n}, {\n  variable: '--ds-color--ui-background-1',\n  value: '#acf8cb'\n}, {\n  variable: '--ds-color--ui-background-2',\n  value: '#ffaffb'\n}, {\n  variable: '--ds-color-brand-secondary-main',\n  value: '#acf8cb'\n}, {\n  variable: '--ds-border-radius-m',\n  value: '0px'\n}]"
+            },
+            {
+                "name": "THEME_DEFAULT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/demo/src/app/app.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[{\n  variable: '--ds-color--ui-primary',\n  value: '#262626'\n}, {\n  variable: '--ds-color--text-inverse',\n  value: '#FFFFFF'\n}, {\n  variable: '--ds-color--text-primary',\n  value: '#262626'\n}, {\n  variable: '--ds-color--ui-background-1',\n  value: '#dee2e6'\n}, {\n  variable: '--ds-color--ui-background-2',\n  value: '#ced4da'\n}, {\n  variable: '--ds-color-brand-secondary-main',\n  value: '#262626'\n}, {\n  variable: '--ds-border-radius-m',\n  value: '8px'\n}]"
+            },
+            {
+                "name": "Variants",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => {\n  return {\n    template: `\n      <div style=\"display: flex; justify-content: space-between;\">\n        <button ds-button variant=\"primary\">\n          Primary Button\n        </button>\n        &nbsp;&nbsp;\n        <button ds-button variant=\"secondary\">\n          Secondary Button\n        </button>\n        &nbsp;&nbsp;\n        <button ds-button variant=\"chevron\">\n          Chevron Button\n        </button>\n        &nbsp;&nbsp;\n        <button ds-button variant=\"icon\">\n          ${icon}\n        </button>\n      </div>`,\n  }\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "CompilerOptions",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "Partial<literal type>",
+                "file": "test-config.helper.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 174
+            },
+            {
+                "name": "ConfigureFn",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "function",
+                "file": "test-config.helper.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 175
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/ds/src/lib/tag/tag.stories.ts": [
+                {
+                    "name": "Alert",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Error",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Success",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `\n      <ds-tag type=\"${args.type}\" variant=\"${args.variant}\">\n        ${args.label}\n      </ds-tag>`,\n  }\n}"
+                }
+            ],
+            "projects/ds/src/docs/theme.ts": [
+                {
+                    "name": "breakpoints",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "['40em', '56em', '64em']"
+                },
+                {
+                    "name": "fonts",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  body: '\"Helvetica Neue\", Roboto, sans-serif',\n  heading: '\"Roboto\", sans-serif',\n  monospace: 'Menlo, monospace',\n}"
+                },
+                {
+                    "name": "fontSizes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\n  '0.625rem',\n  '0.750rem',\n  '1.000rem',\n  '1.125rem',\n  '1.250rem',\n  '1.500rem',\n  '1.750rem',\n  '2.000rem',\n  '2.500rem',\n  '3.000rem',\n]"
+                },
+                {
+                    "name": "fontWeights",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  regular: 400,\n  medium: 500,\n  bold: 700,\n}"
+                },
+                {
+                    "name": "letterSpacings",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  default: 'normal',\n  tracked: '0.04em',\n}"
+                },
+                {
+                    "name": "lineHeights",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  solid: 1,\n  title: 1.25,\n  copy: 1.5,\n}"
+                },
+                {
+                    "name": "sizes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[8, 16, 32, 64, 128, 256, 512, 768, 1024, 1536]"
+                },
+                {
+                    "name": "space",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/docs/theme.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[0, 4, 8, 16, 32, 64, 128, 256, 512]"
+                }
+            ],
+            "projects/ds/src/lib/button/button.component.ts": [
+                {
+                    "name": "BUTTON_SIZES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "['small', 'medium', 'large'] as const"
+                },
+                {
+                    "name": "BUTTON_VARIANTS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "['primary', 'secondary', 'chevron', 'icon'] as const"
+                },
+                {
+                    "name": "selector",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'ds-button'"
+                }
+            ],
+            "test-config.helper.ts": [
+                {
+                    "name": "configureTests",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "test-config.helper.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(configure: ConfigureFn, compilerOptions: CompilerOptions = {}) => {\n  const compilerConfig: CompilerOptions = {\n    preserveWhitespaces: false,\n    ...compilerOptions,\n  };\n\n  const configuredTestBed = TestBed.configureCompiler(compilerConfig);\n\n  configure(configuredTestBed);\n\n  return configuredTestBed.compileComponents().then(() => configuredTestBed);\n}"
+                }
+            ],
+            "projects/ds/src/lib/button/button.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "icon",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`<svg width=\"15px\" height=\"15px\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n<path fill-rule=\"evenodd\" d=\"M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z\" clip-rule=\"evenodd\" />\n</svg>`"
+                },
+                {
+                    "name": "Sizes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => {\n  return {\n    template: `\n      <div style=\"display: flex; justify-content: space-between;\">\n        <button ds-button size=\"small\" variant=\"primary\">\n          Small Button\n        </button>\n        <button ds-button size=\"medium\" variant=\"primary\">\n          Medium Button\n        </button>\n        <button ds-button size=\"large\" variant=\"primary\">\n          Large Button\n        </button>\n      </div>`,\n  }\n}"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `\n      <button ds-button variant=\"${args.variant}\" size=\"${args.size}\">\n        ${args.label}\n      </button>`,\n  }\n}"
+                },
+                {
+                    "name": "Variants",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => {\n  return {\n    template: `\n      <div style=\"display: flex; justify-content: space-between;\">\n        <button ds-button variant=\"primary\">\n          Primary Button\n        </button>\n        &nbsp;&nbsp;\n        <button ds-button variant=\"secondary\">\n          Secondary Button\n        </button>\n        &nbsp;&nbsp;\n        <button ds-button variant=\"chevron\">\n          Chevron Button\n        </button>\n        &nbsp;&nbsp;\n        <button ds-button variant=\"icon\">\n          ${icon}\n        </button>\n      </div>`,\n  }\n}"
+                }
+            ],
+            "projects/ds/src/lib/text/text.stories.ts": [
+                {
+                    "name": "DUMMY_TEXT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'The quick brown fox jumps over the lazy dog'"
+                },
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Paragraph",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `<h1 ds-text size=\"${args.size}\">${args.text}</h1>`,\n  }\n}"
+                }
+            ],
+            "projects/demo/src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/demo/src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "projects/demo/src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/demo/src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "setup-jest.ts": [
+                {
+                    "name": "mock",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "setup-jest.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => {\n  let storage: { [key: string]: string } = {};\n  return {\n    getItem: (key: string) => (key in storage ? storage[key] : null),\n    setItem: (key: string, value: string) => (storage[key] = value || ''),\n    removeItem: (key: string) => delete storage[key],\n    clear: () => (storage = {}),\n  };\n}"
+                }
+            ],
+            "projects/ds/src/lib/tag/tag.component.ts": [
+                {
+                    "name": "selector",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/tag/tag.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'ds-tag'"
+                }
+            ],
+            "projects/ds/src/lib/text/text.component.ts": [
+                {
+                    "name": "selector",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/text/text.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'ds-text'"
+                }
+            ],
+            "projects/demo/src/app/app.component.ts": [
+                {
+                    "name": "THEME_1",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/demo/src/app/app.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[{\n  variable: '--ds-color--ui-primary',\n  value: '#e63946'\n}, {\n  variable: '--ds-color--text-inverse',\n  value: '#f1faee'\n}, {\n  variable: '--ds-color--text-primary',\n  value: '#457b9d'\n}, {\n  variable: '--ds-color--ui-background-1',\n  value: '#f1faee'\n}, {\n  variable: '--ds-color--ui-background-2',\n  value: '#a8dadc'\n}, {\n  variable: '--ds-color-brand-secondary-main',\n  value: '#0466c8'\n}, {\n  variable: '--ds-border-radius-m',\n  value: '25px'\n}]"
+                },
+                {
+                    "name": "THEME_2",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/demo/src/app/app.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[{\n  variable: '--ds-color--ui-primary',\n  value: '#a9005b'\n}, {\n  variable: '--ds-color-brand-primary-main',\n  value: '#a9005b'\n}, {\n  variable: '--ds-color--text-inverse',\n  value: '#ffaffb'\n}, {\n  variable: '--ds-color--text-primary',\n  value: '#a9005b'\n}, {\n  variable: '--ds-color--ui-background-1',\n  value: '#acf8cb'\n}, {\n  variable: '--ds-color--ui-background-2',\n  value: '#ffaffb'\n}, {\n  variable: '--ds-color-brand-secondary-main',\n  value: '#acf8cb'\n}, {\n  variable: '--ds-border-radius-m',\n  value: '0px'\n}]"
+                },
+                {
+                    "name": "THEME_DEFAULT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/demo/src/app/app.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[{\n  variable: '--ds-color--ui-primary',\n  value: '#262626'\n}, {\n  variable: '--ds-color--text-inverse',\n  value: '#FFFFFF'\n}, {\n  variable: '--ds-color--text-primary',\n  value: '#262626'\n}, {\n  variable: '--ds-color--ui-background-1',\n  value: '#dee2e6'\n}, {\n  variable: '--ds-color--ui-background-2',\n  value: '#ced4da'\n}, {\n  variable: '--ds-color-brand-secondary-main',\n  value: '#262626'\n}, {\n  variable: '--ds-border-radius-m',\n  value: '8px'\n}]"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "test-config.helper.ts": [
+                {
+                    "name": "CompilerOptions",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "Partial<literal type>",
+                    "file": "test-config.helper.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 174
+                },
+                {
+                    "name": "ConfigureFn",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "function",
+                    "file": "test-config.helper.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 175
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "projects/demo/src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/demo/src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/app/app.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "THEME_1",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/app/app.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "THEME_2",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/app/app.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "THEME_DEFAULT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/app/components/list-item/list-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ListItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/app/components/list/list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/app/components/movies/movies.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MoviesComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/app/components/nav-item/nav-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/app/components/nav/nav.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/app/editor/editor-row/editor-row.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "EditorRowComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/app/editor/editor/editor.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "EditorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/demo/src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "breakpoints",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "fonts",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "fontSizes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "fontWeights",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "letterSpacings",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "lineHeights",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "sizes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/docs/theme.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "space",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 20,
+                "coverageCount": "1/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BUTTON_SIZES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BUTTON_VARIANTS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selector",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "icon",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Sizes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Variants",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/tag/tag.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TagComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/tag/tag.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selector",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/tag/tag.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Alert",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/tag/tag.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Error",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/tag/tag.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/tag/tag.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/tag/tag.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Success",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/tag/tag.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TextComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selector",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DUMMY_TEXT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Paragraph",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ds/src/lib/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "setup-jest.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "mock",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "test-config.helper.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "configureTests",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

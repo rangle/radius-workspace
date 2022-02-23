@@ -1,0 +1,56 @@
+:host.ds-text {
+  color: var(--ds-color--text-primary);
+
+  &--l {
+    font-size: var(--ds-typography-scale-l);
+    font-weight: var(--ds-typography-weight-bold);
+    line-height: var(--ds-typography-line-height-125);
+  }
+
+  &--xl {
+    font-size: var(--ds-typography-scale-xl);
+    font-weight: var(--ds-typography-weight-bold);
+    line-height: var(--ds-typography-line-height-125);
+  }
+
+  &--2xl {
+    font-size: var(--ds-typography-scale-2xl);
+    font-weight: var(--ds-typography-weight-bold);
+    line-height: var(--ds-typography-line-height-125);
+  }
+
+
+  &--3xl {
+    font-size: var(--ds-typography-scale-3xl);
+    font-weight: var(--ds-typography-weight-bold);
+    line-height: var(--ds-typography-line-height-125);
+  }
+
+
+  &--4xl {
+    font-size: var(--ds-typography-scale-4xl);
+    font-weight: var(--ds-typography-weight-bold);
+    line-height: var(--ds-typography-line-height-125);
+  }
+
+
+  &--5xl {
+    font-size: var(--ds-typography-scale-5xl);
+    font-weight: var(--ds-typography-weight-bold);
+    line-height: var(--ds-typography-line-height-125);
+  }
+
+  &--m {
+    font-size: var(--ds-typography-scale-m);
+    line-height: var(--ds-typography-line-height-150);
+  }
+
+  &--s {
+    font-size: var(--ds-typography-scale-s);
+    line-height: var(--ds-typography-line-height-150);
+  }
+
+  &--xs {
+    font-size: var(--ds-typography-scale-xs);
+  }
+}

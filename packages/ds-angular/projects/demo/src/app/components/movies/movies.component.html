@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="nav">
+    <a ds-button>
+      New Releases
+    </a>
+    &nbsp;&nbsp;
+    <a ds-button variant="secondary">
+      Top Rated
+    </a>
+    &nbsp;&nbsp;
+    <a ds-button variant="secondary">
+      Editor's Pick
+    </a>
+  </div>
+  <app-list>
+    <app-list-item *ngFor="let movie of movies" [movie]="movie"></app-list-item>
+  </app-list>
+</div>
