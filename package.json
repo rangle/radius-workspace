@@ -1,12 +1,25 @@
 {
-  "name": "@radius/root",
-  "private": true,
+  "name": "radius",
+  "version": "0.0.0",
   "scripts": {
-    "build-all": "lerna run build"
+    "build": "turbo run build",
+    "dev": "turbo run dev --no-cache --parallel --continue",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "cli:styles": "turbo run build --scope=@radius/cli && node packages/cli/build/cli styles 'https://www.figma.com/file/TJzz7ZB6pJvpLhjI5DWG3F/Radius-Design-Kit-V2(WIP)?node-id=725%3A8261'",
+    "cli:init": "turbo run build --scope=@radius/cli && node packages/cli/build/cli init"
   },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "keywords": [],
+  "author": "Sumit Arora",
+  "license": "MIT",
   "devDependencies": {
-    "@types/yargs": "^17.0.2",
-    "lerna": "^3.22.1",
-    "typescript": "^4.4.2"
-  }
+    "turbo": "1.1.2"
+  },
+  "packageManager": "npm@8.1.2"
 }

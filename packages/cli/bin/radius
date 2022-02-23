@@ -1,9 +1,0 @@
-#!/usr/bin/env node
-
-"use strict";
-
-const cli = require("../dist/cli");
-const parser = cli();
-
-// eslint-disable-next-line no-unused-expressions
-parser.parse(process.argv.slice(2));

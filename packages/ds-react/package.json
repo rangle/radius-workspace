@@ -13,11 +13,9 @@
   "scripts": {
     "demo": "npm --prefix example run start",
     "start": "tsdx watch",
-    "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "test:watch": "tsdx test --passWithNoTests --watch",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
@@ -40,8 +38,7 @@
   "name": "radius",
   "author": "Sumit Arora",
   "module": "dist/radius.esm.js",
-  "size-limit": [
-    {
+  "size-limit": [{
       "path": "dist/radius.cjs.production.min.js",
       "limit": "10 KB"
     },

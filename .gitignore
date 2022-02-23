@@ -3,12 +3,14 @@
 /.pnp
 .pnp.js
 **/*.cache/
-/dist
-/storybook-static
+**/dist
+**/storybook-static
 dist
+.env
+styles
 
 # testing
-/coverage
+**/coverage
 
 # production
 /packages/ds/build
