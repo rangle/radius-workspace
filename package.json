@@ -1,6 +1,9 @@
 {
   "name": "radius",
   "private": true,
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --no-cache --parallel --continue",
@@ -19,6 +22,6 @@
   "author": "Sumit Arora",
   "license": "MIT",
   "devDependencies": {
-    "turbo": "1.1.2"
+    "turbo": "1.1.3"
   }
 }

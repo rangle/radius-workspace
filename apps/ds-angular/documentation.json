@@ -1363,21 +1363,21 @@
                 "name": "selector",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ds/src/lib/tag/tag.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "'ds-tag'"
-            },
-            {
-                "name": "selector",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ds/src/lib/text/text.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "string",
                 "defaultValue": "'ds-text'"
+            },
+            {
+                "name": "selector",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/tag/tag.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'ds-tag'"
             },
             {
                 "name": "sizes",
@@ -1433,21 +1433,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ds/src/lib/tag/tag.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `\n      <ds-tag type=\"${args.type}\" variant=\"${args.variant}\">\n        ${args.label}\n      </ds-tag>`,\n  }\n}"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ds/src/lib/text/text.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `<h1 ds-text size=\"${args.size}\">${args.text}</h1>`,\n  }\n}"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ds/src/lib/tag/tag.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "(args) => {\n  return {\n    props: args,\n    template: `\n      <ds-tag type=\"${args.type}\" variant=\"${args.variant}\">\n        ${args.label}\n      </ds-tag>`,\n  }\n}"
             },
             {
                 "name": "THEME_1",
@@ -1835,18 +1835,6 @@
                     "defaultValue": "() => {\n  let storage: { [key: string]: string } = {};\n  return {\n    getItem: (key: string) => (key in storage ? storage[key] : null),\n    setItem: (key: string, value: string) => (storage[key] = value || ''),\n    removeItem: (key: string) => delete storage[key],\n    clear: () => (storage = {}),\n  };\n}"
                 }
             ],
-            "projects/ds/src/lib/tag/tag.component.ts": [
-                {
-                    "name": "selector",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ds/src/lib/tag/tag.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "'ds-tag'"
-                }
-            ],
             "projects/ds/src/lib/text/text.component.ts": [
                 {
                     "name": "selector",
@@ -1857,6 +1845,18 @@
                     "deprecationMessage": "",
                     "type": "string",
                     "defaultValue": "'ds-text'"
+                }
+            ],
+            "projects/ds/src/lib/tag/tag.component.ts": [
+                {
+                    "name": "selector",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ds/src/lib/tag/tag.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'ds-tag'"
                 }
             ],
             "projects/demo/src/app/app.component.ts": [
