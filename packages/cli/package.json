@@ -27,7 +27,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "jest"
   },
   "dependencies": {
     "figma-api": "^1.6.2",
