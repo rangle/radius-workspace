@@ -1,4 +1,6 @@
+import chalk from "chalk";
 import { CommandModule } from "yargs";
+import { logger } from "../../logger";
 import { generateGlobalStyles, Options } from "./lib/radius-styles";
 
 export const styles: CommandModule<Options, Options> = {
@@ -46,11 +48,16 @@ export const styles: CommandModule<Options, Options> = {
   },
 
   handler: (args) => {
-    console.log("GENERATING RADIUS's STYLES", args);
+    logger.info("Generating Radius Styles");
+    logger.info(`Source: ${chalk.red(args.source)}`);
+    logger.info(`Template: ${chalk.red(args.template)}`);
+    logger.info(`Figma URL: ${chalk.red(args.url)}`);
+    logger.info(`Dry Run: ${chalk.red(args.dryRun)}`);
+
     const { dryRun, url, outputDir, template } = args;
     const userToken = process.env["FIGMA_TOKEN"];
     if (!userToken) {
-      console.error(
+      logger.error(
         "Authentication Token not found. Use the --token option or set the FIGMA_TOKEN environment variable"
       );
       process.exit(1);

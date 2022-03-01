@@ -209,7 +209,7 @@ export const getTokens = (data: any) =>
         // eslint-disable-next-line no-sequences
         .flatMap(
           ({ children, name }) => (
-            console.log("FRAME", name),
+            // console.log("FRAME", name),
             children.map((child) => ({ ...child, parent: name }))
           )
         )
@@ -365,7 +365,7 @@ function processRectangleSize(
 
   return [sz, alias].map((alias) => {
     const token = `--${[prefix ?? type, alias].join("-")}`;
-    console.log(">>>> ", width, token);
+    // console.log(">>>> ", width, token);
     return {
       type,
       name,

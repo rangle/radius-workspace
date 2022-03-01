@@ -2,7 +2,10 @@
   "name": "@radius/root",
   "private": true,
   "scripts": {
-    "build-all": "lerna run build"
+    "cli:styles": "lerna run build  && ./packages/cli/bin/radius styles 'https://www.figma.com/file/TJzz7ZB6pJvpLhjI5DWG3F/Radius-Design-Kit-V2(WIP)?node-id=725%3A8261'",
+    "cli:init": "lerna run build  && ./packages/cli/bin/radius init",
+    "build-all": "lerna run build",
+    "test-all": "lerna run test"
   },
   "dependencies": {
     "chalk": "4.1.1",
