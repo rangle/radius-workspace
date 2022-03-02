@@ -1,6 +1,7 @@
 import ora from 'ora';
 import chalk from 'chalk';
 import degit from 'degit';
+import path from 'path'
 import { logger } from '../../../logger';
 
 const REPOS: any = {
@@ -27,15 +28,21 @@ export const cloneRepo = (designSystemOptions: any) => {
     if (repoURL) {
       const spinner = ora(chalk.hex('#d44527').bold('Initializing design system repository and cloning from remote...')).start();
 
-      const emitter = degit(repoURL);
+      const emitter = degit(repoURL,{
+        cache: true,
+        force: false,
+        verbose: false,
+      });
 
       emitter.on('info', (info: any) => {
         console.log(chalk.green(info.message));
       });
       console.log('');
       console.log('');
-
-      emitter.clone(designSystemOptions['ds-name']).then(() => {
+      
+      let dest = path.join(process.cwd(),designSystemOptions['ds-name']);
+      console.log(chalk.green(`Clone to: ${dest}`));
+      emitter.clone(dest).then(() => {
         spinner.stop();
         console.log(chalk.green('All done!'));
         console.log('');
