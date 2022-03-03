@@ -3,18 +3,17 @@ import git from "isomorphic-git";
 import gitHttp from "isomorphic-git/http/node";
 import path from 'path';
 import fs from 'fs';
-import fsExtra from 'fs-extra';
 import Listr from 'listr';
 import {logger} from '../../../logger';
 
-type BranchRef = { repo: string, branch: string, styleDir: string[] };
-const branchRef = (repo: string, branch: string, styleDir: string[]): BranchRef => ({ repo, branch, styleDir });
+type BranchRef = { repo: string, branch: string };
+const branchRef = (repo: string, branch: string): BranchRef => ({ repo, branch });
 const REPOS = {
-    angular: branchRef('rangle/radius-angular', 'main', ['projects','demo','src','styles']),
+    angular: branchRef('rangle/radius-angular', 'main'),
     react: {
-        css: branchRef('rangle/radius', 'basic-css', ['src','styles']),
-        "styled-components": branchRef('rangle/radius', 'basic-styled', ['src','styles']),
-        emotion: branchRef('rangle/radius', 'basic-emotion', ['src','styles']),
+        css: branchRef('rangle/radius', 'basic-css'),
+        "styled-components": branchRef('rangle/radius', 'basic-styled'),
+        emotion: branchRef('rangle/radius', 'basic-emotion'),
     }
 };
 
@@ -72,39 +71,10 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
             }
         ]
         
-        const styleDirOut = path.join(designSystemOptions['ds-name'],...repoRef?.styleDir); 
-        const setupRepo = [
-            {
-                title: 'Copy Styles',
-                task: async () => {
-                    try {
-                        await fsExtra.copy('styles', styleDirOut)
-                        console.log('success!')
-                    } catch (err) {
-                        console.error(err)
-                    }
-                }
-            },
-        ]
 
 
         // setup the main tasks launcher
-        // we seperate git from setting up the repo
-        const tasks = new Listr([
-            {
-                title: 'Git setup',
-                task: () => {
-                    return new Listr(gitSetup, {concurrent: false});
-                }
-            },
-            {
-                title: 'Setup the template',
-                task: () => {
-                    return new Listr(setupRepo,{concurrent: false});
-                }
-            }
-            
-        ]);
+        const tasks = new Listr(gitSetup, {concurrent: false});
 
         // run all of the commands
         await tasks.run().catch((err:any) => {
