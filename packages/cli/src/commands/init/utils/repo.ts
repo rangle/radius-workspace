@@ -49,25 +49,22 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
         const gitSetup = [
             {
                 title: 'Download',
-                task: async () => {
-                    await git.clone({
-                        fs,
-                        dir,
-                        http: gitHttp,
-                        url: `https://github.com/${ repoRef?.repo }`,
-                        depth: 1,
-                    });
-                }
+                task: () => git.clone({
+                    fs,
+                    dir,
+                    http: gitHttp,
+                    url: `https://github.com/${ repoRef?.repo }`,
+                    depth: 1,
+                })
             },
             {
                 title: 'Checkout the branch',
-                task: async () => {
-                    await git.checkout({
-                        fs,
-                        dir,
-                        ref: repoRef?.branch,
-                    });
-                }
+                task: () => git.checkout({
+                    fs,
+                    dir,
+                    ref: repoRef?.branch,
+                })
+                
             }
         ]
         
