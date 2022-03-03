@@ -1,55 +1,74 @@
 import ora from 'ora';
 import chalk from 'chalk';
-import degit from 'degit';
-import { logger } from '../../../logger';
+import git from "isomorphic-git";
+import gitHttp from "isomorphic-git/http/node";
+import path from 'path';
+import fs from 'fs';
+import {logger} from '../../../logger';
 
-const REPOS: any = {
-  angular: 'rangle/radius-angular#main',
-  react: {
-    css: 'rangle/radius#basic-css',
-    "styled-components": 'rangle/radius#basic-styled',
-    emotion: 'rangle/radius#basic-emotion'
-  }
+type BranchRef = { repo: string, branch: string };
+const branchRef = (repo: string, branch: string): BranchRef => ({ repo, branch });
+const REPOS = {
+    angular: branchRef('rangle/radius-angular', 'main'),
+    react: {
+        css: branchRef('rangle/radius', 'basic-css'),
+        "styled-components": branchRef('rangle/radius', 'basic-styled'),
+        emotion: branchRef('rangle/radius', 'basic-emotion'),
+    }
 };
 
-export const cloneRepo = (designSystemOptions: any) => {
-  console.log('');
+const isKeyof = <T>(val: T) => {
+    const keys = Object.keys(val);
+    return (k: keyof never): k is keyof T => keys.includes(k as never);
+};
+const isReactStyle = isKeyof(REPOS.react);
 
-  try {
+export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
+    console.log('');
 
-    let repoURL;
-    if (designSystemOptions['ds-framework'] === 'angular') {
-      repoURL = REPOS.angular;
-    } else if (designSystemOptions['ds-framework'] === 'react') {
-      repoURL = REPOS.react[designSystemOptions['ds-react-style']];
-    }
+    try {
+        let repoRef: BranchRef | null = null;
+        if (designSystemOptions['ds-framework'] === 'angular') {
+            repoRef = REPOS.angular;
+        } else if (designSystemOptions['ds-framework'] === 'react') {
+            const reactStyle = designSystemOptions['ds-react-style'];
+            if (!isReactStyle(reactStyle)) { throw new Error(`Expected a supported react style, got: ${ reactStyle }`); }
+            repoRef = REPOS.react[reactStyle];
+        }
 
-    if (repoURL) {
-      const spinner = ora(chalk.hex('#d44527').bold('Initializing design system repository and cloning from remote...')).start();
+        if (!repoRef) {
+            logger.info('coming soon... 😉');
+            return false;
+        }
 
-      const emitter = degit(repoURL);
+        const spinner = ora(chalk.hex('#d44527').bold('Initializing design system repository and cloning from remote...')).start();
 
-      emitter.on('info', (info: any) => {
-        console.log(chalk.green(info.message));
-      });
-      console.log('');
-      console.log('');
+        const dir = path.join(process.cwd(), designSystemOptions['ds-name']);
+        await git.clone({
+            fs,
+            dir,
+            http: gitHttp,
+            url: `https://github.com/${ repoRef.repo }`,
+            depth: 1,
+        });
+        await git.checkout({
+            fs,
+            dir,
+            ref: repoRef.branch,
+        });
 
-      emitter.clone(designSystemOptions['ds-name']).then(() => {
         spinner.stop();
         console.log(chalk.green('All done!'));
         console.log('');
         console.log(chalk.green('Follow the below steps to run:'));
-        console.log(chalk.green(` - cd ${designSystemOptions['ds-name']}`));
+        console.log(chalk.green(` - cd ${ designSystemOptions['ds-name'] }`));
         console.log(chalk.green(' - npm install'));
         console.log(chalk.green(' - npm run storybook'));
-      });
-    } else {
-      logger.info('coming soon... 😉');
-    }
+        return true;
 
-  } catch (error: any) {
-    console.log(chalk.red('Couldn\'t clone the repo.'));
-    console.log(chalk.red(error?.message));
-  }
+    } catch (error: any) {
+        console.log(chalk.red('Couldn\'t clone the repo.'));
+        console.log(chalk.red(error?.message));
+        return false;
+    }
 };
