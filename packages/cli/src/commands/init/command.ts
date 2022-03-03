@@ -18,7 +18,7 @@ export const init: CommandModule<Options, Options> = {
   handler: async () => {
     logger.info("💿 Welcome to Radius! Let's get you set up with a new project.\n\r")
     const designSystemOptions = await inquirer.askForDesignSystemOptions();
-    repo.cloneRepo(designSystemOptions);
-    process.exit(1);
+    const success = await repo.cloneRepo(designSystemOptions);
+    process.exit(success ? 0 : 1);
   },
 };
