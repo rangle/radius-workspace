@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "figma-api": "^1.6.2",
+    "isomorphic-git": "^1.12.1",
     "yargs": "^17.1.1"
   }
 }
