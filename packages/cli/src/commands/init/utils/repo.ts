@@ -3,58 +3,72 @@ import chalk from 'chalk';
 import git from "isomorphic-git";
 import gitHttp from "isomorphic-git/http/node";
 import path from 'path';
-import {Volume} from "memfs";
+import fs from 'fs';
 import {logger} from '../../../logger';
 
-const REPOS: any = {
-    angular: 'rangle/radius-angular#main',
+type BranchRef = { repo: string, branch: string };
+const branchRef = (repo: string, branch: string): BranchRef => ({ repo, branch });
+const REPOS = {
+    angular: branchRef('rangle/radius-angular', 'main'),
     react: {
-        css: 'rangle/radius#basic-css',
-        "styled-components": 'rangle/radius#basic-styled',
-        emotion: 'rangle/radius#basic-emotion'
+        css: branchRef('rangle/radius', 'basic-css'),
+        "styled-components": branchRef('rangle/radius', 'basic-styled'),
+        emotion: branchRef('rangle/radius', 'basic-emotion'),
     }
 };
 
-export const cloneRepo = async (designSystemOptions: any) => {
+const isKeyof = <T>(val: T) => {
+    const keys = Object.keys(val);
+    return (k: keyof never): k is keyof T => keys.includes(k as never);
+};
+const isReactStyle = isKeyof(REPOS.react);
+
+export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
     console.log('');
 
     try {
-        let repoURL;
+        let repoRef: BranchRef | null = null;
         if (designSystemOptions['ds-framework'] === 'angular') {
-            repoURL = REPOS.angular;
+            repoRef = REPOS.angular;
         } else if (designSystemOptions['ds-framework'] === 'react') {
-            repoURL = REPOS.react[designSystemOptions['ds-react-style']];
+            const reactStyle = designSystemOptions['ds-react-style'];
+            if (!isReactStyle(reactStyle)) { throw new Error(`Expected a supported react style, got: ${ reactStyle }`); }
+            repoRef = REPOS.react[reactStyle];
         }
 
-        if (repoURL) {
-            const spinner = ora(chalk.hex('#d44527').bold('Initializing design system repository and cloning from remote...')).start();
-            const cloneFs = Volume.fromJSON({});
-
-            await git.clone({
-                fs: {promises: cloneFs.promises},
-                http: gitHttp,
-                dir: path.join(process.cwd(), designSystemOptions['ds-name']),
-                url: repoURL,
-                depth: 1,
-                // singleBranch: true,
-                corsProxy: "https://cors.isomorphic-git.org"
-            }).then(() => {
-                spinner.stop();
-                console.log(chalk.green('All done!'));
-                console.log('');
-                console.log(chalk.green('Follow the below steps to run:'));
-                console.log(chalk.green(` - cd ${designSystemOptions['ds-name']}`));
-                console.log(chalk.green(' - npm install'));
-                console.log(chalk.green(' - npm run storybook'));
-            });
-            console.log('done');
-
-        } else {
+        if (!repoRef) {
             logger.info('coming soon... 😉');
+            return false;
         }
+
+        const spinner = ora(chalk.hex('#d44527').bold('Initializing design system repository and cloning from remote...')).start();
+
+        const dir = path.join(process.cwd(), designSystemOptions['ds-name']);
+        await git.clone({
+            fs,
+            dir,
+            http: gitHttp,
+            url: `https://github.com/${ repoRef.repo }`,
+            depth: 1,
+        });
+        await git.checkout({
+            fs,
+            dir,
+            ref: repoRef.branch,
+        });
+
+        spinner.stop();
+        console.log(chalk.green('All done!'));
+        console.log('');
+        console.log(chalk.green('Follow the below steps to run:'));
+        console.log(chalk.green(` - cd ${ designSystemOptions['ds-name'] }`));
+        console.log(chalk.green(' - npm install'));
+        console.log(chalk.green(' - npm run storybook'));
+        return true;
 
     } catch (error: any) {
         console.log(chalk.red('Couldn\'t clone the repo.'));
         console.log(chalk.red(error?.message));
+        return false;
     }
 };
