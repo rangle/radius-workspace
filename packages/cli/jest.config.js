@@ -1,12 +1,8 @@
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+const base = require("../../jest.config.base.js");
+const package = require("./package.json");
+
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  verbose: true,
-  collectCoverage: true,
-  rootDir: 'src',
-  collectCoverageFrom: [
-    "**/*.{ts}"
-  ],
-  coverageReporters: ["clover", "json", "lcov", 'html', 'text', 'text-summary']
+  ...base,
+  name: package.name,
+  displayName: package.name
 };

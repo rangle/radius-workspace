@@ -5,6 +5,7 @@
 .env
 **/*.cache/
 **/styles/
+**/coverage/
 /dist
 /storybook-static
 dist
