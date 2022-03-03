@@ -1,21 +1,25 @@
-import ora from 'ora';
 import chalk from 'chalk';
 import git from "isomorphic-git";
 import gitHttp from "isomorphic-git/http/node";
 import path from 'path';
 import fs from 'fs';
+import fsExtra from 'fs-extra';
+import Listr from 'listr';
 import {logger} from '../../../logger';
 
-type BranchRef = { repo: string, branch: string };
-const branchRef = (repo: string, branch: string): BranchRef => ({ repo, branch });
+type BranchRef = { repo: string, branch: string, styleDir: string[] };
+const branchRef = (repo: string, branch: string, styleDir: string[]): BranchRef => ({ repo, branch, styleDir });
 const REPOS = {
-    angular: branchRef('rangle/radius-angular', 'main'),
+    angular: branchRef('rangle/radius-angular', 'main', ['projects','demo','src','styles']),
     react: {
-        css: branchRef('rangle/radius', 'basic-css'),
-        "styled-components": branchRef('rangle/radius', 'basic-styled'),
-        emotion: branchRef('rangle/radius', 'basic-emotion'),
+        css: branchRef('rangle/radius', 'basic-css', ['src','styles']),
+        "styled-components": branchRef('rangle/radius', 'basic-styled', ['src','styles']),
+        emotion: branchRef('rangle/radius', 'basic-emotion', ['src','styles']),
     }
 };
+
+// type ListrTask = { title: string, task:Function }
+
 
 const isKeyof = <T>(val: T) => {
     const keys = Object.keys(val);
@@ -41,23 +45,73 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
             return false;
         }
 
-        const spinner = ora(chalk.hex('#d44527').bold('Initializing design system repository and cloning from remote...')).start();
-
         const dir = path.join(process.cwd(), designSystemOptions['ds-name']);
-        await git.clone({
-            fs,
-            dir,
-            http: gitHttp,
-            url: `https://github.com/${ repoRef.repo }`,
-            depth: 1,
-        });
-        await git.checkout({
-            fs,
-            dir,
-            ref: repoRef.branch,
+
+        const gitSetup = [
+            {
+                title: 'Download',
+                task: async () => {
+                    await git.clone({
+                        fs,
+                        dir,
+                        http: gitHttp,
+                        url: `https://github.com/${ repoRef?.repo }`,
+                        depth: 1,
+                    });
+                }
+            },
+            {
+                title: 'Checkout the branch',
+                task: async () => {
+                    await git.checkout({
+                        fs,
+                        dir,
+                        ref: repoRef?.branch,
+                    });
+                }
+            }
+        ]
+        
+        const styleDirOut = path.join(designSystemOptions['ds-name'],...repoRef?.styleDir); 
+        const setupRepo = [
+            {
+                title: 'Copy Styles',
+                task: async () => {
+                    try {
+                        await fsExtra.copy('styles', styleDirOut)
+                        console.log('success!')
+                    } catch (err) {
+                        console.error(err)
+                    }
+                }
+            },
+        ]
+
+
+        // setup the main tasks launcher
+        // we seperate git from setting up the repo
+        const tasks = new Listr([
+            {
+                title: 'Git setup',
+                task: () => {
+                    return new Listr(gitSetup, {concurrent: false});
+                }
+            },
+            {
+                title: 'Setup the template',
+                task: () => {
+                    return new Listr(setupRepo,{concurrent: false});
+                }
+            }
+            
+        ]);
+
+        // run all of the commands
+        await tasks.run().catch((err:any) => {
+            console.log(chalk.red(err));
+            return false;
         });
 
-        spinner.stop();
         console.log(chalk.green('All done!'));
         console.log('');
         console.log(chalk.green('Follow the below steps to run:'));
