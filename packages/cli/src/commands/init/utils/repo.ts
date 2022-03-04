@@ -44,6 +44,7 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
 
         const dir = path.join(process.cwd(), designSystemOptions['ds-name']);
 
+        const definitiveRef:BranchRef = repoRef;
         const gitSetup = [
             {
                 title: 'Download',
@@ -51,7 +52,7 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
                     fs,
                     dir,
                     http: gitHttp,
-                    url: `https://github.com/${ repoRef?.repo }`,
+                    url: `https://github.com/${ definitiveRef.repo }`,
                     depth: 1,
                 }).catch((err)=>{
                     fsExtra.removeSync(dir);
@@ -65,7 +66,7 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
                 task: () => git.checkout({
                     fs,
                     dir,
-                    ref: repoRef?.branch,
+                    ref: definitiveRef.branch,
                 })
                 
             }
