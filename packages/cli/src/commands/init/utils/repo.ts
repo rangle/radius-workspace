@@ -3,6 +3,7 @@ import git from "isomorphic-git";
 import gitHttp from "isomorphic-git/http/node";
 import path from 'path';
 import fs from 'fs';
+import fsExtra from 'fs-extra';
 import Listr from 'listr';
 import {logger} from '../../../logger';
 
@@ -46,13 +47,18 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
         const gitSetup = [
             {
                 title: 'Download',
-                task: () => git.clone({
+                task: (_ctx:any,task:any) => git.clone({
                     fs,
                     dir,
                     http: gitHttp,
                     url: `https://github.com/${ repoRef?.repo }`,
                     depth: 1,
+                }).catch((err)=>{
+                    fsExtra.removeSync(dir);
+                    task.skip("Git failed.")
+                    throw new Error(err);
                 })
+                
             },
             {
                 title: 'Checkout the branch',
