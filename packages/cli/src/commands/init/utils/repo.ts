@@ -1,9 +1,10 @@
-import ora from 'ora';
 import chalk from 'chalk';
 import git from "isomorphic-git";
 import gitHttp from "isomorphic-git/http/node";
 import path from 'path';
 import fs from 'fs';
+import fsExtra from 'fs-extra';
+import Listr from 'listr';
 import {logger} from '../../../logger';
 
 type BranchRef = { repo: string, branch: string };
@@ -41,23 +42,45 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
             return false;
         }
 
-        const spinner = ora(chalk.hex('#d44527').bold('Initializing design system repository and cloning from remote...')).start();
-
         const dir = path.join(process.cwd(), designSystemOptions['ds-name']);
-        await git.clone({
-            fs,
-            dir,
-            http: gitHttp,
-            url: `https://github.com/${ repoRef.repo }`,
-            depth: 1,
-        });
-        await git.checkout({
-            fs,
-            dir,
-            ref: repoRef.branch,
-        });
 
-        spinner.stop();
+        const definitiveRef:BranchRef = repoRef;
+        const gitSetup = [
+            {
+                title: 'Download',
+                task: (_ctx:any,task:any) => git.clone({
+                    fs,
+                    dir,
+                    http: gitHttp,
+                    url: `https://github.com/${ definitiveRef.repo }`,
+                    depth: 1,
+                }).catch((err)=>{
+                    fsExtra.removeSync(dir);
+                    task.skip("Git failed.")
+                    throw new Error(err);
+                })
+                
+            },
+            {
+                title: 'Checkout the branch',
+                task: () => git.checkout({
+                    fs,
+                    dir,
+                    ref: definitiveRef.branch,
+                })
+                
+            }
+        ]
+        
+
+
+        // setup the main tasks launcher
+        const tasks = new Listr(gitSetup, {concurrent: false});
+
+        // run all of the commands
+        await tasks.run()
+
+
         console.log(chalk.green('All done!'));
         console.log('');
         console.log(chalk.green('Follow the below steps to run:'));
