@@ -27,6 +27,7 @@ Then install the package from npm.
 - TODO - Figma Story
 - TODO - Style export, Generation of design tokens
 - TODO - Use of DS projects
+- TODO - Use of StoryBook & other 
 
 ## Background ##
 This repo builds a CLI for Radius. The CLI performs two tasks: gets styles from Figma and clones a git repo.
