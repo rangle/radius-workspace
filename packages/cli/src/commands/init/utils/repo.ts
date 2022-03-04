@@ -17,9 +17,6 @@ const REPOS = {
     }
 };
 
-// type ListrTask = { title: string, task:Function }
-
-
 const isKeyof = <T>(val: T) => {
     const keys = Object.keys(val);
     return (k: keyof never): k is keyof T => keys.includes(k as never);
@@ -75,9 +72,9 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
 
         // run all of the commands
         await tasks.run().catch((err:any) => {
-            console.log(chalk.red(err));
-            return false;
+            throw new Error(err);
         });
+
 
         console.log(chalk.green('All done!'));
         console.log('');
