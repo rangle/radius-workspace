@@ -71,9 +71,7 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
         const tasks = new Listr(gitSetup, {concurrent: false});
 
         // run all of the commands
-        await tasks.run().catch((err:any) => {
-            throw new Error(err);
-        });
+        await tasks.run()
 
 
         console.log(chalk.green('All done!'));
