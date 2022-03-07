@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
 
-export const validateDesignSystemNameAnswer = function(response: string) {
+export const validateDesignSystemNameAnswer = (response: string) => {
   if(response.trim().length) {
     return true;
   } else {
@@ -8,11 +8,11 @@ export const validateDesignSystemNameAnswer = function(response: string) {
   }
 }
 
-export const filter = function(val: string) {
+export const filter = (val: string) => {
   return val.toLowerCase();
 }
 
-export const isReact = function(answers: any) {
+export const isReact = (answers: any) => {
   return answers['ds-framework'] === 'react';
 }
 
