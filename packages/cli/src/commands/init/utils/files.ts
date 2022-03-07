@@ -1,12 +1,10 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path'
 
-module.exports = {
-  getCurrentDirectoryBase: () => {
+  export const getCurrentDirectoryBase = () => {
     return path.basename(process.cwd());
-  },
+  };
 
-  directoryExists: (filePath: string) => {
+  export const directoryExists = (filePath: string) => {
     return fs.existsSync(filePath);
-  }
-};
+  };
