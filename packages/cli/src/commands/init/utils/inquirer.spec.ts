@@ -20,7 +20,9 @@ describe('Inquirer', () => {
     });
 
     it('should check if the answer is react', () => {
-        expect(isReact('react')).toBeTruthy();
+        expect(isReact({
+            'ds-framework': 'react'
+        })).toBeTruthy();
     });
 
 });
