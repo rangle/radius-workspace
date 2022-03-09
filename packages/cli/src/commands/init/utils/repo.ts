@@ -24,6 +24,21 @@ const isKeyof = <T>(val: T) => {
 };
 const isReactStyle = isKeyof(REPOS.react);
 
+
+export const logSuccess = (designSystemOptions: any) => {
+    console.log(chalk.green('All done!'));
+    console.log('');
+    console.log(chalk.green('Follow the below steps to run:'));
+    console.log(chalk.green(` - cd ${ designSystemOptions['ds-name'] }`));
+    console.log(chalk.green(' - npm install'));
+    console.log(chalk.green(' - npm run storybook'));
+}
+
+export const logFailure = (error: any) => {
+    console.log(chalk.red('Couldn\'t clone the repo.'));
+    console.log(chalk.red(error?.message));
+}
+
 export const selectRepo = (designSystemOptions: any) => {
     let repoRef: BranchRef | null = null;
 
@@ -41,7 +56,6 @@ export const selectRepo = (designSystemOptions: any) => {
     }
     return repoRef;
 }
-
 
 export const configureGitSetup = (dir: any, ref: any, clone: any, checkout: any, removeDir: any): { run: () => Promise<void> } => {
     const gitSetup = [
@@ -88,17 +102,11 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
         // run all of the commands
         await tasks.run()
 
-        console.log(chalk.green('All done!'));
-        console.log('');
-        console.log(chalk.green('Follow the below steps to run:'));
-        console.log(chalk.green(` - cd ${ designSystemOptions['ds-name'] }`));
-        console.log(chalk.green(' - npm install'));
-        console.log(chalk.green(' - npm run storybook'));
+        logSuccess(designSystemOptions);
         return true;
 
     } catch (error: any) {
-        console.log(chalk.red('Couldn\'t clone the repo.'));
-        console.log(chalk.red(error?.message));
+        logFailure(error);
         return false;
     }
 };
