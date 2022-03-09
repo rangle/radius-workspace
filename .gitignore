@@ -4,7 +4,8 @@
 .pnp.js
 .env
 **/*.cache/
-**/styles/
+
+/styles/
 **/coverage/
 /dist
 /storybook-static

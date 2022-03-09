@@ -2,6 +2,7 @@ import * as Figma from "figma-api";
 import { GroupOf, toKebabCase } from "./common.utils";
 import { filterByDescriptionSpacer, generateStyleTokens } from "./figmaParser.utils";
 
+
 export const setup = (key: string) => {
   const api = new Figma.Api({
     personalAccessToken: key,
