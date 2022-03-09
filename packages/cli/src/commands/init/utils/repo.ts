@@ -24,62 +24,69 @@ const isKeyof = <T>(val: T) => {
 };
 const isReactStyle = isKeyof(REPOS.react);
 
+export const selectRepo = (designSystemOptions: any) => {
+    let repoRef: BranchRef | null = null;
+
+    if (designSystemOptions['ds-framework'] === 'angular') {
+        repoRef = REPOS.angular;
+    } else if (designSystemOptions['ds-framework'] === 'react') {
+        const reactStyle = designSystemOptions['ds-react-style'];
+        if (!isReactStyle(reactStyle)) { throw new Error(`Expected a supported react style, got: ${ reactStyle }`); }
+        repoRef = REPOS.react[reactStyle];
+    }
+
+    if (!repoRef) {
+        logger.info('coming soon... 😉');
+        return false;
+    }
+    return repoRef;
+}
+
+
+export const configureGitSetup = (dir: any, ref: any, clone: any, checkout: any, removeDir: any): { run: () => Promise<void> } => {
+    const gitSetup = [
+        {
+            title: 'Clone the repo',
+            task: (_ctx: any, task: any) => clone({
+                fs,
+                dir,
+                http: gitHttp,
+                url: `https://github.com/${ref.repo}`,
+                depth: 1,
+            }).catch((err: any) => {
+                removeDir(dir);
+                task.skip("Git failed.")
+                throw new Error(err);
+            })
+
+        },
+        {
+            title: 'Checkout the branch',
+            task: (task: any) => checkout({
+                fs,
+                dir,
+                ref: ref.branch,
+            }).catch((err: any) => {
+                removeDir(dir);
+                task.skip("Checkout out the branch failed.")
+                throw new Error(err);
+            })
+        }
+    ]
+    // setup the main tasks launcher
+    const tasks = new Listr(gitSetup, { concurrent: false });
+    return tasks;
+};
+
 export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
-    console.log('');
-
     try {
-        let repoRef: BranchRef | null = null;
-        if (designSystemOptions['ds-framework'] === 'angular') {
-            repoRef = REPOS.angular;
-        } else if (designSystemOptions['ds-framework'] === 'react') {
-            const reactStyle = designSystemOptions['ds-react-style'];
-            if (!isReactStyle(reactStyle)) { throw new Error(`Expected a supported react style, got: ${ reactStyle }`); }
-            repoRef = REPOS.react[reactStyle];
-        }
-
-        if (!repoRef) {
-            logger.info('coming soon... 😉');
-            return false;
-        }
-
+        const repoRef = selectRepo(designSystemOptions);
         const dir = path.join(process.cwd(), designSystemOptions['ds-name']);
+        const definitiveRef: BranchRef | boolean = repoRef;
 
-        const definitiveRef:BranchRef = repoRef;
-        const gitSetup = [
-            {
-                title: 'Download',
-                task: (_ctx:any,task:any) => git.clone({
-                    fs,
-                    dir,
-                    http: gitHttp,
-                    url: `https://github.com/${ definitiveRef.repo }`,
-                    depth: 1,
-                }).catch((err)=>{
-                    fsExtra.removeSync(dir);
-                    task.skip("Git failed.")
-                    throw new Error(err);
-                })
-                
-            },
-            {
-                title: 'Checkout the branch',
-                task: () => git.checkout({
-                    fs,
-                    dir,
-                    ref: definitiveRef.branch,
-                })
-                
-            }
-        ]
-        
-
-
-        // setup the main tasks launcher
-        const tasks = new Listr(gitSetup, {concurrent: false});
-
+        const tasks = configureGitSetup(dir, definitiveRef, git.clone, git.checkout, fsExtra.removeSync);
         // run all of the commands
         await tasks.run()
-
 
         console.log(chalk.green('All done!'));
         console.log('');
