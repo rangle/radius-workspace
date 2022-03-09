@@ -1,7 +1,6 @@
 import * as Figma from "figma-api";
 import { GroupOf, toKebabCase } from "./common.utils";
-
-//import { writeFileSync } from "fs";
+import { filterByDescriptionSpacer, generateStyleTokens } from "./figmaParser.utils";
 
 export const setup = (key: string) => {
   const api = new Figma.Api({
@@ -10,7 +9,7 @@ export const setup = (key: string) => {
   return {
     getFile: (fileKey: string) => api.getFile(fileKey),
     getFileNode: (fileKey: string, ids: string[]) =>
-      api.getFileNodes(fileKey, ids),
+      api.getFileNodes(fileKey, ids)
   };
 };
 
@@ -69,11 +68,11 @@ const isNodeFrame = (o: unknown): o is NodeFrame => {
   );
 };
 
-type ColorStyle = {
+export type ColorStyle = {
   fill: string;
 };
 
-type TypographyStyle = {
+export type TypographyStyle = {
   text: string;
 };
 
@@ -86,7 +85,7 @@ type TypographyStyleDetails = {
   lineHeightPercent: number;
 };
 
-type NodeDocument = {
+export type NodeDocument = {
   id: string;
   type: string;
   name: string;
@@ -103,18 +102,26 @@ type NodeDocument = {
   children: Array<NodeDocument>;
 };
 
-type StyleDef = {
+export type BaseDef = {
   key: string;
   name: string;
   styleType: string;
   description: string;
+}
+
+export type StyleDef = BaseDef & {
 };
+
+export type ComponentDef = Omit<StyleDef, "styleType">
 
 type NodeRoot = {
   document: NodeDocument;
   styles: {
-    [key: string]: StyleDef;
+    [key: string]: BaseDef;
   };
+  components: {
+    [key: string]: BaseDef
+  }
 };
 
 export type ColorToken = {
@@ -182,6 +189,7 @@ const colorToHex = ({ r, g, b }: ColorToken["color"]) =>
     .map(hex)
     .join("")}`;
 
+
 export const getTokens = (data: any) =>
   Promise.resolve(data)
     .then((x) => {
@@ -199,6 +207,7 @@ export const getTokens = (data: any) =>
     })
     .then((node) => {
       if (!node) throw new Error("Could not find Node: Tokens not defined");
+
       const styleIndex = node.styles;
       //console.log(styleIndex);
       const frames = recurseToFindFrames(node);

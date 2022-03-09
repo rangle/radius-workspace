@@ -44,6 +44,7 @@ export const generateGlobalStyles = async ({
   const input = Promise.resolve(data) ?? getFileNode(fileId, [nodeId]);
   const tokenGroups = input.then(getTokens).then(groupByType);
 
+
   const files = await tokenGroups.then(renderTemplate);
 
   if (consoleOutput) {
