@@ -10,27 +10,27 @@ type NodeKey = {
     [key:string]: BaseDef
 }
 
-enum FigmaType {
-    FILL = 'FILL',
-    GRID = 'GRID',
-    SPACER = 'Spacer',
-    TYPOGRAPHY = 'Typography-Tokens'
-}
+const FigmaTypes = {
+    FILL: 'FILL',
+    GRID: 'GRID',
+    SPACER: 'Spacer',
+    TYPOGRAPHY: 'Typography-Tokens'
+} as const
 
 export const filterByTypeFill = (data: StyleDef): boolean => {
-    return data.styleType === FigmaType.FILL && data.description.includes('Token');
+    return data.styleType === FigmaTypes.FILL && data.description.includes('Token');
 }
 
 export const filterByTypeGrid = (data: StyleDef): boolean => {
-    return data.styleType === FigmaType.GRID
+    return data.styleType === FigmaTypes.GRID
 }
 
 export const filterByDescriptionSpacer = (data: ComponentDef): boolean => {
-    return data.description.includes(FigmaType.SPACER);
+    return data.description.includes(FigmaTypes.SPACER);
 }
 
 export const filterByTypography = (data: StyleDef): boolean =>{
-    return data.description.includes(FigmaType.TYPOGRAPHY);
+    return data.description.includes(FigmaTypes.TYPOGRAPHY);
 }   
 export const generateStyleMap = (nodeKeys: NodeKey, fn: (data: BaseDef)=> boolean): NodeKey => {
      const filtered = Object.keys(nodeKeys)

@@ -417,4 +417,7 @@ function processRectangleSize(
 //   const typographyTokens = flatTypographyNodes.flatMap(node => generateDesignTokens(typographyMap, node, processTypographyToken))   
 //   const colorTokens = flatColorNodes.flatMap(node => generateDesignTokens(colorMap, node, processColorToken))  
 //   const designSpaceTokens = flatSpaceNodes.filter(isRectangleNode).flatMap(processSpacingToken);
+//   console.log(typographyTokens);
+//   console.log(colorTokens);
+//   console.log(designSpaceTokens);
 // }
