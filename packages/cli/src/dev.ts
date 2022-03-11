@@ -2,7 +2,7 @@ import { generateGlobalStyles } from "./commands/styles/lib/radius-styles";
 import 'dotenv/config';
 
 // To run in debug mode, add figma file url (located in package.json scripts -> cli: styles)
-const url = 'https://www.figma.com/file/TJzz7ZB6pJvpLhjI5DWG3F/Radius-Design-Kit-V2(WIP)?node-id=725%3A8261';
+const url = process.env['FIGMA_URL'] ? process.env['FIGMA_URL'] : '';
 const dryRun = false;
 const template = 'css-modules';
 

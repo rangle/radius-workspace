@@ -37,13 +37,12 @@ export const generateGlobalStyles = async ({
 }: Options) => {
   assert(userToken !== "none", "Environment variable FIGMA_TOKEN is empty");
   assert(typeof url === "string", "Figma url must be provided");
-
+  
   const renderTemplate = renderers[template];
   const { getFileNode } = setup(userToken);
   const { fileId, nodeId } = processFigmaUrl({ url, token: userToken });
   const input = Promise.resolve(data) ?? getFileNode(fileId, [nodeId]);
   const tokenGroups = input.then(getTokens).then(groupByType);
-
 
   const files = await tokenGroups.then(renderTemplate);
 
