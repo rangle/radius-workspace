@@ -9,12 +9,19 @@
     "cli:init": "lerna run build  && ./packages/cli/bin/radius init",
     "build-all": "lerna run build",
     "test-all": "lerna run test",
+    "lint-all": "lerna run lint",
     "debug": "ts-node ./packages/cli/src/dev.ts"
   },
   "devDependencies": {
+    "eslint": "^8.10.0",
     "lerna": "^4.0.0",
     "ts-node": "10.5.0",
     "typescript": "^4.4.2"
   },
-  "packageManager": "yarn@1.22.11"
+  "packageManager": "yarn@1.22.11",
+  "engines": {
+    "node": ">=14.17.0",
+    "npm": "Please use yarn instead of npm",
+    "yarn": ">= 1.22.10 && < 2.x"
+  }
 }
