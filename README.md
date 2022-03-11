@@ -5,12 +5,6 @@ The Radius is an opinionated assemblage of open-source tools and libraries that 
 
 [Figma File](https://www.figma.com/file/RqENxZWAzGiEWM7COch1Sc/Radius-Design-Kit)
 
-<!-- 
-We should create a new docs website
-[Storybook Docs](https://radius-ds.netlify.com) 
--->
-
-[Chromatic](https://www.chromaticqa.com/library?appId=5e44874935df3b0022b9d890)
 
 
 ## Key Features ##
