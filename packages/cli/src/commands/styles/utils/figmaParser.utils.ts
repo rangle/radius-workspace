@@ -61,7 +61,6 @@ export const getChildren = (nodeDocument: NodeDocument, nodeKeys: NodeKey, resul
 export const getChildNodes = <T extends string>(nodeDocument: NodeDocument, nodeKeys: NodeKey, keyDef: T): any => {
     var childNodes: NodeDocument[] = [];
     if(nodeDocument.children) {
-        // childNodes = nodeKeys[nodeDocument.id] ? [nodeDocument] : nodeDocument.children.flatMap(node => flatGetChildren(node, nodeKeys));
         if(nodeKeys[keyDef]) {
             return [nodeDocument] 
         } else {            
