@@ -1,14 +1,30 @@
-# Radius #
-The Radius design system starter kit is a collection of open-source tools and libraries that guide and help you to build your design system faster. Design systems need to match your brand and product needs, and your current and future digital workflows. Too much, too little, too complex, or too off-brand, and you will fight your design system as much as benefit from it.
+# CLI for Radius #
+The Radius is an opinionated assemblage of open-source tools and libraries that allow you to accelerate your design system. The choice of tools, their composition, and a set of foundational components guides you on how to build a constraint-based system.
 
-- TODO - Link to the NPM module page
+[rangle.io/radius](https://rangle.io/radius)
+
+[Figma File](https://www.figma.com/file/RqENxZWAzGiEWM7COch1Sc/Radius-Design-Kit)
+
+<!-- 
+We should create a new docs website
+[Storybook Docs](https://radius-ds.netlify.com) 
+-->
+
+[Chromatic](https://www.chromaticqa.com/library?appId=5e44874935df3b0022b9d890)
+
 
 ## Key Features ##
- - TODO - take from Jason's presentation
- - Take notes from presentation
- - Take notes from presentation
- - Take notes from presentation
- - Take notes from presentation
+ - Generate themes from Figma
+ - Generate a design system repository
+
+
+TODO - Link to the NPM module page
+
+## Requirements ##
+To use Radia node version `14 +` is needed
+
+## Road Map ##
+Become more module!
 
 ## Quick Start ##
 Use npm to install and manage Radius.
@@ -53,3 +69,5 @@ Guidelines: [CONTRIBUTING.md](./CONTRIBUTING.md)
  - License was generated [here](https://choosealicense.com/licenses/mit/)
  - Referenced this [for the contributing doc](https://gist.github.com/briandk/3d2e8b3ec8daf5a27a62)
 
+# Radius - A Design System Accelerator #
+The Radius design system starter kit is a collection of open-source tools and libraries that guide and help you to build your design system faster. Design systems need to match your brand and product needs, and your current and future digital workflows. Too much, too little, too complex, or too off-brand, and you will fight your design system as much as benefit from it.
