@@ -1,0 +1,21 @@
+# directories
+.awcache
+.git
+assets
+**/bin
+**/build
+**/coverage
+**/dist
+**/node_modules
+**/reports
+
+# file types (note: some of these could be handled with formatting updates)
+*.css
+*.html
+*.scss
+*.d.ts
+
+# specific files
+**/*/angular.json
+**/*/package.json
+**/*/tsconfig*.json
