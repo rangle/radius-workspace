@@ -14,7 +14,7 @@ export const init: CommandModule<Options, Options> = {
   builder: (yargs) => {
     return yargs;
   },
-
+  
   handler: async () => {
     logger.info("💿 Welcome to Radius! Let's get you set up with a new project.\n\r")
     const designSystemOptions = await inquirer.askForDesignSystemOptions();
