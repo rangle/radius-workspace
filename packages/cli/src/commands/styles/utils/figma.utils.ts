@@ -1,7 +1,13 @@
 import * as Figma from "figma-api";
 import { GroupOf, toKebabCase } from "./common.utils";
-
-//import { writeFileSync } from "fs";
+// import { filterByDescriptionSpacer, 
+//          filterByTypeFill, 
+//          filterByTypography, 
+//          generateDesignTokens, 
+//          generateStyleMap, 
+//          getChildNodes, 
+//          getChildStyleNodes 
+//        } from "./figmaParser.utils";
 
 export const setup = (key: string) => {
   const api = new Figma.Api({
@@ -10,7 +16,7 @@ export const setup = (key: string) => {
   return {
     getFile: (fileKey: string) => api.getFile(fileKey),
     getFileNode: (fileKey: string, ids: string[]) =>
-      api.getFileNodes(fileKey, ids),
+      api.getFileNodes(fileKey, ids)
   };
 };
 
@@ -69,13 +75,17 @@ const isNodeFrame = (o: unknown): o is NodeFrame => {
   );
 };
 
-type ColorStyle = {
+export type ColorStyle = {
   fill: string;
 };
 
-type TypographyStyle = {
+export type TypographyStyle = {
   text: string;
 };
+
+export type CommonStyle = {
+  s: string;
+}
 
 type TypographyStyleDetails = {
   fontFamily: string;
@@ -86,7 +96,7 @@ type TypographyStyleDetails = {
   lineHeightPercent: number;
 };
 
-type NodeDocument = {
+export type NodeDocument = {
   id: string;
   type: string;
   name: string;
@@ -103,18 +113,26 @@ type NodeDocument = {
   children: Array<NodeDocument>;
 };
 
-type StyleDef = {
+export type BaseDef = {
   key: string;
   name: string;
   styleType: string;
   description: string;
+}
+
+export type StyleDef = BaseDef & {
 };
+
+export type ComponentDef = Omit<StyleDef, "styleType">
 
 type NodeRoot = {
   document: NodeDocument;
   styles: {
-    [key: string]: StyleDef;
+    [key: string]: BaseDef;
   };
+  components: {
+    [key: string]: BaseDef
+  }
 };
 
 export type ColorToken = {
@@ -182,6 +200,7 @@ const colorToHex = ({ r, g, b }: ColorToken["color"]) =>
     .map(hex)
     .join("")}`;
 
+
 export const getTokens = (data: any) =>
   Promise.resolve(data)
     .then((x) => {
@@ -199,9 +218,10 @@ export const getTokens = (data: any) =>
     })
     .then((node) => {
       if (!node) throw new Error("Could not find Node: Tokens not defined");
+
       const styleIndex = node.styles;
-      //console.log(styleIndex);
       const frames = recurseToFindFrames(node);
+
       if (!frames.length)
         throw new Error("Could not find Frame: Tokens not defined");
       // flatten all top-level GROUPS inside each frame
@@ -298,7 +318,7 @@ const processSpacingToken = (item: RectangleNode): DesignToken => {
   } as DesignToken;
 };
 
-const processTypographyToken = (
+export const processTypographyToken = (
   item: NodeDocument,
   style: StyleDef
 ): DesignToken[] => {
@@ -341,17 +361,17 @@ const processTypographyToken = (
   return tokens;
 };
 
-const processColorToken = (item: NodeDocument): DesignToken => {
+const processColorToken = (item: NodeDocument): DesignToken[] => {
   const { name, fills } = item;
   const [{ color }] = fills;
   //console.log("COLOR TOKEN RECTANGLE", name, color);
   const token = `--${name.toLowerCase().split("/").join("-")}`;
-  return {
+  return [{
     type: "color",
     name,
     token,
     value: colorToHex(color),
-  } as DesignToken;
+  } as DesignToken];
 };
 function processRectangleSize(
   rectangle: RectangleNode,
@@ -375,3 +395,29 @@ function processRectangleSize(
     } as DesignToken;
   });
 }
+
+
+/*  
+  V2 Figma Api Parser
+  Currently working for color, typography, and space tokens 
+  --note-- space tokens need to be formatted with correct prefix text
+*/
+
+// const generateTokensV2 = (node: NodeRoot) => {
+//   const colorMap = generateStyleMap(node.styles, filterByTypeFill);
+//   const spaceMap = generateStyleMap(node.components, filterByDescriptionSpacer);
+//   const typographyMap = generateStyleMap(node.styles, filterByTypography);
+  
+//   //Find matching node from figma api response body, 
+//   const flatSpaceNodes = getChildNodes(node.document, spaceMap, '');
+//   const flatTypographyNodes = getChildStyleNodes(node.document, typographyMap, '');
+//   const flatColorNodes = getChildStyleNodes(node.document, colorMap, '');
+  
+//   //Generate specific design tokens 
+//   const typographyTokens = flatTypographyNodes.flatMap(node => generateDesignTokens(typographyMap, node, processTypographyToken))   
+//   const colorTokens = flatColorNodes.flatMap(node => generateDesignTokens(colorMap, node, processColorToken))  
+//   const designSpaceTokens = flatSpaceNodes.filter(isRectangleNode).flatMap(processSpacingToken);
+//   console.log(typographyTokens);
+//   console.log(colorTokens);
+//   console.log(designSpaceTokens);
+// }
