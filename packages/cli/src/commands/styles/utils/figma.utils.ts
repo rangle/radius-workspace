@@ -81,10 +81,6 @@ export type ColorStyle = {
   fill: string;
 };
 
-export type AnyStyle = {
-  color: string;
-}
-
 export type TypographyStyle = {
   text: string;
 };
