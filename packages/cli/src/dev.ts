@@ -12,9 +12,9 @@ const outputDir = '';
 
 // Funciton called by yargs script to generate styles
 generateGlobalStyles({
-	url,
-	dryRun,
-	template,
-	userToken,
-	outputDir
+    url,
+    dryRun,
+    template,
+    userToken,
+    outputDir
 });

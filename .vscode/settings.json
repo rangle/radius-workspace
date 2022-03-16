@@ -1,7 +1,7 @@
 {
 	"typescript.tsdk": "node_modules/typescript/lib",
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
-	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
-	"editor.formatOnSave": true
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"eslint.validate": ["typescript"]
 }
