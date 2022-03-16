@@ -15,8 +15,7 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
 ${tokens
 	.filter(({ viewPort }) => viewPort === 'l')
 	.map(
-		({ token, value, viewPort }) =>
-			`  ${token}: ${value}; /* ${viewPort} */ `
+		({ token, value, viewPort }) => `  ${token}: ${value}; /* ${viewPort} */ `
 	)
 	.join('\n')}
     
@@ -34,7 +33,7 @@ ${filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
 	.join('\n')}        
         }
     }`;
-  })}
+	})}
   `
 	] as const;
 };

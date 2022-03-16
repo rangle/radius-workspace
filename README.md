@@ -10,8 +10,8 @@ The Radius is an opinionated assemblage of open-source tools and libraries that 
 
 ## Key Features
 
--   Generate themes from Figma
--   Generate a design system repository
+- Generate themes from Figma
+- Generate a design system repository
 
 TODO - Link to the NPM module page
 
@@ -31,7 +31,7 @@ Then install the package from npm.
 
     `npm install --global @rangle/radius`
 
--   TODO - Short description of Radius React & Radius Angular
+- TODO - Short description of Radius React & Radius Angular
 
 ## Background
 
@@ -47,12 +47,12 @@ Guidelines: [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## License
 
--   TODO - Make sure this is the right license
+- TODO - Make sure this is the right license
 
 [MIT](./LICENSE)
 
 ## Acknowledgments
 
--   PR template is taken from [here](https://embeddedartistry.com/blog/2017/08/04/a-github-pull-request-template-for-your-projects/)
--   License was generated [here](https://choosealicense.com/licenses/mit/)
--   Referenced this [for the contributing doc](https://gist.github.com/briandk/3d2e8b3ec8daf5a27a62)
+- PR template is taken from [here](https://embeddedartistry.com/blog/2017/08/04/a-github-pull-request-template-for-your-projects/)
+- License was generated [here](https://choosealicense.com/licenses/mit/)
+- Referenced this [for the contributing doc](https://gist.github.com/briandk/3d2e8b3ec8daf5a27a62)

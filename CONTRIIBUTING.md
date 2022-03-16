@@ -2,11 +2,11 @@
 
 We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
 
--   Reporting a bug
--   Discussing the current state of the code
--   Submitting a fix
--   Proposing new features
--   Becoming a maintainer
+- Reporting a bug
+- Discussing the current state of the code
+- Submitting a fix
+- Proposing new features
+- Becoming a maintainer
 
 ## Your First Contribution
 
@@ -23,17 +23,17 @@ This repo contains the build tool to create a CLI that performs two tasks:
 
 The build tool is [Lerna](https://github.com/lerna/lerna) and TSC for the CLI module.
 
--   TODO - How does the CLI work?
+- TODO - How does the CLI work?
 
 ## Contributing Templates
 
--   TODO - What structure should the content be?
+- TODO - What structure should the content be?
 
 ## Testing
 
--   TODO - add instructions on how to add testing
--   TODO - what % of coverage does new code need to be added
+- TODO - add instructions on how to add testing
+- TODO - what % of coverage does new code need to be added
 
 ## Coding Style
 
--   TODO - Is there a typescript format that is considered standard
+- TODO - Is there a typescript format that is considered standard

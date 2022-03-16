@@ -49,9 +49,7 @@ export const selectRepo = (designSystemOptions: any) => {
 	} else if (designSystemOptions['ds-framework'] === 'react') {
 		const reactStyle = designSystemOptions['ds-react-style'];
 		if (!isReactStyle(reactStyle)) {
-			throw new Error(
-				`Expected a supported react style, got: ${reactStyle}`
-			);
+			throw new Error(`Expected a supported react style, got: ${reactStyle}`);
 		}
 		repoRef = REPOS.react[reactStyle];
 	}

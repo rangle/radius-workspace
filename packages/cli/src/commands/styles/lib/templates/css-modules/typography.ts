@@ -13,11 +13,11 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
 
   :root {
       ${tokens
-			.map(
-				({ token, value, viewPort }) =>
-					`  ${token}: ${value}; /* ${viewPort} */ `
-			)
-			.join('\n')}
+				.map(
+					({ token, value, viewPort }) =>
+						`  ${token}: ${value}; /* ${viewPort} */ `
+				)
+				.join('\n')}
     
   }
   ${queries.map(({ viewPort, value }) => {
@@ -26,14 +26,14 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
     @media screen and (min-width: ${value}) {
         :root {
         ${filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
-			.map(
-				({ token, value, viewPort }) =>
-					`  ${token}: ${value}; /* ${viewPort} */ `
-			)
-			.join('\n')}        
+					.map(
+						({ token, value, viewPort }) =>
+							`  ${token}: ${value}; /* ${viewPort} */ `
+					)
+					.join('\n')}        
         }
     }`;
-  })}
+	})}
   `
 	] as const;
 };

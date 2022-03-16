@@ -39,8 +39,7 @@ export const styles: CommandModule<Options, Options> = {
 				dryRun: {
 					group: 'Command Options:',
 					defaultDescription: 'dry-run',
-					describe:
-						"Don't generate any styles -- output files to stdin",
+					describe: "Don't generate any styles -- output files to stdin",
 					default: false,
 					type: 'boolean'
 				}

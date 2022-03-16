@@ -215,8 +215,7 @@ export const getTokens = (data: any) =>
 			return x;
 		})
 		.then((node) => {
-			if (!node)
-				throw new Error('Could not find Node: Tokens not defined');
+			if (!node) throw new Error('Could not find Node: Tokens not defined');
 
 			const styleIndex = node.styles;
 			const frames = recurseToFindFrames(node);
@@ -232,8 +231,7 @@ export const getTokens = (data: any) =>
 				)
 				.filter(
 					({ type, name }) =>
-						type === 'GROUP' ||
-						(type === 'COMPONENT_SET' && name === 'spacer')
+						type === 'GROUP' || (type === 'COMPONENT_SET' && name === 'spacer')
 				);
 			return groups.flatMap((group) => {
 				// console.log("==>>> GROUP", group.name);
@@ -248,17 +246,8 @@ export const getTokens = (data: any) =>
 						isRectangleNode(item)
 					) {
 						return [
-							...processRectangleSize(
-								group,
-								group.parent,
-								'breakpoint'
-							),
-							...processRectangleSize(
-								item,
-								group.parent,
-								'grid',
-								'grid-margin'
-							)
+							...processRectangleSize(group, group.parent, 'breakpoint'),
+							...processRectangleSize(item, group.parent, 'grid', 'grid-margin')
 						];
 					}
 
@@ -285,19 +274,14 @@ export const getTokens = (data: any) =>
 						return processColorToken(item);
 					}
 					// TODO: talk to Design to flatten these groups and find other ways to mark screen size.
-					if (
-						group.name.match(/Typography-Tokens/) &&
-						type === 'GROUP'
-					) {
+					if (group.name.match(/Typography-Tokens/) && type === 'GROUP') {
 						const { children } = item;
 						return children.flatMap((item) => {
 							if (
 								item.type === 'TEXT' &&
 								isTypographyStyle(item.styles) &&
 								styleIndex[item.styles.text] &&
-								styleIndex[item.styles.text].description.match(
-									/#[Tt]oken/
-								)
+								styleIndex[item.styles.text].description.match(/#[Tt]oken/)
 							)
 								return processTypographyToken(
 									item,
@@ -358,10 +342,9 @@ export const processTypographyToken = (
 			name: `${tokenName}/${key}`,
 			viewPort: viewPortName[0] || 'default',
 			cascade,
-			token: `--${tokenName
-				.toLowerCase()
-				.split('/')
-				.join('-')}-${toKebabCase(key)}`,
+			token: `--${tokenName.toLowerCase().split('/').join('-')}-${toKebabCase(
+				key
+			)}`,
 			value: String(tokenIndex[key as keyof typeof tokenIndex])
 		})
 	);
