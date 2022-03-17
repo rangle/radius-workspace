@@ -3,19 +3,19 @@ import { DesignToken, DesignTokenGroup } from '../../utils/figma.utils';
 export type FileTemplate = readonly [fileName: string, content: string];
 
 export const TOKEN_FILE_COMMENTS: any = {
-    spacing: `  /**
+  spacing: `  /**
   * @tokens Spacing
   * @presenter Spacing
   */`,
-    color: `  /**
+  color: `  /**
   * @tokens Colors
   * @presenter Color
   */`,
-    borders: `  /**
+  borders: `  /**
   * @tokens Border Radius
   * @presenter BorderRadius
   */`,
-    shadow: `  /**
+  shadow: `  /**
   * @tokens Shadow
   * @presenter Shadow
   */`

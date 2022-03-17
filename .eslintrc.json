@@ -23,7 +23,6 @@
 		],
 		// Already handled by typescript
 		"@typescript-eslint/no-unused-vars": "off",
-		// I don't like it
 		"@typescript-eslint/explicit-module-boundary-types": "off",
 		// Interface/type delimiter styles, prefer comma
 		"@typescript-eslint/member-delimiter-style": [
@@ -43,30 +42,11 @@
 		// Semicolon
 		"semi": "off",
 		"@typescript-eslint/semi": ["error"],
-		// Trailing comma
-   		 "comma-dangle": ["error", "never"],
-		// "comma-dangle": "off",
-		// "@typescript-eslint/comma-dangle": [
-		// 	"error",
-		// 	{
-		// 		"arrays": "always-multiline",
-		// 		"objects": "always-multiline",
-		// 		"imports": "always-multiline",
-		// 		"exports": "always-multiline",
-		// 		"functions": "always-multiline",
-		// 		"enums": "always-multiline",
-		// 		"generics": "always-multiline",
-		// 		"tuples": "always-multiline"
-		// 	}
-		// ],
-		// Quotes
-		// "quotes": "off",
+   	"comma-dangle": ["error", "never"],
 		"quotes": [2, "single"],
-		// "@typescript-eslint/quotes": ["error"],
-		// Spacing around type annotations
+		"max-len": [2, 120, 2, { "ignoreComments": true}],
 		"@typescript-eslint/type-annotation-spacing": ["error"],
 		// Curly spacing
-		// "object-curly-spacing": "off",
 		"@typescript-eslint/object-curly-spacing": [
 		  "error",
 		  "always"
@@ -98,7 +78,7 @@
 		// Indent
 		"indent": [
 		  "error",
-		  4,
+		  2,
 		  {
 		    "SwitchCase": 1,
 		    "flatTernaryExpressions": true
