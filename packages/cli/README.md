@@ -13,12 +13,13 @@ radius --help
 ```
 
 ## Available Commands:
-  
+
 ### Styles
 
 Generate/update styles for a Design System by reading design tokens directly from a Design Source like Figma
 
 Example:
+
 ```
   radius styles http://link.to/figma/f0383de89 ../styles --template css-modules --single-file-output
 ```

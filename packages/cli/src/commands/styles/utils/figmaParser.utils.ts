@@ -1,82 +1,89 @@
 import { 
-         DesignToken, 
-         NodeDef, 
-         NodeDoc, 
-         NodeDocument, 
-         RectangleNode, 
-         StyleDef, 
-         TypographyStyle 
-        } from "./figma.utils";
+  DesignToken, 
+  NodeDef, 
+  NodeDoc, 
+  NodeDocument, 
+  RectangleNode, 
+  StyleDef, 
+  TypographyStyle 
+} from './figma.utils';
 
 export type NodeKey<T extends NodeDef> = {
-    [key:string]: T
-}
+    [key: string]: T,
+};
 
 const FigmaTypes = {
-    FILL: 'FILL',
-    GRID: 'GRID',
-    SPACER: 'Spacer',
-    TYPOGRAPHY: 'Typography-Tokens'
-} as const
+  FILL: 'FILL',
+  GRID: 'GRID',
+  SPACER: 'Spacer',
+  TYPOGRAPHY: 'Typography-Tokens'
+} as const;
 
 
-export type TokenTransformWithStyle<T extends NodeDocument> = (a: T, style: NodeDef)=> DesignToken[];
-export type TokenTransformWithoutStyle<T extends NodeDocument> = (a: T)=> DesignToken[];
-export type TokenTransformWithSpacing<R extends RectangleNode> = (a: R)=> DesignToken[];
+export type TokenTransformWithStyle<T extends NodeDocument> = (a: T, style: NodeDef) => DesignToken[];
+export type TokenTransformWithoutStyle<T extends NodeDocument> = (a: T) => DesignToken[];
+export type TokenTransformWithSpacing<R extends RectangleNode> = (a: R) => DesignToken[];
 export type TokenTransform<T extends NodeDoc> = TokenTransformWithStyle<T> | TokenTransformWithoutStyle<T>;
 
 export const filterByTypeFill = (data: StyleDef): boolean => {
-    return data.styleType === FigmaTypes.FILL && data.description.includes('Token');
-}
+  return (
+    data.styleType === FigmaTypes.FILL && data.description.includes('Token')
+  );
+};
 
 export const filterByTypeGrid = (data: StyleDef): boolean => {
-    return data.styleType === FigmaTypes.GRID
-}
+  return data.styleType === FigmaTypes.GRID;
+};
 
 export const filterByDescriptionSpacer = (data: NodeDef): boolean => {
-    return data.description.includes(FigmaTypes.SPACER);
-}
+  return data.description.includes(FigmaTypes.SPACER);
+};
 
 export const filterByTypography = (data: StyleDef): boolean =>{
-    return data.description.includes(FigmaTypes.TYPOGRAPHY);
-}   
-export const generateStyleMap = <T extends NodeDef>(nodeKeys: NodeKey<T>, fn: (data: T)=> boolean): NodeKey<T> => {
-     const filtered = Object.keys(nodeKeys)
-        .map((style)=> {return style})
-        .filter((k)=> fn(nodeKeys[k]))
-        .reduce((obj, key) => {
-            return {
-                ...obj,
-                [key]: nodeKeys[key]
-            }
-          }, {});     
-    return filtered;
-}
+  return data.description.includes(FigmaTypes.TYPOGRAPHY);
+};   
+export const generateStyleMap = <T extends NodeDef>(nodeKeys: NodeKey<T>, fn: (data: T) => boolean): NodeKey<T> => {
+  const filtered = Object.keys(nodeKeys)
+    .map((style)=> {return style;})
+    .filter((k)=> fn(nodeKeys[k]))
+    .reduce((obj, key) => {
+      return {
+        ...obj,
+        [key]: nodeKeys[key]
+      };
+    }, {});     
+  return filtered;
+};
 
-export const getChildStyleNodes = <S extends string, U extends NodeDef, T extends NodeDoc, >(nodeDocument: T, isComponent: boolean=false, nodeKeys: NodeKey<U>, keyDef: S): NodeDoc[] => {
-    var childNodes: NodeDoc[] = []
-    if(nodeKeys[keyDef]) {
-        return [nodeDocument] 
-    }  
+export const getChildStyleNodes = <S extends string, U extends NodeDef, T extends NodeDoc>
+  ( nodeDocument: T, 
+    isComponent=false, 
+    nodeKeys: NodeKey<U>, 
+    keyDef: S
+  ): NodeDoc[] => {
+  let childNodes: NodeDoc[] = [];
+  if(nodeKeys[keyDef]) {
+    return [nodeDocument]; 
+  }  
 
-    if(nodeDocument.children){
-        //Cast as NodeDoc[] for spacing tokens that have a rectangle bounding box 
-        let nodeChildren = nodeDocument.children as NodeDoc[];
-        childNodes = nodeChildren.flatMap(node => { 
+  if(nodeDocument.children){
+    //Cast as NodeDoc[] for spacing tokens that have a rectangle bounding box 
+    const nodeChildren = nodeDocument.children as NodeDoc[];
+    childNodes = nodeChildren.flatMap((node) => { 
 
-            let nodeStyle = '';
-            if(isComponent) {
-                nodeStyle = node.id;
-            } else {
-                nodeStyle = isTypographyStyle(node.styles) ? node.styles?.text : node.styles?.fill;
-            }
-            return getChildStyleNodes(node, isComponent, nodeKeys, nodeStyle);
-        })
-    }   
-    return childNodes   
-} 
+      let nodeStyle = '';
+      if(isComponent) {
+        nodeStyle = node.id;
+      } else {
+        nodeStyle = isTypographyStyle(node.styles) ? node.styles?.text : node.styles?.fill;
+      }
+      return getChildStyleNodes(node, isComponent, nodeKeys, nodeStyle);
+    });
+  }   
+  return childNodes;   
+}; 
 
-const isTypographyStyle = (o: NodeDocument["styles"]): o is TypographyStyle =>
+const isTypographyStyle = (o: NodeDocument['styles']): o is TypographyStyle =>
   !!o && !!(o as TypographyStyle).text;
 
 
@@ -86,19 +93,23 @@ const isTypographyStyle = (o: NodeDocument["styles"]): o is TypographyStyle =>
 //     return(style as TypographyStyle).text !==undefined;
 // }
 
-export const generateDesignTokens = <T extends NodeDoc, U extends NodeDef>(nodeKeys: NodeKey<U>, node: T, fn: TokenTransform<T>): DesignToken[] => {
+export const generateDesignTokens = <T extends NodeDoc, U extends NodeDef>
+  ( nodeKeys: NodeKey<U>, 
+    node: T, 
+    fn: TokenTransform<T>): DesignToken[] => {
     
-    const nodeStyle = isTypographyStyle(node.styles) 
-                                    ? node.styles?.text 
-                                    : node.styles?.fill;
+  const nodeStyle = isTypographyStyle(node.styles) 
+    ? node.styles?.text 
+    : node.styles?.fill;
 
-    return isTokenTransformWithoutStyle(fn) ? fn(node) : fn(node, nodeKeys[nodeStyle]);
-}
+  return isTokenTransformWithoutStyle(fn) ? fn(node) : fn(node, nodeKeys[nodeStyle]);
+};
 
 //Checks whether argument length of either TokenTransformWithoutStyle or TokenStransformWithStyle is 1 or greater 
 //This allows us to pass a function to generateDesignTokens with either one or two args.
-export const isTokenTransformWithoutStyle = <T extends NodeDoc>(f: TokenTransform<T>):f is TokenTransformWithoutStyle<T> => {
-    return f.length === 1
-}
+export const isTokenTransformWithoutStyle = <T extends NodeDoc>
+  (f: TokenTransform<T>): f is TokenTransformWithoutStyle<T> => {
+  return f.length === 1;
+};
 
 

@@ -1,5 +1,5 @@
-import { DesignToken, DesignTokenGroup } from "../../utils/figma.utils";
-import { TokenContext } from "./types";
+import { DesignToken, DesignTokenGroup } from '../../utils/figma.utils';
+import { TokenContext } from './types';
 
 export const createTokenContext = (
   tokenGroup: DesignTokenGroup
@@ -8,16 +8,16 @@ export const createTokenContext = (
   const breakpoints = breakpoint.reduce((res, item) => {
     return {
       ...res,
-      [item.viewPort || "default"]: `${item.value}px`,
+      [item.viewPort || 'default']: `${ item.value }px`
     };
   }, {});
   return { breakpoints };
 };
 
-const viewPortOrder = ["s", "m", "l"] as const;
+const viewPortOrder = ['s', 'm', 'l'] as const;
 
 export const filterTokenByViewPort = (
-  sz: "s" | "m" | "l",
+  sz: 's' | 'm' | 'l',
   list: DesignToken[]
 ) => {
   const startAt = viewPortOrder.indexOf(sz);
