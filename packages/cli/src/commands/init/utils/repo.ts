@@ -10,15 +10,17 @@ import { exec } from 'child_process';
 
 export const asyncExec = (command: string) =>{
   return new Promise( (resolve) => {
-    exec(command, (error: any, stdout) => {
-      if(error){
-        throw new Error(error);
-      }
-      if(stdout){
-        return resolve({ state:'responce',message:stdout });
-      }
-      resolve({ state:'responce',message:null });
-    });
+    setTimeout(()=>{
+      exec(command, (error: any, stdout: any) => {
+        if(error){
+          throw error;
+        }
+        if(stdout){
+          return resolve({ state:'responce',message:stdout });
+        }
+        return resolve({ state:'responce',message:null });
+      });
+    },2000);
   });
 };
 type BranchRef = { repo: string, branch: string };
@@ -26,6 +28,7 @@ const branchRef = (repo: string, branch: string): BranchRef => ({
   repo,
   branch
 });
+
 const REPOS = {
   angular: branchRef('rangle/radius-angular', 'main'),
   react: {
@@ -40,6 +43,22 @@ const isKeyof = <T>(val: T) => {
   return (k: keyof never): k is keyof T => keys.includes(k as never);
 };
 const isReactStyle = isKeyof(REPOS.react);
+
+export const commandRemoveGit = async (dir: string) => {
+  // check to see if Git exists
+  try{
+    await asyncExec('which git');
+  } catch(error: any){
+    console.log(chalk.red(error?.message));
+  }
+  await asyncExec(`cd ${ dir } && rm -rf .git`);
+};
+export const commandAddGit = async (dir: string) => {
+  if(!fs.existsSync(dir)){
+    throw new Error(`The repo directory ${ dir } does not exist`);
+  }
+  await asyncExec(`cd ${ dir } && git init`);
+};
 
 export const logSuccess = (designSystemOptions: any) => {
   console.log(chalk.green('All done!'));
@@ -75,15 +94,26 @@ export const selectRepo = (designSystemOptions: any) => {
   return repoRef;
 };
 
+
 export const configureGitSetup = (
   dir: string,
-  ref: any,
+  ref: BranchRef,
   clone: any,
   checkout: any,
-  removeDir: any
+  removeDir: any,
+  removeGit: any,
+  addGit: any
 ): { run: () => Promise<void> } => {
 
   const gitSetup = [
+    {
+      title: 'Check if folder is available',
+      task: () => {
+        if (fs.existsSync(dir)) {
+          throw new Error(`The folder ${ dir } is already in use`);
+        }
+      }
+    },
     {
       title: 'Clone the repo',
       task: (_ctx: any, task: any) =>
@@ -114,17 +144,11 @@ export const configureGitSetup = (
     },
     {
       title: 'Remove .git',
-      task: async () =>{
-        const response = await asyncExec(`cd ${ dir } && rm -rf .git`);
-        console.log(response);
-      }
+      task: () => removeGit(dir)
     },
     {
       title: 'Setup new git respository',
-      task: async () =>{
-        const response = await asyncExec('git init');
-        console.log(response);
-      }
+      task: () => addGit(dir)
     }
   ];
 
@@ -133,18 +157,27 @@ export const configureGitSetup = (
   return tasks;
 };
 
+
+
+
 export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
   try {
     const repoRef = selectRepo(designSystemOptions);
     const dir = path.join(process.cwd(), designSystemOptions['ds-name']);
     const definitiveRef: BranchRef | boolean = repoRef;
 
+    if(typeof definitiveRef === 'boolean'){
+      return false;
+    }
+
     const tasks = configureGitSetup(
       dir,
       definitiveRef,
       git.clone,
       git.checkout,
-      fsExtra.removeSync
+      fsExtra.removeSync,
+      commandRemoveGit,
+      commandAddGit
     );
     // run all of the commands
     await tasks.run();

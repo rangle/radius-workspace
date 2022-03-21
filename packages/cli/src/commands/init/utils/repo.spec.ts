@@ -1,14 +1,36 @@
 import { configureGitSetup, logFailure, logSuccess, selectRepo } from './repo';
 
 describe('Repo', () => {
-  it('clone should throw an error and call removeDir', async () => {
+
+  it('directory already exists, throw error', async () => {
     const removeDir = jest.fn();
     const tasks = configureGitSetup(
       './',
       { branch: '', repo: '' },
       () => Promise.reject(),
       () => Promise.reject(new Error()),
-      removeDir
+      removeDir,
+      async () => true,
+      async () => true
+    );
+
+    try {
+      await tasks.run();
+    } catch (err) {
+      expect(removeDir.mock.calls.length).toBe(0);
+    }
+  });
+
+  it('clone should throw an error and call removeDir', async () => {
+    const removeDir = jest.fn();
+    const tasks = configureGitSetup(
+      './newDIR',
+      { branch: '', repo: '' },
+      () => Promise.reject(),
+      () => Promise.reject(new Error()),
+      removeDir,
+      async () => true,
+      async () => true
     );
 
     try {
@@ -21,11 +43,13 @@ describe('Repo', () => {
   it('checkout should throw an error and call removeDir', async () => {
     const removeDir = jest.fn();
     const tasks = configureGitSetup(
-      './',
+      './newDIR',
       { branch: '', repo: '' },
       () => Promise.resolve(),
       () => Promise.reject(new Error()),
-      removeDir
+      removeDir,
+      async () => true,
+      async () => true
     );
 
     try {
