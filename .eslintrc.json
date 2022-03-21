@@ -76,7 +76,8 @@
 		  "always"
 		],
 		// Indent
-		"indent": [
+		"indent": "off",
+		"@typescript-eslint/indent": [
 		  "error",
 		  2,
 		  {
