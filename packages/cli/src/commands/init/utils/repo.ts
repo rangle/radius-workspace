@@ -6,7 +6,21 @@ import fs from 'fs';
 import fsExtra from 'fs-extra';
 import Listr from 'listr';
 import { logger } from '../../../logger';
+import { exec } from 'child_process';
 
+export const asyncExec = (command: string) =>{
+  return new Promise( (resolve) => {
+    exec(command, (error: any, stdout) => {
+      if(error){
+        throw new Error(error);
+      }
+      if(stdout){
+        return resolve({ state:'responce',message:stdout });
+      }
+      resolve({ state:'responce',message:null });
+    });
+  });
+};
 type BranchRef = { repo: string, branch: string };
 const branchRef = (repo: string, branch: string): BranchRef => ({
   repo,
@@ -62,12 +76,13 @@ export const selectRepo = (designSystemOptions: any) => {
 };
 
 export const configureGitSetup = (
-  dir: any,
+  dir: string,
   ref: any,
   clone: any,
   checkout: any,
   removeDir: any
 ): { run: () => Promise<void> } => {
+
   const gitSetup = [
     {
       title: 'Clone the repo',
@@ -96,9 +111,24 @@ export const configureGitSetup = (
           task.skip('Checkout out the branch failed.');
           throw new Error(err);
         })
+    },
+    {
+      title: 'Remove .git',
+      task: async () =>{
+        const response = await asyncExec(`cd ${ dir } && rm -rf .git`);
+        console.log(response);
+      }
+    },
+    {
+      title: 'Setup new git respository',
+      task: async () =>{
+        const response = await asyncExec('git init');
+        console.log(response);
+      }
     }
   ];
-    // setup the main tasks launcher
+
+  // setup the main tasks launcher
   const tasks = new Listr(gitSetup, { concurrent: false });
   return tasks;
 };
