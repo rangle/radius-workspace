@@ -362,11 +362,9 @@ const processSpacingNode= <T extends NodeDoc>(nodeDocument: T): DesignToken[] =>
 
 export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToken[] => {
   const { name, effects } = nodeDoc;
-
   const tokenArray = name.replace('=', '-').replace(/\s+/g, '-').split('-').splice(2,3);
   tokenArray.splice(-1,1);
   const token = `--${ tokenArray.join('-').slice(0,-1).toLowerCase() }`;
-  // const colorMap = effects.map((effectItem) => colorToHex(effectItem.color));
 
   const rgbMap = effects.map((effect) =>  {
     const objKeys = Object.keys(effect.color)as Array<keyof Color>;
@@ -392,7 +390,6 @@ export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToke
       return `drop-shadow(${ offsetMap[index] }rgba(${ rgbMap[index] }))`;
     }
   });
-  // tokenMap.map((token) => Object.keys(tokenMap) as Array<keyof {name: string, token,}>)
 
   return [{
     type: 'elevation',
@@ -515,46 +512,7 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer, processSpacingNode);
   const elevationTokens = generateNodes(node, true, filterByElevation, processElevationToken);
 
-
-  const frames = recurseToFindFrames(node);
-
-  if (!frames.length)
-    throw new Error('Could not find Frame: Tokens not defined');
-  // flatten all top-level GROUPS inside each frame
-  const groups = frames
-  // eslint-disable-next-line no-sequences
-    .flatMap(({ children, name }) =>
-    // console.log("FRAME", name),
-      children.map((child) => ({ ...child, parent: name }))
-    )
-    .filter(
-      ({ type }) =>
-        type === 'GROUP'
-    );
-  const gridBreakpointTokens = groups.flatMap((group) => {
-    // console.log("==>>> GROUP", group.name);
-
-    return group.children.flatMap((item) => {
-      const { type } = item;
-
-      if (
-        type === 'GROUP' &&
-        group.name === 'margins' &&
-        isRectangleNode(group) &&
-        isRectangleNode(item)
-      ) {
-        return [
-          ...processRectangleSize(group, group.parent, 'breakpoint'),
-          ...processRectangleSize(item, group.parent, 'grid', 'grid-margin')
-        ];
-      } } ); } ).filter((element) => element !== undefined) as DesignToken[];
-
-  console.log(gridBreakpointTokens);
-
-  const tokens = colorTokens.concat(typographyTokens,spaceTokens,elevationTokens, gridBreakpointTokens);
-
-  // const tokens = [...colorTokens, ...typographyTokens, ...spaceTokens, ...elevationTokens, ...gridTokens];
-  // return tokens as DesignToken[];
+  const tokens = colorTokens.concat(typographyTokens,spaceTokens,elevationTokens);
   return tokens;
 
 
