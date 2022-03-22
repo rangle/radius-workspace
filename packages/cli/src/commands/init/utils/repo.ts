@@ -76,7 +76,7 @@ export const selectRepo = (designSystemOptions: any) => {
 
   if (!repoRef) {
     logger.info('coming soon... 😉');
-    return false;
+    return null;
   }
   return repoRef;
 };
@@ -146,9 +146,9 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
   try {
     const repoRef = selectRepo(designSystemOptions);
     const dir = path.join(process.cwd(), designSystemOptions['ds-name']);
-    const definitiveRef: BranchRef | boolean = repoRef;
+    const definitiveRef: BranchRef | null = repoRef;
 
-    if(typeof definitiveRef === 'boolean'){
+    if(!definitiveRef){
       return false;
     }
 
