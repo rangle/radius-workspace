@@ -6,23 +6,9 @@ import fs from 'fs';
 import fsExtra from 'fs-extra';
 import Listr from 'listr';
 import { logger } from '../../../logger';
-import { exec } from 'child_process';
+import { execSync } from 'child_process';
 
-export const asyncExec = (command: string) =>{
-  return new Promise( (resolve) => {
-    setTimeout(()=>{
-      exec(command, (error: any, stdout: any) => {
-        if(error){
-          throw error;
-        }
-        if(stdout){
-          return resolve({ state:'responce',message:stdout });
-        }
-        return resolve({ state:'responce',message:null });
-      });
-    },2000);
-  });
-};
+
 type BranchRef = { repo: string, branch: string };
 const branchRef = (repo: string, branch: string): BranchRef => ({
   repo,
@@ -44,20 +30,21 @@ const isKeyof = <T>(val: T) => {
 };
 const isReactStyle = isKeyof(REPOS.react);
 
-export const commandRemoveGit = async (dir: string) => {
+export const commandSetupGit = async (dir: string) => {
   // check to see if Git exists
   try{
-    await asyncExec('which git');
+    await execSync('which git');
   } catch(error: any){
     console.log(chalk.red(error?.message));
   }
-  await asyncExec(`cd ${ dir } && rm -rf .git`);
-};
-export const commandAddGit = async (dir: string) => {
+  
+  // check to see if the folder we just cloned exists
   if(!fs.existsSync(dir)){
     throw new Error(`The repo directory ${ dir } does not exist`);
   }
-  await asyncExec(`cd ${ dir } && git init`);
+
+  await execSync(`cd ${ dir } && rm -rf .git`);
+  await execSync(`cd ${ dir } && git init`);
 };
 
 export const logSuccess = (designSystemOptions: any) => {
@@ -101,8 +88,7 @@ export const configureGitSetup = (
   clone: any,
   checkout: any,
   removeDir: any,
-  removeGit: any,
-  addGit: any
+  removeGit: any
 ): { run: () => Promise<void> } => {
 
   const gitSetup = [
@@ -143,12 +129,8 @@ export const configureGitSetup = (
         })
     },
     {
-      title: 'Remove .git',
+      title: 'Initializing git repository',
       task: () => removeGit(dir)
-    },
-    {
-      title: 'Setup new git respository',
-      task: () => addGit(dir)
     }
   ];
 
@@ -176,8 +158,7 @@ export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
       git.clone,
       git.checkout,
       fsExtra.removeSync,
-      commandRemoveGit,
-      commandAddGit
+      commandSetupGit
     );
     // run all of the commands
     await tasks.run();

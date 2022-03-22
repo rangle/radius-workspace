@@ -10,7 +10,6 @@ describe('Repo', () => {
       () => Promise.reject(),
       () => Promise.reject(new Error()),
       removeDir,
-      async () => true,
       async () => true
     );
 
@@ -29,7 +28,6 @@ describe('Repo', () => {
       () => Promise.reject(),
       () => Promise.reject(new Error()),
       removeDir,
-      async () => true,
       async () => true
     );
 
@@ -48,7 +46,6 @@ describe('Repo', () => {
       () => Promise.resolve(),
       () => Promise.reject(new Error()),
       removeDir,
-      async () => true,
       async () => true
     );
 
