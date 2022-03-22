@@ -259,7 +259,7 @@ export const getTokens = (data: any) =>
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
       if(process.env.FIGMA_UTILITY_V2 == 'true') {
-        return generateTokensV2(node);
+        generateTokensV2(node);
       }
 
 
