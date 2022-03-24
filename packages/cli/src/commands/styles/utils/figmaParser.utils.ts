@@ -45,7 +45,6 @@ export const filterByTypography = (data: StyleDef): boolean =>{
 };   
 
 export const filterByElevation = (data: NodeDef): boolean => {
-
   return data.description.includes(FigmaTypes.ELEVATION);
 };
 
