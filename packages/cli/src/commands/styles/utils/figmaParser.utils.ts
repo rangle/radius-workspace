@@ -64,11 +64,11 @@ export const generateStyleMap = <T extends NodeDef>(nodeKeys: NodeKey<T>, fn: (d
 };
 
 export const getChildStyleNodes = <S extends string, U extends NodeDef, T extends NodeDoc>
-( nodeDocument: T, 
-  isComponent=false, 
-  nodeKeys: NodeKey<U>, 
-  keyDef: S
-): NodeDoc[] => {
+  ( nodeDocument: T, 
+    isComponent=false, 
+    nodeKeys: NodeKey<U>, 
+    keyDef: S
+  ): NodeDoc[] => {
   let childNodes: NodeDoc[] = [];
   if(nodeKeys[keyDef]) {
     return [nodeDocument]; 
@@ -102,9 +102,9 @@ const isTypographyStyle = (o: NodeDocument['styles']): o is TypographyStyle =>
 // }
 
 export const generateDesignTokens = <T extends NodeDoc, U extends NodeDef>
-( nodeKeys: NodeKey<U>, 
-  node: T, 
-  fn: TokenTransform<T>): DesignToken[] => {
+  ( nodeKeys: NodeKey<U>, 
+    node: T, 
+    fn: TokenTransform<T>): DesignToken[] => {
     
   const nodeStyle = isTypographyStyle(node.styles) 
     ? node.styles?.text 
@@ -116,7 +116,7 @@ export const generateDesignTokens = <T extends NodeDoc, U extends NodeDef>
 //Checks whether argument length of either TokenTransformWithoutStyle or TokenStransformWithStyle is 1 or greater 
 //This allows us to pass a function to generateDesignTokens with either one or two args.
 export const isTokenTransformWithoutStyle = <T extends NodeDoc>
-(f: TokenTransform<T>): f is TokenTransformWithoutStyle<T> => {
+  (f: TokenTransform<T>): f is TokenTransformWithoutStyle<T> => {
   return f.length === 1;
 };
 
