@@ -19,12 +19,12 @@ import chalk from 'chalk';
 const token = process.env['FIGMA_TOKEN'] || 'none';
 
 export type Options = {
-	url: string,
-	userToken?: string,
-	outputDir?: string,
-	dryRun?: boolean,
-	consoleOutput?: boolean,
-	template?: 'css-modules' | 'css-in-js',
+  url: string,
+  userToken?: string,
+  outputDir?: string,
+  dryRun?: boolean,
+  consoleOutput?: boolean,
+  template?: 'css-modules' | 'css-in-js',
 };
 
 export const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');

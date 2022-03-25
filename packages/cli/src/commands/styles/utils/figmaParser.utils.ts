@@ -9,14 +9,15 @@ import {
 } from './figma.utils';
 
 export type NodeKey<T extends NodeDef> = {
-    [key: string]: T,
+  [key: string]: T,
 };
 
 const FigmaTypes = {
   FILL: 'FILL',
   GRID: 'GRID',
   SPACER: 'Spacer',
-  TYPOGRAPHY: 'Typography-Tokens'
+  TYPOGRAPHY: 'Typography-Tokens',
+  ELEVATION: 'Elevation'
 } as const;
 
 
@@ -42,6 +43,13 @@ export const filterByDescriptionSpacer = (data: NodeDef): boolean => {
 export const filterByTypography = (data: StyleDef): boolean =>{
   return data.description.includes(FigmaTypes.TYPOGRAPHY);
 };   
+
+export const filterByElevation = (data: NodeDef): boolean => {
+  return data.description.includes(FigmaTypes.ELEVATION);
+};
+
+
+
 export const generateStyleMap = <T extends NodeDef>(nodeKeys: NodeKey<T>, fn: (data: T) => boolean): NodeKey<T> => {
   const filtered = Object.keys(nodeKeys)
     .map((style)=> {return style;})

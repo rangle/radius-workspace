@@ -27,8 +27,8 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
         :root {
         ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
           .map(
-            (data: any) =>
-              `  ${ data.token }: ${ data.value }; /* ${ data.viewPort } */ `
+            ({ token, value, viewPort }) =>
+              `  ${ token }: ${ value }; /* ${ viewPort } */ `
           )
           .join('\n') }        
         }
