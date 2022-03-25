@@ -18,13 +18,12 @@ describe('Get Tokens', () => {
     expect(extractFirstNode(demoFile)).toBe(demoNode1);
   });
 
+  
   it('Get Types', async () => {
     output = await getTokens(data);
     expect(output.length).toBe(71);
   });
   
-
-  //   it()
 
   it('Get By Type', async () => {
     byType = await groupByType(output);
