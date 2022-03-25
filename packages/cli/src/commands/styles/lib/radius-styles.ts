@@ -11,6 +11,8 @@ import path from 'path';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 
 import data from './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
+// import data from './__mocks__/simple.json';
+// import data from './__mocks__/figma_file.json';
 import { logger } from '../../../logger';
 import chalk from 'chalk';
 
@@ -25,7 +27,7 @@ export type Options = {
 	template?: 'css-modules' | 'css-in-js',
 };
 
-const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
+export const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
 
 export const generateGlobalStyles = async ({
   url,

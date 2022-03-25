@@ -176,6 +176,8 @@ const extractFirstNode = <T extends FigmaFileNodes>({ nodes }: T) =>
     .map((nodeId) => nodes[nodeId as keyof typeof nodes])
     .shift();
 
+export { extractFirstNode, FigmaFileNodes, NodeRoot };
+
 const isNodeRoot = (o: unknown): o is NodeRoot => !!(o as NodeRoot).document;
 
 const recurseToFindFrames = <T extends NodeDocument | NodeRoot>(
@@ -214,6 +216,7 @@ export const getTokens = (data: any) =>
       //   `${__dirname}/figma-file-${new Date().toISOString()}.json`,
       //   JSON.stringify(x, undefined, 2)
       // );
+      // console.log(data);
       return x;
     })
     .then(extractFirstNode)

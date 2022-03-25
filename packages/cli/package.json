@@ -27,8 +27,9 @@
   },
   "scripts": {
     "build": "tsc",
-    "lint": "eslint '**/*.ts'",
-    "test": "jest"
+    "lint": "eslint '**/*.ts' --fix",
+    "test": "jest",
+    "bohdan": "tsc src/bohdan.ts tsconfig.json  && node src/bohdan.js"
   },
   "dependencies": {
     "chalk": "4.1.1",
