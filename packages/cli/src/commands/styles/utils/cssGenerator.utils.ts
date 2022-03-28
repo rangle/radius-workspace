@@ -1,5 +1,3 @@
-//console.log(Object.fromEntries(keyValuePairs));
-
 export const generateColorsCSS = (tokenMap: any) => {
   const keyValuePairs = tokenMap.color.map((color: { token: string; value: string; }) => {
     // eslint-disable-next-line
