@@ -3,7 +3,7 @@
 export const generateColorsCSS = (tokenMap: any) => {
   const keyValuePairs = tokenMap.color.map((color: { token: string; value: string; }) => {
     // eslint-disable-next-line
-    const key = `-ds-color${color.token.substring(8).trim().replaceAll("'", '')}`;
+    const key = `--ds-color${color.token.substring(8).trim().replaceAll("'", '')}`;
     // eslint-disable-next-line
     const value = color.value.replaceAll("'", '');
     return [key, value];
@@ -14,7 +14,7 @@ export const generateColorsCSS = (tokenMap: any) => {
 export const generateTypographyCSS = (tokenMap: any) => {
   const keyValuePairs = tokenMap.typography.map((typography: { token: string; value: string; }) => {
     // eslint-disable-next-line
-    const key = `-ds${typography.token.substring(1).trim().replaceAll("'", '')}`;
+    const key = `--ds${typography.token.substring(1).trim().replaceAll("'", '')}`;
     // eslint-disable-next-line
     const value = typography.value.replaceAll("'", '');
     return [key, value];
@@ -25,18 +25,20 @@ export const generateTypographyCSS = (tokenMap: any) => {
 export const generateSpacingCSS = (tokenMap: any) => {
   const keyValuePairs = tokenMap.spacing.map((spacing: { token: string; value: string; }) => {
     // eslint-disable-next-line
-    const key = `-ds${spacing.token.substring(1).trim().replaceAll("'", '')}`;
+    const key = `--ds${spacing.token.substring(1).trim().replaceAll("'", '').replaceAll("=", "-")}`;
     // eslint-disable-next-line
     const value = spacing.value.replaceAll("'", '');
-    return [key, value];
+    const remValue = Number(value)/16 + 'rem';
+    return [key, remValue];
   });
+  console.log(Object.fromEntries(keyValuePairs));
   return Object.fromEntries(keyValuePairs);
 };
 
 export const generateElevationCSS = (tokenMap: any) => {
   const keyValuePairs = tokenMap.elevation.map((elevation: { token: string; value: string; }) => {
     // eslint-disable-next-line
-    const key = `-ds${elevation.token.substring(1).trim().replaceAll("'", '')}`;
+    const key = `--ds${elevation.token.substring(1).trim().replaceAll("'", '')}`;
     // eslint-disable-next-line
     const value = elevation.value.replaceAll("'", '');
     return [key, value];
@@ -47,9 +49,9 @@ export const generateElevationCSS = (tokenMap: any) => {
 export const generateBreakpointCSS = (tokenMap: any) => {
   const keyValuePairs = tokenMap.breakpoint.map((breakpoint: { token: string; value: string; }) => {
     // eslint-disable-next-line
-    const key = `-ds${breakpoint.token.substring(1).trim().replaceAll("'", '')}`;
+    const key = `--ds${breakpoint.token.substring(1).trim().replaceAll("'", '')}`;
     // eslint-disable-next-line
-    const value = breakpoint.value.replaceAll("'", '');
+    const value = breakpoint.value.replaceAll("'", '') + 'px';
     return [key, value];
   });
   return Object.fromEntries(keyValuePairs);
@@ -58,9 +60,9 @@ export const generateBreakpointCSS = (tokenMap: any) => {
 export const generateGridCSS = (tokenMap: any) => {
   const keyValuePairs = tokenMap.grid.map((grid: { token: string; value: string; }) => {
     // eslint-disable-next-line
-    const key = `-ds${grid.token.substring(1).trim().replaceAll("'", '')}`;
+    const key = `--ds${grid.token.substring(1).trim().replaceAll("'", '')}`;
     // eslint-disable-next-line
-    const value = grid.value.replaceAll("'", '');
+    const value = grid.value.replaceAll("'", '') + 'px';
     return [key, value];
   });
   return Object.fromEntries(keyValuePairs);
