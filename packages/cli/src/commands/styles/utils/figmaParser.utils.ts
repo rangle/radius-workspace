@@ -42,6 +42,10 @@ export const filterByDescriptionSpacer = (data: NodeDef): boolean => {
 
 export const filterByTypography = (data: StyleDef): boolean =>{
   return data.description.includes(FigmaTypes.TYPOGRAPHY);
+};
+
+export const filterByTypographySubtype = (data: StyleDef): boolean =>{
+  return data.description.includes(FigmaTypes.TYPOGRAPHY);
 };   
 
 export const filterByElevation = (data: NodeDef): boolean => {
@@ -63,6 +67,7 @@ export const generateStyleMap = <T extends NodeDef>(nodeKeys: NodeKey<T>, fn: (d
   return filtered;
 };
 
+// iterates over children to find all styles
 export const getChildStyleNodes = <S extends string, U extends NodeDef, T extends NodeDoc>
   ( nodeDocument: T, 
     isComponent=false, 
@@ -87,7 +92,7 @@ export const getChildStyleNodes = <S extends string, U extends NodeDef, T extend
       }
       return getChildStyleNodes(node, isComponent, nodeKeys, nodeStyle);
     });
-  }   
+  }
   return childNodes;   
 }; 
 

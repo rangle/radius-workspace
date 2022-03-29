@@ -4,7 +4,7 @@ import {
   filterByDescriptionSpacer,
   filterByElevation,
   filterByTypeFill, 
-  filterByTypography, 
+  filterByTypography,
   generateDesignTokens,
   generateStyleMap, 
   getChildStyleNodes, 
@@ -121,6 +121,7 @@ export type BaseDef = {
   name: string,
   styleType: string,
   description: string,
+  componentSetId: string,
 };
 
 export type StyleDef = BaseDef & {};
@@ -137,6 +138,9 @@ type NodeRoot = {
   components: {
     [key: string]: ComponentDef,
   },
+  componentSets:{
+    [key: string]: ComponentDef,
+  }
 };
 
 export type ColorToken = {
@@ -208,7 +212,6 @@ const extractFirstNode = <T extends FigmaFileNodes>({ nodes }: T) =>
     .map((nodeId) => nodes[nodeId as keyof typeof nodes])
     .shift();
 
-export { extractFirstNode, FigmaFileNodes, NodeRoot };
 
 const isNodeRoot = (o: unknown): o is NodeRoot => !!(o as NodeRoot).document;
 
@@ -240,109 +243,103 @@ const colorToHex = ({ r, g, b }: ColorToken['color']) =>
     .map(hex)
     .join('') }`;
 
-    
+export const findTokens = (node:any) => {
+  if (!node) throw new Error('Could not find Node: Tokens not defined');
 
+  if(process.env.FIGMA_UTILITY_V2 == 'true') {
+    generateTokensV2(node);
+  }
+
+
+  const styleIndex = node.styles;
+  const frames = recurseToFindFrames(node);
+
+  if (!frames.length)
+    throw new Error('Could not find Frame: Tokens not defined');
+  // flatten all top-level GROUPS inside each frame
+  const groups = frames
+  // eslint-disable-next-line no-sequences
+    .flatMap(({ children, name }) =>
+    // console.log("FRAME", name),
+      children.map((child) => ({ ...child, parent: name }))
+    )
+    .filter(
+      ({ type, name }) =>
+        type === 'GROUP' || (type === 'COMPONENT_SET' && name === 'spacer')
+    );
+  return groups.flatMap((group) => {
+    // console.log("==>>> GROUP", group.name);
+
+    return group.children.flatMap((item) => {
+      const { type, styles } = item;
+
+      if (
+        type === 'GROUP' &&
+        group.name === 'margins' &&
+        isRectangleNode(group) &&
+        isRectangleNode(item)
+      ) {
+        return [
+          ...processRectangleSize(group, group.parent, 'breakpoint'),
+          ...processRectangleSize(item, group.parent, 'grid', 'grid-margin')
+        ];
+      }
+
+      if (
+        type === 'COMPONENT' &&
+        group.type === 'COMPONENT_SET' &&
+        group.name === 'spacer' // TODO: ask design to better name this
+      ) {
+        const { children } = item;
+
+        // SPACING TOKEN
+        return children
+          .filter(isRectangleNode)
+          .flatMap(processSpacingToken);
+      }
+
+      if (
+        type === 'RECTANGLE' &&
+        isColorStyle(styles) &&
+        styleIndex[styles.fill] &&
+        styleIndex[styles.fill].description.match(/#[Tt]oken/)
+      ) {
+        // COLOR TOKEN
+        return processColorToken(item);
+      }
+      // TODO: talk to Design to flatten these groups and find other ways to mark screen size.
+      if (group.name.match(/Typography-Tokens/) && type === 'GROUP') {
+        const { children } = item;
+        return children.flatMap((childItem) => {
+          if (
+            childItem.type === 'TEXT' &&
+            isTypographyStyle(childItem.styles) &&
+            styleIndex[childItem.styles.text] &&
+            styleIndex[childItem.styles.text].description.match(/#[Tt]oken/)
+          )
+            return processTypographyToken(
+              childItem,
+              styleIndex[childItem.styles.text]
+            );
+          return [];
+        });
+      }
+      return [];
+    });
+  });
+}
+    
+// This should be changed to a type (causes issues with extractFirstNode if it's type from input)
 export const getTokens = (data: any) =>
   Promise.resolve(data)
     .then((x) => {
-      //console.log(">>>ALL_NODES", x);
-      // writeFileSync(
-      //   `${__dirname}/figma-file-${new Date().toISOString()}.json`,
-      //   JSON.stringify(x, undefined, 2)
-      // );
-      // console.log(data);
       return x;
     })
     .then(extractFirstNode)
     .then((x) => {
-      //console.log(">>>FIRST_NODE", x);
       return x;
     })
-    .then((node) => {
-      if (!node) throw new Error('Could not find Node: Tokens not defined');
-
-      if(process.env.FIGMA_UTILITY_V2 == 'true') {
-        generateTokensV2(node);
-      }
-
-
-      const styleIndex = node.styles;
-      const frames = recurseToFindFrames(node);
-
-      if (!frames.length)
-        throw new Error('Could not find Frame: Tokens not defined');
-      // flatten all top-level GROUPS inside each frame
-      const groups = frames
-      // eslint-disable-next-line no-sequences
-        .flatMap(({ children, name }) =>
-        // console.log("FRAME", name),
-          children.map((child) => ({ ...child, parent: name }))
-        )
-        .filter(
-          ({ type, name }) =>
-            type === 'GROUP' || (type === 'COMPONENT_SET' && name === 'spacer')
-        );
-      return groups.flatMap((group) => {
-        // console.log("==>>> GROUP", group.name);
-
-        return group.children.flatMap((item) => {
-          const { type, styles } = item;
-
-          if (
-            type === 'GROUP' &&
-						group.name === 'margins' &&
-						isRectangleNode(group) &&
-						isRectangleNode(item)
-          ) {
-            return [
-              ...processRectangleSize(group, group.parent, 'breakpoint'),
-              ...processRectangleSize(item, group.parent, 'grid', 'grid-margin')
-            ];
-          }
-
-          if (
-            type === 'COMPONENT' &&
-						group.type === 'COMPONENT_SET' &&
-						group.name === 'spacer' // TODO: ask design to better name this
-          ) {
-            const { children } = item;
-
-            // SPACING TOKEN
-            return children
-              .filter(isRectangleNode)
-              .flatMap(processSpacingToken);
-          }
-
-          if (
-            type === 'RECTANGLE' &&
-						isColorStyle(styles) &&
-						styleIndex[styles.fill] &&
-						styleIndex[styles.fill].description.match(/#[Tt]oken/)
-          ) {
-            // COLOR TOKEN
-            return processColorToken(item);
-          }
-          // TODO: talk to Design to flatten these groups and find other ways to mark screen size.
-          if (group.name.match(/Typography-Tokens/) && type === 'GROUP') {
-            const { children } = item;
-            return children.flatMap((childItem) => {
-              if (
-                childItem.type === 'TEXT' &&
-								isTypographyStyle(childItem.styles) &&
-								styleIndex[childItem.styles.text] &&
-								styleIndex[childItem.styles.text].description.match(/#[Tt]oken/)
-              )
-                return processTypographyToken(
-                  childItem,
-                  styleIndex[childItem.styles.text]
-                );
-              return [];
-            });
-          }
-          return [];
-        });
-      });
-    });
+    .then(findTokens);
 
 const processSpacingToken = (item: RectangleNode): DesignToken => {
   const { name, absoluteBoundingBox } = item;
@@ -358,7 +355,7 @@ const processSpacingToken = (item: RectangleNode): DesignToken => {
   } as DesignToken;
 };
 
-const processSpacingNode= <T extends NodeDoc>(nodeDocument: T): DesignToken[] => {
+export const processSpacingNode= <T extends NodeDoc>(nodeDocument: T): DesignToken[] => {
   const recNode = nodeDocument as RectangleNode;
   return typeof(recNode as RectangleNode).absoluteBoundingBox.width ==='number' ? [processSpacingToken(recNode)] : [];
 };
@@ -403,9 +400,16 @@ export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToke
 };
 
 export const processTypographyToken = <T extends NodeDocument, S extends NodeDef>(
-  item: T,
+  nodeDocument: T,
   style: S
 ): DesignToken[] => {
+
+  // console.log(nodeDocument);
+  if(!nodeDocument.style && nodeDocument.children[0].style) {
+    nodeDocument.style = nodeDocument.children[0].style;
+  }
+  if(!nodeDocument.style) return []  
+
   const {
     name,
     style: {
@@ -415,7 +419,7 @@ export const processTypographyToken = <T extends NodeDocument, S extends NodeDef
       letterSpacing,
       lineHeightPercent
     }
-  } = item;
+  } = nodeDocument;
     //console.log("TYPOGRAPHY TOKEN", name, style);
   const tokenIndex = {
     fontFamily,
@@ -425,7 +429,7 @@ export const processTypographyToken = <T extends NodeDocument, S extends NodeDef
     lineHeightPercent
   };
 
-  const [raw, viewPortName] = style.name.match(/>?([^/]*)$/) || [];
+  const [raw, viewPortName] = style?.name ? style.name.match(/>?([^/]*)$/) || []:name.match(/>?([^/]*)$/) || [];
   const cascade = !!raw && raw.startsWith('>');
   const [, tokenName] =
 		name.match(`(.*)/${ viewPortName }`) || ([undefined, name] as const);
@@ -445,7 +449,7 @@ export const processTypographyToken = <T extends NodeDocument, S extends NodeDef
   return tokens;
 };
 
-const processColorToken = <T extends NodeDocument>(item: T): DesignToken[] => {
+export const processColorToken = <T extends NodeDocument>(item: T): DesignToken[] => {
   const { name, fills } = item;
   const [{ color }] = fills;
   //console.log("COLOR TOKEN RECTANGLE", name, color);
@@ -493,16 +497,73 @@ function processRectangleSize(
 const generateNodes = 
   <U extends NodeDef>
   ( node: NodeRoot, 
-    isComponent=false, 
+    nodeType:'styles'|'components'|'componentSets',
     filter: (a: U) => boolean, 
     processFn: TokenTransform<NodeDoc>
   ) => {
-    const nodeKeys = (isComponent ? node.components : node.styles) as NodeKey<U>;
+    // const nodeKeys = (isComponent ? node.components : node.styles) as NodeKey<U>;
+    const nodeKeys = node[nodeType] as NodeKey<U>;
+    let nodeDocument = node.document as NodeDoc;
 
-    const nodeDocument = node.document as NodeDoc;
+    
+    if(nodeType === "componentSets"){
+      const nodeKeyComponents = node['components'] as NodeKey<U>;
+      const componentStyles:any = {}
+
+      const filterNames = ['font','letter','text','line height']
+      const filteredTypeKeys: NodeKey<U> = {}
+      // iterate over all the component sets
+      Object.keys(nodeKeys).forEach((setName) => {
+
+        // Validate that this s a typography type
+        // This should be added as a filter like the other ones...
+        filterNames.forEach((filter)=>{
+          if(nodeKeys[setName].name.toLowerCase().includes(filter)){
+            // isValid = true
+            filteredTypeKeys[setName] = nodeKeys[setName];
+          }
+        })
+        
+      })
+
+      Object.keys(filteredTypeKeys).forEach((setName) => {
+        const listOfMatchingComponents:NodeKey<U> = {};
+
+        // iterate over all the components
+        Object.keys(nodeKeyComponents).forEach((componentID) => {
+          // collect the component's ids
+          // checking if the compoent set id matches the current set
+          const currentComponentSetId = nodeKeyComponents[componentID].componentSetId;
+          if(setName === currentComponentSetId){
+            listOfMatchingComponents[componentID] = nodeKeyComponents[componentID]
+          }
+        })
+        
+        let flatNodes = getChildStyleNodes(nodeDocument, true, listOfMatchingComponents, '');
+        
+        // flatNodes = flatNodes.flatMap((doc)=>{
+        //   return doc.children[0] as NodeDoc;
+        // })
+
+        componentStyles[nodeKeys[setName].name] = flatNodes.flatMap((nodeDoc) => {
+          // console.log(nodeDoc)
+          return generateDesignTokens(listOfMatchingComponents, nodeDoc, processFn);
+        })
+        // componentStyles[setName]
+        // console.log(returnFromthing);
+
+      })
+      // console.log(componentStyles);
+
+      return componentStyles;
+      // return flatNodes.flatMap((nodeDoc) => {
+      //   return generateDesignTokens(styleMap, nodeDoc, processFn);
+      // }); 
+    }
+    
     const styleMap = generateStyleMap(nodeKeys, filter);
-    const flatNodes = getChildStyleNodes(nodeDocument, isComponent, styleMap, '');
-
+    const flatNodes = getChildStyleNodes(nodeDocument, nodeType !== 'styles', styleMap, '');
+  
     return flatNodes.flatMap((nodeDoc) => {
       return generateDesignTokens(styleMap, nodeDoc, processFn);
     });
@@ -510,10 +571,10 @@ const generateNodes =
 
 const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   // const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer);
-  const colorTokens = generateNodes(node, false, filterByTypeFill, processColorToken);
-  const typographyTokens = generateNodes(node, false, filterByTypography, processTypographyToken);
-  const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer, processSpacingNode);
-  const elevationTokens = generateNodes(node, true, filterByElevation, processElevationToken);
+  const colorTokens = generateNodes(node, 'styles', filterByTypeFill, processColorToken);
+  const typographyTokens = generateNodes(node, 'styles', filterByTypography, processTypographyToken);
+  const spaceTokens = generateNodes(node, 'components', filterByDescriptionSpacer, processSpacingNode);
+  const elevationTokens = generateNodes(node, 'components', filterByElevation, processElevationToken);
 
   const tokens = colorTokens.concat(typographyTokens,spaceTokens,elevationTokens);
   return tokens;
@@ -524,3 +585,5 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   console.log(spaceTokens);
   console.log(elevationTokens);
 };
+
+export { extractFirstNode, FigmaFileNodes, NodeRoot, generateTokensV2, generateNodes };
