@@ -191,7 +191,6 @@ type EffectType = {
 
 export type NodeDoc = EffectsNode & RectangleNode & NodeDocument;
 
-
 export type DesignToken = {
   type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
   name: string,
@@ -345,7 +344,7 @@ const processSpacingToken = (item: RectangleNode): DesignToken => {
   const { name, absoluteBoundingBox } = item;
   const { width } = absoluteBoundingBox;
   const [tokenName] = name.split('-');
-  const token = `--${ tokenName.toLowerCase().split('/').join('-') }`;
+  const token = `--${ tokenName.toLowerCase().split('/').join('-').replace('=', '-') }`;
   //console.log("SPACING TOKEN", name, token, width);
   return {
     type: 'spacing',
@@ -375,19 +374,20 @@ export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToke
           return effect.color[_key].toFixed(2);
         }
         return Math.round(effect.color[_key]*255);
-      }).join(' ');
+      }).join(', ');
   });
 
   const offsetMap = effects.map((effect)=> {
     const offsetKeys = Object.keys(effect.offset) as Array<keyof { x: number, y: number }>;
-    return offsetKeys.map((_key) => {
+    const shadowValues = offsetKeys.map((_key) => {
       return effect.offset[_key] + 'px ';
     }).join('');
+    return shadowValues.concat(`${ effect.radius.toString() }px`);
   });
 
   const tokenMap = Object.keys(rgbMap).map((_key, index) => {
     if(offsetMap[index]) {
-      return `drop-shadow(${ offsetMap[index] }rgba(${ rgbMap[index] }))`;
+      return `${ offsetMap[index] } rgba(${ rgbMap[index] })`;
     }
   });
 
@@ -395,7 +395,7 @@ export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToke
     type: 'elevation',
     name: `${ name }`,
     token: `${ token }`,
-    value: tokenMap.join(' ') 
+    value: tokenMap.join(', ') 
   }] as DesignToken[];
 };
 
@@ -456,6 +456,7 @@ const processColorToken = <T extends NodeDocument>(item: T): DesignToken[] => {
     } as DesignToken
   ];
 };
+
 function processRectangleSize(
   rectangle: RectangleNode,
   name: string,
@@ -512,12 +513,39 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer, processSpacingNode);
   const elevationTokens = generateNodes(node, true, filterByElevation, processElevationToken);
 
-  const tokens = colorTokens.concat(typographyTokens,spaceTokens,elevationTokens);
+  //Code below is required temporarily to generate tokens. Current tokens require breakpoints to be passed as context type
+  //Will be removed in the future 
+  const frames = recurseToFindFrames(node);
+
+  if (!frames.length)
+    throw new Error('Could not find Frame: Tokens not defined');
+  // flatten all top-level GROUPS inside each frame
+  const groups = frames
+  // eslint-disable-next-line no-sequences
+    .flatMap(({ children, name }) =>
+    // console.log("FRAME", name),
+      children.map((child) => ({ ...child, parent: name }))
+    )
+    .filter(
+      ({ type }) =>
+        type === 'GROUP'
+    );
+  const gridBreakpointTokens = groups.flatMap((group) => {
+
+    return group.children.flatMap((item) => {
+      const { type } = item;
+
+      if (
+        type === 'GROUP' &&
+        group.name === 'margins' &&
+        isRectangleNode(group) &&
+        isRectangleNode(item)
+      ) {
+        return [
+          ...processRectangleSize(group, group.parent, 'breakpoint'),
+          ...processRectangleSize(item, group.parent, 'grid', 'grid-margin')
+        ];
+      } } ); } ).filter((element) => element !== undefined) as DesignToken[];
+  const tokens = [...colorTokens, ...spaceTokens, ...elevationTokens, ...gridBreakpointTokens, ...typographyTokens];
   return tokens;
-
-
-  console.log(colorTokens);
-  console.log(typographyTokens);
-  console.log(spaceTokens);
-  console.log(elevationTokens);
 };

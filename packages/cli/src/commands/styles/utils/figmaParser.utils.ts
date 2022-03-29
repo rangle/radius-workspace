@@ -50,6 +50,8 @@ export const filterByElevation = (data: NodeDef): boolean => {
 
 
 
+
+
 export const generateStyleMap = <T extends NodeDef>(nodeKeys: NodeKey<T>, fn: (data: T) => boolean): NodeKey<T> => {
   const filtered = Object.keys(nodeKeys)
     .map((style)=> {return style;})

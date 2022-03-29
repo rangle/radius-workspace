@@ -41,9 +41,8 @@ export const generateGlobalStyles = async ({
   const { getFileNode } = setup(userToken);
   const { fileId, nodeId } = processFigmaUrl({ url, token: userToken });
   const input = Promise.resolve(data) ?? getFileNode(fileId, [nodeId]);
-  const tokenGroups = input.then(getTokens).then(groupByType);
-
-  const files = await tokenGroups.then(renderTemplate);
+  const tokenGroups = await input.then(getTokens).then(groupByType);
+  const files = renderTemplate(tokenGroups);
 
   if (consoleOutput) {
     // files.forEach(([fileName, content]) => {

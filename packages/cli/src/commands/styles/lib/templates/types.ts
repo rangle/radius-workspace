@@ -18,6 +18,10 @@ export const TOKEN_FILE_COMMENTS: any = {
   shadow: `  /**
   * @tokens Shadow
   * @presenter Shadow
+  */`,
+  elevation: `  /**
+  * @tokens Shadow
+  * @presenter Shadow
   */`
 };
 
