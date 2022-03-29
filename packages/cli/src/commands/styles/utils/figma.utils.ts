@@ -530,11 +530,10 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
       ({ type }) =>
         type === 'GROUP'
     );
-  const gridBreakpointTokens = groups.flatMap((group) => {
 
+  const gridBreakpointTokens = groups.flatMap((group) => {
     return group.children.flatMap((item) => {
       const { type } = item;
-
       if (
         type === 'GROUP' &&
         group.name === 'margins' &&
@@ -545,7 +544,10 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
           ...processRectangleSize(group, group.parent, 'breakpoint'),
           ...processRectangleSize(item, group.parent, 'grid', 'grid-margin')
         ];
-      } } ); } ).filter((element) => element !== undefined) as DesignToken[];
+      }} 
+    ); 
+  }).filter((element) => element !== undefined) as DesignToken[];
+  
   const tokens = [...colorTokens, ...spaceTokens, ...elevationTokens, ...gridBreakpointTokens, ...typographyTokens];
   return tokens;
 };
