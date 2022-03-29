@@ -138,9 +138,9 @@ type NodeRoot = {
   components: {
     [key: string]: ComponentDef,
   },
-  componentSets:{
+  componentSets: {
     [key: string]: ComponentDef,
-  }
+  },
 };
 
 export type ColorToken = {
@@ -243,7 +243,7 @@ const colorToHex = ({ r, g, b }: ColorToken['color']) =>
     .map(hex)
     .join('') }`;
 
-export const findTokens = (node:any) => {
+export const findTokens = (node: any) => {
   if (!node) throw new Error('Could not find Node: Tokens not defined');
 
   if(process.env.FIGMA_UTILITY_V2 == 'true') {
@@ -327,7 +327,7 @@ export const findTokens = (node:any) => {
       return [];
     });
   });
-}
+};
     
 // This should be changed to a type (causes issues with extractFirstNode if it's type from input)
 export const getTokens = (data: any) =>
@@ -408,7 +408,7 @@ export const processTypographyToken = <T extends NodeDocument, S extends NodeDef
   if(!nodeDocument.style && nodeDocument.children[0].style) {
     nodeDocument.style = nodeDocument.children[0].style;
   }
-  if(!nodeDocument.style) return []  
+  if(!nodeDocument.style) return [];  
 
   const {
     name,
@@ -497,21 +497,21 @@ function processRectangleSize(
 const generateNodes = 
   <U extends NodeDef>
   ( node: NodeRoot, 
-    nodeType:'styles'|'components'|'componentSets',
+    nodeType: 'styles'|'components'|'componentSets',
     filter: (a: U) => boolean, 
     processFn: TokenTransform<NodeDoc>
   ) => {
     // const nodeKeys = (isComponent ? node.components : node.styles) as NodeKey<U>;
     const nodeKeys = node[nodeType] as NodeKey<U>;
-    let nodeDocument = node.document as NodeDoc;
+    const nodeDocument = node.document as NodeDoc;
 
     
-    if(nodeType === "componentSets"){
+    if(nodeType === 'componentSets'){
       const nodeKeyComponents = node['components'] as NodeKey<U>;
-      const componentStyles:any = {}
+      const componentStyles: any = {};
 
-      const filterNames = ['font','letter','text','line height']
-      const filteredTypeKeys: NodeKey<U> = {}
+      const filterNames = ['font','letter','text','line height'];
+      const filteredTypeKeys: NodeKey<U> = {};
       // iterate over all the component sets
       Object.keys(nodeKeys).forEach((setName) => {
 
@@ -522,12 +522,12 @@ const generateNodes =
             // isValid = true
             filteredTypeKeys[setName] = nodeKeys[setName];
           }
-        })
+        });
         
-      })
+      });
 
       Object.keys(filteredTypeKeys).forEach((setName) => {
-        const listOfMatchingComponents:NodeKey<U> = {};
+        const listOfMatchingComponents: NodeKey<U> = {};
 
         // iterate over all the components
         Object.keys(nodeKeyComponents).forEach((componentID) => {
@@ -535,11 +535,11 @@ const generateNodes =
           // checking if the compoent set id matches the current set
           const currentComponentSetId = nodeKeyComponents[componentID].componentSetId;
           if(setName === currentComponentSetId){
-            listOfMatchingComponents[componentID] = nodeKeyComponents[componentID]
+            listOfMatchingComponents[componentID] = nodeKeyComponents[componentID];
           }
-        })
+        });
         
-        let flatNodes = getChildStyleNodes(nodeDocument, true, listOfMatchingComponents, '');
+        const flatNodes = getChildStyleNodes(nodeDocument, true, listOfMatchingComponents, '');
         
         // flatNodes = flatNodes.flatMap((doc)=>{
         //   return doc.children[0] as NodeDoc;
@@ -548,11 +548,11 @@ const generateNodes =
         componentStyles[nodeKeys[setName].name] = flatNodes.flatMap((nodeDoc) => {
           // console.log(nodeDoc)
           return generateDesignTokens(listOfMatchingComponents, nodeDoc, processFn);
-        })
+        });
         // componentStyles[setName]
         // console.log(returnFromthing);
 
-      })
+      });
       // console.log(componentStyles);
 
       return componentStyles;

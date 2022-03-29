@@ -6,13 +6,13 @@ import {
   NodeRoot, 
   generateTokensV2,
   generateNodes,
-  processTypographyToken,
+  processTypographyToken
   // processSpacingNode 
-  } from './figma.utils'; 
+} from './figma.utils'; 
 import { 
-  filterByTypographySubtype,
+  filterByTypographySubtype
   // filterByDescriptionSpacer,
- } from './figmaParser.utils';
+} from './figmaParser.utils';
 // import {DesignToken, getTokens} from './figma.utils';
 import { groupByType } from '../lib/radius-styles';
 import data from '../lib/__mocks__/figma_file.json';
@@ -35,7 +35,7 @@ describe('Get Tokens', () => {
   });
 
   it('Generate Token v2', async () =>{
-    let generatedTokens = await Promise.resolve(data)
+    const generatedTokens = await Promise.resolve(data)
       .then((x: any) => x)
       .then(extractFirstNode)
       .then((x: any): NodeRoot => {
@@ -48,7 +48,7 @@ describe('Get Tokens', () => {
   });
 
   it('Generate Token v2 -- check type', async () =>{
-    let generatedTokens = await Promise.resolve(data)
+    const generatedTokens = await Promise.resolve(data)
       .then((x: any) => x)
       .then(extractFirstNode)
       .then((x: any): NodeRoot => {
