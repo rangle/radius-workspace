@@ -256,7 +256,7 @@ export const getTokens = (data: any) =>
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
       if(process.env.FIGMA_UTILITY_V2 == 'true') {
-        generateTokensV2(node);
+        return generateTokensV2(node);
       }
 
 
@@ -367,7 +367,7 @@ export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToke
     const objKeys = Object.keys(effect.color)as Array<keyof Color>;
     return objKeys
       .map((_key) => {
-        console.log(effect.color[_key]);
+        //console.log(effect.color[_key]);
         if(_key == 'a') {
           return effect.color[_key].toFixed(2);
         }
