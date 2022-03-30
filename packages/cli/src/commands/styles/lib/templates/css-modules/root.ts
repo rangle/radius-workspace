@@ -2,15 +2,19 @@ import { mapKeys } from '../../../utils/common.utils';
 import { DesignTokenGroup } from '../../../utils/figma.utils';
 import { RenderTokenGroup, RenderTokenGroupFile } from '../types';
 import { createTokenContext } from '../utils';
-import { color, spacing, template } from './template';
+import { template } from './template';
 import { template as typography } from './typography';
 import { template as grid } from './grid';
+import { spacing } from './spacing';
+import { color } from './color';
+import { elevation } from './elevation';
 
 const entries = mapKeys<DesignTokenGroup>([
   'color',
   'grid',
   'typography',
-  'spacing'
+  'spacing',
+  'elevation'
 ]);
 
 const rootTemplate: RenderTokenGroupFile = (tokenGroup) => {
@@ -35,6 +39,8 @@ export const fileTemplates: RenderTokenGroup = (tokenGroup) => {
           return spacing(tokens, type, context);
         case 'color':
           return color(tokens, type, context);
+        case 'elevation':
+          return elevation(tokens, type, context);
         default:
           return template(tokens, type, context);
       }

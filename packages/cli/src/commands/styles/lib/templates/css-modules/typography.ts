@@ -1,5 +1,6 @@
 import { RenderTokenFile } from '../types';
 import { filterTokenByViewPort } from '../utils';
+import { generateTypographyCSS } from '../../../utils/cssGenerator.utils';
 
 export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
   const queries = Object.keys(breakpoints).map((k) => ({
@@ -14,11 +15,11 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
   :root {
       ${ tokens
       .map(
-        ({ token, value, viewPort }) =>
-          `  ${ token }: ${ value }; /* ${ viewPort } */ `
+        ( token ) =>
+          `  ${ generateTypographyCSS(token) }`
       )
       .join('\n') }
-    
+
   }
   ${ queries.map(({ viewPort, value }) => {
         return `
@@ -27,10 +28,10 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
         :root {
         ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
           .map(
-            ({ token, value, viewPort }) =>
-              `  ${ token }: ${ value }; /* ${ viewPort } */ `
+            (data: any) =>
+              `  ${ generateTypographyCSS(data) }`
           )
-          .join('\n') }        
+          .join('\n') }
         }
     }`;
       }) }

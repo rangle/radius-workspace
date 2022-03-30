@@ -1,5 +1,6 @@
 import { RenderTokenFile } from '../types';
 import { filterTokenByViewPort } from '../utils';
+import { generateGridCSS } from '../../../utils/cssGenerator.utils';
 
 export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
   const queries = Object.keys(breakpoints).map((k) => ({
@@ -15,10 +16,10 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
 ${ tokens
       .filter(({ viewPort }) => viewPort === 'l')
       .map(
-        ({ token, value, viewPort }) => `  ${ token }: ${ value }; /* ${ viewPort } */ `
+        (token) => `${ generateGridCSS(token) }`
       )
       .join('\n') }
-    
+
   }
   ${ queries.map(({ viewPort, value }) => {
         return `
@@ -28,9 +29,9 @@ ${ tokens
 ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
           .map(
             (data: any) =>
-              `          ${ data.token }: ${ data.value }; /* ${ data.viewPort } */ `
+              `${ generateGridCSS(data) }`
           )
-          .join('\n') }        
+          .join('\n') }
         }
     }`;
       }) }
