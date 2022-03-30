@@ -1,12 +1,12 @@
 import * as Figma from 'figma-api';
 import { GroupOf, toKebabCase } from './common.utils';
-import { 
+import {
   filterByDescriptionSpacer,
-  filterByTypeFill, 
-  filterByTypography, 
+  filterByTypeFill,
+  filterByTypography,
   generateDesignTokens,
-  generateStyleMap, 
-  getChildStyleNodes, 
+  generateStyleMap,
+  getChildStyleNodes,
   NodeKey,
   TokenTransform
 } from './figmaParser.utils';
@@ -161,7 +161,7 @@ export type RectangleNode = NodeDocument & {
 export type NodeDoc = RectangleNode & NodeDocument;
 
 export type DesignToken = {
-	type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid',
+	type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
 	name: string,
 	viewPort?: string,
 	cascade?: boolean,
@@ -407,19 +407,19 @@ function processRectangleSize(
   });
 }
 
-/*  
+/*
   V2 Figma Api Parser
-  Currently working for color, typography, and space tokens 
+  Currently working for color, typography, and space tokens
   --note-- space tokens need to be formatted with correct prefix text
 */
 
-//Check with Sean to see whats happening here <T extends NodeDoc> 
+//Check with Sean to see whats happening here <T extends NodeDoc>
 //-> processFn: TokenTransform<NodeDocument>
-const generateNodes = 
+const generateNodes =
   <U extends NodeDef>
-  ( node: NodeRoot, 
-    isComponent=false, 
-    filter: (a: U) => boolean, 
+  ( node: NodeRoot,
+    isComponent=false,
+    filter: (a: U) => boolean,
     processFn: TokenTransform<NodeDoc>
   ) => {
     const nodeKeys = (isComponent ? node.components : node.styles) as NodeKey<U>;
