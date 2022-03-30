@@ -2,9 +2,11 @@ import { mapKeys } from '../../../utils/common.utils';
 import { DesignTokenGroup } from '../../../utils/figma.utils';
 import { RenderTokenGroup, RenderTokenGroupFile } from '../types';
 import { createTokenContext } from '../utils';
-import { color, spacing, template } from './template';
+import { template } from './template';
 import { template as typography } from './typography';
 import { template as grid } from './grid';
+import { spacing } from './spacing';
+import { color } from './color';
 
 const entries = mapKeys<DesignTokenGroup>([
   'color',

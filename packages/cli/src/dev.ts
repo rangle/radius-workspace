@@ -10,7 +10,7 @@ const template = 'css-modules';
 const userToken = process.env['FIGMA_TOKEN'];
 const outputDir = '';
 
-// Funciton called by yargs script to generate styles
+// Function called by yargs script to generate styles
 generateGlobalStyles({
   url,
   dryRun,
