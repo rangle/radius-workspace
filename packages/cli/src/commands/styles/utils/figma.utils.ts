@@ -2,6 +2,7 @@ import * as Figma from 'figma-api';
 import { GroupOf, toKebabCase } from './common.utils';
 import { 
   filterByDescriptionSpacer,
+  filterByElevation,
   filterByTypeFill, 
   filterByTypography, 
   generateDesignTokens,
@@ -23,14 +24,14 @@ export const setup = (key: string) => {
 };
 
 export type FigmaInputData = {
-	url: string,
-	token: string,
+  url: string,
+  token: string,
 };
 
 export type FigmaData = {
-	fileId: string,
-	nodeId: string,
-	token: string,
+  fileId: string,
+  nodeId: string,
+  token: string,
 };
 
 export const assert = <T>(x: T, msg?: string) => {
@@ -55,16 +56,16 @@ export const processFigmaUrl = ({ url, token }: FigmaInputData): FigmaData => {
 
 // type Unpromise<T extends Promise<any>> = T extends Promise<infer X> ? X : never;
 type FigmaFileNodes = {
-	nodes: {
-		[key: string]: NodeRoot,
-	},
+  nodes: {
+    [key: string]: NodeRoot,
+  },
 };
 
 type NodeFrame = {
-	id: string,
-	type: 'FRAME',
-	name: string,
-	children: Array<NodeDocument>,
+  id: string,
+  type: 'FRAME',
+  name: string,
+  children: Array<NodeDocument>,
 };
 
 const isNodeFrame = (o: unknown): o is NodeFrame => {
@@ -78,48 +79,48 @@ const isNodeFrame = (o: unknown): o is NodeFrame => {
 };
 
 export type ColorStyle = {
-	fill: string,
+  fill: string,
 };
 
 export type TypographyStyle = {
-	text: string,
+  text: string,
 };
 
 export type CommonStyle = {
-	s: string,
+  s: string,
 };
 
 type TypographyStyleDetails = {
-	fontFamily: string,
-	fontWeight: number,
-	fontSize: number,
-	letterSpacing: number,
-	lineHeightPx: number,
-	lineHeightPercent: number,
+  fontFamily: string,
+  fontWeight: number,
+  fontSize: number,
+  letterSpacing: number,
+  lineHeightPx: number,
+  lineHeightPercent: number,
 };
 
 export type NodeDocument = {
-	id: string,
-	type: string,
-	name: string,
-	parent?: string,
-	style: TypographyStyleDetails,
-	fills: Array<{
-		color: {
-			r: number,
-			g: number,
-			b: number,
-		},
-	}>,
-	styles: ColorStyle | TypographyStyle,
-	children: Array<NodeDocument>,
+  id: string,
+  type: string,
+  name: string,
+  parent?: string,
+  style: TypographyStyleDetails,
+  fills: Array<{
+    color: {
+      r: number,
+      g: number,
+      b: number,
+    },
+  }>,
+  styles: ColorStyle | TypographyStyle,
+  children: Array<NodeDocument>,
 };
 
 export type BaseDef = {
-	key: string,
-	name: string,
-	styleType: string,
-	description: string,
+  key: string,
+  name: string,
+  styleType: string,
+  description: string,
 };
 
 export type StyleDef = BaseDef & {};
@@ -139,34 +140,64 @@ type NodeRoot = {
 };
 
 export type ColorToken = {
-	name: string,
-	token: string,
-	color: {
-		r: number,
-		g: number,
-		b: number,
-	},
+  name: string,
+  token: string,
+  color: {
+    r: number,
+    g: number,
+    b: number,
+  },
 };
 
 export type RectangleNode = NodeDocument & {
-	absoluteBoundingBox: {
-		x: number,
-		y: number,
-		width: number,
-		height: number,
-	},
+  absoluteBoundingBox: {
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+  },
+};
+
+// TODO
+export type EffectsNode =  NodeDocument & {
+  effects: EffectType[],
 };
 
 
-export type NodeDoc = RectangleNode & NodeDocument;
+export type Color = {
+  r: number,
+  g: number,
+  b: number,
+  a: number,
+};
+
+type EffectType = {
+  type: string,
+  visible: boolean,
+  color: {
+    r: number,
+    g: number,
+    b: number,
+    a: number,
+  },
+  blendMode: string,
+  offset: {
+    x: number,
+    y: number,
+  },
+  radius: number,
+  showShadowBehindNode: boolean,
+};
+
+export type NodeDoc = EffectsNode & RectangleNode & NodeDocument;
 
 export type DesignToken = {
-	type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid',
-	name: string,
-	viewPort?: string,
-	cascade?: boolean,
-	token: string,
-	value: string,
+  type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
+  name: string,
+  viewPort?: string,
+  cascade?: boolean,
+  token: string,
+  value: string,
 };
 
 export type DesignTokenGroup = GroupOf<DesignToken, 'type'>;
@@ -206,6 +237,8 @@ const colorToHex = ({ r, g, b }: ColorToken['color']) =>
     .map(hex)
     .join('') }`;
 
+    
+
 export const getTokens = (data: any) =>
   Promise.resolve(data)
     .then((x) => {
@@ -223,7 +256,6 @@ export const getTokens = (data: any) =>
     })
     .then((node) => {
       if (!node) throw new Error('Could not find Node: Tokens not defined');
-
 
       if(process.env.FIGMA_UTILITY_V2 == 'true') {
         generateTokensV2(node);
@@ -312,7 +344,7 @@ const processSpacingToken = (item: RectangleNode): DesignToken => {
   const { name, absoluteBoundingBox } = item;
   const { width } = absoluteBoundingBox;
   const [tokenName] = name.split('-');
-  const token = `--${ tokenName.toLowerCase().split('/').join('-') }`;
+  const token = `--${ tokenName.toLowerCase().split('/').join('-').replace('=', '-') }`;
   //console.log("SPACING TOKEN", name, token, width);
   return {
     type: 'spacing',
@@ -325,6 +357,46 @@ const processSpacingToken = (item: RectangleNode): DesignToken => {
 const processSpacingNode= <T extends NodeDoc>(nodeDocument: T): DesignToken[] => {
   const recNode = nodeDocument as RectangleNode;
   return typeof(recNode as RectangleNode).absoluteBoundingBox.width ==='number' ? [processSpacingToken(recNode)] : [];
+};
+
+export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToken[] => {
+  const { name, effects } = nodeDoc;
+  const tokenArray = name.replace('=', '-').replace(/\s+/g, '-').split('-').splice(2,3);
+  tokenArray.splice(-1,1);
+  const token = `--${ tokenArray.join('-').slice(0,-1).toLowerCase() }`;
+
+  const rgbMap = effects.map((effect) =>  {
+    const objKeys = Object.keys(effect.color)as Array<keyof Color>;
+    return objKeys
+      .map((_key) => {
+        console.log(effect.color[_key]);
+        if(_key == 'a') {
+          return effect.color[_key].toFixed(2);
+        }
+        return Math.round(effect.color[_key]*255);
+      }).join(', ');
+  });
+
+  const offsetMap = effects.map((effect)=> {
+    const offsetKeys = Object.keys(effect.offset) as Array<keyof { x: number, y: number }>;
+    const shadowValues = offsetKeys.map((_key) => {
+      return effect.offset[_key] + 'px ';
+    }).join('');
+    return shadowValues.concat(`${ effect.radius.toString() }px`);
+  });
+
+  const tokenMap = Object.keys(rgbMap).map((_key, index) => {
+    if(offsetMap[index]) {
+      return `${ offsetMap[index] } rgba(${ rgbMap[index] })`;
+    }
+  });
+
+  return [{
+    type: 'elevation',
+    name: `${ name }`,
+    token: `${ token }`,
+    value: tokenMap.join(', ') 
+  }] as DesignToken[];
 };
 
 export const processTypographyToken = <T extends NodeDocument, S extends NodeDef>(
@@ -376,14 +448,15 @@ const processColorToken = <T extends NodeDocument>(item: T): DesignToken[] => {
   //console.log("COLOR TOKEN RECTANGLE", name, color);
   const token = `--${ name.toLowerCase().split('/').join('-') }`;
   return [
-		{
+    {
 		    type: 'color',
 		    name,
 		    token,
 		    value: colorToHex(color)
-		} as DesignToken
+    } as DesignToken
   ];
 };
+
 function processRectangleSize(
   rectangle: RectangleNode,
   name: string,
@@ -433,12 +506,48 @@ const generateNodes =
     });
   };
 
-const generateTokensV2 = (node: NodeRoot) => {
+const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   // const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer);
   const colorTokens = generateNodes(node, false, filterByTypeFill, processColorToken);
   const typographyTokens = generateNodes(node, false, filterByTypography, processTypographyToken);
   const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer, processSpacingNode);
-  console.log(colorTokens);
-  console.log(typographyTokens);
-  console.log(spaceTokens);
+  const elevationTokens = generateNodes(node, true, filterByElevation, processElevationToken);
+
+  //Code below is required temporarily to generate tokens. Current tokens require breakpoints to be passed as context type
+  //Will be removed in the future 
+  const frames = recurseToFindFrames(node);
+
+  if (!frames.length)
+    throw new Error('Could not find Frame: Tokens not defined');
+  // flatten all top-level GROUPS inside each frame
+  const groups = frames
+  // eslint-disable-next-line no-sequences
+    .flatMap(({ children, name }) =>
+    // console.log("FRAME", name),
+      children.map((child) => ({ ...child, parent: name }))
+    )
+    .filter(
+      ({ type }) =>
+        type === 'GROUP'
+    );
+
+  const gridBreakpointTokens = groups.flatMap((group) => {
+    return group.children.flatMap((item) => {
+      const { type } = item;
+      if (
+        type === 'GROUP' &&
+        group.name === 'margins' &&
+        isRectangleNode(group) &&
+        isRectangleNode(item)
+      ) {
+        return [
+          ...processRectangleSize(group, group.parent, 'breakpoint'),
+          ...processRectangleSize(item, group.parent, 'grid', 'grid-margin')
+        ];
+      }} 
+    ); 
+  }).filter((element) => element !== undefined) as DesignToken[];
+  
+  const tokens = [...colorTokens, ...spaceTokens, ...elevationTokens, ...gridBreakpointTokens, ...typographyTokens];
+  return tokens;
 };

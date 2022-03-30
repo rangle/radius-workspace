@@ -1,7 +1,7 @@
 export type GroupOf<
-	T,
-	K extends keyof T,
-	V extends string = T[K] extends string ? Extract<T[K], string> : never
+  T,
+  K extends keyof T,
+  V extends string = T[K] extends string ? Extract<T[K], string> : never
 > = Record<V, T[]>;
 
 export const groupBy = <T, K extends keyof T>(
@@ -20,8 +20,8 @@ export const groupBy = <T, K extends keyof T>(
 
 export const mapKeys =
 	<T>(ks: ReadonlyArray<keyof T>) =>
-    (o: T) =>
-      ks.map((key) => [key, o[key]] as const);
+	  (o: T) =>
+	    ks.map((key) => [key, o[key]] as const);
 
 /** toKebabCase
  * Converts text in CamelCase to kebab-case

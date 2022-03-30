@@ -17,12 +17,12 @@ import chalk from 'chalk';
 const token = process.env['FIGMA_TOKEN'] || 'none';
 
 export type Options = {
-	url: string,
-	userToken?: string,
-	outputDir?: string,
-	dryRun?: boolean,
-	consoleOutput?: boolean,
-	template?: 'css-modules' | 'css-in-js',
+  url: string,
+  userToken?: string,
+  outputDir?: string,
+  dryRun?: boolean,
+  consoleOutput?: boolean,
+  template?: 'css-modules' | 'css-in-js',
 };
 
 const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
@@ -41,9 +41,8 @@ export const generateGlobalStyles = async ({
   const { getFileNode } = setup(userToken);
   const { fileId, nodeId } = processFigmaUrl({ url, token: userToken });
   const input = Promise.resolve(data) ?? getFileNode(fileId, [nodeId]);
-  const tokenGroups = input.then(getTokens).then(groupByType);
-
-  const files = await tokenGroups.then(renderTemplate);
+  const tokenGroups = await input.then(getTokens).then(groupByType);
+  const files = renderTemplate(tokenGroups);
 
   if (consoleOutput) {
     // files.forEach(([fileName, content]) => {

@@ -18,25 +18,29 @@ export const TOKEN_FILE_COMMENTS: any = {
   shadow: `  /**
   * @tokens Shadow
   * @presenter Shadow
+  */`,
+  elevation: `  /**
+  * @tokens Shadow
+  * @presenter Shadow
   */`
 };
 
 export type TokenContext = {
-	breakpoints: {
-		[k: string]: number,
-	},
+  breakpoints: {
+    [k: string]: number,
+  },
 };
 
 export type RenderTokenGroup = <G extends DesignTokenGroup>(
-	tokenGroup: G
+  tokenGroup: G
 ) => FileTemplate[];
 
 export type RenderTokenGroupFile = <G extends DesignTokenGroup>(
-	tokenGroup: G
+  tokenGroup: G
 ) => FileTemplate;
 
 export type RenderTokenFile = <T extends DesignToken>(
-	tokens: T[],
-	type: string,
-	context: TokenContext
+  tokens: T[],
+  type: string,
+  context: TokenContext
 ) => FileTemplate;
