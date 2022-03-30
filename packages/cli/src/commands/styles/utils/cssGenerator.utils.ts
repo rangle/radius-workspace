@@ -13,7 +13,7 @@ export const generateTypographyCSS = (designToken: DesignToken) => {
 };
 
 export const generateSpacingCSS = (designToken: DesignToken) => {
-  const key = `--ds${ designToken.token }`;
+  const key = `--ds${ designToken.token.substring(1) }`;
   const value = designToken.value;
   const remValue = Number(value)/16 + 'rem';
   return `${ key }: ${ remValue };`;
@@ -22,12 +22,6 @@ export const generateSpacingCSS = (designToken: DesignToken) => {
 export const generateElevationCSS = (designToken: DesignToken) => {
   const key = `--ds${ designToken.token.substring(1) }`;
   const value = designToken.value;
-  return `${ key }: ${ value };`;
-};
-
-export const generateBreakpointCSS = (designToken: DesignToken) => {
-  const key = `--ds${ designToken.token.substring(1) }`;
-  const value = designToken.value + 'px';
   return `${ key }: ${ value };`;
 };
 
