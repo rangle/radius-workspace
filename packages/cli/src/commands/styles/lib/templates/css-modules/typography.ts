@@ -7,7 +7,7 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
     value: breakpoints[k]
   }));
   return [
-    './styles/_typography.css',
+    './styles/typography.css',
     `
   /* default typography tokens */
 

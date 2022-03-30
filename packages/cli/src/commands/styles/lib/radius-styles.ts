@@ -10,7 +10,7 @@ import renderers from './templates';
 import path from 'path';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 
-import data from './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
+// import data from './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
 import { logger } from '../../../logger';
 import chalk from 'chalk';
 
@@ -40,7 +40,7 @@ export const generateGlobalStyles = async ({
   const renderTemplate = renderers[template];
   const { getFileNode } = setup(userToken);
   const { fileId, nodeId } = processFigmaUrl({ url, token: userToken });
-  const input = Promise.resolve(data) ?? getFileNode(fileId, [nodeId]);
+  const input = getFileNode(fileId, [nodeId]);
   const tokenGroups = input.then(getTokens).then(groupByType);
 
   const files = await tokenGroups.then(renderTemplate);

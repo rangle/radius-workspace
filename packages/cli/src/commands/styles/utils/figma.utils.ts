@@ -187,8 +187,8 @@ const isRectangleNode = (o: NodeDocument): o is RectangleNode =>
 const isColorStyle = (o: NodeDocument['styles']): o is ColorStyle =>
   !!o && !!(o as ColorStyle).fill;
 
-const isTypographyStyle = (o: NodeDocument['styles']): o is TypographyStyle =>
-  !!o && !!(o as TypographyStyle).text;
+// const isTypographyStyle = (o: NodeDocument['styles']): o is TypographyStyle =>
+//   !!o && !!(o as TypographyStyle).text;
 
 const hex = (n: number) => `00${ n.toString(16) }`.slice(-2);
 
@@ -274,22 +274,22 @@ export const getTokens = (data: any) =>
             return processColorToken(item);
           }
           // TODO: talk to Design to flatten these groups and find other ways to mark screen size.
-          if (group.name.match(/Typography-Tokens/) && type === 'GROUP') {
-            const { children } = item;
-            return children.flatMap((childItem) => {
-              if (
-                childItem.type === 'TEXT' &&
-								isTypographyStyle(childItem.styles) &&
-								styleIndex[childItem.styles.text] &&
-								styleIndex[childItem.styles.text].description.match(/#[Tt]oken/)
-              )
-                return processTypographyToken(
-                  childItem,
-                  styleIndex[childItem.styles.text]
-                );
-              return [];
-            });
-          }
+          // if (group.name.match(/Typography-Tokens/) && type === 'GROUP') {
+          //   const { children } = item;
+          //   return children.flatMap((childItem) => {
+          //     if (
+          //       childItem.type === 'TEXT' &&
+          // 			isTypographyStyle(childItem.styles) &&
+          // 			styleIndex[childItem.styles.text] &&
+          // 			styleIndex[childItem.styles.text].description.match(/#[Tt]oken/)
+          //     )
+          //       return processTypographyToken(
+          //         childItem,
+          //         styleIndex[childItem.styles.text]
+          //       );
+          //     return [];
+          //   });
+          // }
           return [];
         });
       });
