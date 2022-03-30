@@ -1,13 +1,13 @@
 import * as Figma from 'figma-api';
 import { GroupOf, toKebabCase } from './common.utils';
-import { 
+import {
   filterByDescriptionSpacer,
   filterByElevation,
-  filterByTypeFill, 
-  filterByTypography, 
+  filterByTypeFill,
+  filterByTypography,
   generateDesignTokens,
-  generateStyleMap, 
-  getChildStyleNodes, 
+  generateStyleMap,
+  getChildStyleNodes,
   NodeKey,
   TokenTransform
 } from './figmaParser.utils';
@@ -192,12 +192,12 @@ type EffectType = {
 export type NodeDoc = EffectsNode & RectangleNode & NodeDocument;
 
 export type DesignToken = {
-  type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
-  name: string,
-  viewPort?: string,
-  cascade?: boolean,
-  token: string,
-  value: string,
+	type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
+	name: string,
+	viewPort?: string,
+	cascade?: boolean,
+	token: string,
+	value: string,
 };
 
 export type DesignTokenGroup = GroupOf<DesignToken, 'type'>;
@@ -237,8 +237,6 @@ const colorToHex = ({ r, g, b }: ColorToken['color']) =>
     .map(hex)
     .join('') }`;
 
-    
-
 export const getTokens = (data: any) =>
   Promise.resolve(data)
     .then((x) => {
@@ -258,7 +256,7 @@ export const getTokens = (data: any) =>
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
       if(process.env.FIGMA_UTILITY_V2 == 'true') {
-        generateTokensV2(node);
+        return generateTokensV2(node);
       }
 
 
@@ -369,7 +367,7 @@ export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToke
     const objKeys = Object.keys(effect.color)as Array<keyof Color>;
     return objKeys
       .map((_key) => {
-        console.log(effect.color[_key]);
+        //console.log(effect.color[_key]);
         if(_key == 'a') {
           return effect.color[_key].toFixed(2);
         }
@@ -395,7 +393,7 @@ export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToke
     type: 'elevation',
     name: `${ name }`,
     token: `${ token }`,
-    value: tokenMap.join(', ') 
+    value: tokenMap.join(', ')
   }] as DesignToken[];
 };
 
@@ -480,19 +478,19 @@ function processRectangleSize(
   });
 }
 
-/*  
+/*
   V2 Figma Api Parser
-  Currently working for color, typography, and space tokens 
+  Currently working for color, typography, and space tokens
   --note-- space tokens need to be formatted with correct prefix text
 */
 
-//Check with Sean to see whats happening here <T extends NodeDoc> 
+//Check with Sean to see whats happening here <T extends NodeDoc>
 //-> processFn: TokenTransform<NodeDocument>
-const generateNodes = 
+const generateNodes =
   <U extends NodeDef>
-  ( node: NodeRoot, 
-    isComponent=false, 
-    filter: (a: U) => boolean, 
+  ( node: NodeRoot,
+    isComponent=false,
+    filter: (a: U) => boolean,
     processFn: TokenTransform<NodeDoc>
   ) => {
     const nodeKeys = (isComponent ? node.components : node.styles) as NodeKey<U>;
@@ -514,7 +512,7 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   const elevationTokens = generateNodes(node, true, filterByElevation, processElevationToken);
 
   //Code below is required temporarily to generate tokens. Current tokens require breakpoints to be passed as context type
-  //Will be removed in the future 
+  //Will be removed in the future
   const frames = recurseToFindFrames(node);
 
   if (!frames.length)
@@ -544,10 +542,10 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
           ...processRectangleSize(group, group.parent, 'breakpoint'),
           ...processRectangleSize(item, group.parent, 'grid', 'grid-margin')
         ];
-      }} 
-    ); 
+      }}
+    );
   }).filter((element) => element !== undefined) as DesignToken[];
-  
+
   const tokens = [...colorTokens, ...spaceTokens, ...elevationTokens, ...gridBreakpointTokens, ...typographyTokens];
   return tokens;
 };
