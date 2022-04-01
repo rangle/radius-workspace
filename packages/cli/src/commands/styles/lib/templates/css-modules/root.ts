@@ -28,7 +28,7 @@ export const fileTemplates: RenderTokenGroup = (tokenGroup) => {
     ...entries(tokenGroup).map(([type, tokens]) => {
       switch (type) {
         case 'typography':
-          return typography(tokens, type, context);
+          return typography([], type, context);
         case 'grid':
           return grid(tokens, type, context);
         case 'spacing':

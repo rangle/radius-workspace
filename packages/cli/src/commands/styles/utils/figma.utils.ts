@@ -3,7 +3,7 @@ import { GroupOf, toKebabCase } from './common.utils';
 import { 
   filterByDescriptionSpacer,
   filterByElevation,
-  filterByTypeFill, 
+  filterByTypeFill,   
   filterByTypography, 
   generateDesignTokens,
   generateStyleMap, 
@@ -125,7 +125,9 @@ export type BaseDef = {
 
 export type StyleDef = BaseDef & {};
 
-export type ComponentDef = Omit<StyleDef, 'styleType'>;
+export type ComponentDef = Omit<StyleDef, 'styleType'> & {
+  componentSetId: string,
+};
 
 export type NodeDef = StyleDef | ComponentDef;
 
@@ -135,6 +137,9 @@ type NodeRoot = {
     [key: string]: StyleDef,
   },
   components: {
+    [key: string]: ComponentDef,
+  },
+  componentSets: {
     [key: string]: ComponentDef,
   },
 };
@@ -200,6 +205,14 @@ export type DesignToken = {
   value: string,
 };
 
+export type FontDesignToken = {
+  fontType: 'scale' | 'weight' | 'lineHeight' | 'letterSpacing', 
+};
+
+// const entries = mapKeys<FontDesignToken> ([
+//   'fontType'
+// ]);
+
 export type DesignTokenGroup = GroupOf<DesignToken, 'type'>;
 
 const extractFirstNode = <T extends FigmaFileNodes>({ nodes }: T) =>
@@ -237,8 +250,6 @@ const colorToHex = ({ r, g, b }: ColorToken['color']) =>
     .map(hex)
     .join('') }`;
 
-    
-
 export const getTokens = (data: any) =>
   Promise.resolve(data)
     .then((x) => {
@@ -258,9 +269,8 @@ export const getTokens = (data: any) =>
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
       if(process.env.FIGMA_UTILITY_V2 == 'true') {
-        generateTokensV2(node);
+        return generateTokensV2(node);
       }
-
 
       const styleIndex = node.styles;
       const frames = recurseToFindFrames(node);
@@ -369,7 +379,6 @@ export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToke
     const objKeys = Object.keys(effect.color)as Array<keyof Color>;
     return objKeys
       .map((_key) => {
-        console.log(effect.color[_key]);
         if(_key == 'a') {
           return effect.color[_key].toFixed(2);
         }
@@ -446,6 +455,9 @@ const processColorToken = <T extends NodeDocument>(item: T): DesignToken[] => {
   const { name, fills } = item;
   const [{ color }] = fills;
   //console.log("COLOR TOKEN RECTANGLE", name, color);
+  console.log(item);
+  console.log(name);
+
   const token = `--${ name.toLowerCase().split('/').join('-') }`;
   return [
     {
@@ -506,13 +518,119 @@ const generateNodes =
     });
   };
 
+// const processTypoKey = (nodeDoc: NodeDoc, typographyType?: FontDesignToken): DesignToken | undefined => {
+
+
+//   switch(typographyType) {
+//     case typographyType?.fontType: 
+//       return {
+//         type: 'typography',
+//         name: nodeDoc.name,
+//         value: nodeDoc.style.fontSize.toString()
+//       } as DesignToken;
+//   }
+
+
+// if(typographyType?.includes('scale')) {
+//   return {
+//     type: 'typography',
+//     name: nodeDoc.name,
+//     fontType: nodeDoc.parent,
+//     value: nodeDoc.style.fontSize.toString()
+//   } as FontDesignToken;
+// }
+
+// if(typographyType?.includes('Line')) {
+//   return {
+//     type: 'typography',
+//     name: nodeDoc.parent,
+//     value: nodeDoc.style.lineHeightPercent.toString()
+//   } as FontDesignToken;
+// }
+
+// if(typographyType?.includes('spacing')) {
+//   return {
+//     type: 'typography',
+//     name: nodeDoc.parent,
+//     value: nodeDoc.style.letterSpacing.toString()
+//   } as FontDesignToken;
+// }
+
+// if(typographyType?.includes('weight')) {
+//   return {
+//     type: 'typography',
+//     name: nodeDoc.name,
+//     value: nodeDoc.style.fontWeight.toString()
+//   } as FontDesignToken;
+// }
+// };
+
 const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   // const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer);
-  const colorTokens = generateNodes(node, false, filterByTypeFill, processColorToken);
+  const colorTokens = generateNodes(node, false, filterByTypeFill, processColorToken).
+    filter((token) =>token.name.includes('colour'));
+    
   const typographyTokens = generateNodes(node, false, filterByTypography, processTypographyToken);
   const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer, processSpacingNode);
   const elevationTokens = generateNodes(node, true, filterByElevation, processElevationToken);
 
+  // const typoKeys = generateStyleMap(node.componentSets, filterByTypo);
+  
+  // type TypoKey = {
+  //   [key: string]: ComponentDef,
+  // };
+
+  // const typeKeys: TypoKey = {};
+
+  // const componentTypoKeys = Object.keys(node.components).map((key) => {
+  //   if(node.components[key].componentSetId && typoKeys[node.components[key].componentSetId]) {
+  //     const obj = node.components[key] as ComponentDef;
+  //     console.log(obj);
+  //     typeKeys[key] = obj;
+  //   }
+  // });
+
+  // // scale, weight, lineHeight, letterSpacing
+  
+
+  // console.log(typoKeys);
+  // console.log(componentTypoKeys);
+  // console.log(typeKeys);
+
+  // const typoNodes = getChildStyleNodes(
+  //   node.document as NodeDoc, 
+  //   true, 
+  //   typeKeys, 
+  //   '')
+  //   .flatMap((nodeDoc) => {
+  //     console.log(nodeDoc);
+  //     //Each NodeDocument for type has exactly one child;
+  //     nodeDoc.children[0].name = `${ nodeDoc.name } ${ nodeDoc.children[0].name }`;
+  //     return nodeDoc.children;
+  //     return nodeDoc.children[0];});
+
+  // console.log(typoNodes);
+
+  // const largeTypoNodes = getChildStyleNodes(
+  //   node.document as NodeDoc,
+  //   true,
+  //   typoKeys,
+  //   ''
+  // ).flatMap((nodeDoc)=>{
+  //   console.log(nodeDoc);
+  //   return nodeDoc.children.flatMap((child) => child.children.flatMap((innerChild) => {
+  //     innerChild.parent = nodeDoc.name;
+  //     return innerChild;
+  //   }));
+  // });
+
+  // console.log(largeTypoNodes);
+
+  // const typoDesignTokens = largeTypoNodes.map((node) => {
+  //   return processTypoKey(node as NodeDoc, node.parent);
+  // });
+  
+  // console.log(typoDesignTokens);
   //Code below is required temporarily to generate tokens. Current tokens require breakpoints to be passed as context type
   //Will be removed in the future 
   const frames = recurseToFindFrames(node);
@@ -547,7 +665,7 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
       }} 
     ); 
   }).filter((element) => element !== undefined) as DesignToken[];
-  
+
   const tokens = [...colorTokens, ...spaceTokens, ...elevationTokens, ...gridBreakpointTokens, ...typographyTokens];
   return tokens;
 };

@@ -76,17 +76,15 @@
 		  "always"
 		],
 		// Indent
-		"indent": [
-		  "error",
-		  2,
-		  {
-		    "SwitchCase": 1,
-		    "flatTernaryExpressions": true
-        
-		  }
-		],
+		"@typescript-eslint/indent": [
+			"error",
+			2,
+			{
+				"SwitchCase": 1,
+				"flatTernaryExpressions": true
+			}
+        ],
 		//Suppresses error for tabs & spaces setting
-		"no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
-		"@typescript-eslint/no-explicit-any": ["off"]
+		"no-mixed-spaces-and-tabs": ["error", "smart-tabs"]
 	}
 }

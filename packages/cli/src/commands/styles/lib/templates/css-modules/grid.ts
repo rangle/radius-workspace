@@ -13,27 +13,27 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
 
   :root {
 ${ tokens
-      .filter(({ viewPort }) => viewPort === 'l')
-      .map(
-        ({ token, value, viewPort }) => `  ${ token }: ${ value }; /* ${ viewPort } */ `
-      )
-      .join('\n') }
+    .filter(({ viewPort }) => viewPort === 'l')
+    .map(
+      ({ token, value, viewPort }) => `  ${ token }: ${ value }; /* ${ viewPort } */ `
+    )
+    .join('\n') }
     
   }
   ${ queries.map(({ viewPort, value }) => {
-        return `
+    return `
     /* grid tokens for ${ viewPort } (${ value }) */
     @media screen and (min-width: ${ value }) {
         :root {
 ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
-          .map(
-            (data: any) =>
-              `          ${ data.token }: ${ data.value }; /* ${ data.viewPort } */ `
-          )
-          .join('\n') }        
+    .map(
+      (data: any) =>
+        `          ${ data.token }: ${ data.value }; /* ${ data.viewPort } */ `
+    )
+    .join('\n') }        
         }
     }`;
-      }) }
+  }) }
   `
   ] as const;
 };
