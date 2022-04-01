@@ -14,27 +14,27 @@ export const template: RenderTokenFile = (tokens, _type, { breakpoints }) => {
 
   :root {
       ${ tokens
-      .map(
-        ( token ) =>
-          `  ${ generateTypographyCSS(token) }`
-      )
-      .join('\n') }
+    .map(
+      ( token ) =>
+        `  ${ generateTypographyCSS(token) }`
+    )
+    .join('\n') }
 
   }
   ${ queries.map(({ viewPort, value }) => {
-        return `
+    return `
     /* typography tokens for ${ viewPort } (${ value }) */
     @media screen and (min-width: ${ value }) {
         :root {
         ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
-          .map(
-            (data: any) =>
-              `  ${ generateTypographyCSS(data) }`
-          )
-          .join('\n') }
+    .map(
+      (data: any) =>
+        `  ${ generateTypographyCSS(data) }`
+    )
+    .join('\n') }
         }
     }`;
-      }) }
+  }) }
   `
   ] as const;
 };

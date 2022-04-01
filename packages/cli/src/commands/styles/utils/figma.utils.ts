@@ -86,6 +86,10 @@ export type TypographyStyle = {
   text: string,
 };
 
+export type ElevationStyle = {
+  effect: string, 
+};
+
 export type CommonStyle = {
   s: string,
 };
@@ -125,7 +129,9 @@ export type BaseDef = {
 
 export type StyleDef = BaseDef & {};
 
-export type ComponentDef = Omit<StyleDef, 'styleType'>;
+export type ComponentDef = Omit<StyleDef, 'styleType'> & {
+  componentSetId: string,
+};
 
 export type NodeDef = StyleDef | ComponentDef;
 
@@ -135,6 +141,9 @@ type NodeRoot = {
     [key: string]: StyleDef,
   },
   components: {
+    [key: string]: ComponentDef,
+  },
+  componentSets: {
     [key: string]: ComponentDef,
   },
 };
@@ -192,13 +201,17 @@ type EffectType = {
 export type NodeDoc = EffectsNode & RectangleNode & NodeDocument;
 
 export type DesignToken = {
-	type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
-	name: string,
-	viewPort?: string,
-	cascade?: boolean,
-	token: string,
-	value: string,
+  type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
+  name: string,
+  viewPort?: string,
+  cascade?: boolean,
+  token: string,
+  value: string,
 };
+
+// const entries = mapKeys<FontDesignToken> ([
+//   'fontType'
+// ]);
 
 export type DesignTokenGroup = GroupOf<DesignToken, 'type'>;
 
@@ -258,7 +271,6 @@ export const getTokens = (data: any) =>
       if(process.env.FIGMA_UTILITY_V2 == 'true') {
         return generateTokensV2(node);
       }
-
 
       const styleIndex = node.styles;
       const frames = recurseToFindFrames(node);
@@ -367,7 +379,6 @@ export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToke
     const objKeys = Object.keys(effect.color)as Array<keyof Color>;
     return objKeys
       .map((_key) => {
-        //console.log(effect.color[_key]);
         if(_key == 'a') {
           return effect.color[_key].toFixed(2);
         }
@@ -444,6 +455,9 @@ const processColorToken = <T extends NodeDocument>(item: T): DesignToken[] => {
   const { name, fills } = item;
   const [{ color }] = fills;
   //console.log("COLOR TOKEN RECTANGLE", name, color);
+  console.log(item);
+  console.log(name);
+
   const token = `--${ name.toLowerCase().split('/').join('-') }`;
   return [
     {
@@ -506,10 +520,12 @@ const generateNodes =
 
 const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   // const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer);
-  const colorTokens = generateNodes(node, false, filterByTypeFill, processColorToken);
+  const colorTokens = generateNodes(node, false, filterByTypeFill, processColorToken).
+    filter((token) =>token.name.includes('colour'));
+    
   const typographyTokens = generateNodes(node, false, filterByTypography, processTypographyToken);
   const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer, processSpacingNode);
-  const elevationTokens = generateNodes(node, true, filterByElevation, processElevationToken);
+  const elevationTokens = generateNodes(node, false, filterByElevation, processElevationToken);
 
   //Code below is required temporarily to generate tokens. Current tokens require breakpoints to be passed as context type
   //Will be removed in the future

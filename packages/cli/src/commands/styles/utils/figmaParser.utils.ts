@@ -1,5 +1,7 @@
 import { 
+  ColorStyle,
   DesignToken, 
+  ElevationStyle, 
   NodeDef, 
   NodeDoc, 
   NodeDocument, 
@@ -16,8 +18,8 @@ const FigmaTypes = {
   FILL: 'FILL',
   GRID: 'GRID',
   SPACER: 'Spacer',
-  TYPOGRAPHY: 'Typography-Tokens',
-  ELEVATION: 'Elevation'
+  TYPOGRAPHY: 'TEXT',
+  ELEVATION: 'Shadows'
 } as const;
 
 
@@ -41,16 +43,12 @@ export const filterByDescriptionSpacer = (data: NodeDef): boolean => {
 };
 
 export const filterByTypography = (data: StyleDef): boolean =>{
-  return data.description.includes(FigmaTypes.TYPOGRAPHY);
+  return data.styleType === FigmaTypes.TYPOGRAPHY;
 };   
 
 export const filterByElevation = (data: NodeDef): boolean => {
   return data.description.includes(FigmaTypes.ELEVATION);
 };
-
-
-
-
 
 export const generateStyleMap = <T extends NodeDef>(nodeKeys: NodeKey<T>, fn: (data: T) => boolean): NodeKey<T> => {
   const filtered = Object.keys(nodeKeys)
@@ -66,11 +64,11 @@ export const generateStyleMap = <T extends NodeDef>(nodeKeys: NodeKey<T>, fn: (d
 };
 
 export const getChildStyleNodes = <S extends string, U extends NodeDef, T extends NodeDoc>
-  ( nodeDocument: T, 
-    isComponent=false, 
-    nodeKeys: NodeKey<U>, 
-    keyDef: S
-  ): NodeDoc[] => {
+( nodeDocument: T, 
+  isComponent=false, 
+  nodeKeys: NodeKey<U>, 
+  keyDef: S
+): NodeDoc[] => {
   let childNodes: NodeDoc[] = [];
   if(nodeKeys[keyDef]) {
     return [nodeDocument]; 
@@ -85,13 +83,33 @@ export const getChildStyleNodes = <S extends string, U extends NodeDef, T extend
       if(isComponent) {
         nodeStyle = node.id;
       } else {
-        nodeStyle = isTypographyStyle(node.styles) ? node.styles?.text : node.styles?.fill;
+        
+        nodeStyle = getStyle(node.styles);
+        // nodeStyle = isTypographyStyle(node.styles) ? node.styles?.text : node.styles?.fill;
       }
       return getChildStyleNodes(node, isComponent, nodeKeys, nodeStyle);
     });
   }   
   return childNodes;   
 }; 
+
+const getStyle = (style: ColorStyle | TypographyStyle | ElevationStyle )  => {
+
+  if(style != undefined) {
+    
+    if('effect' in style) {
+      return (style as ElevationStyle).effect;
+    } else if ('text' in style) {
+      return (style as TypographyStyle).text;
+    } else if ('fill' in style) {
+      return (style as ColorStyle).fill;
+    } else {
+      return '';
+    }  
+  }
+  return '';
+
+};
 
 const isTypographyStyle = (o: NodeDocument['styles']): o is TypographyStyle =>
   !!o && !!(o as TypographyStyle).text;
@@ -104,9 +122,9 @@ const isTypographyStyle = (o: NodeDocument['styles']): o is TypographyStyle =>
 // }
 
 export const generateDesignTokens = <T extends NodeDoc, U extends NodeDef>
-  ( nodeKeys: NodeKey<U>, 
-    node: T, 
-    fn: TokenTransform<T>): DesignToken[] => {
+( nodeKeys: NodeKey<U>, 
+  node: T, 
+  fn: TokenTransform<T>): DesignToken[] => {
     
   const nodeStyle = isTypographyStyle(node.styles) 
     ? node.styles?.text 
@@ -118,7 +136,7 @@ export const generateDesignTokens = <T extends NodeDoc, U extends NodeDef>
 //Checks whether argument length of either TokenTransformWithoutStyle or TokenStransformWithStyle is 1 or greater 
 //This allows us to pass a function to generateDesignTokens with either one or two args.
 export const isTokenTransformWithoutStyle = <T extends NodeDoc>
-  (f: TokenTransform<T>): f is TokenTransformWithoutStyle<T> => {
+(f: TokenTransform<T>): f is TokenTransformWithoutStyle<T> => {
   return f.length === 1;
 };
 

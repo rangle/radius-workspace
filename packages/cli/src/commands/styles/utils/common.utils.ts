@@ -8,15 +8,15 @@ export const groupBy = <T, K extends keyof T>(
   list: T[],
   key: K
 ): GroupOf<T, K> =>
-    list.reduce((res, item) => {
-      const value = item[key];
-      if (typeof value !== 'string') return res;
-      const previous = res[value as keyof typeof res] || [];
-      return {
-        ...res,
-        [value]: [...previous, item]
-      };
-    }, {} as GroupOf<T, K>);
+  list.reduce((res, item) => {
+    const value = item[key];
+    if (typeof value !== 'string') return res;
+    const previous = res[value as keyof typeof res] || [];
+    return {
+      ...res,
+      [value]: [...previous, item]
+    };
+  }, {} as GroupOf<T, K>);
 
 export const mapKeys =
 	<T>(ks: ReadonlyArray<keyof T>) =>
