@@ -92,13 +92,5 @@ export const styles: CommandModule<Options, Options> = {
     generateGlobalStyles(
       options
     );
-    // generateGlobalStyles({
-    //   url,
-    //   dryRun,
-    //   template,
-    //   userToken,
-    //   userOutputDir
-    // });
-    
   }
 };
