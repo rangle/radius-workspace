@@ -83,7 +83,6 @@ export const getChildStyleNodes = <S extends string, U extends NodeDef, T extend
       if(isComponent) {
         nodeStyle = node.id;
       } else {
-        
         nodeStyle = getStyle(node.styles);
         // nodeStyle = isTypographyStyle(node.styles) ? node.styles?.text : node.styles?.fill;
       }
@@ -95,20 +94,19 @@ export const getChildStyleNodes = <S extends string, U extends NodeDef, T extend
 
 const getStyle = (style: ColorStyle | TypographyStyle | ElevationStyle )  => {
 
-  if(style != undefined) {
-    
-    if('effect' in style) {
-      return (style as ElevationStyle).effect;
-    } else if ('text' in style) {
-      return (style as TypographyStyle).text;
-    } else if ('fill' in style) {
-      return (style as ColorStyle).fill;
-    } else {
-      return '';
-    }  
+  if(style == undefined) {
+    return '';
   }
-  return '';
 
+  if('effect' in style) {
+    return style.effect;
+  } else if ('text' in style) {
+    return style.text;
+  } else if ('fill' in style) {
+    return style.fill;
+  } else {
+    return '';
+  }  
 };
 
 const isTypographyStyle = (o: NodeDocument['styles']): o is TypographyStyle =>

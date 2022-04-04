@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import inquirer, { QuestionCollection } from 'inquirer';
+import inquirer, { Answers, QuestionCollection } from 'inquirer';
 import { CommandModule } from 'yargs';
 import { logger } from '../../logger';
 import { generateGlobalStyles, Options } from './lib/radius-styles';
@@ -61,7 +61,7 @@ export const styles: CommandModule<Options, Options> = {
       }
     ];
 
-    const answers = await inquirer.prompt(questions);
+    const answers: Answers = await inquirer.prompt(questions);
     const userOutputDir = answers['ds-styles-dir'];
 
     logger.info('Generating Radius Styles');
