@@ -6,12 +6,15 @@ import fs from 'fs';
 import fsExtra from 'fs-extra';
 import Listr from 'listr';
 import { logger } from '../../../logger';
+import { execSync } from 'child_process';
+
 
 type BranchRef = { repo: string, branch: string };
 const branchRef = (repo: string, branch: string): BranchRef => ({
   repo,
   branch
 });
+
 const REPOS = {
   angular: branchRef('rangle/radius-angular', 'main'),
   react: {
@@ -26,6 +29,23 @@ const isKeyof = <T>(val: T) => {
   return (k: keyof never): k is keyof T => keys.includes(k as never);
 };
 const isReactStyle = isKeyof(REPOS.react);
+
+export const commandSetupGit = async (dir: string) => {
+  // check to see if Git exists
+  try{
+    await execSync('which git');
+  } catch(error: any){
+    console.log(chalk.red(error?.message));
+  }
+  
+  // check to see if the folder we just cloned exists
+  if(!fs.existsSync(dir)){
+    throw new Error(`The repo directory ${ dir } does not exist`);
+  }
+
+  await execSync(`cd ${ dir } && rm -rf .git`);
+  await execSync(`cd ${ dir } && git init`);
+};
 
 export const logSuccess = (designSystemOptions: any) => {
   console.log(chalk.green('All done!'));
@@ -56,19 +76,30 @@ export const selectRepo = (designSystemOptions: any) => {
 
   if (!repoRef) {
     logger.info('coming soon... 😉');
-    return false;
+    return null;
   }
   return repoRef;
 };
 
+
 export const configureGitSetup = (
-  dir: any,
-  ref: any,
+  dir: string,
+  ref: BranchRef,
   clone: any,
   checkout: any,
-  removeDir: any
+  removeDir: any,
+  removeGit: any
 ): { run: () => Promise<void> } => {
+
   const gitSetup = [
+    {
+      title: 'Check if folder is available',
+      task: () => {
+        if (fs.existsSync(dir)) {
+          throw new Error(`The folder ${ dir } is already in use`);
+        }
+      }
+    },
     {
       title: 'Clone the repo',
       task: (_ctx: any, task: any) =>
@@ -96,25 +127,38 @@ export const configureGitSetup = (
           task.skip('Checkout out the branch failed.');
           throw new Error(err);
         })
+    },
+    {
+      title: 'Initializing git repository',
+      task: () => removeGit(dir)
     }
   ];
-    // setup the main tasks launcher
+
+  // setup the main tasks launcher
   const tasks = new Listr(gitSetup, { concurrent: false });
   return tasks;
 };
+
+
+
 
 export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
   try {
     const repoRef = selectRepo(designSystemOptions);
     const dir = path.join(process.cwd(), designSystemOptions['ds-name']);
-    const definitiveRef: BranchRef | boolean = repoRef;
+    const definitiveRef: BranchRef | null = repoRef;
+
+    if(!definitiveRef){
+      return false;
+    }
 
     const tasks = configureGitSetup(
       dir,
       definitiveRef,
       git.clone,
       git.checkout,
-      fsExtra.removeSync
+      fsExtra.removeSync,
+      commandSetupGit
     );
     // run all of the commands
     await tasks.run();
