@@ -45,9 +45,6 @@ export const styles: CommandModule<Options, Options> = {
           type: 'boolean'
         }
       })
-      .options({
-
-      })
     ;
     return yargs;
   },
@@ -70,8 +67,8 @@ export const styles: CommandModule<Options, Options> = {
     logger.info(`Figma URL: ${ chalk.red(args.url) }`);
     logger.info(`Dry Run: ${ chalk.red(args.dryRun) }`);
   
-    // const { dryRun, url, outputDir, template } = args;
-    const { template } = args;
+
+    const { template, dryRun, url } = args;
     const userToken = process.env['FIGMA_TOKEN'];
     if (!userToken) {
       logger.error(
@@ -81,10 +78,10 @@ export const styles: CommandModule<Options, Options> = {
     }
 
     const options: Options = {
-      url: 'https://www.figma.com/file/TJzz7ZB6pJvpLhjI5DWG3F/Radius-Design-Kit-V2(WIP)?node-id=725%3A8261',
+      url: url,
       userToken: userToken,
       outputDir: userOutputDir,
-      dryRun: false,
+      dryRun: dryRun,
       consoleOutput: false,
       template: template
     };

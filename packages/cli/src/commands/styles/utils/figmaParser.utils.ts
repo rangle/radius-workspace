@@ -84,6 +84,7 @@ export const getChildStyleNodes = <S extends string, U extends NodeDef, T extend
         nodeStyle = node.id;
       } else {
         nodeStyle = getStyle(node.styles);
+        // Commented out Type guard for previous styles format that did not include elevations.effect
         // nodeStyle = isTypographyStyle(node.styles) ? node.styles?.text : node.styles?.fill;
       }
       return getChildStyleNodes(node, isComponent, nodeKeys, nodeStyle);
@@ -92,8 +93,8 @@ export const getChildStyleNodes = <S extends string, U extends NodeDef, T extend
   return childNodes;   
 }; 
 
-const getStyle = (style: ColorStyle | TypographyStyle | ElevationStyle )  => {
 
+const getStyle = (style: ColorStyle | TypographyStyle | ElevationStyle )  => {
   if(style == undefined) {
     return '';
   }

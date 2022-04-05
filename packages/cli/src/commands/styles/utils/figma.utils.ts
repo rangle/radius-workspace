@@ -120,6 +120,8 @@ export type NodeDocument = {
   children: Array<NodeDocument>,
 };
 
+export type Styles = ColorStyle | TypographyStyle | ElevationStyle;
+
 export type BaseDef = {
   key: string,
   name: string,
@@ -209,10 +211,6 @@ export type DesignToken = {
   value: string,
 };
 
-// const entries = mapKeys<FontDesignToken> ([
-//   'fontType'
-// ]);
-
 export type DesignTokenGroup = GroupOf<DesignToken, 'type'>;
 
 const extractFirstNode = <T extends FigmaFileNodes>({ nodes }: T) =>
@@ -267,6 +265,8 @@ export const getTokens = (data: any) =>
     })
     .then((node) => {
       if (!node) throw new Error('Could not find Node: Tokens not defined');
+
+      generateTokensV2(node);
 
       if(process.env.FIGMA_UTILITY_V2 == 'true') {
         return generateTokensV2(node);
@@ -445,7 +445,6 @@ export const processTypographyToken = <T extends NodeDocument, S extends NodeDef
       value: String(tokenIndex[key as keyof typeof tokenIndex])
     })
   );
-    //console.log(tokens);
   return tokens;
 };
 
@@ -453,9 +452,6 @@ const processColorToken = <T extends NodeDocument>(item: T): DesignToken[] => {
   const { name, fills } = item;
   const [{ color }] = fills;
   //console.log("COLOR TOKEN RECTANGLE", name, color);
-  console.log(item);
-  console.log(name);
-
   const token = `--${ name.toLowerCase().split('/').join('-') }`;
   return [
     {
