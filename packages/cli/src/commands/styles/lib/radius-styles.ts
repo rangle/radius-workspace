@@ -14,7 +14,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 
 const token = process.env['FIGMA_TOKEN'] || 'none';
-const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json 11-57-49-909.json 08-54-14-364.json';
+const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
 
 export type Options = {
   url: string,
