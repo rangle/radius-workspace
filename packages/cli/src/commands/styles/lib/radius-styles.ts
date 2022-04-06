@@ -14,7 +14,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 
 const token = process.env['FIGMA_TOKEN'] || 'none';
-const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
+const figmaFilePath = 'packages/cli/src/commands/styles/lib/__mocks__/figma_file.json';
 
 export type Options = {
   url: string,
@@ -41,7 +41,8 @@ export const generateGlobalStyles = async ({
   const { getFileNode } = setup(userToken);
   const { fileId, nodeId } = processFigmaUrl({ url, token: userToken });
 
-  const input = fs.existsSync(figmaFile) ? Promise.resolve(figmaFile): getFileNode(fileId,[nodeId]);
+  const input = existsSync(
+    path.resolve(figmaFilePath)) ? Promise.resolve(getMockJsonData): getFileNode(fileId,[nodeId]);
   const tokenGroups = await input.then(getTokens).then(groupByType);
   const files = renderTemplate(tokenGroups);
 
@@ -76,4 +77,14 @@ export const generateGlobalStyles = async ({
       !dryRun && writeFileSync(filePath, content);
     });
   }
+};
+
+const getMockJsonData = () => {
+  let jsonFile;
+  try {
+    jsonFile = JSON.parse(fs.readFileSync(path.resolve(figmaFilePath), 'utf8'));
+  } catch(err) {
+    console.log(err);
+  }
+  return jsonFile;
 };
