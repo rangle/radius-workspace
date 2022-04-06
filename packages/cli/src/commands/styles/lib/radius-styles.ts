@@ -9,12 +9,12 @@ import { groupBy } from '../utils/common.utils';
 import renderers from './templates';
 import path from 'path';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
-
-import data from './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
 import { logger } from '../../../logger';
 import chalk from 'chalk';
+import fs from 'fs';
 
 const token = process.env['FIGMA_TOKEN'] || 'none';
+const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
 
 export type Options = {
   url: string,
@@ -40,7 +40,8 @@ export const generateGlobalStyles = async ({
   const renderTemplate = renderers[template];
   const { getFileNode } = setup(userToken);
   const { fileId, nodeId } = processFigmaUrl({ url, token: userToken });
-  const input = Promise.resolve(data) ?? getFileNode(fileId, [nodeId]);
+
+  const input = fs.existsSync(figmaFile) ? Promise.resolve(figmaFile): getFileNode(fileId,[nodeId]);
   const tokenGroups = await input.then(getTokens).then(groupByType);
   const files = renderTemplate(tokenGroups);
 
@@ -54,6 +55,7 @@ export const generateGlobalStyles = async ({
     logger.info(`output directory: ${ chalk.red(outputDir) }`);
 
     files.forEach(([fileName, content]) => {
+
       const filePath = path.resolve(outputDir ?? '.', fileName);
       const fileDir = path.dirname(filePath);
 

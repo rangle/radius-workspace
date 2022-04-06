@@ -86,6 +86,10 @@ export type TypographyStyle = {
   text: string,
 };
 
+export type ElevationStyle = {
+  effect: string, 
+};
+
 export type CommonStyle = {
   s: string,
 };
@@ -116,6 +120,8 @@ export type NodeDocument = {
   children: Array<NodeDocument>,
 };
 
+export type Styles = ColorStyle | TypographyStyle | ElevationStyle;
+
 export type BaseDef = {
   key: string,
   name: string,
@@ -125,7 +131,9 @@ export type BaseDef = {
 
 export type StyleDef = BaseDef & {};
 
-export type ComponentDef = Omit<StyleDef, 'styleType'>;
+export type ComponentDef = Omit<StyleDef, 'styleType'> & {
+  componentSetId: string,
+};
 
 export type NodeDef = StyleDef | ComponentDef;
 
@@ -135,6 +143,9 @@ type NodeRoot = {
     [key: string]: StyleDef,
   },
   components: {
+    [key: string]: ComponentDef,
+  },
+  componentSets: {
     [key: string]: ComponentDef,
   },
 };
@@ -192,12 +203,12 @@ type EffectType = {
 export type NodeDoc = EffectsNode & RectangleNode & NodeDocument;
 
 export type DesignToken = {
-	type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
-	name: string,
-	viewPort?: string,
-	cascade?: boolean,
-	token: string,
-	value: string,
+  type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
+  name: string,
+  viewPort?: string,
+  cascade?: boolean,
+  token: string,
+  value: string,
 };
 
 export type DesignTokenGroup = GroupOf<DesignToken, 'type'>;
@@ -255,10 +266,11 @@ export const getTokens = (data: any) =>
     .then((node) => {
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
+      generateTokensV2(node);
+
       if(process.env.FIGMA_UTILITY_V2 == 'true') {
         return generateTokensV2(node);
       }
-
 
       const styleIndex = node.styles;
       const frames = recurseToFindFrames(node);
@@ -359,15 +371,12 @@ const processSpacingNode= <T extends NodeDoc>(nodeDocument: T): DesignToken[] =>
 
 export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToken[] => {
   const { name, effects } = nodeDoc;
-  const tokenArray = name.replace('=', '-').replace(/\s+/g, '-').split('-').splice(2,3);
-  tokenArray.splice(-1,1);
-  const token = `--${ tokenArray.join('-').slice(0,-1).toLowerCase() }`;
+  const token = name.toLowerCase().split('/').filter((item) => item !== 'light').join('-').replace('%','');
 
   const rgbMap = effects.map((effect) =>  {
     const objKeys = Object.keys(effect.color)as Array<keyof Color>;
     return objKeys
       .map((_key) => {
-        //console.log(effect.color[_key]);
         if(_key == 'a') {
           return effect.color[_key].toFixed(2);
         }
@@ -436,7 +445,6 @@ export const processTypographyToken = <T extends NodeDocument, S extends NodeDef
       value: String(tokenIndex[key as keyof typeof tokenIndex])
     })
   );
-    //console.log(tokens);
   return tokens;
 };
 
@@ -506,10 +514,12 @@ const generateNodes =
 
 const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   // const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer);
-  const colorTokens = generateNodes(node, false, filterByTypeFill, processColorToken);
+  const colorTokens = generateNodes(node, false, filterByTypeFill, processColorToken).
+    filter((token) =>token.name.includes('colour'));
+    
   const typographyTokens = generateNodes(node, false, filterByTypography, processTypographyToken);
   const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer, processSpacingNode);
-  const elevationTokens = generateNodes(node, true, filterByElevation, processElevationToken);
+  const elevationTokens = generateNodes(node, false, filterByElevation, processElevationToken);
 
   //Code below is required temporarily to generate tokens. Current tokens require breakpoints to be passed as context type
   //Will be removed in the future

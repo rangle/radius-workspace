@@ -52,27 +52,27 @@ export const grid: RenderTokenFile = (tokens, _type, { breakpoints }) => {
 
   :root {
 ${ tokens
-      .filter(({ viewPort }) => viewPort === 'l')
-      .map(
-        (token) => `${ generateGridCSS(token) }`
-      )
-      .join('\n') }
+    .filter(({ viewPort }) => viewPort === 'l')
+    .map(
+      (token) => `${ generateGridCSS(token) }`
+    )
+    .join('\n') }
 
   }
   ${ queries.map(({ viewPort, value }) => {
-        return `
+    return `
     /* grid tokens for ${ viewPort } (${ value }) */
     @media screen and (min-width: ${ value }) {
         :root {
 ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
-          .map(
-            (data: any) =>
-              `${ generateGridCSS(data) }`
-          )
-          .join('\n') }
+    .map(
+      (data: any) =>
+        `${ generateGridCSS(data) }`
+    )
+    .join('\n') }
         }
     }`;
-      }) }
+  }) }
   `
   ] as const;
 };
@@ -102,27 +102,27 @@ export const typography: RenderTokenFile = (tokens, _type, { breakpoints }) => {
 
   :root {
       ${ tokens
-      .map(
-        ( token ) =>
-          `  ${ generateTypographyCSS(token) }`
-      )
-      .join('\n') }
+    .map(
+      ( token ) =>
+        `  ${ generateTypographyCSS(token) }`
+    )
+    .join('\n') }
 
   }
   ${ queries.map(({ viewPort, value }) => {
-        return `
+    return `
     /* typography tokens for ${ viewPort } (${ value }) */
     @media screen and (min-width: ${ value }) {
         :root {
         ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
-          .map(
-            (data: any) =>
-              `  ${ generateTypographyCSS(data) }`
-          )
-          .join('\n') }
+    .map(
+      (data: any) =>
+        `  ${ generateTypographyCSS(data) }`
+    )
+    .join('\n') }
         }
     }`;
-      }) }
+  }) }
   `
   ] as const;
 };
