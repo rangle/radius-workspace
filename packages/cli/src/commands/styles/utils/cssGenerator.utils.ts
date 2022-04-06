@@ -20,7 +20,7 @@ export const generateSpacingCSS = (designToken: DesignToken) => {
 };
 
 export const generateElevationCSS = (designToken: DesignToken) => {
-  const key = `--ds${ designToken.token.substring(1) }`;
+  const key = `--ds-${ designToken.token }`;
   const value = designToken.value;
   return `${ key }: ${ value };`;
 };

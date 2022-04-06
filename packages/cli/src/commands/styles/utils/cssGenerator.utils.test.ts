@@ -57,7 +57,7 @@ describe('CSS Generator', () => {
       {
         type: 'elevation',
         name: 'elevation css test',
-        token: '--elevation-80',
+        token: 'elevation-80',
         value: 'drop-shadow(0px 8px rgba(48 49 51 0.10)) drop-shadow(0px 0px rgba(48 49 51 0.05))'
       };
 

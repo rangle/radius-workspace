@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import inquirer, { Answers, QuestionCollection } from 'inquirer';
 import { CommandModule } from 'yargs';
 import { logger } from '../../logger';
 import { generateGlobalStyles, Options } from './lib/radius-styles';
@@ -43,18 +44,31 @@ export const styles: CommandModule<Options, Options> = {
           default: false,
           type: 'boolean'
         }
-      });
+      })
+    ;
     return yargs;
   },
 
-  handler: (args) => {
+  handler: async (args) => {
+    const questions: QuestionCollection = [
+      {
+        name: 'ds-styles-dir',
+        type: 'input',
+        message: 'Enter the name of the directory '
+      }
+    ];
+
+    const answers: Answers = await inquirer.prompt(questions);
+    const userOutputDir = answers['ds-styles-dir'];
+
     logger.info('Generating Radius Styles');
     logger.info(`Source: ${ chalk.red(args.source) }`);
     logger.info(`Template: ${ chalk.red(args.template) }`);
     logger.info(`Figma URL: ${ chalk.red(args.url) }`);
     logger.info(`Dry Run: ${ chalk.red(args.dryRun) }`);
+  
 
-    const { dryRun, url, outputDir, template } = args;
+    const { template, dryRun, url } = args;
     const userToken = process.env['FIGMA_TOKEN'];
     if (!userToken) {
       logger.error(
@@ -62,12 +76,18 @@ export const styles: CommandModule<Options, Options> = {
       );
       process.exit(1);
     }
-    generateGlobalStyles({
-      url,
-      dryRun,
-      template,
-      userToken,
-      outputDir
-    });
+
+    const options: Options = {
+      url: url,
+      userToken: userToken,
+      outputDir: userOutputDir,
+      dryRun: dryRun,
+      consoleOutput: false,
+      template: template
+    };
+
+    generateGlobalStyles(
+      options
+    );
   }
 };
