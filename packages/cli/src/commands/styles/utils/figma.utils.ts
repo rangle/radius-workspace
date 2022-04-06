@@ -371,7 +371,7 @@ const processSpacingNode= <T extends NodeDoc>(nodeDocument: T): DesignToken[] =>
 
 export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToken[] => {
   const { name, effects } = nodeDoc;
-  const token = name.toLowerCase().split('/').join('-').replace('%','');
+  const token = name.toLowerCase().split('/').filter((item) => item !== 'light').join('-').replace('%','');
 
   const rgbMap = effects.map((effect) =>  {
     const objKeys = Object.keys(effect.color)as Array<keyof Color>;
