@@ -266,12 +266,6 @@ export const getTokens = (data: any) =>
     .then((node) => {
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
-      generateTokensV2(node);
-
-      if(process.env.FIGMA_UTILITY_V2 == 'true') {
-        return generateTokensV2(node);
-      }
-
       const styleIndex = node.styles;
       const frames = recurseToFindFrames(node);
 
@@ -288,6 +282,10 @@ export const getTokens = (data: any) =>
           ({ type, name }) =>
             type === 'GROUP' || (type === 'COMPONENT_SET' && name === 'spacer')
         );
+      
+      //generateTokensV2(node) uses figmaParser.utils.ts to extract tokens 
+      return generateTokensV2(node);
+
       return groups.flatMap((group) => {
         // console.log("==>>> GROUP", group.name);
 
