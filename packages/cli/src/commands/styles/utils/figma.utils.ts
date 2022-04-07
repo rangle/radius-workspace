@@ -12,6 +12,9 @@ import {
   TokenTransform
 } from './figmaParser.utils';
 
+
+const tokensV2Flag = true;
+
 export const setup = (key: string) => {
   const api = new Figma.Api({
     personalAccessToken: key
@@ -266,12 +269,10 @@ export const getTokens = (data: any) =>
     .then((node) => {
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
-
-
-      //
-      // if(process.env.FIGMA_UTILITY_V2 == 'true') {
-      //   return generateTokensV2(node);
-      // }
+      //generateTokensV2(node) uses figmaParser.utils.ts to extract tokens
+      if(tokensV2Flag){
+        return generateTokensV2(node);
+      }
 
       const styleIndex = node.styles;
       const frames = recurseToFindFrames(node);
@@ -289,7 +290,7 @@ export const getTokens = (data: any) =>
           ({ type, name }) =>
             type === 'GROUP' || (type === 'COMPONENT_SET' && name === 'spacer')
         );
-      return generateTokensV2(node);
+
       return groups.flatMap((group) => {
         // console.log("==>>> GROUP", group.name);
 
