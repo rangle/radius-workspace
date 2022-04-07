@@ -1,5 +1,4 @@
 import * as Figma from 'figma-api';
-import { bool } from 'yup';
 import { GroupOf, toKebabCase } from './common.utils';
 import {
   filterByDescriptionSpacer,
