@@ -3,6 +3,7 @@ import inquirer, { Answers, QuestionCollection } from 'inquirer';
 import { CommandModule } from 'yargs';
 import { logger } from '../../logger';
 import { generateGlobalStyles, Options } from './lib/radius-styles';
+import { existsSync } from 'fs';
 
 export const styles: CommandModule<Options, Options> = {
   command: 'styles <url> [<outputDir>] [options...]',
@@ -35,7 +36,8 @@ export const styles: CommandModule<Options, Options> = {
           describe: 'The template to be used to generate style files',
           default: 'css-modules',
           choices: ['css-modules', 'css-in-js'],
-          type: 'string'
+          type: 'string',
+          dir: 'string'
         },
         dryRun: {
           group: 'Command Options:',
@@ -66,16 +68,16 @@ export const styles: CommandModule<Options, Options> = {
         name: 'figma-token',
         type: 'input',
         message: 'Please enter your Figma token'
-      },
-      {
-        name: 'css-files-directory',
-        type: 'input',
-        message: 'Please enter a directory to create the files in '
       }
+      // {
+      //   name: 'css-files-directory',
+      //   type: 'input',
+      //   message: 'Please enter a directory to create the files in '
+      // }
     ];
 
     const answers: Answers = await inquirer.prompt(questions);
-    const userOutputDir = answers['css-files-directory'];
+    const userOutputDir = answers['ds-styles-dir'];
     const figmaUrl = answers['figma-url'];
     const figmaToken = answers['figma-token'];
     // const cssFilesDirectory = answers['css-files-directory'];
@@ -88,16 +90,33 @@ export const styles: CommandModule<Options, Options> = {
 
     const { template, dryRun } = args;
 
+    if (!existsSync(userOutputDir)) {
+      logger.error(`A project with the name ${ chalk.red(userOutputDir) } doesn't exist.`);
+      process.exit(1);
+    }
+
+    // if (!existsSync(cssFilesDirectory)) {
+    //   logger.info(`creating directory: ${ chalk.red(cssFilesDirectory) }`);
+    //   !dryRun && mkdirSync(cssFilesDirectory);
+    // }
+
     if (!figmaUrl) {
       logger.error(
-        'Figma URL Not Found, Please run styles command again and provide the URL'
+        'Project name Not Found, please run styles command again and provide the project name'
       );
       process.exit(1);
     }
-    
+
+    if (!figmaUrl) {
+      logger.error(
+        'Figma URL Not Found, please run styles command again and provide the URL'
+      );
+      process.exit(1);
+    }
+
     if (!figmaToken) {
       logger.error(
-        'Figma Token Not Found, Please run styles command again and provide the token'
+        'Figma Token Not Found, please run styles command again and provide the token'
       );
       process.exit(1);
     }
