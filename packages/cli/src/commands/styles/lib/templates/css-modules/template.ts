@@ -72,7 +72,7 @@ ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
     .join('\n') }
         }
     }`;
-  }) }
+  }).join('') }
   `
   ] as const;
 };
@@ -122,7 +122,7 @@ export const typography: RenderTokenFile = (tokens, _type, { breakpoints }) => {
     .join('\n') }
         }
     }`;
-  }) }
+  }).join('') }
   `
   ] as const;
 };
