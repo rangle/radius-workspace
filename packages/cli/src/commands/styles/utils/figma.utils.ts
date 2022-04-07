@@ -1,4 +1,5 @@
 import * as Figma from 'figma-api';
+import { bool } from 'yup';
 import { GroupOf, toKebabCase } from './common.utils';
 import {
   filterByDescriptionSpacer,
@@ -11,6 +12,9 @@ import {
   NodeKey,
   TokenTransform
 } from './figmaParser.utils';
+
+
+const tokensV2Flag = true;
 
 export const setup = (key: string) => {
   const api = new Figma.Api({
@@ -266,6 +270,11 @@ export const getTokens = (data: any) =>
     .then((node) => {
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
+      //generateTokensV2(node) uses figmaParser.utils.ts to extract tokens 
+      if(tokensV2Flag){
+        return generateTokensV2(node);
+      }
+
       const styleIndex = node.styles;
       const frames = recurseToFindFrames(node);
 
@@ -282,9 +291,6 @@ export const getTokens = (data: any) =>
           ({ type, name }) =>
             type === 'GROUP' || (type === 'COMPONENT_SET' && name === 'spacer')
         );
-      
-      //generateTokensV2(node) uses figmaParser.utils.ts to extract tokens 
-      return generateTokensV2(node);
 
       return groups.flatMap((group) => {
         // console.log("==>>> GROUP", group.name);
