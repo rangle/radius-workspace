@@ -87,7 +87,7 @@ export type TypographyStyle = {
 };
 
 export type ElevationStyle = {
-  effect: string, 
+  effect: string,
 };
 
 export type CommonStyle = {
@@ -266,11 +266,12 @@ export const getTokens = (data: any) =>
     .then((node) => {
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
-      generateTokensV2(node);
 
-      if(process.env.FIGMA_UTILITY_V2 == 'true') {
-        return generateTokensV2(node);
-      }
+
+      //
+      // if(process.env.FIGMA_UTILITY_V2 == 'true') {
+      //   return generateTokensV2(node);
+      // }
 
       const styleIndex = node.styles;
       const frames = recurseToFindFrames(node);
@@ -288,6 +289,7 @@ export const getTokens = (data: any) =>
           ({ type, name }) =>
             type === 'GROUP' || (type === 'COMPONENT_SET' && name === 'spacer')
         );
+      return generateTokensV2(node);
       return groups.flatMap((group) => {
         // console.log("==>>> GROUP", group.name);
 
@@ -516,7 +518,7 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   // const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer);
   const colorTokens = generateNodes(node, false, filterByTypeFill, processColorToken).
     filter((token) =>token.name.includes('colour'));
-    
+
   const typographyTokens = generateNodes(node, false, filterByTypography, processTypographyToken);
   const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer, processSpacingNode);
   const elevationTokens = generateNodes(node, false, filterByElevation, processElevationToken);

@@ -49,37 +49,63 @@ export const styles: CommandModule<Options, Options> = {
     return yargs;
   },
 
+
   handler: async (args) => {
     const questions: QuestionCollection = [
       {
         name: 'ds-styles-dir',
         type: 'input',
-        message: 'Enter the name of the directory '
+        message: 'Please enter the name of the project (This name should match the design system name)'
+      },
+      {
+        name: 'figma-url',
+        type: 'input',
+        message: 'Please enter your Figma URL'
+      },
+      {
+        name: 'figma-token',
+        type: 'input',
+        message: 'Please enter your Figma token'
+      },
+      {
+        name: 'css-files-directory',
+        type: 'input',
+        message: 'Please enter a directory to create the files in '
       }
     ];
 
     const answers: Answers = await inquirer.prompt(questions);
-    const userOutputDir = answers['ds-styles-dir'];
+    const userOutputDir = answers['css-files-directory'];
+    const figmaUrl = answers['figma-url'];
+    const figmaToken = answers['figma-token'];
+    // const cssFilesDirectory = answers['css-files-directory'];
 
     logger.info('Generating Radius Styles');
     logger.info(`Source: ${ chalk.red(args.source) }`);
     logger.info(`Template: ${ chalk.red(args.template) }`);
-    logger.info(`Figma URL: ${ chalk.red(args.url) }`);
+    logger.info(`Figma URL: ${ chalk.red(figmaUrl) }`);
     logger.info(`Dry Run: ${ chalk.red(args.dryRun) }`);
-  
 
-    const { template, dryRun, url } = args;
-    const userToken = process.env['FIGMA_TOKEN'];
-    if (!userToken) {
+    const { template, dryRun } = args;
+
+    if (!figmaUrl) {
       logger.error(
-        'Authentication Token not found. Use the --token option or set the FIGMA_TOKEN environment variable'
+        'Figma URL Not Found, Please run styles command again and provide the URL'
+      );
+      process.exit(1);
+    }
+    
+    if (!figmaToken) {
+      logger.error(
+        'Figma Token Not Found, Please run styles command again and provide the token'
       );
       process.exit(1);
     }
 
+
     const options: Options = {
-      url: url,
-      userToken: userToken,
+      url: figmaUrl,
+      userToken: figmaToken,
       outputDir: userOutputDir,
       dryRun: dryRun,
       consoleOutput: false,
