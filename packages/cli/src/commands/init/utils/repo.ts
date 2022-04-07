@@ -44,16 +44,18 @@ export const commandSetupGit = async (dir: string) => {
   }
 
   await execSync(`cd ${ dir } && rm -rf .git`);
-  await execSync(`cd ${ dir } && git init`);
+  await execSync(`cd ${ dir } && git init -b main`);
 };
 
 export const logSuccess = (designSystemOptions: any) => {
-  console.log(chalk.green('All done!'));
   console.log('');
-  console.log(chalk.green('Follow the below steps to run:'));
-  console.log(chalk.green(` - cd ${ designSystemOptions['ds-name'] }`));
-  console.log(chalk.green(' - npm install'));
-  console.log(chalk.green(' - npm run storybook'));
+  logger.info('🚀 You are all set.');
+  console.log('');
+  logger.info('✨ Follow the below steps to run you design system.');
+  console.log('');
+  console.log(chalk.hex('#00FF00')(` - cd ${ designSystemOptions['ds-name'] }`));
+  console.log(chalk.hex('#00FF00')(' - npm install'));
+  console.log(chalk.hex('#00FF00')(' - npm run storybook'));
 };
 
 export const logFailure = (error: any) => {

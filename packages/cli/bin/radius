@@ -2,8 +2,8 @@
 
 "use strict";
 
-const cli = require("../dist/cli");
-const parser = cli();
+const radius = require("../dist/radius");
+const parser = radius();
 
 // eslint-disable-next-line no-unused-expressions
 parser.parse(process.argv.slice(2));
