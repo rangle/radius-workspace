@@ -5,28 +5,26 @@ import { CommandModule } from 'yargs';
 
 import 'dotenv/config';
 
-// import handleError from './handleError';
-
 import { styles } from './commands/styles';
 import { init } from './commands/init';
 
 console.log(
   chalk
     .hex('#d44527')
-    .bold(figlet.textSync('Radius Scripts', { horizontalLayout: 'full' }))
+    .bold(figlet.textSync('     Radius     ', { horizontalLayout: 'full' }))
 );
 
 console.log(
   chalk.bgWhite(
     chalk.red(
-      '                                Design Systems Accelerated                                '
+      '                      Design Systems Accelerated                      '
     )
   )
 );
 
 console.log('');
 
-module.exports = function cli(cwd: string) {
+module.exports = function radius(cwd: string) {
   const parser = factory(undefined, cwd);
 
   parser.alias('h', 'help');
@@ -43,7 +41,6 @@ module.exports = function cli(cwd: string) {
     )
     .command(init as CommandModule)
     .command(styles as CommandModule);
-  // .fail(handleError).argv;
 
   return parser;
 };
