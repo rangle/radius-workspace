@@ -104,13 +104,14 @@ type TypographyStyleDetails = {
   letterSpacing: number,
   lineHeightPx: number,
   lineHeightPercent: number,
+  lineHeightPercentFontSize: number,
 };
 
 export type NodeDocument = {
   id: string,
   type: string,
   name: string,
-  parent?: string,
+  parent: string,
   style: TypographyStyleDetails,
   fills: Array<{
     color: {
@@ -149,7 +150,7 @@ type NodeRoot = {
     [key: string]: ComponentDef,
   },
   componentSets: {
-    [key: string]: ComponentDef,
+    [key: string]: BaseDef,
   },
 };
 
@@ -203,7 +204,9 @@ type EffectType = {
   showShadowBehindNode: boolean,
 };
 
-export type NodeDoc = EffectsNode & RectangleNode & NodeDocument;
+export type NodeDoc = EffectsNode & RectangleNode & NodeDocument & {
+
+};
 
 export type DesignToken = {
   type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
@@ -515,17 +518,85 @@ const generateNodes =
     });
   };
 
+const processTypographyDesignToken = (nodeDoc: NodeDoc, parent?: string): DesignToken => {
+
+  if(parent?.includes('scale')) {
+    return {
+      type: 'typography',
+      name: nodeDoc.parent,
+      value: `${ nodeDoc.style.fontSize.toString() }px`,
+      token: `--${ parent.split(' ').join('-').toLowerCase() }${ nodeDoc.name.toLowerCase() }`
+    } as DesignToken;
+  }
+
+  if(parent?.includes('weight')) {
+    return {
+      type: 'typography',
+      name: nodeDoc.parent,
+      value: nodeDoc.style.fontWeight.toString(),
+      token: `--${ parent.split(' ').join('-').toLowerCase() }${ nodeDoc.name.toLowerCase().split(' ').join('-') }`
+    };
+  }
+
+  if(parent?.toLowerCase().includes('line')) {
+    return {
+      type: 'typography',
+      name: nodeDoc.parent,
+      value: Math.round(nodeDoc.style.lineHeightPercentFontSize).toString() + '%',
+      token: `--${ parent.split(' ').join('-').toLowerCase() }${ nodeDoc.name.toLowerCase()
+        .split(' ').join('-').replace(/%/g, '') }`
+    };
+  }
+
+  if(parent?.toLowerCase().includes('spacing')) {
+    return {
+      type: 'typography',
+      name: nodeDoc.parent,
+      value:`${ (nodeDoc.style.letterSpacing / 16).toString() }em`,
+      token: `--${ parent.split(' ').join('-').toLowerCase() }${ nodeDoc.name.toLowerCase().split(' ').join('-')
+        .replace(/%/g, '') }`
+    };
+  }
+  return {} as DesignToken;
+};
+
+const generateTypographyTokens = <T extends NodeDef>(
+  node: NodeRoot,
+  nodeKeys: NodeKey<T>,
+  filterFn: (data: T) => boolean): DesignToken[] => {
+
+  const typographyMap =  generateStyleMap(nodeKeys, filterFn);
+  const typographyNodes = getChildStyleNodes(
+    node.document as NodeDoc,
+    true,
+    typographyMap,
+    ''
+  ).flatMap((nodeDoc)=>{
+    console.log(nodeDoc);
+    return nodeDoc.children.flatMap((child) => child.children.flatMap((typographyNode) => {
+      typographyNode.parent = nodeDoc.name;
+      return typographyNode;
+    }));
+  });
+
+  return typographyNodes.map((tNode) => {
+    return processTypographyDesignToken(tNode as NodeDoc, tNode.parent);
+  }).filter((token) => token != undefined);
+};
+
 const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
-  // const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer);
   const colorTokens = generateNodes(node, false, filterByTypeFill, processColorToken).
     filter((token) =>token.name.includes('colour'));
-
-  const typographyTokens = generateNodes(node, false, filterByTypography, processTypographyToken);
   const spaceTokens = generateNodes(node, true, filterByDescriptionSpacer, processSpacingNode);
   const elevationTokens = generateNodes(node, false, filterByElevation, processElevationToken);
 
-  //Code below is required temporarily to generate tokens. Current tokens require breakpoints to be passed as context type
-  //Will be removed in the future
+  // TODO generateTypographyTokens needs to be refactored to use generateNodes() for better code readability
+  // const typographyTokens = generateNodes(node, false, filterByTypography, processTypographyToken);
+  const typographyTokens = generateTypographyTokens(node, node.componentSets, filterByTypography);
+
+  // TODO Code below is required temporarily to generate tokens.
+  // Current tokens require breakpoints to be passed as context type
+  // Will be removed in the future
   const frames = recurseToFindFrames(node);
 
   if (!frames.length)
@@ -559,6 +630,11 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
     );
   }).filter((element) => element !== undefined) as DesignToken[];
 
-  const tokens = [...colorTokens, ...spaceTokens, ...elevationTokens, ...gridBreakpointTokens, ...typographyTokens];
+  const tokens: DesignToken[] = [
+    ...colorTokens,
+    ...spaceTokens,
+    ...elevationTokens,
+    ...gridBreakpointTokens,
+    ...typographyTokens];
   return tokens;
 };
