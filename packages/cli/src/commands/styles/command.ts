@@ -51,13 +51,12 @@ export const styles: CommandModule<Options, Options> = {
     return yargs;
   },
 
-
   handler: async (args) => {
     const questions: QuestionCollection = [
       {
         name: 'ds-styles-dir',
         type: 'input',
-        message: 'Please enter the name of the project (This name should match the design system name)'
+        message: 'Please enter the name of the project (This name should match the existing project name)'
       },
       {
         name: 'figma-url',
@@ -69,18 +68,12 @@ export const styles: CommandModule<Options, Options> = {
         type: 'input',
         message: 'Please enter your Figma token'
       }
-      // {
-      //   name: 'css-files-directory',
-      //   type: 'input',
-      //   message: 'Please enter a directory to create the files in '
-      // }
     ];
 
     const answers: Answers = await inquirer.prompt(questions);
     const userOutputDir = answers['ds-styles-dir'];
     const figmaUrl = answers['figma-url'];
     const figmaToken = answers['figma-token'];
-    // const cssFilesDirectory = answers['css-files-directory'];
 
     logger.info('Generating Radius Styles');
     logger.info(`Source: ${ chalk.red(args.source) }`);
@@ -95,32 +88,19 @@ export const styles: CommandModule<Options, Options> = {
       process.exit(1);
     }
 
-    // if (!existsSync(cssFilesDirectory)) {
-    //   logger.info(`creating directory: ${ chalk.red(cssFilesDirectory) }`);
-    //   !dryRun && mkdirSync(cssFilesDirectory);
-    // }
-
     if (!figmaUrl) {
       logger.error(
-        'Project name Not Found, please run styles command again and provide the project name'
-      );
-      process.exit(1);
-    }
-
-    if (!figmaUrl) {
-      logger.error(
-        'Figma URL Not Found, please run styles command again and provide the URL'
+        'Figma URL Not Found, please run styles command again and provide the URL: '
       );
       process.exit(1);
     }
 
     if (!figmaToken) {
       logger.error(
-        'Figma Token Not Found, please run styles command again and provide the token'
+        'Figma Token Not Found, please run styles command again and provide the token: '
       );
       process.exit(1);
     }
-
 
     const options: Options = {
       url: figmaUrl,

@@ -17,7 +17,7 @@ const rootTemplate: RenderTokenGroupFile = (tokenGroup) => {
   entries(tokenGroup).forEach(([type]) => {
     content = content + `@import "./_${ type }.css";\n`;
   });
-  return ['./styles/index.css', content];
+  return ['./index.css', content];
 };
 
 export const fileTemplates: RenderTokenGroup = (tokenGroup) => {

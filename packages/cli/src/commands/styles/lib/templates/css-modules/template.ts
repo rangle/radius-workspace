@@ -10,7 +10,7 @@ import { filterTokenByViewPort } from '../utils';
 
 export const template: RenderTokenFile = (tokens, type) =>
   [
-	    `./styles/_${ type }.css`,
+	    `./_${ type }.css`,
 	    `${ TOKEN_FILE_COMMENTS[type] }
     ${ tokens.map(({ token, value }) => `  ${ token }: ${ value };`).join('\n') }`
   ] as const;
@@ -18,7 +18,7 @@ export const template: RenderTokenFile = (tokens, type) =>
 // Color
 export const color: RenderTokenFile = (tokens, type) =>
   [
-    `./styles/_${ type }.css`,
+    `./_${ type }.css`,
     `:root {
 ${ TOKEN_FILE_COMMENTS[type] }
 
@@ -31,7 +31,7 @@ ${ tokens.map(( token ) => `${ generateColorsCSS(token) }`).join('\n') }
 
 export const elevation: RenderTokenFile = (tokens, type) =>
   [
-    `./styles/_${ type }.css`,
+    `./_${ type }.css`,
     `:root {
 ${ TOKEN_FILE_COMMENTS[type] }
 ${ tokens.map(( token ) => `${ generateElevationCSS(token) }`).join('\n') }
@@ -46,7 +46,7 @@ export const grid: RenderTokenFile = (tokens, _type, { breakpoints }) => {
     value: breakpoints[k]
   }));
   return [
-    './styles/_grid.css',
+    './_grid.css',
     `
   /* default grid tokens */
 
@@ -81,7 +81,7 @@ ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
 
 export const spacing: RenderTokenFile = (tokens, type) =>
   [
-    `./styles/_${ type }.css`,
+    `./_${ type }.css`,
     `:root {
 ${ TOKEN_FILE_COMMENTS[type] }
 ${ tokens.map(( token ) => `${ generateSpacingCSS(token) }`).join('\n') }
@@ -96,7 +96,7 @@ export const typography: RenderTokenFile = (tokens, _type, { breakpoints }) => {
     value: breakpoints[k]
   }));
   return [
-    './styles/_typography.css',
+    './_typography.css',
     `
   /* default typography tokens */
 
