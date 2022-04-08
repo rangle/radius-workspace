@@ -54,11 +54,6 @@ export const styles: CommandModule<Options, Options> = {
   handler: async (args) => {
     const questions: QuestionCollection = [
       {
-        name: 'ds-styles-dir',
-        type: 'input',
-        message: 'Please enter the name of the project (This name should match the existing project name)'
-      },
-      {
         name: 'figma-url',
         type: 'input',
         message: 'Please enter your Figma URL'
@@ -67,11 +62,17 @@ export const styles: CommandModule<Options, Options> = {
         name: 'figma-token',
         type: 'input',
         message: 'Please enter your Figma token'
+      },
+      {
+        name: 'styles-dir',
+        type: 'input',
+        message: 'Please enter the name of the styles directory',
+        default: 'src/styles'
       }
     ];
 
     const answers: Answers = await inquirer.prompt(questions);
-    const userOutputDir = answers['ds-styles-dir'];
+    const stylesDir = answers['styles-dir'];
     const figmaUrl = answers['figma-url'];
     const figmaToken = answers['figma-token'];
 
@@ -83,8 +84,8 @@ export const styles: CommandModule<Options, Options> = {
 
     const { template, dryRun } = args;
 
-    if (!existsSync(userOutputDir)) {
-      logger.error(`A project with the name ${ chalk.red(userOutputDir) } doesn't exist.`);
+    if (!existsSync(stylesDir)) {
+      logger.error(`A directory with the name ${ chalk.red(stylesDir) } doesn't exist.`);
       process.exit(1);
     }
 
@@ -105,7 +106,7 @@ export const styles: CommandModule<Options, Options> = {
     const options: Options = {
       url: figmaUrl,
       userToken: figmaToken,
-      outputDir: userOutputDir,
+      outputDir: stylesDir,
       dryRun: dryRun,
       consoleOutput: false,
       template: template
