@@ -3,6 +3,7 @@ import inquirer, { Answers, QuestionCollection } from 'inquirer';
 import { CommandModule } from 'yargs';
 import { logger } from '../../logger';
 import { generateGlobalStyles, Options } from './lib/radius-styles';
+import { existsSync } from 'fs';
 
 export const styles: CommandModule<Options, Options> = {
   command: 'styles <url> [<outputDir>] [options...]',
@@ -35,7 +36,8 @@ export const styles: CommandModule<Options, Options> = {
           describe: 'The template to be used to generate style files',
           default: 'css-modules',
           choices: ['css-modules', 'css-in-js'],
-          type: 'string'
+          type: 'string',
+          dir: 'string'
         },
         dryRun: {
           group: 'Command Options:',
@@ -52,35 +54,59 @@ export const styles: CommandModule<Options, Options> = {
   handler: async (args) => {
     const questions: QuestionCollection = [
       {
-        name: 'ds-styles-dir',
+        name: 'figma-url',
         type: 'input',
-        message: 'Enter the name of the directory '
+        message: 'Please enter your Figma URL'
+      },
+      {
+        name: 'figma-token',
+        type: 'input',
+        message: 'Please enter your Figma token'
+      },
+      {
+        name: 'styles-dir',
+        type: 'input',
+        message: 'Please enter the name of the styles directory',
+        default: 'src/styles'
       }
     ];
 
     const answers: Answers = await inquirer.prompt(questions);
-    const userOutputDir = answers['ds-styles-dir'];
+    const stylesDir = answers['styles-dir'];
+    const figmaUrl = answers['figma-url'];
+    const figmaToken = answers['figma-token'];
 
     logger.info('Generating Radius Styles');
     logger.info(`Source: ${ chalk.red(args.source) }`);
     logger.info(`Template: ${ chalk.red(args.template) }`);
-    logger.info(`Figma URL: ${ chalk.red(args.url) }`);
+    logger.info(`Figma URL: ${ chalk.red(figmaUrl) }`);
     logger.info(`Dry Run: ${ chalk.red(args.dryRun) }`);
-  
 
-    const { template, dryRun, url } = args;
-    const userToken = process.env['FIGMA_TOKEN'];
-    if (!userToken) {
+    const { template, dryRun } = args;
+
+    if (!existsSync(stylesDir)) {
+      logger.error(`A directory with the name ${ chalk.red(stylesDir) } doesn't exist.`);
+      process.exit(1);
+    }
+
+    if (!figmaUrl) {
       logger.error(
-        'Authentication Token not found. Use the --token option or set the FIGMA_TOKEN environment variable'
+        'Figma URL Not Found, please run styles command again and provide the URL: '
+      );
+      process.exit(1);
+    }
+
+    if (!figmaToken) {
+      logger.error(
+        'Figma Token Not Found, please run styles command again and provide the token: '
       );
       process.exit(1);
     }
 
     const options: Options = {
-      url: url,
-      userToken: userToken,
-      outputDir: userOutputDir,
+      url: figmaUrl,
+      userToken: figmaToken,
+      outputDir: stylesDir,
       dryRun: dryRun,
       consoleOutput: false,
       template: template

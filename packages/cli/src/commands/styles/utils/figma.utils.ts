@@ -3,8 +3,8 @@ import { GroupOf, toKebabCase } from './common.utils';
 import {
   filterByDescriptionSpacer,
   filterByElevation,
-  filterByTypeFill,     
-  filterByTypography,     
+  filterByTypeFill,
+  filterByTypography,
   generateDesignTokens,
   generateStyleMap,
   getChildStyleNodes,
@@ -90,7 +90,7 @@ export type TypographyStyle = {
 };
 
 export type ElevationStyle = {
-  effect: string, 
+  effect: string,
 };
 
 export type CommonStyle = {
@@ -272,7 +272,7 @@ export const getTokens = (data: any) =>
     .then((node) => {
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
-      //generateTokensV2(node) uses figmaParser.utils.ts to extract tokens 
+      //generateTokensV2(node) uses figmaParser.utils.ts to extract tokens
       if(tokensV2Flag){
         return generateTokensV2(node);
       }
@@ -561,8 +561,8 @@ const processTypographyDesignToken = (nodeDoc: NodeDoc, parent?: string): Design
 };
 
 const generateTypographyTokens = <T extends NodeDef>(
-  node: NodeRoot, 
-  nodeKeys: NodeKey<T>, 
+  node: NodeRoot,
+  nodeKeys: NodeKey<T>,
   filterFn: (data: T) => boolean): DesignToken[] => {
 
   const typographyMap =  generateStyleMap(nodeKeys, filterFn);
@@ -593,10 +593,10 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   // TODO generateTypographyTokens needs to be refactored to use generateNodes() for better code readability
   // const typographyTokens = generateNodes(node, false, filterByTypography, processTypographyToken);
   const typographyTokens = generateTypographyTokens(node, node.componentSets, filterByTypography);
-  
-  // TODO Code below is required temporarily to generate tokens. 
+
+  // TODO Code below is required temporarily to generate tokens.
   // Current tokens require breakpoints to be passed as context type
-  // Will be removed in the future 
+  // Will be removed in the future
   const frames = recurseToFindFrames(node);
 
   if (!frames.length)
@@ -631,10 +631,10 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
   }).filter((element) => element !== undefined) as DesignToken[];
 
   const tokens: DesignToken[] = [
-    ...colorTokens, 
-    ...spaceTokens, 
-    ...elevationTokens, 
-    ...gridBreakpointTokens, 
+    ...colorTokens,
+    ...spaceTokens,
+    ...elevationTokens,
+    ...gridBreakpointTokens,
     ...typographyTokens];
   return tokens;
 };
