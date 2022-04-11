@@ -6,21 +6,12 @@ import { generateGlobalStyles, Options } from './lib/radius-styles';
 import { existsSync } from 'fs';
 
 export const styles: CommandModule<Options, Options> = {
-  command: 'styles <url> [<outputDir>] [options...]',
+  command: 'styles',
 
   describe: 'Generate/update styles for a Radius design system instance',
 
   builder: (yargs) => {
     yargs
-      .positional('url', {
-        describe: 'The URL of the Source file',
-        type: 'string',
-        demandOption: 'Needs to provide source URL'
-      })
-      .positional('outputDir', {
-        describe: 'Target Directory for Styles',
-        type: 'string'
-      })
       .options({
         source: {
           group: 'Command Options:',
