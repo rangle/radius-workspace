@@ -63,7 +63,7 @@ export const generateGlobalStyles = async ({
 
       if (!existsSync(fileDir)) {
         logger.info(`creating directory: ${ chalk.red(fileDir) }`);
-        !dryRun && mkdirSync(fileDir);
+        !dryRun && mkdirSync(fileDir, { recursive: true });
       }
 
       if (existsSync(filePath)) {
