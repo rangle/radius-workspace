@@ -1,8 +1,8 @@
 import chalk from 'chalk';
-import inquirer, {Answers, QuestionCollection} from 'inquirer';
-import {CommandModule} from 'yargs';
-import {logger} from '../../logger';
-import {generateGlobalStyles, Options} from './lib/radius-styles';
+import inquirer, { Answers, QuestionCollection } from 'inquirer';
+import { CommandModule } from 'yargs';
+import { logger } from '../../logger';
+import { generateGlobalStyles, Options } from './lib/radius-styles';
 
 export const styles: CommandModule<Options, Options> = {
   command: 'styles',
