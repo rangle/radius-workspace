@@ -572,7 +572,6 @@ const generateTypographyTokens = <T extends NodeDef>(
     typographyMap,
     ''
   ).flatMap((nodeDoc)=>{
-    console.log(nodeDoc);
     return nodeDoc.children.flatMap((child) => child.children.flatMap((typographyNode) => {
       typographyNode.parent = nodeDoc.name;
       return typographyNode;
