@@ -32,22 +32,22 @@ export const TypographyTypes = {
   lineHeight: 'Line height'
 } as const;
 
-export const TYPOGRAPHY_FILE_COMMENTS: any = {
+export const TYPOGRAPHY_FILE_COMMENTS = {
   scale: `/**
-  * @tokens Font Size
-  * @presenter Font Size
+  * @tokens Font Sizes
+  * @presenter FontSize
   */`,
   weight: `/**
   * @tokens Font Weights
-  * @presenter Font Weights
+  * @presenter FontWeight
   */`,
   spacing: `/**
-  * @tokens Letter Spacing
-  * @presenter Letter Spacing
+  * @tokens Letter Spacings
+  * @presenter LetterSpacing
   */`,
   lineHeight: `/**
   * @tokens Line Heights
-  * @presenter Line Heights
+  * @presenter LineHeight
   */`
 
 };

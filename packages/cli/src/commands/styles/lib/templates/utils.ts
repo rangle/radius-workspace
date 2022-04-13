@@ -1,6 +1,6 @@
 import { generateTypographyCSS } from '../../utils/cssGenerator.utils';
 import { DesignToken, DesignTokenGroup } from '../../utils/figma.utils';
-import { TokenContext, TypographyTypes, TYPOGRAPHY_FILE_COMMENTS } from './types';
+import { TokenContext, TYPOGRAPHY_FILE_COMMENTS } from './types';
 
 export const createTokenContext = (
   tokenGroup: DesignTokenGroup
@@ -33,38 +33,23 @@ export type typographyMap = {
   [key: string]: DesignToken[],
 };
 
+const extractFontBody = (tokens: DesignToken[], filterType: string, typographyCommentKey: string): string => {
+  return tokens.filter((token) => token.name.includes(filterType)).map((token, index)=> {
+    if(index ==0) {
+      return `\n${ TYPOGRAPHY_FILE_COMMENTS[typographyCommentKey as keyof typeof TYPOGRAPHY_FILE_COMMENTS] }\n
+       ${ generateTypographyCSS(token) }`; 
+    }
+    return `${ generateTypographyCSS(token) }`;
+  } ).join('\n');
+};
+
 export const generateTypographyTokenBody = (tokens: DesignToken[]): string => {
-  const typographyMap: typographyMap = {};
-  let typographyBody = '';
+  const scale = extractFontBody(tokens, 'Font scale', 'scale');
+  const weight = extractFontBody(tokens, 'Font weight', 'weight');
+  const spacing = extractFontBody(tokens, 'Letter spacing', 'spacing');
+  const lineHeight = extractFontBody(tokens, 'Line height', 'lineHeight');
 
-  Object.keys(TypographyTypes).map((key)=> {
-    tokens.map((token) => {
-      if(TypographyTypes[key as keyof typeof TypographyTypes] === token.name.trim()) {
-        if(typographyMap[key]) {
-          typographyMap[key].push(token);
-        } else {
-          //create new array if key doesnt already exist in map
-          typographyMap[key] = [];
-          typographyMap[key].push(token);
-        }
-      }
-    });
-  });
-
-  Object.keys(typographyMap).forEach((key) => {
-    const typographyBodyByKey = typographyMap[key].flatMap((token, index) => {
-      //Only append Typography_File_Comments for the first element in the typography dictionary
-      if(index == 0) {
-        return `\n${ TYPOGRAPHY_FILE_COMMENTS[key] }\n ${ generateTypographyCSS(token) }`; 
-      } else {
-        return `${ generateTypographyCSS(token) }`;
-      }
-    }).join('\n');
-    //appending string body of each typography group 
-    typographyBody += typographyBodyByKey;
-    return typographyBody;
-  });
-  return typographyBody;
+  return scale + weight + spacing + lineHeight;
 };
 
 
