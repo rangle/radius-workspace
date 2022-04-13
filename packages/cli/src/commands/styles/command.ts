@@ -3,7 +3,6 @@ import inquirer, { Answers, QuestionCollection } from 'inquirer';
 import { CommandModule } from 'yargs';
 import { logger } from '../../logger';
 import { generateGlobalStyles, Options } from './lib/radius-styles';
-import { existsSync } from 'fs';
 
 export const styles: CommandModule<Options, Options> = {
   command: 'styles',
@@ -74,11 +73,6 @@ export const styles: CommandModule<Options, Options> = {
     logger.info(`Dry Run: ${ chalk.red(args.dryRun) }`);
 
     const { template, dryRun } = args;
-
-    if (!existsSync(stylesDir)) {
-      logger.error(`A directory with the name ${ chalk.red(stylesDir) } doesn't exist.`);
-      process.exit(1);
-    }
 
     if (!figmaUrl) {
       logger.error(
