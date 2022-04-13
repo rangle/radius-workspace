@@ -39,17 +39,18 @@ export type FigmaData = {
 
 export const assert = <T>(x: T, msg?: string) => {
   if (!x) {
-    logger.error(msg || 'Please make sure you entered a valid URL and token and try again');
-    // logger.error('Please make sure you entered a valid URL and token and try again');
+    if (typeof msg === 'string') {
+      logger.error(msg);
+    }
     process.exit(1);
   }
 };
 
 export function assertFigmaData(d: unknown): asserts d is FigmaData {
   const { fileId, nodeId, token } = (d as FigmaData) ?? {};
-  assert(typeof fileId === 'string', 'Please check your Figma URL');
+  assert(typeof fileId === 'string', 'Please put a valid URL');
   assert(typeof nodeId === 'string', 'node-id not found');
-  assert(typeof token === 'string', 'token not found');
+  assert(typeof token === 'string', 'Please put a valid token');
 }
 
 export const processFigmaUrl = ({ url, token }: FigmaInputData): FigmaData => {
