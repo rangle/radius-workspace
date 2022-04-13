@@ -38,9 +38,11 @@ export type FigmaData = {
 };
 
 export const assert = <T>(x: T, msg?: string) => {
-  if (!x) throw new Error(msg || 'Assertion failed');
-  console.log('Please make sure you entered a valid URL and token and try again');
-  process.exit(1);
+  if (!x) {
+    throw new Error(msg || 'Assertion failed');
+    console.log('Please make sure you entered a valid URL and token and try again');
+    process.exit(1);
+  }
 };
 
 export function assertFigmaData(d: unknown): asserts d is FigmaData {
