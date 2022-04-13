@@ -11,7 +11,7 @@ import {
   NodeKey,
   TokenTransform
 } from './figmaParser.utils';
-
+import { logger } from '../../../logger';
 
 const tokensV2Flag = true;
 
@@ -39,15 +39,15 @@ export type FigmaData = {
 
 export const assert = <T>(x: T, msg?: string) => {
   if (!x) {
-    throw new Error(msg || 'Assertion failed');
-    console.log('Please make sure you entered a valid URL and token and try again');
+    logger.error(msg || 'Please make sure you entered a valid URL and token and try again');
+    // logger.error('Please make sure you entered a valid URL and token and try again');
     process.exit(1);
   }
 };
 
 export function assertFigmaData(d: unknown): asserts d is FigmaData {
   const { fileId, nodeId, token } = (d as FigmaData) ?? {};
-  assert(typeof fileId === 'string', 'fileId not found');
+  assert(typeof fileId === 'string', 'Please check your Figma URL');
   assert(typeof nodeId === 'string', 'node-id not found');
   assert(typeof token === 'string', 'token not found');
 }
