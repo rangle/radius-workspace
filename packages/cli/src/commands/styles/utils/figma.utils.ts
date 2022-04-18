@@ -1,5 +1,4 @@
-import * as Figma from 'figma-api';
-import { GroupOf, toKebabCase } from './common.utils';
+import { assert, GroupOf, toKebabCase } from './common.utils';
 import {
   filterByDescriptionSpacer,
   filterByElevation,
@@ -11,22 +10,10 @@ import {
   NodeKey,
   TokenTransform
 } from './figmaParser.utils';
-import { logger } from '../../../logger';
 
 const tokensV2Flag = true;
 
-export const setup = (key: string) => {
-  const api = new Figma.Api({
-    personalAccessToken: key
-  });
-  return {
-    getFile: (fileKey: string) => api.getFile(fileKey),
-    getFileNode: (fileKey: string, ids: string[]) =>
-      api.getFileNodes(fileKey, ids)
-  };
-};
-
-export type FigmaInputData = {
+export type FigmaFileParams = {
   url: string,
   token: string,
 };
@@ -37,23 +24,14 @@ export type FigmaData = {
   token: string,
 };
 
-export const assert = <T>(x: T, msg?: string) => {
-  if (!x) {
-    if (typeof msg === 'string') {
-      logger.error(msg);
-    }
-    process.exit(1);
-  }
-};
-
 export function assertFigmaData(d: unknown): asserts d is FigmaData {
   const { fileId, nodeId, token } = (d as FigmaData) ?? {};
-  assert(typeof fileId === 'string', 'Please put a valid URL');
+  assert(typeof fileId === 'string', 'Please enter a valid URL');
   assert(typeof nodeId === 'string', 'node-id not found');
-  assert(typeof token === 'string', 'Please put a valid token');
+  assert(typeof token === 'string', 'Please enter a valid token');
 }
 
-export const processFigmaUrl = ({ url, token }: FigmaInputData): FigmaData => {
+export const processFigmaUrl = ({ url, token }: FigmaFileParams): FigmaData => {
   const [, fileId] = url.match(/\/file\/(.*)\//) || [undefined];
   const [, encodedId] = url.match(/\?node-id=(.*)&?$/) || [undefined];
   const nodeId = encodedId && decodeURIComponent(encodedId);
