@@ -1,4 +1,4 @@
-import { assert, GroupOf, toKebabCase } from './common.utils';
+import { GroupOf, toKebabCase } from './common.utils';
 import {
   filterByDescriptionSpacer,
   filterByElevation,
@@ -18,27 +18,6 @@ export type FigmaFileParams = {
   token: string,
 };
 
-export type FigmaData = {
-  fileId: string,
-  nodeId: string,
-  token: string,
-};
-
-export function assertFigmaData(d: unknown): asserts d is FigmaData {
-  const { fileId, nodeId, token } = (d as FigmaData) ?? {};
-  assert(typeof fileId === 'string', 'Please enter a valid URL');
-  assert(typeof nodeId === 'string', 'node-id not found');
-  assert(typeof token === 'string', 'Please enter a valid token');
-}
-
-export const processFigmaUrl = ({ url, token }: FigmaFileParams): FigmaData => {
-  const [, fileId] = url.match(/\/file\/(.*)\//) || [undefined];
-  const [, encodedId] = url.match(/\?node-id=(.*)&?$/) || [undefined];
-  const nodeId = encodedId && decodeURIComponent(encodedId);
-  const data = { fileId, nodeId, token };
-  assertFigmaData(data);
-  return data;
-};
 
 // type Unpromise<T extends Promise<any>> = T extends Promise<infer X> ? X : never;
 type FigmaFileNodes = {

@@ -48,3 +48,6 @@ export const assert = <T>(x: T, msg?: string) => {
   }
 };
 
+export const regexSingleMatch = (str: string, regex: RegExp) => {
+  return str.match(regex)?.[1] ?? '';
+};
