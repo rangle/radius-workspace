@@ -74,20 +74,6 @@ export const styles: CommandModule<Options, Options> = {
 
     const { template, dryRun } = args;
 
-    if (!figmaUrl) {
-      logger.error(
-        'Figma URL Not Found, please run styles command again and provide the URL: '
-      );
-      process.exit(1);
-    }
-
-    if (!figmaToken) {
-      logger.error(
-        'Figma Token Not Found, please run styles command again and provide the token: '
-      );
-      process.exit(1);
-    }
-
     const options: Options = {
       url: figmaUrl,
       userToken: figmaToken,

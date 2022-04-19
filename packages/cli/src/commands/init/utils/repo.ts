@@ -37,14 +37,14 @@ export const commandSetupGit = async (dir: string) => {
   } catch(error: any){
     console.log(chalk.red(error?.message));
   }
-  
+
   // check to see if the folder we just cloned exists
   if(!fs.existsSync(dir)){
     throw new Error(`The repo directory ${ dir } does not exist`);
   }
 
   await execSync(`cd ${ dir } && rm -rf .git`);
-  await execSync(`cd ${ dir } && git init -b main`);
+  await execSync(`cd ${ dir } && git init main`);
 };
 
 export const logSuccess = (designSystemOptions: any) => {
