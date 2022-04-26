@@ -6,10 +6,6 @@ A modular tool to generate and manage Design Systems and other Accelerated Proje
 
 ## Available Commands:
 
-Run CLI without global install to generate a new design system folder :
-
-`npx radius-script init`
-
 Global installation:
 
 ```

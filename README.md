@@ -19,30 +19,11 @@ See also:
 [Radius-Angular](https://github.com/rangle/radius-angular)
 [Radius](https://github.com/rangle/radius) [for React]
 
-## Create Design System instances with the Radius CLI
-
-1. Instantiate a design system boilerplate!
-   `npx radius-script init`
-
-2. Bootstrap the styles with Figma URL!
-
-Pre-requisites:
-
-- a Figma URL
-- a Figma token
-- optional environment variables for `packages/cli/.env` : `FIGMA_URL`, `FIGMA_TOKEN`
-
-`npx radius-script styles`
-
-[rangle.io/radius](https://rangle.io/radius)
-
-[Figma File](https://www.figma.com/file/RqENxZWAzGiEWM7COch1Sc/Radius-Design-Kit)
-
 ## Key Features
 
 Use the CLI to:
 
-- Generate themes from Figma URLs
+- Generate design tokens from Figma URL
 - Generate a design system repository
 - WIP: Publish your generated design system to the npm registry
 
@@ -56,7 +37,7 @@ To use Radius node version `14+` is needed
 
 Use npm to install and manage Radius.
 
-If you have a previous version of Radius installed globaly, run
+If you have a previous version of Radius installed globally, run
 
     `npm rm --global @rangle/radius`
 
@@ -65,6 +46,29 @@ Then install the package from npm.
     `npm install --global @rangle/radius`
 
 - TODO - Short description of Radius React & Radius Angular
+
+### Setup Dev
+
+Enable yarn workspaces:
+`yarn config set workspaces-experimental true`
+
+Install dependencies:
+`lerna bootstrap`
+
+## Create Design System instances with the Radius CLI
+
+1. Instantiate a design system boilerplate!
+   `npm cli:init` or `yarn cli:init`
+
+2. Bootstrap the styles with Figma URL!
+
+Pre-requisites:
+
+- a Figma URL
+- a Figma token
+- optional environment variables for `packages/cli/.env` : `FIGMA_URL`, `FIGMA_TOKEN`, `FIGMA_UTILITY
+
+`npm cli:styles` or `yarn cli:styles`
 
 ## Tooling
 
@@ -75,14 +79,6 @@ Then install the package from npm.
 - tsnode for debugging
 - jest for unit tests
 - commitizen for conventional commit messages
-
-## Setup Dev
-
-Enable yarn workspaces:
-`yarn config set workspaces-experimental true`
-
-Install dependencies:
-`lerna bootstrap`
 
 ## What's Inside
 
