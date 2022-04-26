@@ -1,0 +1,16 @@
+{
+  "folders": [
+    // radius DS instance contents for react
+    {
+      "path": "../../radius"
+    },
+    // radius CLI and publishing 
+    {
+      "path": "../../radius-workspace"
+    },
+    // radius DS instance contents for angular
+    {
+      "path": "../../radius-angular"
+    }
+  ]
+}
