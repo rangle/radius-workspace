@@ -25,6 +25,33 @@ export const TOKEN_FILE_COMMENTS: any = {
   */`
 };
 
+export const TypographyTypes = {
+  scale: 'Font scale',
+  weight: 'Font weight',
+  spacing: 'Letter spacing',
+  lineHeight: 'Line height'
+} as const;
+
+export const TYPOGRAPHY_FILE_COMMENTS = {
+  scale: `/**
+  * @tokens Font Sizes
+  * @presenter FontSize
+  */`,
+  weight: `/**
+  * @tokens Font Weights
+  * @presenter FontWeight
+  */`,
+  spacing: `/**
+  * @tokens Letter Spacings
+  * @presenter LetterSpacing
+  */`,
+  lineHeight: `/**
+  * @tokens Line Heights
+  * @presenter LineHeight
+  */`
+
+};
+
 export type TokenContext = {
   breakpoints: {
     [k: string]: number,

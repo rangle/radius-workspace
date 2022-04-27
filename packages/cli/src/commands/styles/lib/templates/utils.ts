@@ -1,5 +1,6 @@
+import { generateTypographyCSS } from '../../utils/cssGenerator.utils';
 import { DesignToken, DesignTokenGroup } from '../../utils/figma.utils';
-import { TokenContext } from './types';
+import { TokenContext, TYPOGRAPHY_FILE_COMMENTS } from './types';
 
 export const createTokenContext = (
   tokenGroup: DesignTokenGroup
@@ -27,3 +28,29 @@ export const filterTokenByViewPort = (
     .reverse()
     .flatMap((x) => x);
 };
+
+export type typographyMap = {
+  [key: string]: DesignToken[],
+};
+
+const extractFontBody = (tokens: DesignToken[], filterType: string, typographyCommentKey: string): string => {
+  return tokens.filter((token) => token.name.includes(filterType)).map((token, index)=> {
+    if(index ==0) {
+      return `\n${ TYPOGRAPHY_FILE_COMMENTS[typographyCommentKey as keyof typeof TYPOGRAPHY_FILE_COMMENTS] }\n
+       ${ generateTypographyCSS(token) }`; 
+    }
+    return `${ generateTypographyCSS(token) }`;
+  } ).join('\n');
+};
+
+export const generateTypographyTokenBody = (tokens: DesignToken[]): string => {
+  const scale = extractFontBody(tokens, 'Font scale', 'scale');
+  const weight = extractFontBody(tokens, 'Font weight', 'weight');
+  const spacing = extractFontBody(tokens, 'Letter spacing', 'spacing');
+  const lineHeight = extractFontBody(tokens, 'Line height', 'lineHeight');
+
+  return scale + weight + spacing + lineHeight;
+};
+
+
+

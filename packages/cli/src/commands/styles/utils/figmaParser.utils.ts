@@ -44,7 +44,6 @@ export const filterByDescriptionSpacer = (data: NodeDef): boolean => {
 
 export const filterByTypography = (data: StyleDef): boolean =>{
   return data.name.includes('Font') || data.name.includes('Line') || data.name.includes('Letter');
-  return data.styleType === FigmaTypes.TYPOGRAPHY;
 };   
 
 export const filterByElevation = (data: NodeDef): boolean => {
