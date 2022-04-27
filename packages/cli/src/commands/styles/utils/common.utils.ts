@@ -1,3 +1,5 @@
+import { logger } from '../../../logger';
+
 export type GroupOf<
   T,
   K extends keyof T,
@@ -36,3 +38,16 @@ export const toKebabCase = (s: string) =>
 	            : letter
 	    )
 	    .join('');
+
+export const assert = <T>(x: T, msg?: string) => {
+  if (!x) {
+    if (typeof msg === 'string') {
+      logger.error(msg);
+    }
+    process.exit(1);
+  }
+};
+
+export const regexSingleMatch = (str: string, regex: RegExp) => {
+  return str.match(regex)?.[1] ?? '';
+};

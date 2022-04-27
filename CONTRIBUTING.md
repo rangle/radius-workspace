@@ -21,7 +21,7 @@ This repo contains the build tool to create a CLI that performs two tasks:
 1. init - walks the user through cloning a git repo
 2. styles - scrapes a Figma file finding colours, type, padding ...
 
-The build tool is [Lerna](https://github.com/lerna/lerna) and TSC for the CLI module.
+The build tool is [Lerna](https://github.com/lerna/lerna), TSC for the CLI module.
 
 - TODO - How does the CLI work?
 
