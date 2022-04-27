@@ -1,20 +1,18 @@
 import {
-  assert,
   DesignToken,
-  getTokens,
-  processFigmaUrl,
-  setup
+  getTokens
 } from '../utils/figma.utils';
+import { assert } from '../utils/common.utils';
 import { groupBy } from '../utils/common.utils';
 import renderers from './templates';
 import path from 'path';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { logger } from '../../../logger';
 import chalk from 'chalk';
-import fs from 'fs';
+import { loadFile } from '../utils/figma.loader';
 
 const token = process.env['FIGMA_TOKEN'] || 'none';
-const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
+// const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
 
 export type Options = {
   url: string,
@@ -38,11 +36,11 @@ export const generateGlobalStyles = async ({
   assert(userToken !== 'none', 'Environment variable FIGMA_TOKEN is empty');
   assert(typeof url === 'string', 'Figma url must be provided');
   const renderTemplate = renderers[template];
-  const { getFileNode } = setup(userToken);
-  const { fileId, nodeId } = processFigmaUrl({ url, token: userToken });
+  
+  //const input = fs.existsSync(figmaFile) ? Promise.resolve(figmaFile): getFileNode(fileId,[nodeId]);
 
-  const input = fs.existsSync(figmaFile) ? Promise.resolve(figmaFile): getFileNode(fileId,[nodeId]);
-  const tokenGroups = await input.then(getTokens).then(groupByType);
+  const tokenGroups = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
+
   const files = renderTemplate(tokenGroups);
 
   if (consoleOutput) {
