@@ -1,4 +1,6 @@
-import { RenderTokenFile, TOKEN_FILE_COMMENTS } from '../types';
+import { 
+  RenderTokenFile, 
+  TOKEN_FILE_COMMENTS } from '../types';
 import {
   generateColorsCSS,
   generateElevationCSS,
@@ -6,7 +8,7 @@ import {
   generateSpacingCSS,
   generateTypographyCSS
 } from '../../../utils/cssGenerator.utils';
-import { filterTokenByViewPort } from '../utils';
+import { filterTokenByViewPort, generateTypographyTokenBody } from '../utils';
 
 export const template: RenderTokenFile = (tokens, type) =>
   [
@@ -90,25 +92,18 @@ ${ tokens.map(( token ) => `${ generateSpacingCSS(token) }`).join('\n') }
 
 // Typography
 
-export const typography: RenderTokenFile = (tokens, _type, { breakpoints }) => {
+export const typography: RenderTokenFile = (tokens, _type, { breakpoints }) => {  
   const queries = Object.keys(breakpoints).map((k) => ({
     viewPort: k,
     value: breakpoints[k]
   }));
+
   return [
     './_typography.css',
     `
   /* default typography tokens */
-
   :root {
-      ${ tokens
-    .map(
-      ( token ) =>
-        `  ${ generateTypographyCSS(token) }`
-    )
-    .join('\n') }
-
-  }
+  ${ generateTypographyTokenBody(tokens) }
   ${ queries.map(({ viewPort, value }) => {
     return `
     /* typography tokens for ${ viewPort } (${ value }) */
@@ -123,6 +118,6 @@ export const typography: RenderTokenFile = (tokens, _type, { breakpoints }) => {
         }
     }`;
   }).join('') }
-  `
-  ] as const;
+
+}`] as const;
 };
