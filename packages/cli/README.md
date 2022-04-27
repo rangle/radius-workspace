@@ -4,6 +4,10 @@ A modular tool to generate and manage Design Systems and other Accelerated Proje
 
 ## Usage
 
+## Available Commands:
+
+Global installation:
+
 ```
 npm -g i @radius/cli
 
@@ -12,8 +16,6 @@ radius <command> [options]
 radius --help
 ```
 
-## Available Commands:
-
 ### Styles
 
 Generate/update styles for a Design System by reading design tokens directly from a Design Source like Figma
@@ -21,7 +23,7 @@ Generate/update styles for a Design System by reading design tokens directly fro
 Example:
 
 ```
-  radius styles http://link.to/figma/f0383de89 ../styles --template css-modules --single-file-output
+  radius styles <FIGMA_URL> ../styles --template css-modules --single-file-output
 ```
 
 See [lib/commands/styles](lib/commands/styles) for more information
