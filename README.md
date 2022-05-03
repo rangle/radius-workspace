@@ -16,8 +16,10 @@ This workspace reflects our internal R&D efforts to:
 - enable the easy translation of Figma design tokens into styles within your new boilerplate that your dev team can readily work with and scale
 
 See also:
-[Radius-Angular](https://github.com/rangle/radius-angular)
-[Radius](https://github.com/rangle/radius) [for React]
+
+- [npm package](https://www.npmjs.com/package/radius-script) for our CLI Tool
+- [Radius-Angular](https://github.com/rangle/radius-angular)
+- [Radius](https://github.com/rangle/radius) [for React]
 
 ## Key Features
 
@@ -27,25 +29,19 @@ Use the CLI to:
 - Generate a design system repository
 - WIP: Publish your generated design system to the npm registry
 
-TODO - Link to the NPM module page
+## Try Out the CLI
+
+![Terminal window showing npx radius-script init command](imgs/radius-script-angular.gif)
+
+1. Create a new design system project folder by running `npx radius-script init`
+1. Select your framework of choice, name your project folder, and `cd` into it.
+1. Run `npm install` to install all dependencies
+
+1. Extract tokens from Figma `npx radius-script styles`
 
 ## Requirements
 
 To use Radius node version `14+` is needed
-
-## Quick Start
-
-Use npm to install and manage Radius.
-
-If you have a previous version of Radius installed globally, run
-
-    `npm rm --global @rangle/radius`
-
-Then install the package from npm.
-
-    `npm install --global @rangle/radius`
-
-- TODO - Short description of Radius React & Radius Angular
 
 ### Setup Dev
 
@@ -66,7 +62,7 @@ Pre-requisites:
 
 - a Figma URL
 - a Figma token
-- optional environment variables for `packages/cli/.env` : `FIGMA_URL`, `FIGMA_TOKEN`, `FIGMA_UTILITY
+- optional environment variables for `packages/cli/.env` : `FIGMA_URL`, `FIGMA_TOKEN`
 
 `npm cli:styles` or `yarn cli:styles`
 
@@ -111,7 +107,8 @@ Pre-requisites:
 
 ## Contributing
 
-Guidelines: [CONTRIBUTING.md](./CONTRIBUTING.md)
+Want to help us improve this, or hoping to see your favorite libraries or build tools integrated?
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## License
 
