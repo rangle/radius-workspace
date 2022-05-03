@@ -2,16 +2,13 @@
 
 ## Background
 
-[rangle.io/radius](https://rangle.io/radius)
-[Radius Design Kit](https://www.figma.com/file/RqENxZWAzGiEWM7COch1Sc/Radius-Design-Kit) on Figma
-
 The Radius design system starter kit is a collection of open-source tools and libraries developed by Rangle to guide devs to build design systems faster. Design systems need to match increasingly flexible brand and product needs, to adapt to everchanging digital workflows.
 
 `radius-workspace` is 1 of 3 repositories that constitute the Radius ecosystem for accelerating the building of design systems!
 
 This workspace reflects our internal R&D efforts to:
 
-- automate the generation of design system starter boilerplates
+- automate the generation of design system starter boilerplates with a CLI
 - offer the choice of popular choices around tooling, JS frameworks and style libraries
 - enable the easy translation of Figma design tokens into styles within your new boilerplate that your dev team can readily work with and scale
 
@@ -19,7 +16,9 @@ See also:
 
 - [npm package](https://www.npmjs.com/package/radius-script) for our CLI Tool
 - [Radius-Angular](https://github.com/rangle/radius-angular)
-- [Radius](https://github.com/rangle/radius) [for React]
+- [Radius[for React]](https://github.com/rangle/radius)
+- [rangle.io/radius](https://rangle.io/radius)
+- [Radius Design Kit](https://www.figma.com/file/RqENxZWAzGiEWM7COch1Sc/Radius-Design-Kit) on Figma
 
 ## Key Features
 
@@ -36,7 +35,6 @@ Use the CLI to:
 1. Create a new design system project folder by running `npx radius-script init`
 1. Select your framework of choice, name your project folder, and `cd` into it.
 1. Run `npm install` to install all dependencies
-
 1. Extract tokens from Figma `npx radius-script styles`
 
 ## Requirements
@@ -51,7 +49,7 @@ Enable yarn workspaces:
 Install dependencies:
 `lerna bootstrap`
 
-## Create Design System instances with the Radius CLI
+## Create Design System instances with the Radius CLI Locally
 
 1. Instantiate a design system boilerplate!
    `npm cli:init` or `yarn cli:init`
