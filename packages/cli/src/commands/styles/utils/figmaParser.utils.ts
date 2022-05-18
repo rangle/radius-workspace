@@ -34,6 +34,20 @@ export const filterByTypeFill = (data: StyleDef): boolean => {
   );
 };
 
+export const filterByColor = (data: NodeDoc[]) => {
+
+  data.filter((node)=> {
+    if(node.name.includes('$')) {
+      return node;
+    }
+  });
+  // return data.name.includes('$');
+};
+
+export const filterByColorStyleType = (data: StyleDef) => {
+  return data.styleType === 'FILL';
+};
+
 export const filterByTypeGrid = (data: StyleDef): boolean => {
   return data.styleType === FigmaTypes.GRID;
 };
@@ -61,6 +75,21 @@ export const generateStyleMap = <T extends NodeDef>(nodeKeys: NodeKey<T>, fn: (d
       };
     }, {});     
   return filtered;
+};
+
+
+export const getChildNodes = <T extends NodeDoc>(nodeDocument: T, arr: NodeDoc[]): NodeDoc[] => {
+  const cArray: NodeDoc[] = arr;
+  const nodeChildren = nodeDocument.children as NodeDoc[];
+  nodeChildren.flatMap((node)=> {
+    if(node.children) {
+      cArray.push(node);
+      return getChildNodes(node, cArray);
+    } else {
+      cArray.push(node);
+    }
+  });
+  return cArray;
 };
 
 export const getChildStyleNodes = <S extends string, U extends NodeDef, T extends NodeDoc>

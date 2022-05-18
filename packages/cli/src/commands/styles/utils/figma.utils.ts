@@ -11,6 +11,8 @@ import {
   TokenTransform
 } from './figmaParser.utils';
 
+import jp from 'jsonpath';
+
 const tokensV2Flag = true;
 
 export type FigmaFileParams = {
@@ -22,7 +24,7 @@ export type FigmaFileParams = {
 // type Unpromise<T extends Promise<any>> = T extends Promise<infer X> ? X : never;
 type FigmaFileNodes = {
   nodes: {
-    [key: string]: NodeRoot,
+    [key: string]: NodeRoot | any ,
   },
 };
 
@@ -103,7 +105,7 @@ export type ComponentDef = Omit<StyleDef, 'styleType'> & {
 
 export type NodeDef = StyleDef | ComponentDef;
 
-type NodeRoot = {
+export type NodeRoot = {
   document: NodeDocument,
   styles: {
     [key: string]: StyleDef,
@@ -181,7 +183,7 @@ export type DesignToken = {
 
 export type DesignTokenGroup = GroupOf<DesignToken, 'type'>;
 
-const extractFirstNode = <T extends FigmaFileNodes>({ nodes }: T) =>
+export const extractFirstNode = <T extends FigmaFileNodes>({ nodes }: T) =>
   Object.keys(nodes)
     .map((nodeId) => nodes[nodeId as keyof typeof nodes])
     .shift();
@@ -234,10 +236,23 @@ export const getTokens = (data: any) =>
     .then((node) => {
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
+      const nodeQuery = jp.query(node, '$..children[?(@.name=="Base Color")]..children[?(@.type=="RECTANGLE")]');
+      // .filter((item) => item.includes('$'));
+      console.log(nodeQuery);
+
+      const nodeQueryTypography: NodeDoc[] = jp.query(node, '$..children[?(@.name=="Typography Token")].children')[0];
+      // .filter((item: NodeDoc)=> item.name.includes('$'));
+
+      const nodeqData = nodeQueryTypography?.filter((item: NodeDoc)=> item.name.includes('$'));
+      console.log(nodeqData);
+
       //generateTokensV2(node) uses figmaParser.utils.ts to extract tokens
       if(tokensV2Flag){
-        return generateTokensV2(node);
+        generateTokensV2(node);
       }
+
+
+
 
       const styleIndex = node.styles;
       const frames = recurseToFindFrames(node);
@@ -416,7 +431,21 @@ export const processTypographyToken = <T extends NodeDocument, S extends NodeDef
   return tokens;
 };
 
-const processColorToken = <T extends NodeDocument>(item: T): DesignToken[] => {
+
+export const processCToken = <T extends NodeDocument>(item: T): DesignToken => {
+  const { name, fills } = item;
+  const [{ color }] = fills;
+  //console.log("COLOR TOKEN RECTANGLE", name, color);
+  const token = `--${ name.toLowerCase().split('/').join('-') }`;
+  return {
+    type: 'color',
+    name,
+    token,
+    value: colorToHex(color)
+  };
+};
+
+export const processColorToken = <T extends NodeDocument>(item: T): DesignToken[] => {
   const { name, fills } = item;
   const [{ color }] = fills;
   //console.log("COLOR TOKEN RECTANGLE", name, color);
@@ -480,14 +509,14 @@ const generateNodes =
     });
   };
 
-const processTypographyDesignToken = (nodeDoc: NodeDoc, parent?: string): DesignToken => {
+export const processTypographyDesignToken = (nodeDoc: NodeDoc, parent?: string): DesignToken => {
 
-  if(parent?.includes('scale')) {
+  if(nodeDoc.name?.includes('scale') && nodeDoc.name?.includes('$')) {
     return {
       type: 'typography',
-      name: nodeDoc.parent,
+      name: nodeDoc.name,
       value: `${ nodeDoc.style.fontSize.toString() }px`,
-      token: `--${ parent.split(' ').join('-').toLowerCase() }${ nodeDoc.name.toLowerCase() }`
+      token: `--${ nodeDoc.name.split(' ').join('-').toLowerCase() }${ nodeDoc.name.toLowerCase() }`
     } as DesignToken;
   }
 
@@ -522,7 +551,7 @@ const processTypographyDesignToken = (nodeDoc: NodeDoc, parent?: string): Design
   return {} as DesignToken;
 };
 
-const generateTypographyTokens = <T extends NodeDef>(
+export const generateTypographyTokens = <T extends NodeDef>(
   node: NodeRoot,
   nodeKeys: NodeKey<T>,
   filterFn: (data: T) => boolean): DesignToken[] => {
