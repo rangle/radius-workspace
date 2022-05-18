@@ -2,22 +2,23 @@
 
 ## Background
 
-[rangle.io/radius](https://rangle.io/radius)
-[Radius Design Kit](https://www.figma.com/file/RqENxZWAzGiEWM7COch1Sc/Radius-Design-Kit) on Figma
-
 The Radius design system starter kit is a collection of open-source tools and libraries developed by Rangle to guide devs to build design systems faster. Design systems need to match increasingly flexible brand and product needs, to adapt to everchanging digital workflows.
 
 `radius-workspace` is 1 of 3 repositories that constitute the Radius ecosystem for accelerating the building of design systems!
 
 This workspace reflects our internal R&D efforts to:
 
-- automate the generation of design system starter boilerplates
+- automate the generation of design system starter boilerplates with a CLI
 - offer the choice of popular choices around tooling, JS frameworks and style libraries
 - enable the easy translation of Figma design tokens into styles within your new boilerplate that your dev team can readily work with and scale
 
 See also:
-[Radius-Angular](https://github.com/rangle/radius-angular)
-[Radius](https://github.com/rangle/radius) [for React]
+
+- [npm package](https://www.npmjs.com/package/radius-script) for our CLI Tool
+- [Radius-Angular](https://github.com/rangle/radius-angular)
+- [Radius[for React]](https://github.com/rangle/radius)
+- [rangle.io/radius](https://rangle.io/radius)
+- [Radius Design Kit](https://www.figma.com/file/RqENxZWAzGiEWM7COch1Sc/Radius-Design-Kit) on Figma
 
 ## Key Features
 
@@ -27,25 +28,18 @@ Use the CLI to:
 - Generate a design system repository
 - WIP: Publish your generated design system to the npm registry
 
-TODO - Link to the NPM module page
+## Try Out the CLI
+
+![Terminal window showing npx radius-script init command](imgs/radius-script-angular.gif)
+
+1. Create a new design system project folder by running `npx radius-script init`
+1. Select your framework of choice, name your project folder, and `cd` into it.
+1. Run `npm install` to install all dependencies
+1. Extract tokens from Figma `npx radius-script styles`
 
 ## Requirements
 
 To use Radius node version `14+` is needed
-
-## Quick Start
-
-Use npm to install and manage Radius.
-
-If you have a previous version of Radius installed globally, run
-
-    `npm rm --global @rangle/radius`
-
-Then install the package from npm.
-
-    `npm install --global @rangle/radius`
-
-- TODO - Short description of Radius React & Radius Angular
 
 ### Setup Dev
 
@@ -55,7 +49,7 @@ Enable yarn workspaces:
 Install dependencies:
 `lerna bootstrap`
 
-## Create Design System instances with the Radius CLI
+## Create Design System instances with the Radius CLI Locally
 
 1. Instantiate a design system boilerplate!
    `npm cli:init` or `yarn cli:init`
@@ -66,7 +60,7 @@ Pre-requisites:
 
 - a Figma URL
 - a Figma token
-- optional environment variables for `packages/cli/.env` : `FIGMA_URL`, `FIGMA_TOKEN`, `FIGMA_UTILITY
+- optional environment variables for `packages/cli/.env` : `FIGMA_URL`, `FIGMA_TOKEN`
 
 `npm cli:styles` or `yarn cli:styles`
 
@@ -111,7 +105,8 @@ Pre-requisites:
 
 ## Contributing
 
-Guidelines: [CONTRIBUTING.md](./CONTRIBUTING.md)
+Want to help us improve this, or hoping to see your favorite libraries or build tools integrated?
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## License
 
