@@ -6,7 +6,7 @@ export const createTokenContext = (
   tokenGroup: DesignTokenGroup
 ): TokenContext => {
   const { breakpoint } = tokenGroup;
-  const breakpoints = breakpoint.reduce((res, item) => {
+  const breakpoints = breakpoint?.reduce((res, item) => {
     return {
       ...res,
       [item.viewPort || 'default']: `${ item.value }px`
@@ -34,7 +34,7 @@ export type typographyMap = {
 };
 
 const extractFontBody = (tokens: DesignToken[], filterType: string, typographyCommentKey: string): string => {
-  return tokens.filter((token) => token.name.includes(filterType)).map((token, index)=> {
+  return tokens?.filter((token) => token.name.includes(filterType)).map((token, index)=> {
     if(index ==0) {
       return `\n${ TYPOGRAPHY_FILE_COMMENTS[typographyCommentKey as keyof typeof TYPOGRAPHY_FILE_COMMENTS] }\n
        ${ generateTypographyCSS(token) }`; 

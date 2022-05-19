@@ -99,7 +99,7 @@ export const generateGlobalStyles = async ({
       const filePath = path.resolve(outputDir ?? '.', fileName);
       const fileDir = path.dirname(filePath);
 
-      dryRun && console.log('// Dry run');
+      // dryRun && console.log('// Dry run');
 
       if (!existsSync(fileDir)) {
         logger.info(`creating directory: ${ chalk.red(fileDir) }`);

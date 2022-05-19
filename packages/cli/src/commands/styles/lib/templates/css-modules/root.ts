@@ -24,7 +24,10 @@ export const fileTemplates: RenderTokenGroup = (tokenGroup) => {
   const context = createTokenContext(tokenGroup);
   return [
     rootTemplate(tokenGroup),
-    ...entries(tokenGroup).map(([type, tokens]) => {
+    ...entries(tokenGroup).filter(([_type, tokens])=>{
+      if(tokens) return true;
+      return false;
+    }).map(([type, tokens]) => {
       switch (type) {
         case 'typography':
           return typography(tokens, type, context);

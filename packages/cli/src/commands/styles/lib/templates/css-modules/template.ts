@@ -14,7 +14,7 @@ export const template: RenderTokenFile = (tokens, type) =>
   [
 	    `./_${ type }.css`,
 	    `${ TOKEN_FILE_COMMENTS[type] }
-    ${ tokens.map(({ token, value }) => `  ${ token }: ${ value };`).join('\n') }`
+    ${ tokens?.map(({ token, value }) => `  ${ token }: ${ value };`).join('\n') }`
   ] as const;
 
 // Color
@@ -24,7 +24,7 @@ export const color: RenderTokenFile = (tokens, type) =>
     `:root {
 ${ TOKEN_FILE_COMMENTS[type] }
 
-${ tokens.map(( token ) => `${ generateColorsCSS(token) }`).join('\n') }
+${ tokens?.map(( token ) => `${ generateColorsCSS(token) }`).join('\n') }
 
 }`
   ] as const;
@@ -36,14 +36,14 @@ export const elevation: RenderTokenFile = (tokens, type) =>
     `./_${ type }.css`,
     `:root {
 ${ TOKEN_FILE_COMMENTS[type] }
-${ tokens.map(( token ) => `${ generateElevationCSS(token) }`).join('\n') }
+${ tokens?.map(( token ) => `${ generateElevationCSS(token) }`).join('\n') }
 }`
   ] as const;
 
 // Grid
 
 export const grid: RenderTokenFile = (tokens, _type, { breakpoints }) => {
-  const queries = Object.keys(breakpoints).map((k) => ({
+  const queries = Object.keys(breakpoints??{}).map((k) => ({
     viewPort: k,
     value: breakpoints[k]
   }));
@@ -54,7 +54,7 @@ export const grid: RenderTokenFile = (tokens, _type, { breakpoints }) => {
 
   :root {
 ${ tokens
-    .filter(({ viewPort }) => viewPort === 'l')
+    ?.filter(({ viewPort }) => viewPort === 'l')
     .map(
       (token) => `${ generateGridCSS(token) }`
     )
@@ -86,14 +86,14 @@ export const spacing: RenderTokenFile = (tokens, type) =>
     `./_${ type }.css`,
     `:root {
 ${ TOKEN_FILE_COMMENTS[type] }
-${ tokens.map(( token ) => `${ generateSpacingCSS(token) }`).join('\n') }
+${ tokens?.map(( token ) => `${ generateSpacingCSS(token) }`).join('\n') }
 }`
   ] as const;
 
 // Typography
 
 export const typography: RenderTokenFile = (tokens, _type, { breakpoints }) => {  
-  const queries = Object.keys(breakpoints).map((k) => ({
+  const queries = Object.keys(breakpoints??{}).map((k) => ({
     viewPort: k,
     value: breakpoints[k]
   }));
