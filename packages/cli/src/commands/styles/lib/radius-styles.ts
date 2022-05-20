@@ -3,6 +3,7 @@ import {
   DesignToken,
   extractFirstNode,
   getTokens,
+  NodeDoc,
   NodeRoot
 } from '../utils/figma.utils';
 import { assert } from '../utils/common.utils';
@@ -12,16 +13,27 @@ import path from 'path';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { logger } from '../../../logger';
 import chalk from 'chalk';
-import { loadFile } from '../utils/figma.loader';
+import { getBlobs, getFigmaBlobs, loadFile } from '../utils/figma.loader';
 
 import { 
 } from '../utils/figmaParser.utils';
-import { figmaResolver, tokenSelector } from '../utils/figmaResolver.utils';
-
-import figmaConfig from '../../../../figmaFileConfig.json';
+import {
+  figmaResolver, getTokenWithOptions, TokenOption
+} from '../utils/figmaResolver.utils';
+import { getColor2, getTypography2 } from '../utils/extractors/figmaExtractors';
+import { isColor2, isTypographyFormat2 } from '../utils/validators/figmaValidators';
+import { GetFileNodesResult } from 'figma-api/lib/api-types';
 
 const token = process.env['FIGMA_TOKEN'] || 'none';
 // const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
+
+const tokenOption: TokenOption<NodeDoc> = {
+  option: {
+    'color': [isColor2, getColor2],
+    'typography': [isTypographyFormat2, getTypography2]
+  }
+};
+console.log(tokenOption);
 
 export type Options = {
   url: string,
@@ -34,12 +46,20 @@ export type Options = {
 
 const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
 
-const getBlobs = (userToken: string) => {
-  const promises = [];
-  for (const url of figmaConfig.urls) {
-    promises.push(loadFile({ url, token: userToken }));
-  }
-  return Promise.all(promises);
+const getProcessedNodes = (data: GetFileNodesResult[]) => {
+  return data.flatMap((node) => {
+    const root: NodeRoot = extractFirstNode(node);
+
+    const tokenOptionsFunctions = getTokenWithOptions();
+    if (tokenOptionsFunctions.length) 
+      return tokenOptionsFunctions.flatMap((fParser) => fParser(root));
+
+    const colors = figmaResolver.parser.colors(root);
+    if(colors?.length) return colors;
+
+    const parsedTypography = figmaResolver.parser.typography(root);
+    if(parsedTypography?.length) return parsedTypography;
+  }).filter((node) => node);
 };
 
 export const generateGlobalStyles = async ({
@@ -52,37 +72,14 @@ export const generateGlobalStyles = async ({
 }: Options) => {
   assert(userToken !== 'none', 'Environment variable FIGMA_TOKEN is empty');
   assert(typeof url === 'string', 'Figma url must be provided');
-  const designTokens: DesignToken[] = [];
 
-  // 
-  await getBlobs(userToken).then((data) => {
-    const nodeRoots = data.flatMap((node) => {
-      const root: NodeRoot = extractFirstNode(node);
+  const figmaNodes = await getFigmaBlobs(userToken).then((data) => getProcessedNodes(data));
+  //return all tokens;
+  console.log(figmaNodes);
 
-
-      // example 1 
-      const colors = figmaResolver.withOptions.colors([tokenSelector.option.color]);
-      const typography = figmaResolver.withOptions.typography([tokenSelector.option.typography]);
-
-      const colorNodes = colors(root);
-      const typographyNodes = typography(root);
-
-      // example 2 
-      // const parsedColors = figmaResolver.parser.colors(root);
-      // const parsedTypography = figmaResolver.parser.typography(root);
-      console.log(colorNodes);
-      console.log(typographyNodes);
-
-      console.log(nodeRoots);
-      console.log(designTokens.filter((dToken) => dToken.name?.includes('$')));
-      console.log(data);
-    });
-  });
 
   const renderTemplate = renderers[template];
-
   const tokenGroups = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
-
   const files = renderTemplate(tokenGroups);
 
   if (consoleOutput) {

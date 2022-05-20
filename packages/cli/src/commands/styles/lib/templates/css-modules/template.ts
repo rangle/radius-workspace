@@ -91,7 +91,6 @@ ${ tokens.map(( token ) => `${ generateSpacingCSS(token) }`).join('\n') }
   ] as const;
 
 // Typography
-
 export const typography: RenderTokenFile = (tokens, _type, { breakpoints }) => {  
   const queries = Object.keys(breakpoints).map((k) => ({
     viewPort: k,
