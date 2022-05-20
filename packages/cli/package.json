@@ -28,9 +28,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint '**/*.ts'",
-    "test": "jest",
-    "cli:styles": "tsc && ./bin/radius styles",
-    "cli:init": "tsc && ./bin/radius init"
+    "test": "jest"
   },
   "dependencies": {
     "@guanghechen/chalk-logger": "1.9.0",
