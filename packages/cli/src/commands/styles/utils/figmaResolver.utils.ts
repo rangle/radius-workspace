@@ -1,5 +1,6 @@
+import { GetFileNodesResult } from 'figma-api/lib/api-types';
 import { getColor2, getTypography2, getColor1, getTypography1 } from './extractors/figmaExtractors';
-import { NodeDoc, NodeRoot } from './figma.utils';
+import { extractFirstNode, NodeDoc, NodeRoot } from './figma.utils';
 // import { 
 //   filterByColorStyleType, 
 //   filterByTypeFill, 
@@ -30,7 +31,6 @@ const generateParser = <T extends NodeDoc>(tokenizers: FigmaTokenizer<T>[]) => (
   return;
 };
 
-
 export const filterTokenOptions = <T extends TokenOption<NodeDoc>, U extends OptionType>
 (tOption: T | undefined, key: U) => {
   return tOption?.option[key]? tOption.option[key] : undefined;
@@ -56,6 +56,24 @@ export const getTokenWithOptions = (tOption?: TokenOption<NodeDoc>): FigmaTokenP
   const typography = isFigmaTokenParser(filterTokenOptions(tOption, 'typography'));
   if(isFigmaTokenizerFunction(typography)) parserFunctions.push(typography);
   return parserFunctions;
+};
+
+export const transformNodes = (data: GetFileNodesResult[]) => {
+  return data.flatMap((node) => {
+    const root: NodeRoot = extractFirstNode(node);
+  
+    // If getTokensWithOptions(tokenOptions) has param tokenOptions, execute lines 66-68
+    const tokenOptionsFunctions = getTokenWithOptions();
+    if (tokenOptionsFunctions.length) 
+      return tokenOptionsFunctions.flatMap((fParser) => fParser(root));
+  
+    // If no tokenOptions provided, execute lines 72-76
+    const colors = figmaResolver.parser.colors(root);
+    if(colors?.length) return colors;
+  
+    const parsedTypography = figmaResolver.parser.typography(root);
+    if(parsedTypography?.length) return parsedTypography;
+  }).filter((node) => node);
 };
 
 // const tokenOption: TokenOption<NodeDoc> = {

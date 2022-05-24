@@ -1,10 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   DesignToken,
-  extractFirstNode,
   getTokens,
-  NodeDoc,
-  NodeRoot
+  NodeDoc
 } from '../utils/figma.utils';
 import { assert } from '../utils/common.utils';
 import { groupBy } from '../utils/common.utils';
@@ -13,16 +11,11 @@ import path from 'path';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { logger } from '../../../logger';
 import chalk from 'chalk';
-import { getBlobs, getFigmaBlobs, loadFile } from '../utils/figma.loader';
+import { getFigmaBlobs, loadFile } from '../utils/figma.loader';
 
-import { 
-} from '../utils/figmaParser.utils';
-import {
-  figmaResolver, getTokenWithOptions, TokenOption
-} from '../utils/figmaResolver.utils';
+import { transformNodes, TokenOption } from '../utils/figmaResolver.utils';
 import { getColor2, getTypography2 } from '../utils/extractors/figmaExtractors';
 import { isColor2, isTypographyFormat2 } from '../utils/validators/figmaValidators';
-import { GetFileNodesResult } from 'figma-api/lib/api-types';
 
 const token = process.env['FIGMA_TOKEN'] || 'none';
 // const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
@@ -46,22 +39,6 @@ export type Options = {
 
 const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
 
-const getProcessedNodes = (data: GetFileNodesResult[]) => {
-  return data.flatMap((node) => {
-    const root: NodeRoot = extractFirstNode(node);
-
-    const tokenOptionsFunctions = getTokenWithOptions();
-    if (tokenOptionsFunctions.length) 
-      return tokenOptionsFunctions.flatMap((fParser) => fParser(root));
-
-    const colors = figmaResolver.parser.colors(root);
-    if(colors?.length) return colors;
-
-    const parsedTypography = figmaResolver.parser.typography(root);
-    if(parsedTypography?.length) return parsedTypography;
-  }).filter((node) => node);
-};
-
 export const generateGlobalStyles = async ({
   url,
   userToken = token,
@@ -73,14 +50,14 @@ export const generateGlobalStyles = async ({
   assert(userToken !== 'none', 'Environment variable FIGMA_TOKEN is empty');
   assert(typeof url === 'string', 'Figma url must be provided');
 
-  const figmaNodes = await getFigmaBlobs(userToken).then((data) => getProcessedNodes(data));
+  const figmaNodes = await getFigmaBlobs(userToken).then((data) => transformNodes(data));
   //return all tokens;
   console.log(figmaNodes);
-
 
   const renderTemplate = renderers[template];
   const tokenGroups = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
   const files = renderTemplate(tokenGroups);
+
 
   if (consoleOutput) {
     // files.forEach(([fileName, content]) => {
