@@ -35,6 +35,8 @@ type GetStylesListType = {
   },
 };
 
+const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
+
 export const getFileKey = (url: string) => {
   const fileKey = url.match(/\/file\/(\w*)\//);
   if(fileKey && fileKey.length > 1) return fileKey[1];
@@ -134,7 +136,7 @@ export const figmaAPIFactory = (token: string) => {
     },[] as DesignToken[]);
     
     // groups them all
-    const grouped = groupBy(styles,'type');
+    const grouped = groupByType(styles);
     return grouped;
   };
 
