@@ -40,6 +40,7 @@ export const generateGlobalStyles = async ({
   //const input = fs.existsSync(figmaFile) ? Promise.resolve(figmaFile): getFileNode(fileId,[nodeId]);
 
   const tokenGroups = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
+  // TODO New method to get tokenGroup
 
   const files = renderTemplate(tokenGroups);
 
