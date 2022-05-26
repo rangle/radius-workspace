@@ -1,15 +1,16 @@
 //validator //loader/parse //tokenizer
 import axios from 'axios';
 import { StyleMetadata } from 'figma-api/lib/api-types';
-import { DesignToken, processTypographyToken } from './figma.utils';
+import { DesignToken, processTypographyToken, NodeDocument } from './figma.utils';
 import { groupBy } from './common.utils';
+
 // const figmaToken = '379431-5a32d6d8-85b0-4193-b06b-841b89dcf741';
 export type StyleResponse = {
   meta: {
     styles: StyleDescriptor[],
   },
 };
-type StyleDescriptor = {
+export type StyleDescriptor = {
   key: string,
   file_key: string,
   node_id: string,
@@ -56,7 +57,29 @@ export const colorToHex = ({ r, g, b }: any) =>
     .join('') }`;
 
 
-export const parseType = (style: any,target: any) => {
+export const parseGRID = (style: StyleDescriptor,target: NodeDocument) => {
+  const out: DesignToken = {
+    type: 'breakpoint',
+    name: target.name,
+    token: generateToken(target.name),
+    value: 'default'
+  };
+  if(style.description.includes('--')){
+    const matched = style.description.match(/--[a-zA-Z0-9/-]*/gm);
+    if(matched) out.token = matched[0];
+    const matchViewport = style.description.match(/--([0-9a-zA-Z]*)-/m);
+    if(matchViewport && matchViewport.length >= 2) out.viewPort = matchViewport[1];
+  }
+  if(style.description.includes('px')){
+    const matched = style.description.match(/[0-9]*px/gm);
+    if(matched) out.value = matched[0];
+  }
+
+  return out;
+};
+
+
+export const parseType = (style: StyleDescriptor, target: NodeDocument) => {
   let out: DesignToken | DesignToken[] = {
     type: 'typography',
     name: target.name,
@@ -70,13 +93,13 @@ export const parseType = (style: any,target: any) => {
       out.value = colorToHex(target.fills?.[0].color);
       break;
     case 'GRID':
-      out.type = 'breakpoint';
+      out =  parseGRID(style,target);
       break;
     case 'TEXT':
-      out = processTypographyToken(target,style);
+      out = processTypographyToken(target,style as any);
       break;
     case 'EFFECT':
-      // Shadows
+      // Shadows 
       // code
       break;
     default:

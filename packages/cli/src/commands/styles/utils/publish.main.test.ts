@@ -1,7 +1,8 @@
-import { getFileKey, colorToHex, figmaAPIFactory, parseType } from './publish.main';
+import { getFileKey, colorToHex, figmaAPIFactory, parseType, parseGRID, StyleDescriptor } from './publish.main';
 import * as publishNodes from '../lib/__mocks__/publish.nodes.json';
 import * as publishStyles from '../lib/__mocks__/publish.styles.json';
 import axios from 'axios';
+import { NodeDocument } from './figma.utils';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -146,12 +147,67 @@ describe('getStyles, getStyleNodes and processStyles', () => {
 
     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
     const values = await figmaAPI.processStyles('TJzz7ZB6pJvpLhjI5DWG3F');
-    expect(Object.keys(values)).toStrictEqual(['typography', 'color']);    
+    expect(Object.keys(values)).toStrictEqual(['typography', 'color','breakpoint']);    
+  });
+});
+
+describe('praseGrid', ()=>{
+  it('should parsetype Grid',() =>{
+    // ''
+    const style: StyleDescriptor = {
+      key: 'f9b164d248ace903e06565a46e043f59d051e049',
+      file_key: 'TJzz7ZB6pJvpLhjI5DWG3F',
+      node_id: '20008:10971',
+      style_type: 'GRID',
+      thumbnail_url: '',
+      name: 'mobile (360px)',
+      description: '--s-mobile-360px-4-columns',
+      created_at: '2022-05-09T18:36:06.675Z',
+      updated_at: '2022-05-09T18:36:06.675Z',
+      user: {
+        id: ' ',
+        handle: ' ',
+        img_url: ' '
+      },
+      sort_position: '\\'
+    };
+
+    const target: NodeDocument = {
+      id: '20008:10971',
+      name: 'background/2',
+      type: 'RECTANGLE',
+      blendMode: 'PASS_THROUGH',
+      fills: [ { blendMode: 'NORMAL', type: 'SOLID', color: { r:0,g:0,b:0 } } ],
+      strokes: [],
+      strokeWeight: 1,
+      strokeAlign: 'INSIDE',
+      effects: [],
+      parent:'',
+      style:{
+        fontFamily:'',
+        fontWeight:0,
+        fontSize:0,
+        letterSpacing:0,
+        lineHeightPx:0,
+        lineHeightPercent:0,
+        lineHeightPercentFontSize:0
+      },
+      styles:{ fill:'' },
+      children:[]
+    };
+
+    expect(parseGRID(style,target)).toStrictEqual({
+      type:'breakpoint',
+      name:'background/2',
+      token:'--s-mobile-360px-4-columns',
+      value:'360px',
+      viewPort:'s'
+    });
   });
 });
 
 describe('parseType', () => {
-  const colorStyle = {
+  const colorStyle: StyleDescriptor = {
     key: 'f9b164d248ace903e06565a46e043f59d051e049',
     file_key: 'TJzz7ZB6pJvpLhjI5DWG3F',
     node_id: '20008:10971',
@@ -168,18 +224,28 @@ describe('parseType', () => {
     },
     sort_position: '\\'
   };
-  const colorDoc = {
+  const colorDoc: NodeDocument = {
     id: '20008:10971',
     name: 'background/2',
     type: 'RECTANGLE',
     blendMode: 'PASS_THROUGH',
-    absoluteBoundingBox: { x: 0, y: 0, width: 100, height: 100 },
-    constraints: { vertical: 'TOP', horizontal: 'LEFT' },
     fills: [ { blendMode: 'NORMAL', type: 'SOLID', color: { r:0,g:0,b:0 } } ],
     strokes: [],
     strokeWeight: 1,
     strokeAlign: 'INSIDE',
-    effects: []
+    effects: [],
+    parent:'',
+    style:{
+      fontFamily:'',
+      fontWeight:0,
+      fontSize:0,
+      letterSpacing:0,
+      lineHeightPx:0,
+      lineHeightPercent:0,
+      lineHeightPercentFontSize:0
+    },
+    styles:{ fill:'' },
+    children:[]
   };
 
   it('should parseType color', () =>{
@@ -191,7 +257,7 @@ describe('parseType', () => {
     });
   });
   
-  const typeStyle = {
+  const typeStyle: StyleDescriptor = {
     key: '30391beffefd13e8c0c224fc3732183ef79cad2d',
     file_key: 'TJzz7ZB6pJvpLhjI5DWG3F',
     node_id: '20519:3927',
@@ -208,19 +274,16 @@ describe('parseType', () => {
     },
     sort_position: '!~~q|'
   };
-  const typeDoc = {
+  const typeDoc: NodeDocument = {
     id: '20519:3927',
     name: 'inline/m/hover',
     type: 'TEXT',
     blendMode: 'PASS_THROUGH',
-    absoluteBoundingBox: { x: 0, y: 0, width: 59, height: 24 },
-    constraints: { vertical: 'TOP', horizontal: 'LEFT' },
-    fills: [ { blendMode: 'NORMAL', type: 'SOLID', color: [Object] } ],
+    fills: [ { blendMode: 'NORMAL', type: 'SOLID', color: { r:0,g:0,b:0 } } ],
     strokes: [],
     strokeWeight: 0,
     strokeAlign: 'INSIDE',
     effects: [],
-    characters: 'Rag 123',
     style: {
       fontFamily: 'Roboto',
       fontPostScriptName: 'Roboto-Medium',
@@ -236,11 +299,9 @@ describe('parseType', () => {
       lineHeightPercentFontSize: 150,
       lineHeightUnit: 'FONT_SIZE_%'
     },
-    layoutVersion: 3,
-    characterStyleOverrides: [],
-    styleOverrideTable: {},
-    lineTypes: [ 'NONE' ],
-    lineIndentations: [ 0 ]
+    parent:'',
+    styles:{ fill:'' },
+    children:[]
   };
 
   it('should parseType typography', () =>{
@@ -282,5 +343,6 @@ describe('parseType', () => {
     }]);
   });
   
+
 
 });
