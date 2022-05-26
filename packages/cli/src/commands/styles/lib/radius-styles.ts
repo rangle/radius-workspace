@@ -2,6 +2,7 @@ import {
   DesignToken,
   getTokens
 } from '../utils/figma.utils';
+import { getFileKey, figmaAPIFactory } from '../utils/publish.main';
 import { assert } from '../utils/common.utils';
 import { groupBy } from '../utils/common.utils';
 import renderers from './templates';
@@ -24,7 +25,8 @@ export type Options = {
 };
 
 const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
-
+// type PropType<TObj, TProp extends keyof TObj> = TObj[TProp];
+type designTokeTypes = 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation';
 export const generateGlobalStyles = async ({
   url,
   userToken = token,
@@ -40,6 +42,22 @@ export const generateGlobalStyles = async ({
   //const input = fs.existsSync(figmaFile) ? Promise.resolve(figmaFile): getFileNode(fileId,[nodeId]);
 
   const tokenGroups = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
+  const figmaAPI = figmaAPIFactory(userToken);
+  const tokenGroups2 = await figmaAPI.processStyles(getFileKey(url));
+
+  Object.keys(tokenGroups).forEach((input: string) => {
+    const key = input as designTokeTypes;
+    if(tokenGroups[key] && tokenGroups2[key]){
+      const listOfNames: string[] = [];
+      tokenGroups[key] = [...tokenGroups[key], ...tokenGroups2[key]].filter((designToken: DesignToken)=>{
+        if(listOfNames.includes(designToken.name)){
+          return false;
+        }
+        listOfNames.push(designToken.name);
+        return true;
+      });
+    }
+  });
 
   const files = renderTemplate(tokenGroups);
 

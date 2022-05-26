@@ -67,6 +67,12 @@ type TypographyStyleDetails = {
   lineHeightPx: number,
   lineHeightPercent: number,
   lineHeightPercentFontSize: number,
+  fontPostScriptName?: string,
+  textAutoResize?: string,
+  textDecoration?: string,
+  textAlignHorizontal?: string,
+  textAlignVertical?: string,
+  lineHeightUnit?: string,
 };
 
 export type NodeDocument = {
@@ -75,7 +81,14 @@ export type NodeDocument = {
   name: string,
   parent: string,
   style: TypographyStyleDetails,
+  blendMode?: string,
+  strokes?: string[],
+  strokeWeight?: number,
+  strokeAlign?: string,
+  effects?: EffectType[],
   fills: Array<{
+    blendMode?: string,
+    type?: string,
     color: {
       r: number,
       g: number,
@@ -132,6 +145,10 @@ export type RectangleNode = NodeDocument & {
     y: number,
     width: number,
     height: number,
+  },
+  constraints: { 
+    vertical: string, 
+    horizontal: string, 
   },
 };
 
@@ -431,7 +448,7 @@ const processColorToken = <T extends NodeDocument>(item: T): DesignToken[] => {
   ];
 };
 
-function processRectangleSize(
+export function processRectangleSize(
   rectangle: RectangleNode,
   name: string,
   type: DesignToken['type'],
@@ -576,9 +593,9 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
 
   const gridBreakpointTokens = groups.flatMap((group) => {
     return group.children.flatMap((item) => {
-      const { type } = item;
+      // const { type } = item;
       if (
-        type === 'GROUP' &&
+        item.type === 'GROUP' &&
         group.name === 'margins' &&
         isRectangleNode(group) &&
         isRectangleNode(item)
