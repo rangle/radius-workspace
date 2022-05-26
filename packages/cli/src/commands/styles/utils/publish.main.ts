@@ -45,7 +45,7 @@ export const getFileKey = (url: string) => {
 };
 
 export const generateToken = (name: string) => {
-  return `--${ name.toLowerCase().split('/').join('-') }`;
+  return `--${ name.toLowerCase().split('/').join('-').split(' ').join('-') }`;
 };
 
 const hex = (n: number) => `00${ n.toString(16) }`.slice(-2);
@@ -71,8 +71,8 @@ export const parseGRID = (style: StyleDescriptor,target: NodeDocument) => {
     if(matchViewport && matchViewport.length >= 2) out.viewPort = matchViewport[1];
   }
   if(style.description.includes('px')){
-    const matched = style.description.match(/[0-9]*px/gm);
-    if(matched) out.value = matched[0];
+    const matched = style.description.match(/([0-9]*)px/m);
+    if(matched && matched.length >= 2) out.value = matched[1];
   }
 
   return out;

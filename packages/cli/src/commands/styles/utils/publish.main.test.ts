@@ -200,7 +200,7 @@ describe('praseGrid', ()=>{
       type:'breakpoint',
       name:'background/2',
       token:'--s-mobile-360px-4-columns',
-      value:'360px',
+      value:'360',
       viewPort:'s'
     });
   });
