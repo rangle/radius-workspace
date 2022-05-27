@@ -29,13 +29,13 @@ describe('toKebabCase', () => {
 
 describe('groupBy', () => {
   it('should group by type, creating an object of arrays', () => {
-    const res = groupBy([
+    const mockDesignTokenArray = groupBy([
       { 'type':'a' ,'value':1 },
       { 'type':'b' ,'value':2 },
       { 'type':'a' ,'value':3 },
       { 'type':'b' ,'value':4 }
     ],'type');
-    expect(res).toStrictEqual({
+    expect(mockDesignTokenArray).toStrictEqual({
       'a':[
         { 'type':'a' ,'value':1 },
         { 'type':'a' ,'value':3 }

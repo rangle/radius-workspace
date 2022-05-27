@@ -54,7 +54,7 @@ export const grid: RenderTokenFile = (tokens, _type, { breakpoints }) => {
 
   :root {
 ${ tokens
-    .filter((token) => token.viewPort === 'l')
+    .filter(({ viewPort }) => viewPort === 'l')
     .map(
       (token) => `${ generateGridCSS(token) }`
     )

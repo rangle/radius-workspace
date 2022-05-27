@@ -226,7 +226,7 @@ const isTypographyStyle = (o: NodeDocument['styles']): o is TypographyStyle =>
 
 const hex = (n: number) => `00${ n.toString(16) }`.slice(-2);
 
-const colorToHex = ({ r, g, b }: ColorToken['color']) =>
+export const colorToHex = ({ r, g, b }: ColorToken['color']) =>
   `#${ [r, g, b]
     .map((rValue) => rValue * 255)
     .map(Math.round)
@@ -593,7 +593,6 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
 
   const gridBreakpointTokens = groups.flatMap((group) => {
     return group.children.flatMap((item) => {
-      // const { type } = item;
       if (
         item.type === 'GROUP' &&
         group.name === 'margins' &&

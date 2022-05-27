@@ -1,4 +1,4 @@
-import { getFileKey, colorToHex, figmaAPIFactory, parseType, parseGRID, StyleDescriptor } from './publish.main';
+import { getFileKey, figmaAPIFactory, parseType, parseGRID, StyleDescriptor } from './publish.main';
 import * as publishNodes from '../lib/__mocks__/publish.nodes.json';
 import * as publishStyles from '../lib/__mocks__/publish.styles.json';
 import axios from 'axios';
@@ -106,12 +106,6 @@ describe('getFileKey', () => {
   it('should return the key parsed form the url', () =>{
     const exampleURL = 'https://www.figma.com/file/TJzz7ZB6pJvpLhjI5DWG3F/Radius-Design-Kit-V2(WIP)?node-id=0%3A1';
     expect(getFileKey(exampleURL)).toBe('TJzz7ZB6pJvpLhjI5DWG3F');
-  });
-});
-
-describe('colorToHex', () => {
-  it('should return Hex from colour', () =>{
-    expect(colorToHex({ r:0,g:0,b:0 })).toBe('#000000');
   });
 });
 

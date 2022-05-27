@@ -1,7 +1,7 @@
 //validator //loader/parse //tokenizer
 import axios from 'axios';
 import { StyleMetadata } from 'figma-api/lib/api-types';
-import { DesignToken, processTypographyToken, NodeDocument } from './figma.utils';
+import { DesignToken, processTypographyToken, NodeDocument, colorToHex } from './figma.utils';
 import { groupBy } from './common.utils';
 
 // const figmaToken = '379431-5a32d6d8-85b0-4193-b06b-841b89dcf741';
@@ -48,17 +48,8 @@ export const generateToken = (name: string) => {
   return `--${ name.toLowerCase().split('/').join('-').split(' ').join('-') }`;
 };
 
-const hex = (n: number) => `00${ n.toString(16) }`.slice(-2);
-export const colorToHex = ({ r, g, b }: any) =>
-  `#${ [r, g, b]
-    .map((rValue) => rValue * 255)
-    .map(Math.round)
-    .map(hex)
-    .join('') }`;
-
-
 export const parseGRID = (style: StyleDescriptor,target: NodeDocument) => {
-  const out: DesignToken = {
+  const tokenOutput: DesignToken = {
     type: 'breakpoint',
     name: target.name,
     token: generateToken(target.name),
@@ -66,16 +57,16 @@ export const parseGRID = (style: StyleDescriptor,target: NodeDocument) => {
   };
   if(style.description.includes('--')){
     const matched = style.description.match(/--[a-zA-Z0-9/-]*/gm);
-    if(matched) out.token = matched[0];
+    if(matched) tokenOutput.token = matched[0];
     const matchViewport = style.description.match(/--([0-9a-zA-Z]*)-/m);
-    if(matchViewport && matchViewport.length >= 2) out.viewPort = matchViewport[1];
+    if(matchViewport && matchViewport.length >= 2) tokenOutput.viewPort = matchViewport[1];
   }
   if(style.description.includes('px')){
     const matched = style.description.match(/([0-9]*)px/m);
-    if(matched && matched.length >= 2) out.value = matched[1];
+    if(matched && matched.length >= 2) tokenOutput.value = matched[1];
   }
 
-  return out;
+  return tokenOutput;
 };
 
 
