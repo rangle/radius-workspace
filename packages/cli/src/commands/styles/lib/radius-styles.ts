@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   DesignToken,
-  getTokens,
-  NodeDoc
+  getTokens
 } from '../utils/figma.utils';
 import { assert } from '../utils/common.utils';
 import { groupBy } from '../utils/common.utils';
@@ -11,21 +10,22 @@ import path from 'path';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { logger } from '../../../logger';
 import chalk from 'chalk';
-import { getFigmaBlobs, loadFile } from '../utils/figma.loader';
+import { loadFile } from '../utils/figma.loader';
 
-import { transformNodes, TokenOption } from '../utils/figmaResolver.utils';
-import { getColor2, getTypography2 } from '../utils/extractors/figmaExtractors';
-import { isColor2, isTypographyFormat2 } from '../utils/validators/figmaValidators';
+// import { TokenOption } from '../utils/figmaResolver.utils';
+// import { getColor2, getTypography2 } from '../utils/extractors/figmaExtractors';
+// import { isColor2, isTypographyFormat2 } from '../utils/validators/figmaValidators';
 
 const token = process.env['FIGMA_TOKEN'] || 'none';
 // const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
 
-const tokenOption: TokenOption<NodeDoc> = {
-  option: {
-    'color': [isColor2, getColor2],
-    'typography': [isTypographyFormat2, getTypography2]
-  }
-};
+// V3 - used with FigmaResolver
+// const tokenOption: TokenOption<NodeDoc> = {
+//   option: {
+//     'color': [isColor2, getColor2],
+//     'typography': [isTypographyFormat2, getTypography2]
+//   }
+// };
 
 export type Options = {
   url: string,

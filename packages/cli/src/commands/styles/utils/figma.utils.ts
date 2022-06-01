@@ -11,8 +11,6 @@ import {
   TokenTransform
 } from './figmaParser.utils';
 
-import jp from 'jsonpath';
-
 const tokensV2Flag = true;
 
 export type FigmaFileParams = {
