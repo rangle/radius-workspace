@@ -34,16 +34,6 @@ export const filterByTypeFill = (data: StyleDef): boolean => {
   );
 };
 
-export const filterByColor = (data: NodeDoc[]) => {
-
-  data.filter((node)=> {
-    if(node.name.includes('$')) {
-      return node;
-    }
-  });
-  // return data.name.includes('$');
-};
-
 export const filterByColorStyleType = (data: StyleDef) => {
   return data.styleType === 'FILL';
 };
@@ -79,17 +69,17 @@ export const generateStyleMap = <T extends NodeDef>(nodeKeys: NodeKey<T>, fn: (d
 
 
 export const getChildNodes = <T extends NodeDoc>(nodeDocument: T, arr: NodeDoc[]): NodeDoc[] => {
-  const cArray: NodeDoc[] = arr;
+  const nodeChildrenArray: NodeDoc[] = arr;
   const nodeChildren = nodeDocument.children as NodeDoc[];
   nodeChildren.flatMap((node)=> {
     if(node.children) {
-      cArray.push(node);
-      return getChildNodes(node, cArray);
+      nodeChildrenArray.push(node);
+      return getChildNodes(node, nodeChildrenArray);
     } else {
-      cArray.push(node);
+      nodeChildrenArray.push(node);
     }
   });
-  return cArray;
+  return nodeChildrenArray;
 };
 
 export const getChildStyleNodes = <S extends string, U extends NodeDef, T extends NodeDoc>

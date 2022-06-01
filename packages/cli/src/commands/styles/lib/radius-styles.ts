@@ -26,7 +26,6 @@ const tokenOption: TokenOption<NodeDoc> = {
     'typography': [isTypographyFormat2, getTypography2]
   }
 };
-console.log(tokenOption);
 
 export type Options = {
   url: string,
@@ -49,10 +48,6 @@ export const generateGlobalStyles = async ({
 }: Options) => {
   assert(userToken !== 'none', 'Environment variable FIGMA_TOKEN is empty');
   assert(typeof url === 'string', 'Figma url must be provided');
-
-  const figmaNodes = await getFigmaBlobs(userToken).then((data) => transformNodes(data));
-  //return all tokens;
-  console.log(figmaNodes);
 
   const renderTemplate = renderers[template];
   const tokenGroups = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);

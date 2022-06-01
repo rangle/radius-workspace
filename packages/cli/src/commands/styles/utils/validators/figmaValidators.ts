@@ -18,7 +18,6 @@ export const isTypographyFormat2: FigmaTokenAnalyzer = (tree: NodeRoot) => {
 //Colors
 export const isColor1: FigmaTokenAnalyzer = (tree: NodeRoot) => {
   const styleMap = generateStyleMap(tree.styles, filterByTypeFill);
-  console.log(styleMap);
   return Object.entries(styleMap).length > 1 ? true : false; 
 };
   

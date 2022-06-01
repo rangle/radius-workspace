@@ -1,14 +1,9 @@
 import { GetFileNodesResult } from 'figma-api/lib/api-types';
 import { getColor2, getTypography2, getColor1, getTypography1 } from './extractors/figmaExtractors';
 import { extractFirstNode, NodeDoc, NodeRoot } from './figma.utils';
-// import { 
-//   filterByColorStyleType, 
-//   filterByTypeFill, 
-//   filterByTypography, 
-//   generateStyleMap, getChildNodes, getChildStyleNodes } from './figmaParser.utils';
 import { isColor1, isColor2, isTypographyFormat1, isTypographyFormat2 } from './validators/figmaValidators';
 
-//Types
+//FigmaResolver Types
 export type FigmaTokenAnalyzer = (tree: NodeRoot) => boolean;
 export type FigmaTokenParser<T> = (tree: NodeRoot) => T[];
 export type FigmaTokenizer<T> = [FigmaTokenAnalyzer, FigmaTokenParser<T>];
@@ -76,13 +71,6 @@ export const transformNodes = (data: GetFileNodesResult[]) => {
   }).filter((node) => node);
 };
 
-// const tokenOption: TokenOption<NodeDoc> = {
-//   option: {
-//     'color': [isColor2, getColor2],
-//     'typography': [isTypographyFormat2, getTypography2]
-//   }
-// };
-
 const parseColors = generateParser([
   [isColor1, getColor1],
   [isColor2, getColor2]
@@ -110,10 +98,4 @@ export const figmaResolver = {
 };
 
 
-
-
-// loader configuration
-// validator 
-// different values from different applications... no frontify great
-//
 

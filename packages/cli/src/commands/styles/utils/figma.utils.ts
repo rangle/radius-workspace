@@ -236,23 +236,10 @@ export const getTokens = (data: any) =>
     .then((node) => {
       if (!node) throw new Error('Could not find Node: Tokens not defined');
 
-      const nodeQuery = jp.query(node, '$..children[?(@.name=="Base Color")]..children[?(@.type=="RECTANGLE")]');
-      // .filter((item) => item.includes('$'));
-      console.log(nodeQuery);
-
-      const nodeQueryTypography: NodeDoc[] = jp.query(node, '$..children[?(@.name=="Typography Token")].children')[0];
-      // .filter((item: NodeDoc)=> item.name.includes('$'));
-
-      const nodeqData = nodeQueryTypography?.filter((item: NodeDoc)=> item.name.includes('$'));
-      console.log(nodeqData);
-
       //generateTokensV2(node) uses figmaParser.utils.ts to extract tokens
       if(tokensV2Flag){
         generateTokensV2(node);
       }
-
-
-
 
       const styleIndex = node.styles;
       const frames = recurseToFindFrames(node);
