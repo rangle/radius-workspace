@@ -2,6 +2,15 @@ import * as Figma from 'figma-api';
 import { FigmaFileParams } from './figma.utils';
 import { assert, regexSingleMatch } from './common.utils';
 import { logger } from '../../../logger';
+import figmaConfig from '../../../../figmaFileConfig.json';
+
+export const getFigmaBlobs = (userToken: string) => {
+  const promises = [];
+  for (const url of figmaConfig.urls) {
+    promises.push(loadFile({ url, token: userToken }));
+  }
+  return Promise.all(promises);
+};
 
 export const setupFigma = (key: string) => {
   const api = new Figma.Api({

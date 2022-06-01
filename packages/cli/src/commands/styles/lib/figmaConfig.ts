@@ -7,3 +7,4 @@ type FigmaConfig = {
 export const figmaConfig: FigmaConfig = {
   env: 'dev'
 };
+

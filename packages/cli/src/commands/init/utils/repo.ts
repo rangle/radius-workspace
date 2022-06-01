@@ -141,9 +141,6 @@ export const configureGitSetup = (
   return tasks;
 };
 
-
-
-
 export const cloneRepo = async (designSystemOptions: any): Promise<boolean> => {
   try {
     const repoRef = selectRepo(designSystemOptions);

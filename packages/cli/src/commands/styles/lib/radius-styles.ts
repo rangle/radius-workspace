@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   DesignToken,
   getTokens
@@ -11,8 +12,20 @@ import { logger } from '../../../logger';
 import chalk from 'chalk';
 import { loadFile } from '../utils/figma.loader';
 
+// import { TokenOption } from '../utils/figmaResolver.utils';
+// import { getColor2, getTypography2 } from '../utils/extractors/figmaExtractors';
+// import { isColor2, isTypographyFormat2 } from '../utils/validators/figmaValidators';
+
 const token = process.env['FIGMA_TOKEN'] || 'none';
 // const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
+
+// V3 - used with FigmaResolver
+// const tokenOption: TokenOption<NodeDoc> = {
+//   option: {
+//     'color': [isColor2, getColor2],
+//     'typography': [isTypographyFormat2, getTypography2]
+//   }
+// };
 
 export type Options = {
   url: string,
@@ -35,13 +48,11 @@ export const generateGlobalStyles = async ({
 }: Options) => {
   assert(userToken !== 'none', 'Environment variable FIGMA_TOKEN is empty');
   assert(typeof url === 'string', 'Figma url must be provided');
+
   const renderTemplate = renderers[template];
-  
-  //const input = fs.existsSync(figmaFile) ? Promise.resolve(figmaFile): getFileNode(fileId,[nodeId]);
-
   const tokenGroups = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
-
   const files = renderTemplate(tokenGroups);
+
 
   if (consoleOutput) {
     // files.forEach(([fileName, content]) => {
