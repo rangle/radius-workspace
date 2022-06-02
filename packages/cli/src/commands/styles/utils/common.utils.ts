@@ -51,3 +51,44 @@ export const assert = <T>(x: T, msg?: string) => {
 export const regexSingleMatch = (str: string, regex: RegExp) => {
   return str.match(regex)?.[1] ?? '';
 };
+
+
+// get the value of the key
+export const findKeyInJson = (nested_json: any, target: string): string|undefined =>{
+  if(Array.isArray(nested_json)){
+    for(const index in nested_json){
+      console.log(index);
+      const found = findKeyInJson(nested_json[index],target);
+      if(found !== undefined) return found;
+    }
+  } else if(typeof nested_json === 'object') {
+    for(const key in nested_json){
+      if(key === target){
+        return nested_json[key];
+      }
+      const found = findKeyInJson(nested_json[key],target);
+      if(found !== undefined) return found;
+    }
+  }
+  return undefined;
+};
+
+// get the key of the value
+// returns the key of the value
+export const findValueInJson = (nested_json: any, target: string|number): string|undefined =>{
+  if(Array.isArray(nested_json)){
+    for(const index in nested_json){
+      const found = findValueInJson(nested_json[index],target);
+      if(found !== undefined) return found;
+    }
+  } else if(typeof nested_json === 'object') {
+    for(const key in nested_json){
+      if(nested_json[key] === target){
+        return key;
+      }
+      const found = findValueInJson(nested_json[key],target);
+      if(found !== undefined) return found;
+    }
+  }
+  return undefined;
+};

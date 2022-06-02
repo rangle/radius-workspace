@@ -9,7 +9,9 @@ import {
   StyleDef, 
   TypographyStyle 
 } from './figma.utils';
-
+import {
+  findValueInJson
+} from './common.utils';
 export type NodeKey<T extends NodeDef> = {
   [key: string]: T,
 };
@@ -159,3 +161,53 @@ export const isTokenTransformWithoutStyle = <T extends NodeDoc>
 };
 
 
+
+type groupsOfComponents = {
+  [key: string]: any,
+};
+
+export const groupNodesByComponents = (components: any) => {
+  const groups: groupsOfComponents = {};
+  components.forEach((el: any) => {
+    if(groups[el.containing_frame.name]){
+      groups[el.containing_frame.name].push(el);
+    } else {
+      groups[el.containing_frame.name] = [el];
+    }
+  });
+  return groups;
+};
+
+export const groupStyles = (nodes: any, styles: any) => {
+  const groupedStyles: any = {};
+  for(const nodeName in Object.keys(nodes)){
+    const node: any = nodes[nodeName];
+    groupedStyles[node.name] = {};
+    for(const style in styles[node.node_id].styles){
+      const name = styles[node.node_id].styles[style].name;
+      groupedStyles[node.name][name] = findValueInJson(styles[node.node_id],style);
+    }
+    Object.keys(styles[node.node_id].styles);
+  }
+  return groupedStyles;
+};
+
+export const getCommonStyles = (nodes: any, styles: any) => {
+  let commonStyles: string[] = [];
+
+  // create a list of all the styles from the nodes
+  for(const node in Object.keys(nodes)){
+    for(const newStyle in styles[nodes[node].node_id].styles){
+      if(!commonStyles.includes(newStyle)) commonStyles.push(newStyle);
+    }
+  }
+
+  // filter the common list to just the common styles
+  for(const node in Object.keys(nodes)){
+    commonStyles = commonStyles.filter((style)=>{
+      return !!styles[nodes[node].node_id].styles[style];
+    });
+  }
+
+  return commonStyles;
+};
