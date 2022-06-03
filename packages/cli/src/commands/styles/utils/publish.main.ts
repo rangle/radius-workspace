@@ -1,9 +1,10 @@
 //validator //loader/parse //tokenizer
 import axios, { AxiosError } from 'axios';
-import { StyleMetadata } from 'figma-api/lib/api-types';
+import { StyleMetadata, ComponentMetadata } from 'figma-api/lib/api-types';
 import { groupByType } from '../lib/radius-styles';
-import { DesignToken, colorToHex, FigmaFileNodes, NodeDocument, FigmaNodeKey } from './figma.utils';
-import { NodeFilter, DesignTokenFilter, GetStylesListType, FigmaStyle } from './types/FigmaTypes';
+import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot } from './figma.utils';
+import { NodeFilter, DesignTokenFilter } from './types/FigmaTypes';
+import { colorDesignTokenizer,processElevationTokenizer, typographyTokenizer } from './figma.tokenizer';
 
 
 //Utility methods 
@@ -21,39 +22,71 @@ export const generateToken = (name: string) => {
 export const filterFunctions: NodeFilter[] = [];
 export const designTokenFunctions: DesignTokenFilter[] = [];
 
-const colorDesignTokenizer: DesignTokenFilter = (node: NodeDocument): DesignToken => {
-  colorToHex(node.fills[0].color);
-  const colorToken: DesignToken = {
-    type: 'color' ,
-    name: node.name,
-    token: generateToken(node.name),
-    value: colorToHex(node.fills[0].color)
-  };
-  return colorToken;
-};
 
-const colorFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
-  if(data.type == 'RECTANGLE') {
-    data.type = 'color';
+export const processStyleNodes = (data: NodeDocument, type: string): DesignToken[] | DesignToken | undefined => {
+  if(!data) return undefined;
+  switch(type){
+    case 'FILL':
+      // simple
+      return colorDesignTokenizer(data);
+    case 'TEXT':
+      return typographyTokenizer(data);
+    case 'EFFECT':
+      return processElevationTokenizer(data);
+    default:
+      return undefined;
   }
-  const colorToken = designTokenFilterFn(data);
-  return colorToken;
-};
+}; 
 
-export const convertNodesToTokens = (nodes: NodeDocument[]): DesignToken[] => {
-  const designTokens: DesignToken[] = [];
-  nodes.forEach((node) => {
-    filterFunctions.forEach((filterMethod, index) => {
-      const dToken = filterMethod(node, designTokenFunctions[index]);
-      designTokens.push(dToken);
-    });
-  });
+
+// const colorFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
+//   if(data.type == 'RECTANGLE') {
+//     data.type = 'color';
+//   }
+//   const colorToken = designTokenFilterFn(data);
+//   return colorToken;
+// };
+
+// const typographyFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
+//   if(data.type == 'RECTANGLE') {
+//     data.type = 'color';
+//   }
+//   const colorToken = designTokenFilterFn(data);
+//   return colorToken;
+// };
+
+// export const convertNodesToTokens = (nodes: NodeDocument[]): DesignToken[] => {
+//   const designTokens: DesignToken[] = [];
+//   nodes.forEach((node) => {
+//     filterFunctions.forEach((filterMethod, index) => {
+//       const dToken = filterMethod(node, designTokenFunctions[index]);
+//       designTokens.push(dToken);
+//     });
+//   });
+//   return designTokens;
+// };
+
+// // These methods have to be passed in order. Methods are run sequentially
+// filterFunctions.push(colorFilter,typographyFilter);
+// designTokenFunctions.push(colorDesignTokenizer);
+
+export const convertStyleNodesToTokens = (nodes: { [key: string]: NodeRoot }, styles: StyleMetadata[]) => {
+  let designTokens: DesignToken[] = [];
+  for(const index in styles){
+    const styleId = styles[index].node_id;
+    console.log(styleId);
+    const newTokens = processStyleNodes(nodes[styleId]?.document,styles[index].style_type);
+    if(newTokens){
+      if(Array.isArray(newTokens)){
+        designTokens = designTokens.concat(newTokens);
+      } else {
+        designTokens.push(newTokens);
+      }
+    }
+  }
   return designTokens;
 };
 
-// These methods have to be passed in order. Methods are run sequentially
-filterFunctions.push(colorFilter);
-designTokenFunctions.push(colorDesignTokenizer);
 
 //figmaAPIFactory is used in other files 
 export const figmaAPIFactory = (token: string) => {
@@ -71,57 +104,60 @@ export const figmaAPIFactory = (token: string) => {
       // fs.writeFile(`${ new Date().getTime() }.json`, JSON.stringify({ data:res.data }),{},()=>{console.log(urlInput);});
     ).catch((error: AxiosError)=>{
       console.error(`Error ${ error?.response?.data } --- Error Code ${ error?.code }`);
-      throw Error('Failed to parse figma url');
+      throw new TypeError('Failed to parse figma url');
     });
   };
 
   // GET 
-  const getStyles = (fileKey: string): Promise<GetStylesListType> =>{
+  const getStyles = (fileKey: string): Promise<StyleMetadata[]> =>{
+    if(fileKey.includes('http')){
+      fileKey = getFileKey(fileKey);
+    }
     return getData(`https://api.figma.com/v1/files/${ fileKey }/styles`).then(({ meta: { styles } }) => {
-      const startingData: GetStylesListType = { nodes: [], styles: {} };
-      return styles.reduce( (previousValue: GetStylesListType, currentStyle: StyleMetadata) => {
-        if(previousValue.styles[currentStyle.node_id]) return previousValue;
-        const styleKey: FigmaStyle = {};
-        styleKey[currentStyle.node_id] = currentStyle;
-        return { 
-          styles: {
-            ...previousValue.styles,
-            ...styleKey
-          }, 
-          nodes: [...previousValue.nodes, currentStyle.node_id] 
-        };
-      }, startingData );
+      return styles;
+    });
+  };
+
+  const getComponents = (fileKey: string): Promise<ComponentMetadata> => {
+    if(fileKey.includes('http')){
+      fileKey = getFileKey(fileKey);
+    }
+    return getData(`https://api.figma.com/v1/files/${ fileKey }/components`).then((data: ComponentMetadata) => {
+      console.log(data);
+      return data;
     });
   };
 
   const getNodes = (fileKey: string, nodeIds: string[])=> {
-    console.log(fileKey);
+    // console.log(fileKey);
     // TODO break the long node requests into small requests
     // https://api.figma.com/v1/files/${fileKey}/nodes?ids=${nodeIds.join(",")}
     return getData(`https://api.figma.com/v1/files/${ fileKey }/nodes?ids=${ nodeIds.join(',') }`)
-      .then((data: FigmaFileNodes) => { return data.nodes;})
-      .then((figmaFileNode) => flattenNodes(figmaFileNode));
+      .then((data: FigmaFileNodes) => { return data.nodes;});
+    // .then((figmaFileNode) => flattenNodes(figmaFileNode));
   };
 
-  const flattenNodes = (nodes: FigmaNodeKey): NodeDocument[] => {
-    return Object.keys(nodes).map((key) => {
-      return nodes[key].document;
-    });
-  };
+  // const flattenNodes = (nodes: FigmaNodeKey): NodeDocument[] => {
+  //   return Object.keys(nodes).map((key) => {
+  //     return nodes[key].document;
+  //   });
+  // };
 
   const processStyles = async (fileKey: string) => {
-    const recoveredStyles = await getStyles(fileKey);
-    const nodeIds = recoveredStyles.nodes;
+    const figmaStyles = await getStyles(fileKey);
+    
+    const nodeIds = figmaStyles.map((style: StyleMetadata)=>style.node_id);
     const nodes = await getNodes(fileKey, nodeIds);
 
-    const designTokens = convertNodesToTokens(nodes);
+    const designTokens = convertStyleNodesToTokens(nodes,figmaStyles);
     // // groups them all
     return groupByType(designTokens);
   };
 
   return {
-    getData,
-    getNodes,
+    _getComponents: getComponents,
+    _getData: getData,
+    _getNodes: getNodes,
     getStyles,
     processStyles
   };

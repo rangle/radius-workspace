@@ -55,8 +55,8 @@ export const getTokenWithOptions = (tOption?: TokenOption<NodeDoc>): FigmaTokenP
 
 export const transformNodes = (data: GetFileNodesResult[]) => {
   return data.flatMap((node) => {
-    const root: NodeRoot = extractFirstNode(node);
-  
+    const root: NodeRoot|undefined = extractFirstNode(node);
+    if(!root) return root;
     // If getTokensWithOptions(tokenOptions) has param tokenOptions, execute lines 66-68
     const tokenOptionsFunctions = getTokenWithOptions();
     if (tokenOptionsFunctions.length) 

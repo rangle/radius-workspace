@@ -22,7 +22,7 @@ export type FigmaFileParams = {
 // type Unpromise<T extends Promise<any>> = T extends Promise<infer X> ? X : never;
 export type FigmaFileNodes = {
   nodes: {
-    [key: string]: NodeRoot | any ,
+    [key: string]: NodeRoot,
   },
 };
 
@@ -105,6 +105,7 @@ export type NodeDocument = {
 
 export type Styles = ColorStyle | TypographyStyle | ElevationStyle;
 
+
 export type BaseDef = {
   key: string,
   name: string,
@@ -186,17 +187,16 @@ type EffectType = {
   showShadowBehindNode: boolean,
 };
 
-export type NodeDoc = EffectsNode & RectangleNode & NodeDocument & {
-
-};
+export type NodeDoc = EffectsNode & RectangleNode & NodeDocument & {};
 
 export type DesignToken = {
   type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
   name: string,
   viewPort?: string,
   cascade?: boolean,
-  token: string,
+  token?: string,
   value: string,
+  node_id?: string,
 };
 
 export type DesignTokenGroup = GroupOf<DesignToken, 'type'>;

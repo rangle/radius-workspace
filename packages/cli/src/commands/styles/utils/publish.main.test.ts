@@ -1,12 +1,12 @@
 // import { convertNodesToTokens, parseGRID, StyleDescriptor } from './publish.main';
-// import { figmaAPIFactory } from './publish.main';
-// import * as publishNodes from '../lib/__mocks__/publish.nodes.json';
-// import * as publishStyles from '../lib/__mocks__/publish.styles.json';
-// import axios from 'axios';
+import { figmaAPIFactory } from './publish.main';
+import * as publishNodes from '../lib/__mocks__/publish.nodes.json';
+import * as publishStyles from '../lib/__mocks__/publish.styles.json';
+import axios from 'axios';
 // import { NodeDoc, NodeDocument } from './figma.utils';
 
-// jest.mock('axios');
-// const mockedAxios = axios as jest.Mocked<typeof axios>;
+jest.mock('axios');
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 // const exampleStyleData = {
 //   data:{
@@ -112,50 +112,44 @@
 // });
 
 
-describe('placeholder test', ()=> {
-  it('placeholder', ()=> {
-    expect(1).toEqual(1);
+// describe('placeholder test', ()=> {
+//   it('placeholder', ()=> {
+//     expect(1).toEqual(1);
+//   });
+// });
+describe('getStyles, getStyleNodes and processStyles', () => {
+  it('should fail', async() => {
+    mockedAxios.get.mockRejectedValue(publishStyles);
+    expect.assertions(1);
+    try {
+      const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
+      await figmaAPI.getStyles('a bad url');
+    } catch (error: any){
+      expect(error?.message).toBe('Failed to parse figma url');
+    }
   });
+
+  it('test geting style should return node list and style list', async ()  => {
+    mockedAxios.get.mockResolvedValueOnce(publishStyles);
+    const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
+    const styles = await figmaAPI.getStyles('TJzz7ZB6pJvpLhjI5DWG3F');
+    expect(styles.length).toBe(66);
+  });
+
+  it('gets data from full mock values', async ()  => {
+    mockedAxios.get
+      .mockResolvedValueOnce(publishStyles)
+      .mockResolvedValueOnce(publishNodes);
+
+    const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
+    const values = await figmaAPI.processStyles('TJzz7ZB6pJvpLhjI5DWG3F');
+    expect(Object.keys(values)).toStrictEqual(['elevation','typography', 'color']);    
+  });
+
 });
-// describe('getStyles, getStyleNodes and processStyles', () => {
-//   it('should fail', async() => {
-//     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
-//     const styles = await figmaAPI.getStyles('a bad url');
-//     expect(styles.nodes).toStrictEqual([ '20008:10969', '20029:15098', '20008:10966' ]);
-//   });
-// });
 
-//   it('test geting style should return node list and style list', async ()  => {
-//     mockedAxios.get.mockResolvedValueOnce(exampleStyleData);
-//     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
-//     const stylesListObj = await figmaAPI.getStyles('TJzz7ZB6pJvpLhjI5DWG3F');
-//     expect(stylesListObj.nodes).toStrictEqual([ '20008:10969', '20029:15098', '20008:10966' ]);
-//     expect(Object.keys(stylesListObj.styles).length).toBe(3);
-//   });
 
-//   it('gets the node styles', async ()  => {
-//     mockedAxios.get.mockResolvedValueOnce(exampleNodesData);
-//     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
-//     const styles = await figmaAPI.getStyles(
-//       'TJzz7ZB6pJvpLhjI5DWG3F'
-//     );
-//     expect(styles.nodes).not.toBeFalsy();
-//     expect(Object.keys(styles)).toStrictEqual([ '20008:10969', '20029:15098', '20008:10966' ]);
-//     expect(Object.keys(styles.styles['20008:10969'])).toStrictEqual(
-//       [ 'document','components','componentSets','schemaVersion','styles' ]
-//     );    
-//   });
 
-//   it('gets data from full mock values', async ()  => {
-//     mockedAxios.get
-//       .mockResolvedValueOnce(publishStyles)
-//       .mockResolvedValueOnce(publishNodes);
-
-//     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
-//     const values = await figmaAPI.processStyles('TJzz7ZB6pJvpLhjI5DWG3F');
-//     expect(Object.keys(values)).toStrictEqual(['typography', 'color','breakpoint']);    
-//   });
-// });
 
 // describe('parseGrid', ()=>{
 //   it('should parsetype Grid',() =>{

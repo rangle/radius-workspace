@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
-  DesignToken,
-  getTokens
+  DesignToken//,
+  // getTokens
 } from '../utils/figma.utils';
-// import { getFileKey, figmaAPIFactory } from '../utils/publish.main';
+import { figmaAPIFactory } from '../utils/publish.main';
 import { assert } from '../utils/common.utils';
 import { groupBy } from '../utils/common.utils';
 import renderers from './templates';
@@ -11,7 +11,7 @@ import path from 'path';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { logger } from '../../../logger';
 import chalk from 'chalk';
-import { loadFile } from '../utils/figma.loader';
+// import { loadFile } from '../utils/figma.loader';
 
 // import { TokenOption } from '../utils/figmaResolver.utils';
 // import { getColor2, getTypography2 } from '../utils/extractors/figmaExtractors';
@@ -71,12 +71,16 @@ export const generateGlobalStyles = async ({
   assert(typeof url === 'string', 'Figma url must be provided');
 
   const renderTemplate = renderers[template];
-  const tokenGroupsFigmaBlob = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
-  // const figmaAPI = figmaAPIFactory(userToken);
+  // const tokenGroupsFigmaBlob = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
   // const tokenGroupsFigmaApi = await figmaAPI.processStyles(getFileKey(url));
   // console.log(tokenGroupsFigmaApi);
 
-  const files = renderTemplate(tokenGroupsFigmaBlob);
+  const figmaAPI = figmaAPIFactory(userToken);
+  const designTokens = await figmaAPI.processStyles(url);
+  
+
+  // const tokenGroupsFigmaBlob = groupByType([{} as DesignToken]);
+  const files = renderTemplate(designTokens);
 
 
   if (consoleOutput) {
