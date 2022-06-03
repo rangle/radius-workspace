@@ -20,10 +20,14 @@ export type FigmaFileParams = {
 
 
 // type Unpromise<T extends Promise<any>> = T extends Promise<infer X> ? X : never;
-type FigmaFileNodes = {
+export type FigmaFileNodes = {
   nodes: {
     [key: string]: NodeRoot,
   },
+};
+
+export type FigmaNodeKey = {
+  [key: string]: NodeRoot,
 };
 
 type NodeFrame = {
@@ -116,7 +120,7 @@ export type ComponentDef = Omit<StyleDef, 'styleType'> & {
 
 export type NodeDef = StyleDef | ComponentDef;
 
-type NodeRoot = {
+export type NodeRoot = {
   document: NodeDocument,
   styles: {
     [key: string]: StyleDef,
@@ -156,7 +160,6 @@ export type RectangleNode = NodeDocument & {
 export type EffectsNode =  NodeDocument & {
   effects: EffectType[],
 };
-
 
 export type Color = {
   r: number,
@@ -226,8 +229,8 @@ const isTypographyStyle = (o: NodeDocument['styles']): o is TypographyStyle =>
 
 const hex = (n: number) => `00${ n.toString(16) }`.slice(-2);
 
-export const colorToHex = ({ r, g, b }: ColorToken['color']) =>
-  `#${ [r, g, b]
+export const colorToHex = (colorToken: ColorToken['color']) =>
+  `#${ [colorToken?.r, colorToken?.g, colorToken?.b]
     .map((rValue) => rValue * 255)
     .map(Math.round)
     .map(hex)
@@ -391,6 +394,11 @@ export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToke
   }] as DesignToken[];
 };
 
+// export const generateFigmaTypographyToken = <T extends NodeRectangle<'TEXT'>>(node: T) => {
+//   console.log(node);
+//   console.log(node.style);
+// };
+
 export const processTypographyToken = <T extends NodeDocument, S extends NodeDef>(
   item: T,
   style: S
@@ -447,6 +455,7 @@ const processColorToken = <T extends NodeDocument>(item: T): DesignToken[] => {
     } as DesignToken
   ];
 };
+
 
 export function processRectangleSize(
   rectangle: RectangleNode,

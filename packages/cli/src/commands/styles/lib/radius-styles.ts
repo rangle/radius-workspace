@@ -2,7 +2,7 @@ import {
   DesignToken,
   getTokens
 } from '../utils/figma.utils';
-import { getFileKey, figmaAPIFactory } from '../utils/publish.main';
+// import { getFileKey, figmaAPIFactory } from '../utils/publish.main';
 import { assert } from '../utils/common.utils';
 import { groupBy } from '../utils/common.utils';
 import renderers from './templates';
@@ -24,9 +24,28 @@ export type Options = {
   template?: 'css-modules' | 'css-in-js',
 };
 
-const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
-// type PropType<TObj, TProp extends keyof TObj> = TObj[TProp];
-type designTokeTypes = 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation';
+export const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
+
+//TODO -> it is not filtering duplicates 
+// type designTokenTypes = 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation';
+
+// const removeDuplicateTokens = (tokenGroups: DesignTokenGroup, latestTokenGroups: DesignTokenGroup) => {
+//   let key: designTokenTypes;
+//   for(key in tokenGroups) {
+//     if(tokenGroups[key] && latestTokenGroups[key]){
+//       const listOfNames: string[] = [];
+//       tokenGroups[key] = [...tokenGroups[key], ...latestTokenGroups[key]].filter((designToken: DesignToken)=>{
+//         if(listOfNames.includes(designToken.name)){
+//           return false;
+//         }
+//         listOfNames.push(designToken.name);
+//         return true;
+//       });
+//     }
+//   }
+//   return tokenGroups;
+// };
+
 export const generateGlobalStyles = async ({
   url,
   userToken = token,
@@ -41,25 +60,13 @@ export const generateGlobalStyles = async ({
   
   //const input = fs.existsSync(figmaFile) ? Promise.resolve(figmaFile): getFileNode(fileId,[nodeId]);
 
-  const tokenGroups = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
-  const figmaAPI = figmaAPIFactory(userToken);
-  const tokenGroups2 = await figmaAPI.processStyles(getFileKey(url));
+  const tokenGroupsFigmaBlob = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
+  
+  // const figmaAPI = figmaAPIFactory(userToken);
+  // const tokenGroupsFigmaApi = await figmaAPI.processStyles(getFileKey(url));
+  // console.log(tokenGroupsFigmaApi);
 
-  Object.keys(tokenGroups).forEach((input: string) => {
-    const key = input as designTokeTypes;
-    if(tokenGroups[key] && tokenGroups2[key]){
-      const listOfNames: string[] = [];
-      tokenGroups[key] = [...tokenGroups[key], ...tokenGroups2[key]].filter((designToken: DesignToken)=>{
-        if(listOfNames.includes(designToken.name)){
-          return false;
-        }
-        listOfNames.push(designToken.name);
-        return true;
-      });
-    }
-  });
-
-  const files = renderTemplate(tokenGroups);
+  const files = renderTemplate(tokenGroupsFigmaBlob);
 
   if (consoleOutput) {
     // files.forEach(([fileName, content]) => {

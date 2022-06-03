@@ -1,10 +1,9 @@
 //validator //loader/parse //tokenizer
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { StyleMetadata } from 'figma-api/lib/api-types';
-import { DesignToken, processTypographyToken, NodeDocument, colorToHex } from './figma.utils';
-import { groupBy } from './common.utils';
-
-// const figmaToken = '379431-5a32d6d8-85b0-4193-b06b-841b89dcf741';
+import { groupByType } from '../lib/radius-styles';
+import { DesignToken, colorToHex, NodeDoc, FigmaFileNodes, NodeDocument, FigmaNodeKey } from './figma.utils';
+// import { groupBy } from './common.utils';
 export type StyleResponse = {
   meta: {
     styles: StyleDescriptor[],
@@ -36,7 +35,13 @@ type GetStylesListType = {
   },
 };
 
-const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
+type FigmaStyle = {
+  [key: string]: StyleMetadata, 
+};
+
+type DesignTokenFilter = (node: NodeDocument) => DesignToken;
+type NodeFilter = (data: NodeDocument, node: DesignTokenFilter) => DesignToken;
+
 
 export const getFileKey = (url: string) => {
   const fileKey = url.match(/\/file\/(\w*)\//);
@@ -48,7 +53,7 @@ export const generateToken = (name: string) => {
   return `--${ name.toLowerCase().split('/').join('-').split(' ').join('-') }`;
 };
 
-export const parseGRID = (style: StyleDescriptor,target: NodeDocument) => {
+export const parseGRID = (style: StyleDescriptor, target: NodeDoc) => {
   const tokenOutput: DesignToken = {
     type: 'breakpoint',
     name: target.name,
@@ -56,6 +61,8 @@ export const parseGRID = (style: StyleDescriptor,target: NodeDocument) => {
     value: 'default'
   };
   if(style.description.includes('--')){
+    //taking style finding value with gm and assigning to tokenValue 
+    //TODO rewrite token to have two fields, name and value 
     const matched = style.description.match(/--[a-zA-Z0-9/-]*/gm);
     if(matched) tokenOutput.token = matched[0];
     const matchViewport = style.description.match(/--([0-9a-zA-Z]*)-/m);
@@ -69,95 +76,122 @@ export const parseGRID = (style: StyleDescriptor,target: NodeDocument) => {
   return tokenOutput;
 };
 
+// Functions
+export const filterFunctions: NodeFilter[] = [];
+export const designTokenFunctions: DesignTokenFilter[] = [];
 
-export const parseType = (style: StyleDescriptor, target: NodeDocument) => {
-  let out: DesignToken | DesignToken[] = {
-    type: 'typography',
-    name: target.name,
-    token: generateToken(target.name),
-    value: 'default'
+const colorDesignTokenizer: DesignTokenFilter = (node: NodeDocument): DesignToken => {
+  colorToHex(node.fills[0].color);
+  const colorToken: DesignToken = {
+    type: 'color' ,
+    name: node.name,
+    token: generateToken(node.name),
+    value: colorToHex(node.fills[0].color)
   };
-
-  switch(style.style_type) {
-    case 'FILL':
-      out.type = 'color';
-      out.value = colorToHex(target.fills?.[0].color);
-      break;
-    case 'GRID':
-      out =  parseGRID(style,target);
-      break;
-    case 'TEXT':
-      out = processTypographyToken(target,style as any);
-      break;
-    case 'EFFECT':
-      // Shadows 
-      // code
-      break;
-    default:
-      // code block
-  }
-  return out;
+  return colorToken;
 };
 
+const colorFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
+  if(data.type == 'RECTANGLE') {
+    data.type = 'color';
+  }
+  const colorToken = designTokenFilterFn(data);
+  return colorToken;
+};
+
+export const convertNodesToTokens = (nodes: NodeDocument[]): DesignToken[] => {
+  const designTokens: DesignToken[] = [];
+  nodes.forEach((node) => {
+    filterFunctions.forEach((filterMethod, index) => {
+      const dToken = filterMethod(node, designTokenFunctions[index]);
+      designTokens.push(dToken);
+    });
+  });
+  return designTokens;
+};
+
+// These methods have to be passed in order
+filterFunctions.push(colorFilter);
+designTokenFunctions.push(colorDesignTokenizer);
+
 export const figmaAPIFactory = (token: string) => {
+
+  // Retrieves node data from figma api 
   const getData = (urlInput: string) => {
     return axios.get(urlInput, {
       headers: {
         'X-FIGMA-TOKEN': token
       }
-    }).then((res) => {
+    }).then((res) => 
+      res.data
       // for saving mock data for testing
       // import fs from 'fs';
       // fs.writeFile(`${ new Date().getTime() }.json`, JSON.stringify({ data:res.data }),{},()=>{console.log(urlInput);});
-      return res.data;
+    ).catch((error: AxiosError)=>{
+      console.error(`Error ${ error?.response?.data } --- Error Code ${ error?.code }`);
+      throw Error('Failed to parse figma url');
     });
   };
 
+  //TODO - not decided which typography format to choose from -  styles OR figma layer / component
+  // const typographyFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
+  //   console.log(data);
+  //   if(data.type == 'TEXT') {
+  //     data.type = 'typography';
+  //   }
+  //   const designToken = designTokenFilterFn(data);
+  //   return designToken;
+  // };
+ 
+  // GET 
   const getStyles = (fileKey: string): Promise<GetStylesListType> =>{
     return getData(`https://api.figma.com/v1/files/${ fileKey }/styles`).then(({ meta: { styles } }) => {
       const startingData: GetStylesListType = { nodes: [], styles: {} };
-      return styles.reduce( (previousValue: any, currentValue: StyleMetadata) => {
-        if(previousValue.styles[currentValue.node_id]) return previousValue;
-        const newValue: { [key: string]: StyleMetadata } = {};
-        newValue[currentValue.node_id] = currentValue;
+      return styles.reduce( (previousValue: GetStylesListType, currentStyle: StyleMetadata) => {
+        if(previousValue.styles[currentStyle.node_id]) return previousValue;
+        const styleKey: FigmaStyle = {};
+        styleKey[currentStyle.node_id] = currentStyle;
         return { 
           styles: {
             ...previousValue.styles,
-            ...newValue
+            ...styleKey
           }, 
-          nodes: [...previousValue.nodes, currentValue.node_id] 
+          nodes: [...previousValue.nodes, currentStyle.node_id] 
         };
       }, startingData );
     });
   };
 
-  const getStyleNodes = (fileKey: string, nodeIds: string[]) => {
+  const getNodes = (fileKey: string, nodeIds: string[])=> {
+    console.log(fileKey);
+    // TODO break the long node requests into small requests
+    // https://api.figma.com/v1/files/${fileKey}/nodes?ids=${nodeIds.join(",")}
     return getData(`https://api.figma.com/v1/files/${ fileKey }/nodes?ids=${ nodeIds.join(',') }`)
-      .then(({ nodes }) => nodes);
+      .then((data: FigmaFileNodes) => { return data.nodes;})
+      .then((figmaFileNode) => flattenNodes(figmaFileNode));
+  };
+
+  const flattenNodes = (nodes: FigmaNodeKey): NodeDocument[] => {
+    return Object.keys(nodes).map((key) => {
+      return nodes[key].document;
+    });
   };
 
   const processStyles = async (fileKey: string) => {
     const recoveredStyles = await getStyles(fileKey);
-    const styleNodes = await getStyleNodes(fileKey, recoveredStyles.nodes);
+    const nodeIds = recoveredStyles.nodes;
+    const nodes = await getNodes(fileKey, nodeIds);
+    console.log(nodes);
 
-    const styles = recoveredStyles.nodes.reduce<DesignToken[]>((previousValue: DesignToken[], nodeId: string) => {
-      const style = recoveredStyles.styles[nodeId];
-      const document = styleNodes[nodeId].document;
-      const generatedToken = parseType(style,document);
-      if(Array.isArray(generatedToken)) previousValue = previousValue.concat(generatedToken);
-      else if(generatedToken.value !== 'default') previousValue.push(generatedToken);
-      return previousValue;
-    },[] as DesignToken[]);
-    
-    // groups them all
-    const grouped = groupByType(styles);
-    return grouped;
+    const designTokens = convertNodesToTokens(nodes);
+    // // groups them all
+    return groupByType(designTokens);
   };
 
   return {
     getData,
+    getNodes,
     getStyles,
-    getStyleNodes,
     processStyles
   };
 };
