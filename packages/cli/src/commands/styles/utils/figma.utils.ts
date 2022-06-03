@@ -20,10 +20,14 @@ export type FigmaFileParams = {
 
 
 // type Unpromise<T extends Promise<any>> = T extends Promise<infer X> ? X : never;
-type FigmaFileNodes = {
+export type FigmaFileNodes = {
   nodes: {
     [key: string]: NodeRoot | any ,
   },
+};
+
+export type FigmaNodeKey = {
+  [key: string]: NodeRoot,
 };
 
 type NodeFrame = {
@@ -67,6 +71,12 @@ type TypographyStyleDetails = {
   lineHeightPx: number,
   lineHeightPercent: number,
   lineHeightPercentFontSize: number,
+  fontPostScriptName?: string,
+  textAutoResize?: string,
+  textDecoration?: string,
+  textAlignHorizontal?: string,
+  textAlignVertical?: string,
+  lineHeightUnit?: string,
 };
 
 export type NodeDocument = {
@@ -75,7 +85,14 @@ export type NodeDocument = {
   name: string,
   parent: string,
   style: TypographyStyleDetails,
+  blendMode?: string,
+  strokes?: string[],
+  strokeWeight?: number,
+  strokeAlign?: string,
+  effects?: EffectType[],
   fills: Array<{
+    blendMode?: string,
+    type?: string,
     color: {
       r: number,
       g: number,
@@ -133,13 +150,16 @@ export type RectangleNode = NodeDocument & {
     width: number,
     height: number,
   },
+  constraints: { 
+    vertical: string, 
+    horizontal: string, 
+  },
 };
 
 // TODO
 export type EffectsNode =  NodeDocument & {
   effects: EffectType[],
 };
-
 
 export type Color = {
   r: number,
@@ -209,8 +229,8 @@ const isTypographyStyle = (o: NodeDocument['styles']): o is TypographyStyle =>
 
 const hex = (n: number) => `00${ n.toString(16) }`.slice(-2);
 
-const colorToHex = ({ r, g, b }: ColorToken['color']) =>
-  `#${ [r, g, b]
+export const colorToHex = (colorToken: ColorToken['color']) =>
+  `#${ [colorToken?.r, colorToken?.g, colorToken?.b]
     .map((rValue) => rValue * 255)
     .map(Math.round)
     .map(hex)
@@ -374,6 +394,11 @@ export const processElevationToken = <T extends NodeDoc>(nodeDoc: T): DesignToke
   }] as DesignToken[];
 };
 
+// export const generateFigmaTypographyToken = <T extends NodeRectangle<'TEXT'>>(node: T) => {
+//   console.log(node);
+//   console.log(node.style);
+// };
+
 export const processTypographyToken = <T extends NodeDocument, S extends NodeDef>(
   item: T,
   style: S
@@ -445,7 +470,8 @@ export const processColorToken = <T extends NodeDocument>(item: T): DesignToken[
   ];
 };
 
-function processRectangleSize(
+
+export function processRectangleSize(
   rectangle: RectangleNode,
   name: string,
   type: DesignToken['type'],
@@ -590,9 +616,8 @@ const generateTokensV2 = (node: NodeRoot): DesignToken[] => {
 
   const gridBreakpointTokens = groups.flatMap((group) => {
     return group.children.flatMap((item) => {
-      const { type } = item;
       if (
-        type === 'GROUP' &&
+        item.type === 'GROUP' &&
         group.name === 'margins' &&
         isRectangleNode(group) &&
         isRectangleNode(item)

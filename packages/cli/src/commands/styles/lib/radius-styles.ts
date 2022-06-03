@@ -3,6 +3,7 @@ import {
   DesignToken,
   getTokens
 } from '../utils/figma.utils';
+// import { getFileKey, figmaAPIFactory } from '../utils/publish.main';
 import { assert } from '../utils/common.utils';
 import { groupBy } from '../utils/common.utils';
 import renderers from './templates';
@@ -36,7 +37,27 @@ export type Options = {
   template?: 'css-modules' | 'css-in-js',
 };
 
-const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
+export const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
+
+//TODO -> it is not filtering duplicates 
+// type designTokenTypes = 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation';
+
+// const removeDuplicateTokens = (tokenGroups: DesignTokenGroup, latestTokenGroups: DesignTokenGroup) => {
+//   let key: designTokenTypes;
+//   for(key in tokenGroups) {
+//     if(tokenGroups[key] && latestTokenGroups[key]){
+//       const listOfNames: string[] = [];
+//       tokenGroups[key] = [...tokenGroups[key], ...latestTokenGroups[key]].filter((designToken: DesignToken)=>{
+//         if(listOfNames.includes(designToken.name)){
+//           return false;
+//         }
+//         listOfNames.push(designToken.name);
+//         return true;
+//       });
+//     }
+//   }
+//   return tokenGroups;
+// };
 
 export const generateGlobalStyles = async ({
   url,
@@ -50,8 +71,12 @@ export const generateGlobalStyles = async ({
   assert(typeof url === 'string', 'Figma url must be provided');
 
   const renderTemplate = renderers[template];
-  const tokenGroups = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
-  const files = renderTemplate(tokenGroups);
+  const tokenGroupsFigmaBlob = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
+  // const figmaAPI = figmaAPIFactory(userToken);
+  // const tokenGroupsFigmaApi = await figmaAPI.processStyles(getFileKey(url));
+  // console.log(tokenGroupsFigmaApi);
+
+  const files = renderTemplate(tokenGroupsFigmaBlob);
 
 
   if (consoleOutput) {

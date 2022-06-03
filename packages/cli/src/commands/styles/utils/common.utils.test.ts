@@ -1,4 +1,4 @@
-import { toKebabCase } from './common.utils';
+import { toKebabCase, groupBy } from './common.utils';
 
 describe('toKebabCase', () => {
   it('should convert from camelCase', () => {
@@ -24,5 +24,26 @@ describe('toKebabCase', () => {
   it('should not explode when null', () => {
     const res = toKebabCase(null as any);
     expect(res).toBe(false);
+  });
+});
+
+describe('groupBy', () => {
+  it('should group by type, creating an object of arrays', () => {
+    const mockDesignTokenArray = groupBy([
+      { 'type':'a' ,'value':1 },
+      { 'type':'b' ,'value':2 },
+      { 'type':'a' ,'value':3 },
+      { 'type':'b' ,'value':4 }
+    ],'type');
+    expect(mockDesignTokenArray).toStrictEqual({
+      'a':[
+        { 'type':'a' ,'value':1 },
+        { 'type':'a' ,'value':3 }
+      ],
+      'b':[
+        { 'type':'b' ,'value':2 },
+        { 'type':'b' ,'value':4 }
+      ]
+    });
   });
 });
