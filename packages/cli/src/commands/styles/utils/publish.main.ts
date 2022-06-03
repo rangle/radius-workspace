@@ -2,47 +2,11 @@
 import axios, { AxiosError } from 'axios';
 import { StyleMetadata } from 'figma-api/lib/api-types';
 import { groupByType } from '../lib/radius-styles';
-import { DesignToken, colorToHex, NodeDoc, FigmaFileNodes, NodeDocument, FigmaNodeKey } from './figma.utils';
-// import { groupBy } from './common.utils';
-export type StyleResponse = {
-  meta: {
-    styles: StyleDescriptor[],
-  },
-};
-export type StyleDescriptor = {
-  key: string,
-  file_key: string,
-  node_id: string,
-  style_type: string,
-  thumbnail_url: string,
-  name: string,
-  description: string,
-  created_at: string,
-  updated_at: string,
-  user: User,
-  sort_position: string,
-};
-type User = {
-  id: string,
-  handle: string,
-  img_url: string,
-};
-
-type GetStylesListType = {
-  nodes: string[],
-  styles: {
-    [key: string]: StyleMetadata,
-  },
-};
-
-type FigmaStyle = {
-  [key: string]: StyleMetadata, 
-};
-
-type DesignTokenFilter = (node: NodeDocument) => DesignToken;
-type NodeFilter = (data: NodeDocument, node: DesignTokenFilter) => DesignToken;
+import { DesignToken, colorToHex, FigmaFileNodes, NodeDocument, FigmaNodeKey } from './figma.utils';
+import { NodeFilter, DesignTokenFilter, GetStylesListType, FigmaStyle } from './types/FigmaTypes';
 
 
+//Utility methods 
 export const getFileKey = (url: string) => {
   const fileKey = url.match(/\/file\/(\w*)\//);
   if(fileKey && fileKey.length > 1) return fileKey[1];
@@ -51,29 +15,6 @@ export const getFileKey = (url: string) => {
 
 export const generateToken = (name: string) => {
   return `--${ name.toLowerCase().split('/').join('-').split(' ').join('-') }`;
-};
-
-export const parseGRID = (style: StyleDescriptor, target: NodeDoc) => {
-  const tokenOutput: DesignToken = {
-    type: 'breakpoint',
-    name: target.name,
-    token: generateToken(target.name),
-    value: 'default'
-  };
-  if(style.description.includes('--')){
-    //taking style finding value with gm and assigning to tokenValue 
-    //TODO rewrite token to have two fields, name and value 
-    const matched = style.description.match(/--[a-zA-Z0-9/-]*/gm);
-    if(matched) tokenOutput.token = matched[0];
-    const matchViewport = style.description.match(/--([0-9a-zA-Z]*)-/m);
-    if(matchViewport && matchViewport.length >= 2) tokenOutput.viewPort = matchViewport[1];
-  }
-  if(style.description.includes('px')){
-    const matched = style.description.match(/([0-9]*)px/m);
-    if(matched && matched.length >= 2) tokenOutput.value = matched[1];
-  }
-
-  return tokenOutput;
 };
 
 // Functions
@@ -110,10 +51,11 @@ export const convertNodesToTokens = (nodes: NodeDocument[]): DesignToken[] => {
   return designTokens;
 };
 
-// These methods have to be passed in order
+// These methods have to be passed in order. Methods are run sequentially
 filterFunctions.push(colorFilter);
 designTokenFunctions.push(colorDesignTokenizer);
 
+//figmaAPIFactory is used in other files 
 export const figmaAPIFactory = (token: string) => {
 
   // Retrieves node data from figma api 
@@ -133,16 +75,6 @@ export const figmaAPIFactory = (token: string) => {
     });
   };
 
-  //TODO - not decided which typography format to choose from -  styles OR figma layer / component
-  // const typographyFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
-  //   console.log(data);
-  //   if(data.type == 'TEXT') {
-  //     data.type = 'typography';
-  //   }
-  //   const designToken = designTokenFilterFn(data);
-  //   return designToken;
-  // };
- 
   // GET 
   const getStyles = (fileKey: string): Promise<GetStylesListType> =>{
     return getData(`https://api.figma.com/v1/files/${ fileKey }/styles`).then(({ meta: { styles } }) => {
@@ -181,7 +113,6 @@ export const figmaAPIFactory = (token: string) => {
     const recoveredStyles = await getStyles(fileKey);
     const nodeIds = recoveredStyles.nodes;
     const nodes = await getNodes(fileKey, nodeIds);
-    console.log(nodes);
 
     const designTokens = convertNodesToTokens(nodes);
     // // groups them all
