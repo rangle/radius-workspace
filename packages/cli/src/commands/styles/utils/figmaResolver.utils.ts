@@ -1,6 +1,7 @@
-import { GetFileNodesResult } from 'figma-api/lib/api-types';
+// import { GetFileNodesResult } from 'figma-api/lib/api-types';
 import { getColor2, getTypography2, getColor1, getTypography1 } from './extractors/figmaExtractors';
-import { extractFirstNode, NodeDoc, NodeRoot } from './figma.utils';
+// import { extractFirstNode, NodeDoc, NodeRoot } from './figma.utils';
+import {  NodeDoc, NodeRoot } from './figma.utils';
 import { isColor1, isColor2, isTypographyFormat1, isTypographyFormat2 } from './validators/figmaValidators';
 
 //FigmaResolver Types
@@ -53,23 +54,23 @@ export const getTokenWithOptions = (tOption?: TokenOption<NodeDoc>): FigmaTokenP
   return parserFunctions;
 };
 
-export const transformNodes = (data: GetFileNodesResult[]) => {
-  return data.flatMap((node) => {
-    const root: NodeRoot|undefined = extractFirstNode(node);
-    if(!root) return root;
-    // If getTokensWithOptions(tokenOptions) has param tokenOptions, execute lines 66-68
-    const tokenOptionsFunctions = getTokenWithOptions();
-    if (tokenOptionsFunctions.length) 
-      return tokenOptionsFunctions.flatMap((fParser) => fParser(root));
+// export const transformNodes = (data: GetFileNodesResult[]) => {
+//   return data.flatMap((node) => {
+//     const root: NodeRoot = extractFirstNode(node);
+//     if(!root) return root;
+//     // If getTokensWithOptions(tokenOptions) has param tokenOptions, execute lines 66-68
+//     const tokenOptionsFunctions = getTokenWithOptions();
+//     if (tokenOptionsFunctions.length) 
+//       return tokenOptionsFunctions.flatMap((fParser) => fParser(root));
   
-    // If no tokenOptions provided, execute lines 72-76
-    const colors = figmaResolver.parser.colors(root);
-    if(colors?.length) return colors;
+//     // If no tokenOptions provided, execute lines 72-76
+//     const colors = figmaResolver.parser.colors(root);
+//     if(colors?.length) return colors;
   
-    const parsedTypography = figmaResolver.parser.typography(root);
-    if(parsedTypography?.length) return parsedTypography;
-  }).filter((node) => node);
-};
+//     const parsedTypography = figmaResolver.parser.typography(root);
+//     if(parsedTypography?.length) return parsedTypography;
+//   }).filter((node) => node);
+// };
 
 const parseColors = generateParser([
   [isColor1, getColor1],

@@ -158,7 +158,7 @@ export const figmaAPIFactory = (token: string) => {
     _getComponents: getComponents,
     _getData: getData,
     _getNodes: getNodes,
-    getStyles,
+    _getStyles:getStyles,
     processStyles
   };
 };

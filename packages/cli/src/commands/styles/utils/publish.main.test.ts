@@ -123,7 +123,7 @@ describe('getStyles, getStyleNodes and processStyles', () => {
     expect.assertions(1);
     try {
       const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
-      await figmaAPI.getStyles('a bad url');
+      await figmaAPI._getStyles('a bad url');
     } catch (error: any){
       expect(error?.message).toBe('Failed to parse figma url');
     }
@@ -132,7 +132,7 @@ describe('getStyles, getStyleNodes and processStyles', () => {
   it('test geting style should return node list and style list', async ()  => {
     mockedAxios.get.mockResolvedValueOnce(publishStyles);
     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
-    const styles = await figmaAPI.getStyles('TJzz7ZB6pJvpLhjI5DWG3F');
+    const styles = await figmaAPI._getStyles('TJzz7ZB6pJvpLhjI5DWG3F');
     expect(styles.length).toBe(66);
   });
 
