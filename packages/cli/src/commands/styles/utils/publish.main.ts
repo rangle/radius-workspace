@@ -1,6 +1,7 @@
 //validator //loader/parse //tokenizer
 import axios, { AxiosError } from 'axios';
 import { StyleMetadata, ComponentMetadata } from 'figma-api/lib/api-types';
+import { StyleType } from 'figma-api/lib/ast-types';
 import { groupByType } from '../lib/radius-styles';
 import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot } from './figma.utils';
 import { NodeFilter, DesignTokenFilter } from './types/FigmaTypes';
@@ -23,18 +24,16 @@ export const filterFunctions: NodeFilter[] = [];
 export const designTokenFunctions: DesignTokenFilter[] = [];
 
 
-export const processStyleNodes = (data: NodeDocument, type: string): DesignToken[] | DesignToken | undefined => {
-  if(!data) return undefined;
+export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignToken[] | DesignToken | undefined => {
   switch(type){
     case 'FILL':
-      // simple
       return colorDesignTokenizer(data);
     case 'TEXT':
       return typographyTokenizer(data);
     case 'EFFECT':
       return processElevationTokenizer(data);
     default:
-      return undefined;
+      break;
   }
 }; 
 
@@ -134,7 +133,6 @@ export const figmaAPIFactory = (token: string) => {
     // https://api.figma.com/v1/files/${fileKey}/nodes?ids=${nodeIds.join(",")}
     return getData(`https://api.figma.com/v1/files/${ fileKey }/nodes?ids=${ nodeIds.join(',') }`)
       .then((data: FigmaFileNodes) => { return data.nodes;});
-    // .then((figmaFileNode) => flattenNodes(figmaFileNode));
   };
 
   // const flattenNodes = (nodes: FigmaNodeKey): NodeDocument[] => {
