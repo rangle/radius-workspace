@@ -69,22 +69,25 @@ export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignTo
 // filterFunctions.push(colorFilter,typographyFilter);
 // designTokenFunctions.push(colorDesignTokenizer);
 
+const isArray = (dToken: DesignToken | DesignToken[]): dToken is DesignToken[] => {
+  if(Array.isArray(dToken)) return true;
+  return false;
+}; 
+
 export const convertStyleNodesToTokens = (nodes: { [key: string]: NodeRoot }, styles: StyleMetadata[]) => {
   let designTokens: DesignToken[] = [];
   for(const index in styles){
-    const styleId = styles[index].node_id;
-    console.log(styleId);
-    const newTokens = processStyleNodes(nodes[styleId]?.document,styles[index].style_type);
-    if(newTokens){
-      if(Array.isArray(newTokens)){
-        designTokens = designTokens.concat(newTokens);
-      } else {
-        designTokens.push(newTokens);
-      }
+    const newDesignToken = processStyleNodes(nodes[styles[index].node_id]?.document,styles[index].style_type);
+    if(newDesignToken){
+      isArray(newDesignToken) ?
+        designTokens = [...designTokens, ...newDesignToken] : designTokens.push(newDesignToken);
     }
   }
   return designTokens;
 };
+
+
+
 
 
 //figmaAPIFactory is used in other files 
