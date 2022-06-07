@@ -71,15 +71,11 @@ export const generateGlobalStyles = async ({
   assert(typeof url === 'string', 'Figma url must be provided');
 
   const renderTemplate = renderers[template];
-  // const tokenGroupsFigmaBlob = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
-  // const tokenGroupsFigmaApi = await figmaAPI.processStyles(getFileKey(url));
-  // console.log(tokenGroupsFigmaApi);
 
   const figmaAPI = figmaAPIFactory(userToken);
   const designTokens = await figmaAPI.processStyles(url);
   
 
-  // const tokenGroupsFigmaBlob = groupByType([{} as DesignToken]);
   const files = renderTemplate(designTokens);
 
 

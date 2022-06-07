@@ -138,8 +138,8 @@ export const figmaAPIFactory = (token: string) => {
       // import fs from 'fs';
       // fs.writeFile(`${ new Date().getTime() }.json`, JSON.stringify({ data:res.data }),{},()=>{console.log(urlInput);});
     ).catch((_error: AxiosError)=>{
-      // console?.error(`Error ${ error?.response?.data } --- Error Code ${ error?.code }`);
-      throw new TypeError('Failed to parse figma url');
+      // console?.error(`Error ${ _error?.response?.data } --- Error Code ${ _error?.code }`);
+      throw new TypeError(`Failed to parse figma url, ${ urlInput }`);
     });
   };
 
@@ -191,12 +191,14 @@ export const figmaAPIFactory = (token: string) => {
     const nodeIds = figmaStyles.map((style: StyleMetadata)=>style.node_id);
     const nodes = await getNodes(fileKey, nodeIds);
 
-    const designTokens = convertStyleNodesToTokens(nodes,figmaStyles);
+    let designTokens = convertStyleNodesToTokens(nodes,figmaStyles);
+    const compoentTokens = await processStyleComponents(fileKey);
+    designTokens = [...designTokens,...compoentTokens];
     // // groups them all
     return groupByType(designTokens);
   };
 
-  const processComponents = async (fileKey: string) => {
+  const processStyleComponents = async (fileKey: string) => {
 
     // Get design tokens from components //Grid, Spacing, Border Radius
     const figmaComponents = await getComponents(fileKey);
@@ -211,8 +213,7 @@ export const figmaAPIFactory = (token: string) => {
       (data: [string, NodeRoot]) => compoentNodeDcuments.push(data[1].document)
     );
 
-    const designTokens = convertComponentNodesToTokens(compoentNodeDcuments);
-    return { designTokens };
+    return convertComponentNodesToTokens(compoentNodeDcuments);
   };
 
 
@@ -221,7 +222,7 @@ export const figmaAPIFactory = (token: string) => {
     _getData: getData,
     _getNodes: getNodes,
     _getStyles: getStyles,
-    processStyles,
-    processComponents
+    _processStyleComponents:processStyleComponents,
+    processStyles
   };
 };
