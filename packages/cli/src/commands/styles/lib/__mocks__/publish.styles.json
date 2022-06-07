@@ -1,1 +1,1133 @@
-{"data":{"error":false,"status":200,"meta":{"styles":[{"key":"257d2e53f5b342bafeb497a294e38c1ce4e4c298","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"21291:7794","style_type":"GRID","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/eCZ/jqo/PDaWSnIvQhr7vZ7r/style_thumbnail_35.png?Expires=1653868800&Signature=XTNOUGJladC4F2DZtcvdS8FRkXgJk41McVUUMKSBGuvcLEi4sXk6KdFhU3EjQ4ikvTs4~xDjXPphsWfaukk-FZ1gftRLWMTgnEzmBmtnwzzB4yCnBMTNsdcEOPbYVEnGnvFJfd2PvA2aRk0pCAUDpTw4QMMEvxpbwq5aGjpei4Hpmbqj9jSIOPUQ0Y~B1M76i0k~4wdFiAEiwXG2oCgggGOuRI2W682-C1MuI8oLwGplBXf8l01G2C~mjCv8EZlF0Xp5ti3~SbJwWEunWEKPrD4moT93Nuyp6-~iblGIw6Fz-PppsVsy7xmzHxoYrjFY7VHGsWKHfRklU~C0FeFciQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"Annotation Grid","description":"","created_at":"2022-05-09T18:36:06.798Z","updated_at":"2022-05-09T18:36:06.798Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~|"},{"key":"002402f1847b52b00967ce1494b93505c4443704","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20792:7357","style_type":"EFFECT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/6Qy/CJV/NvnbRNLv1kW84uys/style_thumbnail_34.png?Expires=1653868800&Signature=Zx3T0FPEp2NRc9i6b4a~NiTNsQ0YpMKpsxvtJ21R9wIqbQPfFIRD6iOjIaVq4sCR0QS0DOBlPHgiz~poOBawSOtFMCe~GPwSPAa-Wp~6pRpj5DY89e9R00TUwYjjA8y2Qn3kZVYcU4wXOqFeIQHeHd3mYlPDf5ELhoGFiATQ4K2nElYCRlXx2tegsRJ-FB3iLNvrs-Ym7e5w1XsgeCCbjCDdZM2wUC3DBmqRWc6V75hPX-5aoYldm1V09AdJ23PmVbxfXITVDPhpKu6f4NsMGZ~9MGxYp7--b45BCXzmaLvB7gzPl45OpIR7neznErBKinaCjtBPLCFQq472O-82eQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"elevation/light/100%","description":"Elevation & Shadows Token: --elevation-light-100%\n(#Token, #100%)","created_at":"2022-05-09T18:36:06.790Z","updated_at":"2022-05-09T18:36:06.790Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~wY"},{"key":"686c7f2cc60333d4738d29d1331ec75dbc66bd70","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20792:7356","style_type":"EFFECT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/Tsb/gnW/xLQOTgNqw4AqR89W/style_thumbnail_33.png?Expires=1653868800&Signature=Nb9LsjMQ9CE~EFlp0H1NaQz9ogZcJ-pU5syx4j~b0rulgCFR3IAx1Jc-L3FhW5yLLK6paAestEDdYrb-0mATjR4HWg4IMFLOrAMTiLFy-JQdZA9HJP55vzTFaHp01BeofblVxObHC1DoVnWnXpPFUCMxTLybOClx9TwwCaYK6mEn5CbfEpWK7sfIMicT0Cz2Ok-ySUCf2zQoiezKF4Md6YQ3q0BHvGP9JwR~skQELgXP~VzX69rhyZa4cykoiD8c7~RnS4EomSNQMgZu8f-6O0T3kzUv22cdwjszGhhnr6Nd8I~wzzZ1v2ySRrgjPfqDSwTJPOZnLNIRdiTqwDq~~g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"elevation/light/80%","description":"Elevation & Shadows Token: --elevation-light-80%\n(#Token, #80%)","created_at":"2022-05-09T18:36:06.784Z","updated_at":"2022-05-09T18:36:06.784Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~wX"},{"key":"82a866634cc3cd71193b462a15c51e0618df6079","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20499:3480","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/3pk/FVp/9HaqCIyiNJXBKTkH/style_thumbnail_32.png?Expires=1653868800&Signature=Qs2qyu0rVFfJH7g~mxHShczLR5MyJ6~oguUMjMOUgGwhQczS7r92CwNCcRNHu8koW-DnMNfR8cBCJnbS0qDpddmOoSqRS-vBq2LKag9wnanq3StyCiE1vqa9vPxheO3JJU2D0BINtdEooBfadSffp9v3ZcCMQDSnUtOr4gJAtw26EFuZLZiX~SqNIbNU2mrH5QBBES2lT2dGXvnwwD8e6s3cap0zT40MaaN29VMmkRr~pSdGcSNqyxB-amO5qwLQuJRO~ZAP~E2q3Q8MG5lbQtgK01e2e9dV7Pk0xaTKKaNCIcFUn7Rx89MZbZC1GPL2RmBDpJAN8oe~U3xCtj11pQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"labels/s","description":"","created_at":"2022-05-09T18:36:06.778Z","updated_at":"2022-05-09T18:36:06.778Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~quO"},{"key":"a2df7c0f65f0c1f453ee0daad6fd39e82d3500ba","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20499:3498","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/bLu/bAS/Rxpxec23xkwOWZiO/style_thumbnail_31.png?Expires=1653868800&Signature=dcrLu5Vx1JOz2mf4Bx1wxz-Hfd8BwmtI~YjjV72VmpZL4rCQiXN1G95hDa2Wm1zRgfaJYnmbjOimW8-rna8zPkYsuq0~oMkY46ABnycyLseLz2Q1e7siV0aCYJzO4WBP3i6QsRuMTotSXxF3kgYwdtwfDeJtsJNc3enS~tpxoSO~6DkpZJJ4mq0a3IpOZvrBaHKqcGGYIkM7vYCJkXoW6C08I6anq~pD-Ydf1o9XSaJDWfGgHNusSzxUG8KEBam0wvc0JR9aF6wiOe-AbryRtZ5sWx6ooWQw-3YY16RZNBGyLlZdZHGqmnAcVuglr381qOrSdWdvP42qVI-2dCxjzg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"hint/xs","description":"","created_at":"2022-05-09T18:36:06.772Z","updated_at":"2022-05-09T18:36:06.772Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~qw"},{"key":"84d8252f0c4d2188a7d4c12802f0d6017cd2a120","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20792:7348","style_type":"EFFECT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/p5B/0bW/1p4pIuNc36XWENhn/style_thumbnail_30.png?Expires=1653868800&Signature=VrS9UgnQkcW42CzL21s~EPl30PVyw6py7buKOv8AIphUGdd~fOEQB9nNs1GrWau-QlhAkoujUkockW4Z4PRUE9azSP3G9wV06Qxk9qHJOJXIYzdaai7-gI~ONDf-c93pByPj6S7XpOuJqM5iduruPuUuOqYkCesQfGb2Iwe0YiQIOvaVHCbRlmBLEm5xPjpqfTypjExKQALNK9s~4IQ3UY2xg4whEHNb1RSbG~KsqezK5MJGl9cHg8ckYWTBxM-oDSa46y7zAhlU28GYGDBHV9T9tA13w8rdJxiX9NE72V-M64MuWetH7n7dWh6ekzm0q4NkLCCP2rzuzPw-isxsEw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"elevation/light/20%","description":"Elevation & Shadows Token: --elevation-light-20%\n(#Token, #20%)","created_at":"2022-05-09T18:36:06.767Z","updated_at":"2022-05-09T18:36:06.767Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~wU"},{"key":"255951ceef11c2eaff33378a2b605fa926ae69c0","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20474:3360","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/akq/RU0/tlorP8eRJzQ4XYvU/style_thumbnail_29.png?Expires=1653868800&Signature=THvXJjQV-KIZCeqiXfUMEfE1vFadig8JDsNX8QpZeBejlRUs7Y3IUlyn3Wu~NRO1iLGwFC3REkLKCQyu268a6jnJUJt6VQfygHqly6MRqsK4jkb5VsNfGqxLG9QUUJF9OVnfPE-lHd~r6oPcWP6mNKaSJ3Prd-x-fdcFRlv2ceGbk~0DRIOly5yKPR3aNpAc0mPiygXrxKRqqShQ7eWh4rvDygBewJzZsgYaXTnnT2lgmYlVRVyEipf-5HLAvtkL8mn-mV1FasswkpIE3Hjp2W2x01afVufseF0B-sUarv3RAWkXkSVeEGtcx5nqHczi3mffr2kvL38savUIGHRv7w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"paragraph/m","description":"","created_at":"2022-05-09T18:36:06.761Z","updated_at":"2022-05-09T18:36:06.761Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~qt"},{"key":"883829dbe6487e0da67e96f89bcd2794dabf58c6","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20474:3361","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/x6x/h7H/LPTt5jCMEWvWhBBt/style_thumbnail_28.png?Expires=1653868800&Signature=GYf6gPn~YmfVGMN~ihbSCQrVLk4be7Pp5tk9Ohd-pErLb53-yV1cwPdM6Zp5r96Wr4omOz8nBSuoQdSIT83nqMUs52afa6ZE36eJwNiruQRdhrliUR9jI6Sg-FVEgye53ns1Uvj9GrL8WrvgQoy05NPFeoagMTYgeZIl6DPkXHcomkX4Ytfiv4pt2RE4fEsqR3LB2qrxVaj9WDIwOYJZ6jZTOYBX0w6PCggmGCpqiGOPlaKfRMrDWixzzHUPDMza2pcF6jWgbsdQj24hNV6~txx~EzohsYkHQ78~SDRijF3h4yG5Gf0MURl6suKIEDIaF2FKJXj-ZTPm4e~T07C3Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"paragraph/s","description":"","created_at":"2022-05-09T18:36:06.755Z","updated_at":"2022-05-09T18:36:06.755Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~qu"},{"key":"3e19202910d331f355018d61d5245d15ad3e61fa","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20519:3988","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/wru/fls/5Re3D0nXPcgTe4a5/style_thumbnail_27.png?Expires=1653868800&Signature=O8HSkwxjPhfaUwixLXiakWmfxoCQsVf3JPxzvsMp1AlriQdpZcDob24EFCxNCMpizSIj0ACDlCEtEGEAmcWbGcCJq~2Gr1bTKemZXMyy9LA4Blnx6l6unFxdNOCH~-aQuPGBCMdug~AoNoSiLyJzYZkxGBOjkaGCL5DHrKawb-5oaFGC7KMwsZZdwuv-FtmenOvK1NDWkVbhB7WSYoQsnAvuDsSi3QSGirJNGyZc2b5lymTN1HQWCl8vTuaqVKa45lQXsHr3~E9gsQN2Bq3GJEy3v-RGnQMJduycOq5unL-aEqg6h2iDvRxyPq5uuKEPXMJG5are1NiBVHCMsAcsYA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"navigation/m","description":"","created_at":"2022-05-09T18:36:06.750Z","updated_at":"2022-05-09T18:36:06.750Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q~Q"},{"key":"ddb12189b15f6d1e6dbba3ab088d870ec3066e8e","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20472:3360","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/DUg/45X/KiyS2CI0pIydOC6F/style_thumbnail_26.png?Expires=1653868800&Signature=X3ABpN3ySOZBCplw6yW5VBFvFIh52CWuqXJv3UJ~xiXpsFwM7VOgyLUM75xRv2q01bNDam3wQAZZpQvTsXFjxx0192RE6EDFP1-Iy3h4ZCqKERsDCn9uRle~8OlsTyuKf3ZSkz1UYtJ74bzDBUYS-6dhRwCRK5Zn~kC1Y-0TlAGtdskjXaOs51sqZzyd5vPkrC2ZBReGCqSLhRW8NTJhVVCfCSN~ZsT~qZTilHvMCfwqi0eqdw3UovtuIUgHXVOrdiQJOhONDuvq9SgeDrrd5i13HQWgzT9OFjyX9S~Pexc9oQewYNlqpidvT~5I1sF9NSka~wfKe~MKJT4LmhgLmg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"header/5xl","description":"","created_at":"2022-05-09T18:36:06.745Z","updated_at":"2022-05-09T18:36:06.745Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~ql"},{"key":"643a2f079c1ff445d0c7904f5b9a4ddf73f1d891","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20472:3361","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/sZf/K0r/akH2H1HGYATugFO2/style_thumbnail_25.png?Expires=1653868800&Signature=WzJBxFab115mM9vOhCBsMvoQqtYMM-y9Jbanh1qZ9I1u-lVxEsU2wUxAm5pI8-WKR9SNdL7ZY4fWgWfgUYD6IyQkAygF9YV7-9oA2Dfr9Zg4Ut0sXgkA0mZEO8Gl5TicVi-x0W8TFtlVroaen4hRRwzsOcmlu5QWBIoVCnZM90~4a2dCdX7H5WHqblT5ECKeKwVYPOA8S06btWtwYvCma0COLUZKM2YP4aPv5x2Xd8P~4I8IrwW4RcPjmVQNtjoefdvJfYBeLzk6IOaw4211cnPiaqy5bq0G5mK8PgzG~pj2iVD5E68rwSYw8Xq-uBuNC50VLQ7hZa3cjOI891sufQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"header/4xl","description":"","created_at":"2022-05-09T18:36:06.740Z","updated_at":"2022-05-09T18:36:06.740Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~qm"},{"key":"796182139ad95fe65630898b351054ac68310772","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20472:3362","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/Mij/bbs/X9IeMTuM0Cr1EZrL/style_thumbnail_24.png?Expires=1653868800&Signature=N~Q34WVYETnvzv4FDZ8DfSTE5mQNBR8eYuNYGnzeNV3J6valmlxLp4MPuqX1~lcV-RlvTCDXcZHenbWezXaX5m4p9dVjQE944Zw47wd2jKY5z3TvHFLivmL60cJHAXxOdgkvOyPXcv7r1CsIRHacW~trrH6hjGsEpckewcBPwOMCFme-xXs1xCK3STqFNIL8LpsMmXwQx6eRTDa4pdLoFnIQJtIyaFyQmAZBbeySM40du~Iak4Gz3ItNg2wEur0nSCuXFkEbOTqgRQ8YbZFzMQihu3IyhHuq0Z5yi1GYXyw1oUBnVYAzBLdy7bpVqX0fPg8ugwFy1b9tTuhBRkHatA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"header/3xl","description":"","created_at":"2022-05-09T18:36:06.735Z","updated_at":"2022-05-09T18:36:06.735Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~qn"},{"key":"6a01cde1036049784471d5fda778883b94e98a77","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20472:3363","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/gDF/m79/gKPj6MyR0ytYSDWn/style_thumbnail_23.png?Expires=1653868800&Signature=RvSe2ioQTEaMRuhW-iH~yahZD62arpErVF5T8HXfWfTFoLCHJOmTQwJrn-J5kTjr4WufzpqUSlGLSnqZ3AXZKxzjRNYHSZjOJq8b7mKdt~rWlR2zVbwQhifxyN61QE9SlfKQEHjLU4d-ZG93ZsprXW~v5HQfCzboPllhC43LH4SdAkl6DJQHEuQf6r-1RQjYGXvsWLsFLN3bsfes8BNrst7upObcjMFx8m-Y5nQj~uIwgvXzHVaBMFaIDwDJ7fq9Fd9r4KM9ILxHcRZsSrY4gppOLTAVGVx3A8yE14DTqJVKYsi~A~voBrRc1w7SS8xTDGuQvOt1cGKVwDvrSldM7g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"header/2xl","description":"","created_at":"2022-05-09T18:36:06.729Z","updated_at":"2022-05-09T18:36:06.729Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~qo"},{"key":"b690cbc53e8d99e62336d62bc9160e07181740f2","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20472:3364","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/6FL/fjF/9piwfCLOcBVEFptE/style_thumbnail_22.png?Expires=1653868800&Signature=RwQwKzTq52JPG~9n3VSEBka-t2FsYh1qcOBCZ74RwuVSL-krKMMDK2rbOjweftDDTskdbBlBhpIUa69DknuH-AEAgIYaVEFy8EuGy4FkcTnCJ46nm7W84sDB-6w4hU89si5Jz6ufWsTqxvCY6JDDcdO27Q9oH1Z3dnbgz0gL8nkA7fsHKvW2Vsb8I2DViFMiSqVTTnc2LGTfxvl2vJ6e9XzEtzN95LEgzRXKv367Ci4lyABwIA~SSd59zJJjJAfndJHoqslFpDqQRIiafsHQoO-OqSIMJhr4ZgJNKiG0NduGFEBqaSwPThrK8Uf7UlC507C19W8zhU6OWMkQEsC9QA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"header/xl","description":"","created_at":"2022-05-09T18:36:06.724Z","updated_at":"2022-05-09T18:36:06.724Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~qp"},{"key":"f021a110bc7e1d4bd448468a7ed795576784e561","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20519:3939","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/lCH/HJq/b9oYLFENrKsA2Zw9/style_thumbnail_21.png?Expires=1653868800&Signature=DtolbWW3htCnLSnfKZ72Mh5fIFjVLuOrKh76ZNvfjlSgtknAZkSm~byhLRljwNw2Ro6XJ9BOcdgbiNZ4bmM1P0qCTNnGr8jFnnLcEAH4RiJs5ZO4a6TnKIfLbqjeNECYVwrqb1lVjXA-tjchPL0iZyfYTIGnGX26A7GWjJVaA1K2~Zj68m2pMIy8cz1~lOG2surSsRB5mubEDWMlkzGvPqnvQJU3UWzy49EcFHHwI6hfpBIrDp1GLcqA~A0T~mpc4jQdK0wuz5zaRFUGIQwF9Ik8MnwNHg6kXcQTydRoZvFTXdtF47YOVZqn2TKQpS3~mLFtmczFfQ3c1EVK-nsxPA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"inline/m/active","description":"","created_at":"2022-05-09T18:36:06.719Z","updated_at":"2022-05-09T18:36:06.719Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q}"},{"key":"368e7108ef7ff5ce2ece6c6db2c80cddaad0d731","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20519:3940","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/OyV/RWL/1cWJh0hPk6yNPrFm/style_thumbnail_20.png?Expires=1653868800&Signature=c12mtO6HMxqEbRRuEit~UKXCuBzXU04DaJiU3nLsHBY0Irqxcfdhr34MRi6WycMvESq7klCGglOi2g8lHawvZMLy1O0ESJZVhC6B6qlQj6r7T~EDGerieoZp3kY9ELO6Gnw0Rv3OuLhcwxzDvjkTwTQCQ8jJzrtWk35Gzs4IRpdTveUObF8Q7I4LcgsNLD0aQCiPQc16GS-K-3VvO-vzKIe-Rx~W4zecRjnum~ubEhRjPN5AuPx3odS0cP-NZKSPey0VK1CTVjCGmLu2~oWZ2A4mzx-FCdOE4D-itN0EAXVptYG6Sv2TlRswpyIfDMZquXKcxSkXyoGe40X6A7d0Vw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"inline/s/default","description":"","created_at":"2022-05-09T18:36:06.713Z","updated_at":"2022-05-09T18:36:06.713Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q~"},{"key":"cd3d8d595500ce21c7824db2c8a1da1b4d300f1c","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"21287:7661","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/Cyp/Cn8/7XrvcCWX7tSzNnmJ/style_thumbnail_19.png?Expires=1653868800&Signature=gwxjIJSio-0mzRQoStbGkc0CQjc084aOGdS1s9X2w8Xaf~1dUcHWC7piNCwTwf9RUWXJmzbDuToK~NVk3V74uYhbDuOQJNwZThpwAAEUof3ova~5mjnMA~p1esmLvJ4zxU8wTSU-02wddgu0freR4JLYLCY6wrNT-IM9-JTpUEKhU9mDomx0JdjmOgjox9UDUCdN-TVh70MyznxJmp~9Qf-YWBoGxhX3WJooHgnP7iZ0Uj40IC4Id4gl6kvQCtNOYLq9JThYOIwd3IVQGzQD8ZlghsTNNqD4rMoPPoEiajblOqd866jN7bO2sd24jzClo-GegJNQ3cCAoWKErEiasA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"- annotations/Annotation S","description":"","created_at":"2022-05-09T18:36:06.708Z","updated_at":"2022-05-09T18:36:06.708Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q~RO"},{"key":"6cb98feb81542192b424e5e05019701c7878a985","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"21287:7662","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/id6/Dgb/TAvWjQ1cf5o63hKb/style_thumbnail_18.png?Expires=1653868800&Signature=PMIK4FVsMetV20ci-cWzFYJiTObP-QVLQblDaA-ZKsszeS01X-fpsTbEcOYZLkvrPPrYXA1916sEtiQnBLfs42diukj8JDF~o6iWXHVCcyRUvhWDRKAt7j-O3o6-lcA7wOu-nRxr5gcPHBsDKgb8OXwqaMSF0WEtYVEVqcma2VTTcgDA24hTtiAeCEevI3XoBKoJukyxpnviDk48i5SytCh6hY7G3DhskDuYr5JGr6QB5DGC6xON9ps~FJNPXmFKWCTMMLS-xLIj2cueS8bErcziOKkQNQMkvFPJYeYFNKxByy~wIfZUuO7d0pvpqw0j3AlN6Hxf1Guk1ttfS9bOmw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"- annotations/Annotation L","description":"","created_at":"2022-05-09T18:36:06.703Z","updated_at":"2022-05-09T18:36:06.703Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q~SO"},{"key":"d69043021a6f3cecd9b580fb59435d5a624cc68d","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20521:4154","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/hXe/JS4/TpEoKtzZrBPcViGB/style_thumbnail_17.png?Expires=1653868800&Signature=eWVD71f2ACJWXBsbl62SgfSD45DoWHwMXrnmeNdF9f0qWORF~qzZovqDNuARfuzrFexSjnzGDuEZBlr6yVs4xRbeXMG5FBIcwHLu8Ja0lTj-WivnP2eYR0~x0XRTBRV6DqRtPQecx~xk7zqbPLXhzUhEYhawpmQEOfJiZ9kz5VLOJgFo8KTcuaXdfO3t4ATqKOOiaNtPmzXIeMuK2dnkDfQ~K-g7L1f8-0Gg0SBrYokq4uq91na4dWkhfBnVb5gA4IH4~Qs0pStBN4~vgDyTUTpKomPUuVU7nszePHDIgiXHcUsmUJSjfBo9Vjn7~OCuzuf~xMHVlHP4SZlqUj-xgA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"labels/m","description":"","created_at":"2022-05-09T18:36:06.698Z","updated_at":"2022-05-09T18:36:06.698Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~qu7"},{"key":"0021faefe5985d3784e751588729bb25061baf46","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"21287:7660","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/EzL/nD2/wyJYGbXLgw0nHLiI/style_thumbnail_16.png?Expires=1653868800&Signature=GC89Rl4vQL-tdVYYBWZCiGbCo8n8W9JGvBb6MbhIIg1KQyPl~CyqooI1HsHb1mefBTRyqzOc1dk-Yr61yolGyzc5ycJaDu4hFfqe8wK9tL~1ys5cr0UM0NBOHjx0~GWBF7jt3knz3sQLLVU-lvHMB5cULomLG4qvRxzE5xg-PcioKt0qKDHEbGJtIr7bYi5iOmA14yQaRZDo7GwmHHZiqMTOlp5GBhxdQDX1FXdQls836IQ4s2G6-yOk9udsr~JptdLGXCzRa6r1~tGg-8W1y55bwVva8sZKiff6~~IzA7RHpFbJJ4yqoNu6EwY2gOBzFHfCNb5r5gaA5frYKSFauw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"- annotations/Annotation M","description":"","created_at":"2022-05-09T18:36:06.693Z","updated_at":"2022-05-09T18:36:06.693Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q~QO"},{"key":"64d5eb8c7ec8db18203a0f17917b0ee690214d2a","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"21291:7423","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/9rK/c12/rYImSieW9E50RU8j/style_thumbnail_15.png?Expires=1653868800&Signature=ORb822ZCjnB6w5zyj7qYGoSb8EZGYBY~aqAj4mktNHN46nXx1KaqBjjICifOEEJMZtBDIYfyZFp-1fXwLRqJ5MalMyJHesqrb1aBsVC4rpWojpLG7Nkp~j0LSDqveuzYGWK8wFmzdjoG-SbxXkxM0CLnQJp8kw-R8SQpT9jWTVR5W~fhFeEW0NvlOJzIVL1Jx-kamw2T~S~oIJErYxVE13C6nRKepPgBtPOiEJ3EiBwI~CLJXsW9zyK0CJn3Mo-dAnJQBfAmrpK1AumuZwlKjg7-MrfzmVYdGIE~O83YWLOr2RV4SPPKSMr0YQsQ5fZqfbW~biEu14Am81R3bm1UNg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"- annotations/Annotation XL","description":"","created_at":"2022-05-09T18:36:06.687Z","updated_at":"2022-05-09T18:36:06.687Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q~Sf"},{"key":"345f2b5d0aff165a9e488eea44bbf78f5952dde5","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"21440:14880","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/aCs/6Wi/foGtkU9O9PZYcK1q/style_thumbnail_14.png?Expires=1653868800&Signature=aRYyMRbnumqAD4stMkS9FaQk37vVVe43lo9cmJyI6I53lZitY-UwrppwUMW3uX6-pvIr9AsNhhdC7F6gujRYr2MipJ-jVWYVPfy5mKNd9U4-6IuS90fnjkSWz4XnafaJJfbNvVmG7mQvLSo9BI8UPa5lYR9ht35QGM~OGOZSmWkDjpdEdGgtOhel4BaJ6JeUoVVDcAvsxxg4IlBo6A7feOs7-p8--u4kr1-VLwkD18DPSXg6Bi8OuW~JwIQO8m87czvGtVds3V1mZ28a3TGIHjd~6hdrmFvGzZAmPTEiuZqQuuzv89Gt7az0x8hDntnL86HMshyjLsWKhu3G-3gIag__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"- annotations/Annotation XXL","description":"","created_at":"2022-05-09T18:36:06.681Z","updated_at":"2022-05-09T18:36:06.681Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q~Sg"},{"key":"f9b164d248ace903e06565a46e043f59d051e049","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10971","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/F6D/Yul/Kz923k10gfx20QxL/style_thumbnail_13.png?Expires=1653868800&Signature=GNAxo63ilXJ98Mcyc2cO7QVpEZGnN8kbJfP4kz~8L6qNQ10P1tr3f9GCBoTTxNyny82C8XQvdK0M9zopNlaZbJbIVneZxLlKhfh-aYALC5XqRcfAVy3WrEQwJ7YzmZmqrneP2O1WS1WeeKqdhhv8x1xj9XMJnNrLQ2bsLd8aXE2JJq0~CEjje2cPlZc4YoCHGNI3uBW9XHR9sOzKctiU804kxW1SCJTp8vj5vzc3K7yNmWUYrdhcCK5AJBTdksveKGNJ1qUilFGRXFS0Sv6pdwhI134WjX7RP2kPIxWwB6A68PwwsTLchPnt2qfGh~gU7F7pYUrQEplAV7li~2eK4g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"background/2","description":"Colour Styles: --background-2-colour (#Token)","created_at":"2022-05-09T18:36:06.675Z","updated_at":"2022-05-09T18:36:06.675Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"\\"},{"key":"06a067cbf75e3fda25c50b3dd842a3fcb3db3d22","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20029:15095","style_type":"GRID","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/zEV/gnn/QaY9lNmDFVcxE4U3/style_thumbnail_12.png?Expires=1653868800&Signature=I4pXbj8IjoBciDg9d2lKif2R0wx8fb~vR81itpuIN9pnB3B24~7mwZ2C-3EgiHDPlvSIjZuweMk2FhzHpNuFwtKwH-UTHDh4iR59~auo1ZsCsl5Ud-WEVqB6stYWS1Xf8zkct8Xfz0cR0AWOMnf64FZrqVfdJlM8AcIs0P6jZVXAXIpTMRZ2odjDmTq2sUdU8tf20CNnHWZ2W7Tfsk37ByfntKRJ-zr~-ij72orx9CpYFCcMwi~Rwytxunuclc29w22MU7RHYNMYfYN2RsYCb4H~nOHPBBIP8kDj0vEPcqioiSkPpoNzZXhCRdZJhAhN8Tdmckcp062P9LO-CoIqpA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"XL Desktop (1920px)","description":"Grid Token: --xl-large-desktop-1920px-12-columns (#Token, #extra-large, #grid)","created_at":"2022-05-09T18:36:06.670Z","updated_at":"2022-05-09T18:36:06.670Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~x"},{"key":"9665200a30f37b84b5686d07b8d23ae26f634df2","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10974","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/JAA/eUI/A7uOLd6PZYnzeVKO/style_thumbnail_11.png?Expires=1653868800&Signature=TLi9hIxpuF6Z7dl5EGKSJJqvifm8R1F52Kp~PW-CjwtD9dJ9fwC3pRjzncf~15C1D~ogZ2LIWByokq6z8YrnV-7QuUZJhRJEDsyObSZTxGnk~XBruBjRG64z7ar1P7PA9OFctW7dJsa9F9q~5LlCV4uB~EYGEr6oaXrDfixuyqPrS4Gb6bOyJnQKSmhNMqyU6dwje8pfX~5n5b6BX-VDoMJ2zpOgLZa-tqQUl1uPcjd~tF0bTzpKBi55GAnbCvtCfA2KQfHKWv-1KvXMKQff79KVo0nMS~o4RJlO4qD09BrBzA6JaCPWxNaA377PwILSMuxCVQlxbXxDAvQBEYijKg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"text/disabled","description":"Colour Styles: --text-disabled-colour  (#Token)","created_at":"2022-05-09T18:36:06.664Z","updated_at":"2022-05-09T18:36:06.664Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"_"},{"key":"3fedd2719778ce41e38a0f58ecb209a3a3006d40","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"21291:7667","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/fNd/vsc/VrmfRXkEteNnSttL/style_thumbnail_10.png?Expires=1653868800&Signature=M-DS7HnPCf4VlXDwgkz-2yDb6B8ZMSEEvnAFzQQatwD8cxKCKdbI2B-KYog13bhsEsHo14UaSM60NldXnXOHWKN0hxeqtAdOy2Nyrmiiczjo-yQUznYANLS4rArUCzNgBwAseseytZRibaJ4b7jFIqYq8-0VQFipa7BeCOi7CuIvp4E0328BFQRNWRD7xyYGeyELo5JYWmJYjQNTv3iXn0U4A4XM~~88g7-FlQ8wlZi3byZ390RDAjxCHbEnfnXP7RldDCP9uEYWCFs2tiemATCZ01JnHGw2SBA4K5yOGsD8VTIrvFrt9kpCPeUNMHzds8pM0ipGmVVPm6bo9jyrLA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"background/- annotation","description":"","created_at":"2022-05-09T18:36:06.659Z","updated_at":"2022-05-09T18:36:06.659Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"\\O"},{"key":"11ee8ffd6a463a26d1db2b4c07a11fdc7bd47607","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10975","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/PUU/ThC/kzZcKHooGWIaNVyY/style_thumbnail_9.png?Expires=1653868800&Signature=BFa32YNdR95KU~HNSVPIJc6RsAkJaOUF80vjqYkUpSEw3faLOzPM3CbLUXR2WIa41BXGqYbDqFSYmL0pIsH5g-ne7wUpzeZsM6Despg1lxtxRmiF-WAg2KNKqpxNvoKVxyrum5Agi4co8RGEaslYLqFHUnCHi-rizFFKMv69jfklJHrnfvIYP6Ig~zrMIchxl43O85IMXp4YAT5DvWe8DgV2uVCl5E94mF0ccSqxoMpOR9N51bEa1r8-QRaz3LRBnO4F~JUxz29hjVgZTM07qn7f87r5X3ZfQOaBINPB8N-bLWtmXhIk-YMN-8Kx2hxFx1hQWGDCDv9muXzGSyUGNQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"text/inversed","description":"Colour Styles: --text-inversed-colour  (#Token)","created_at":"2022-05-09T18:36:06.653Z","updated_at":"2022-05-09T18:36:06.653Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"`"},{"key":"c2f61245ce67fef858727d77a065f08e0e3aaf66","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20003:10942","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/r6Y/0MD/NRzUiO5qBn1wHHCD/style_thumbnail_8.png?Expires=1653868800&Signature=dIAdX-P7oClS8K93fONogICJ1bn3YlQbDhXhUn0eE0LJxORlgN47hRcsF2FvttDXevjphYOb98gaD7fvanwoWFx~kFdogV7OS60Yc~r2ltTE2KWzxSZCWbuO2DvbMR9uom-qOw-UXVuzeJeuH~UID5mpOS154jiGdqQwreW2bA9oNTES6iwByLXWmcXqYELJybtKOlzI4-mQp2av~e8VAQwWF5Uzh4HEN4kghpB3rq~0DcS4VnUU8aD60DDI-1yBt8hAqDEDgALgJ~9FEo0G1Eo1MD2ORBE96p2XwT~k9THbZd9H6QI0juGPh0ou5dakTyuP9BA81j4Ap3zxwdKLSg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"brand/primary/light","description":"Colour Styles: brand/primary/light (#Token)","created_at":"2022-05-09T18:36:06.648Z","updated_at":"2022-05-09T18:36:06.648Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"J"},{"key":"8cdc6d36a7823ce891d1e0eac329c22839ccc449","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10963","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/g0h/y8I/mfWv3Jr45f24Oue2/style_thumbnail_7.png?Expires=1653868800&Signature=FVxJVAjju4ckHtf3iE56QDtl9NnH~3~LcXQ8oDRQUKQ4QS7wyoyFpX0MRIusH6GWILN587zLklyqB17RFmdLHqZqXQfeXuBQPl5fQWIMDwj2v4EUlT41JUFVIQzpMrqVoSpDvzkIOeRps3h3x8DUDvZ6cOPGIyvM2h57f8trJDvwhv4GI2uCiPzy4LXnkjjOo37hH7vBAu6PEPtLaLGXyLlfKlgC1dH6XAsFQILHZVPrH-w6rACJ24nuiUYZtcJ0cssVqPaGklKdZcHQOPWPj1StkbjRmvXwy9i0loffJygXuFoR2cW6NC5EKEWkZB149dWvAhzYF4bJ~vMPE3DJ5w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/Grayscale/secondary","description":"Colour Styles: ui/secondary (#Token)","created_at":"2022-05-09T18:36:06.643Z","updated_at":"2022-05-09T18:36:06.643Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"T"},{"key":"c443d4526f555a5357e6a0adaa83f73a509b5096","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20668:7336","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/yri/IFm/4szUDIj4s0nqsyCc/style_thumbnail_6.png?Expires=1653868800&Signature=ACagn53Ootg9jAfWqzibw4gPfD34pzdQ-EJXutPx60qOBYH5PiVQwPKwe-DbU2xkU1iDUivhzCrpsf9PEOl8apu3ivlVWOHPKTdtzBi2ApVx5mPNcHdA-PcE--UZIJ5ex25P8zGctk~~R9SJ1IgOpL8rrygvm~w2WHLccRMYGvi0Lb3gbt-5E0Z80O33XGNSlxlITQFteGwA5W0HpCL9ePw2rpuuBaLrxjSjPQpzwvJYynxu-op0nqR5UF9Bzsc4loja6ptyHysMUkCD8u9js5-N1gy-FW12Gm~hZT29YeAGa7hls9S4srJVVuDM2WM4OsCm9lQZJOZLua~B4RrNYw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"text/link","description":"Colour Styles: --text-link-colour  (#Token)","created_at":"2022-05-09T18:36:06.638Z","updated_at":"2022-05-09T18:36:06.638Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"k"},{"key":"5f0c854e55a71f8bc96195595582bd5b3638ca0e","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20472:3365","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/QEX/RdC/K5NkKzOdseHo6PmR/style_thumbnail_5.png?Expires=1653868800&Signature=dPD4qUlKlKW5U6JflkfCnGAh35EVTD6OnkCAq10rsWZYk2mpY0MPb~RKZr9rGir9Q3SImHyP-VaRajYPK6rXKcxXnRO8Fcy21Ccf2eKum7NLPoXgbCPYtq7SwOiNkZX8QzF7HSbIJwhEieA~9Z8xEXNHpLy0nPPIqq-VWnx3~dw2p7fMDTXCQ-z5kuwOEY4fO0WvOIFSaVXf9oWDY6oo731bYer-M6Im8QuGSia0m1Vt5vPdhdswWm9kWkWFoID4y1AAiuKtfNPjlNPvJOhz8Q9kooWKZe7En~hu5P6G5i8WKTzRPScmCSSRlReGQslggfKrMU4PPKY85ZTo2TEjTQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"header/l","description":"","created_at":"2022-05-09T18:36:06.632Z","updated_at":"2022-05-09T18:36:06.632Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~qq"},{"key":"91821670c1e11f4e729ad2be6b24582132f4cd83","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20003:11700","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/bTH/Cql/WYNi3XYcB56Lw3T5/style_thumbnail_4.png?Expires=1653868800&Signature=CYCwNSEh9HEV-mtOAtBL9kfwSuFu33RzH3CwU9bxxOyvgiDi7u~iz2K53XizJV3mqlxh0lA8H6Dzw7RzU9XNojQbrej1A~TvUWxO9XlwZ0k17NdohLJxb-bANhzF-5-JGENhJUZbrSBEv0xJnxk9mCnU4VXkSmaZh-3hD5YcMtawbMAPHKcVqg9Oo50N4nt~yASzkGwUIj0Fm8MCNF0mDcq69xJt4wTS0urOYmHCLYF4rOsd7cOoKVDICJHyYoHItb1648O3uhAzbHP7lmER19j5FbMbmcXY3rnbcWKKj2tt2lj1i2faeju3RiqY8r-Dh1nboSFNUeus0Ilvh0EzRg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"brand/primary/dark","description":"Colour Styles: brand/primary/dark (#Token)","created_at":"2022-05-09T18:36:06.627Z","updated_at":"2022-05-09T18:36:06.627Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"K"},{"key":"6c6ef9b8a12aac499427ac682e601499c438b274","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10976","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/sdk/oQS/wfwmpAilX7m043SE/style_thumbnail_3.png?Expires=1653868800&Signature=FBU3afI2ROwusmGKZDQiEkf2AyXfwvLOSeP86aw4aNiSOYuZOyzX1tfG8eW9qHrB4APMf7cVIBr0~px3YdhXETBBGc30Qad6XQ7r7WziQIDGMzH9GG085x8xFDdQp~nre9BA2P1iID2gNg-xpOHjd6s1iFU3-TwPcBJGJ4iubQQSTT7tJ9qJPeNdfxTHCZwcELIGfUX25PEWikBHIlKsrfoNoMGavQZPHCNVfdBvLYlOYXldvuFZHXkOBzWkMQhaMdL3U3ZC1vn0zYNK1l7BPc~iULujk5d9PKAjh1sXIh6afS978d1UM7qMubZ4xv6GuCNXKk0cbUPBPGwu8G-3LQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"text/error","description":"Colour Styles: --text-error-colour (#Token)","created_at":"2022-05-09T18:36:06.621Z","updated_at":"2022-05-09T18:36:06.621Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"a"},{"key":"74fba58789de53c151206f867ef2396f66bcfb58","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20792:7350","style_type":"EFFECT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/A9q/071/7pHIQGk2UiUHFdlc/style_thumbnail_2.png?Expires=1653868800&Signature=R-lV7jJF1NIHILayaDZJKD~jEViL~W0XSfKfawLU~vvgj7DItBh3HLreM2xBHuO9-Avl8TX8c8hpGtBD4LzyyCnQ5yJGRVDWQ1rB45VP2r1Et2fuICZ0dVLWr9-SmRv7YrLf1bguYvxiVuvaUsLNd12SrfaDILYyPrp~Muq3ibwkDT8xssGQQ8DY1WAPwXWzGXaBpQnUhA1ga0Fom3lHJB-r25dKV8RuQbhhCb9hcH7RY8Pi7vCG9xji9mP8VSqFBDTAjriNM5l8eveWOmuGK-Ah1webkUW-YGAe1tyHTD7pfXkc3wcKmDJ1ReYs8759uT5krq2fF0~XQx4cafeH~w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"elevation/light/60%","description":"Elevation & Shadows Token: --elevation-light-60%\n(#Token, #60%)","created_at":"2022-05-09T18:36:06.616Z","updated_at":"2022-05-09T18:36:06.616Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~wW"},{"key":"fce66bd9067fcf7553be0f7d563e58d48f0ecdd7","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20792:7349","style_type":"EFFECT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/2dz/kyI/Vh4jEvifD8Kr6QG7/style_thumbnail_1.png?Expires=1653868800&Signature=XR4G5x8Cr1f7rCW6ArzU6wUKiswec5u-9sYwi9abJ9OqgdMGSrXpHoOnBVGubsQFRto5Q4-SFySzOdf2J-407M76ueX4dPTUh9kvFsy4t2MoKFSQzAtJRcxmUQAQ2SU4kn2Z95fM-3icsv5CUPk~gxQEf9~G7JcAe7JZuJNUkY0WzDhbU6736d0eipLugelAjL4TwU4qg1~0vKSQE4whOh8UOBmgQkfMVOdjzVyylZUFFCW~zk-52RfnLfV5Llm65UCwQnT~35LAldCmiMyNuddXYLVyTHgFqN1SEQ3swC1xb2ibv7fskd1KkT0NvvqdfPAEHtW4VSUyFayYyGKDhg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"elevation/light/40%","description":"Elevation & Shadows Token: --elevation-light-40%\n(#Token, #40%)","created_at":"2022-05-09T18:36:06.611Z","updated_at":"2022-05-09T18:36:06.611Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~wV"},{"key":"c7bbbab40d232a7b2e245291cfa51c34da18d923","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10977","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/yFB/xsr/Yf6RjN5kYS6q6k3E/style_thumbnail_0.png?Expires=1653868800&Signature=fdifqP9NVMC45xwMVc6uDo39m-8-UzY8BuQNkGpXi~RGmVzwTYihv3KVTBVKC4YOOc20U-P6nQhVQ56LCSj51ViFs8NTveQS50yaA7mCvV-TVQzzv-IpAosZ53tE8Lco3JXgzStOZJN5fEC5W8SKhJJCNVTrEaeC76iHW8IXMksmiIjLqcflkBSN~jQLfAW42FO-sl83TohChzzzmLaV76GMDTZAqr0DGRHbKeoN5PZr5WPXc14rNQG3cAkny0E9lOuOoy8XnfaxcaMgU0t8M2GzSHN4ebjsupsLsqdQWvNJGGkb5m6~YxpeQIamx-RAqXDHXjwiwAwlmVCx4s4X3g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"text/success","description":"Colour Styles: --text-success-colour  (#Token)","created_at":"2022-05-09T18:36:06.606Z","updated_at":"2022-05-09T18:36:06.606Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"b"},{"key":"cd4245890bf7287b8dea254bf85391682d6be154","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10965","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/XiG/3CV/4zlrlWjACV6fnVqT/style_thumbnail_29.png?Expires=1653868800&Signature=CfGX~XWnGlGQSeNbAcboqmB0iJL6H3G-mC~vznYjdsxkNiUFjFlNJNd10CgXaB6K6UYa77BemkZPLQsp0PqgTGxMplrC28Zh71ZH46jSk8t4ievf7iCUZqYqjwCrRhlQ1F1XRhzfO42yMSd2tEGP~v-RO1KRJlglmp9yKLANrWnNZK4S9ophGgrHa6jJX6e88lzbC3DHLjZxN~WFk5fTd4XrAi4A2yUgEciRypxlCZvdRQx1xIUjJHI6yLiQ2t90kWuM03bP3G9g48vBp2SYM2SF~CdVwZVISRlToxv2PuqDmzBgkkLbI-aLJ-jlZqMXI6XbgTZ2vW~LrQ3Ij14t2A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/Grayscale/quaternary","description":"Colour Styles: ui/quaternary (#Token)","created_at":"2022-05-09T18:36:03.588Z","updated_at":"2022-05-09T18:36:03.588Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"WC"},{"key":"304add5ac09540eb1818e3c42037898ae94610d7","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20127:7569","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/urm/veq/hF3nsMrNrNy43SoP/style_thumbnail_28.png?Expires=1653868800&Signature=QP-7AY3ffLEgTTu5xgT6~UEAirqLyfUanCvhKWxkamyWkoc2ublgrkHx06OLuSgmB7AIz-ew7hrA98HsL~MQZ3dop7SCYVzM8iLve5F~ivX77AOiZbAuzi~2TXxnx5oQGBd1AhKTn1H0VNLrbgUpH3Vq1X4TQaM3hHrYvOfo84M7hwvDAFUDPQNbo8GHSg7mIeo20RlGpLPWmt9A253VpJu8amMe-e7ped3GGBlxeqrjlyg-HEDbbgtHbCg7jLp-sw03UXvTlEha-G9UgLWbThNXk5IKg3wWNwmyrkVF2lJ7dtTfapgjSE9HiPnCq9E4rw0UyEoddhGH0fJp-eod4g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/alert/dark","description":"Colour Styles: ui/alert/dark (#Token)","created_at":"2022-05-09T18:36:03.583Z","updated_at":"2022-05-09T18:36:03.583Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"i"},{"key":"9bb1e967a769984f9b0f311da626f3216597f81c","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10973","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/Hk0/Rh9/sNwncEjTDPdDfeui/style_thumbnail_27.png?Expires=1653868800&Signature=aYPg-weMQ32EktZ8jfDpGCVo5L7IUlkPsvAZvXYFxnERFJZz8xO8K7WHetoji2CcaIWOujTxDg6ftEr7AQ5ay75mSeikNX~x5iYKtxhsE-xUJBT4PmU~e8TfU79Q1CBpNLoaEnp8~WyAk6n6pKWY4mZOaWO28MveOVsjIVSYYEjvv~kSdXp-vt2vs65xROP6whIwgzXAbU19lhBTfXLl96b6WqemODDhRtKmmpNgDcGGZBJK-fYroLBcayOUzhkpZtqym~4EizqzW40AyFjat3hDLY0IGyUH~lZ4rEXaghhGF1vl3noyvFbOI4JViWB87iEkAKG9ly4pw~Z~WQxz7w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"text/secondary","description":"Colour Styles: --text-secondary-colour  (#Token)","created_at":"2022-05-09T18:36:03.578Z","updated_at":"2022-05-09T18:36:03.578Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"^"},{"key":"f14ce4ab6e60abea77dd2ae94d4e61c14ece0913","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20668:7241","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/ZDY/atB/O0YaJ18kzylipxlI/style_thumbnail_26.png?Expires=1653868800&Signature=e3IU7viuv~oEzyI9dWOREWwffghjYp~IiZrgIUXCLX4k3bSZP9w2OPw3FkbXAQTtzF5n~Tg5ICPYND943m2R8K35cBn94icfochhtkxrDdsKUJoN42jt1v394DYrUvPL93y-00VngSPrHb5BD5UZTqIyZnoRBbbkWMNs2XMrm6tEtWHk7zdYY0UhIakNWysH~uu03hzOwtyWIOgiD~2Yq0JKAoFFdEs1oXgZtx4qqmtH6V30ty~ODAf3XxDQXaPoSaCWAma6ieW3SBtY9nKxUGyRCgfP2HHkNTwcfBwTHnA7FDCjtbneIlyPrLie9GJL416SI~Z5k7dbUfPUzNovxA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"sub-navigation/s","description":"","created_at":"2022-05-09T18:36:03.573Z","updated_at":"2022-05-09T18:36:03.573Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q~Q7"},{"key":"cea073fdd51415613e23a22ba7bd9e5733d61b6a","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10972","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/xd6/fBR/LeHImTgs8z0Jnkev/style_thumbnail_25.png?Expires=1653868800&Signature=eBf-8UX4XaxfQs3z9U7ZAVzPeYjsYFcruqubfzx9jcYQ5gjsIdL0ZXE0tLlEFBAjyJQX3nkRFqdcGPp33yjy8OiptuW2PRltvzlY3ymoiMiW3O573YXstf--9owckreYenRNvRac2fVcpjeb-cmd0xea968IbAGkKDkU1CNW7Hd6-lo607GphlcnDLR3ULXXHBG91J4v9lxCCas7S658sMPtZR3F-N6ST2Np8JJzgaOq5nz2RZBCf999A1XqdS~Dj2kv-6JqeF4FjveeIWIF9TL4zVgzyqmW1q9cGiuyOUon4gwq2cT7ZwxMkYlsw6WW7sF7ECSh1j-nnVG~gT1jOg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"text/primary","description":"Colour Styles: --text-primary-colour (#Token)","created_at":"2022-05-09T18:36:03.567Z","updated_at":"2022-05-09T18:36:03.567Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"]"},{"key":"56d496b6ba2c65284c304d805e36d2a3d3bc7806","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20003:11701","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/sQ3/iLW/IaHS58qFJViWFweK/style_thumbnail_24.png?Expires=1653868800&Signature=W8wsFoWxhiMDHxwPO0vCoFeaWmJP3a5WDGt2tHT5QjfEeS7kmJz1siLI2XgcAEXtg7YU7NcGJXuu89wZgruzPcjNtklHppoIRJthwLApQPL5hmDuVBr2UpeJPeueRRV3BTok-XZKbWh9xRP7OW7p4wS0YkyQiQrOYiMnoL9M-vaCYoiVM1vKe7kepJR0W~9wpSrkownyCeuD99phzaIjfQc7uCMBVFwZwfV2ajLkddjiaEOPLr5ehuUYzIhXM7bnMq4rhXz2UrBfwmmBnoOZ5d-OYx1O-iPhXi5OLI1Py-CeeWNegteK6W-wa-nnztMuH4OSliCrdGGGLjekscWPTQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"brand/primary/darker","description":"Colour Styles: brand/primary/darker (#Token)","created_at":"2022-05-09T18:36:03.562Z","updated_at":"2022-05-09T18:36:03.562Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"L"},{"key":"576115fb858c1c4b706cd36251f31a159fe6c704","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20003:11702","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/9eA/e5v/0H4LmrdUbvood1Sr/style_thumbnail_23.png?Expires=1653868800&Signature=NpJNlcruup3ozpg1vAvZRez97JwT-e5hgnMOkLfdqh-4SkAjzgDR1uaOvEhj~YkOj3EJrIbboUTtfU2z3ZaBwdYoptK1G9txoIopDzaWSlk1M9VpExveWDgZiD1dTQc~VlPfriODeecWX6bS5FpToveg~FDDFVRG5oYTjAwU1N5kdJWlUM-TIbOWmZvO0GJ3jevwLDW9IBcAMfW0IsVvIaXbhOmS~Pm5Emm2wf5xZspHR~T7g9OUgRxnsK83a2VM5G-qIX9MF7~98g30IWHmhPxO369cOsGm7SVbQ5jETtAfz-wwnmfF6s5rF65gOsgBJMkjvtCGhJN5UMcvz6Kh6w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"brand/secondary/main","description":"Colour Styles: --brand-secondary-main-colour (#Token)","created_at":"2022-05-09T18:36:03.557Z","updated_at":"2022-05-09T18:36:03.557Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"M"},{"key":"e480c3ad3eee62952ebd89ff18205f317d4f2567","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20003:11703","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/7Mn/ui8/BJeUAT5t1Eo3dI8L/style_thumbnail_22.png?Expires=1653868800&Signature=epNLzesI4l954uVZQca24LZpUEfL-g56xzGN0gWcivpFWV7roTylML23ADvfsSkQCavOpRG-iNxZ5LQEqM4fBHzziz5tSAM7mxPDgOAT-0a-9GU0duffGIA3Cr6imyGszXRWA4y8ajfu6FpYfiNwfUcN~jT91MI2Pnpp0d9gKpJdvjtUcsGdttf71XN6h8ZAB4m25VZtxfzchx13tfd-C9jvxtttlc2u2dAbKjxeFHlx-lfH6cnqRBD9pQUzTVB8eQaNxBwzYSIq1IWqfyyuEuSXG5olzkBUea04YnNgn7ES4x9sLedOZdsy7rqYSbX29nNd0q61~piaKODQPAFgtw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"brand/secondary/light","description":"Colour Styles: --brand-secondary-light-colour (#Token)","created_at":"2022-05-09T18:36:03.553Z","updated_at":"2022-05-09T18:36:03.553Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"N"},{"key":"b44508ef97101e0055de683d37cb42f29305100e","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20519:3941","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/05o/mW9/T838aKNtpN8rcu3O/style_thumbnail_21.png?Expires=1653868800&Signature=AGjH-4Bal9q7aiKgce6fHpJAvTLUQ3U2HCVrrWFMvSwY3hjuV05TpnjQA9peWAx1nhbjS3rgChSr6ZEddaG-QVNCYTxKaPfULEd5QZ~Fp3MYgjsnftfYZiew1Y0Yo1SElt7Ca2mMazWaW6tcPBA2woP7J3cFySciwyVZ7BKCDOIhTZsze6TlP3U622nW3Cs95qClEHddAtC6yCycmp4FnPLoUMkHhqIXpP6PwbeSC7iTLPIGeHDwEH6qYbQS~~j3uS4NsAsVXFbC2j9o41CfW-Ky0OyWulhtAcn5BFdTrHR5chZTwJvBIGDBBK8R6q3~CjU6ZircEIs9Z0XhlvNR9A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"inline/s/hover","description":"","created_at":"2022-05-09T18:36:03.548Z","updated_at":"2022-05-09T18:36:03.548Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q~O"},{"key":"1bf51ad2358aecfc54a7f794bb3ff1a714987cdd","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20519:3942","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/EIU/gPi/PAUjFU0Hw8Xgwqok/style_thumbnail_20.png?Expires=1653868800&Signature=GzhcDRg1HgswwT16B6E6kwtJYf3lKe-ThZgP5w1Q~FzfOiHDZcfHX~sdi-VjSMrwounhSb-MWzW2wWh4JGaEo0blosJJ-GI0GLwj8Cm4otfONTjDETCHMDSq98qPZ4so7rgWTOdHx0OmOkXDtj-Trhk6DQVcL3qbgZ0jO7a7tRd-UR6Ugn5ip-Rqe0TuuWumHkO3~ccjlVMjBrXs30PUQt5r0M9lZe7Ge6CJiewEKi9qiyTWmXNF4Y8s7LX9badQWyxfT-Yfy2KbNvbu1Kge~to58nNRIR2gD0Rve1e2esOfD3gm-GeT3mRqGY-zM9Qv~Lje1CMXSiybMPNRtYYHgg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"inline/s/active","description":"","created_at":"2022-05-09T18:36:03.543Z","updated_at":"2022-05-09T18:36:03.543Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q~P"},{"key":"072abb33e90400aab1115402bb2492c96a3b1a77","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20003:11705","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/Jfj/w88/4GoPc1yZU4JgkodQ/style_thumbnail_19.png?Expires=1653868800&Signature=EVklVsxC57eVROJF-YSc34p3Pm6fmm1ed0UT6r~atE78K7A3HvTPDe6tigavb9aFRXJjMC-YBpDBIPmb1a-tAtBzoedJoGwEijV2T1sV3v-wormyol1FTUsGkvnzOMuHeWE3qEl2KywUoEVti63pPzzmGhYydkovh4Ebp-fDNCn17FeBeXO~pjPfGo7B2xpHvrPvBhWTJ54-2Ku2yNllgAm37-AB10Bn6LNWNGrNC80JaicZK7xINjviy~zFxMkp1uNfNx6~WHflWYzT7rdlMKh8DwDjcbvmE63zVmEjLL70wdUklFYAtKhIPZS15HrmQ97rJ10yEBECiGsF6qb9Qg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"brand/secondary/dark","description":"Colour Styles: --brand-secondary-dark-colour (#Token)","created_at":"2022-05-09T18:36:03.537Z","updated_at":"2022-05-09T18:36:03.537Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"P"},{"key":"af84dc2f21b0dabf3a16fb621ada69bb048947ee","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20003:11706","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/cnB/OEz/MhchYNCMccgj9ybh/style_thumbnail_18.png?Expires=1653868800&Signature=XyG2bG9oUYQMQ22xTYaukp1OXyS1odU-aZf1P6NYe~OfTmJVpmBvHednQVjNj0mVcCSvPgEyR-7UvXWtFRrJyqX4B5ENEYkNYa3KYWipkHXrqIV2lp9q97QhX5~lj1PIGx-mpkjc8C5v0J-KPrAVHQq~punTNvXeV~YaQC0i7tF2gEECtcJE25uctdeIi67Fnim2uva-~iLjsCp04YbXdIUmckje6hLEhr2A41fvm8wfcy~veOFA-Zlzi9nHN7bjTuYjfauuqEq1TSwqrLMAfFrHN-K5tt6a33g1L4I7rGt4Tlp0ZX8Vrs9lNtBkzGeHkEZisOtMXpP9MtcxzewBGA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"brand/secondary/darker","description":"Colour Styles: --brand-secondary-darker-colour (#Token)","created_at":"2022-05-09T18:36:03.532Z","updated_at":"2022-05-09T18:36:03.532Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"Q"},{"key":"631a242ba99e9d34b6a465ba2617a8baee9ff6f9","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10962","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/Cb4/6VZ/4JGEU1BamDK7CHh5/style_thumbnail_17.png?Expires=1653868800&Signature=IJn~e8NvYVY2usKCy6KGFnuqJBFfwDNBMPV5SSmLgG4wSw7Qj0IUS7mutl1481D0h8iW62ODOL1jJX3Vgbm0~0ciJXJSFoTn24otOQdEfkv-zuZiWv4icJ559k3vnJZ0t4h9S1P0VsvyFyfL4nyTGShkJdZqZefhAqv4JqBeprty012kkqJo4g4An2BgJ6-0fkgnmQO7XO~7RmAWJazoLD8wpl~iJYgYQ7IMYoXh6eLi3yaInybwEiIhPnZTqePirXpxlgfWkIleBC3KEhrtfh6V2FcRK4r1M56XqmT~YAwqb7JEBWFaukPQ5iWmhrIgRxL9Q29Kzy73YL0md8iRPQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/Grayscale/primary","description":"Colour Styles: ui/primary (#Token)","created_at":"2022-05-09T18:36:03.526Z","updated_at":"2022-05-09T18:36:03.526Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"W7"},{"key":"b909c949fafd6f4b43fbf1e54e1cf993c78001c1","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10968","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/47W/2Od/PrbzCwgDonpC6GH7/style_thumbnail_16.png?Expires=1653868800&Signature=DnHD0nNmca3t1ftbpc-tc5Nbx1r6Y3qMo1cj4wyiimnN264ItmoMGPejYzwh3gBzA-10EpLJ~fSS~Ytx-ELZIgXylOLzxW67ABq7tVQ6RLLZH1Ri3Kh5GOXCIYmx4CMWtPRizuUZiAENaWwwbgK7-G~8QVH2KZTSUmJo7OBIfZ34SdUHVaeX3ykOTOXaxj0v0HUdtf5He~Tf3DKt7CMPaqY3q4XFCcN5HR7SMiJoj56SaVlgcXfmQ6FGMrm0nfNhUBGxoxo1AILa5nT77bVmY-DlWGd6M7hMc7P0gylXqJxt6YpYcDTHE0tCUd7tj0vMdSTNa015EtDLXXe1zMsMkg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/success/default","description":"Colour Styles: ui/success/default (#Token)","created_at":"2022-05-09T18:36:03.521Z","updated_at":"2022-05-09T18:36:03.521Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"WO"},{"key":"288bb1a54a106381689c4a3d0ead7371a991105f","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10967","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/9Pz/xRF/z0wGiH3aNVoNHk96/style_thumbnail_15.png?Expires=1653868800&Signature=grYFx~HqQBuhr15KADnaNOmnMbzjFQupu4UWYC3tMbdnvkMsSwZPgVbQth0eJJmZcEyOytQ-dAPfA0FrlfHOHwucgi8-KkVI9r~TbgLATTQduRoo50TYgxFAWpCq615~0jYcVD-XCAUJ3ZjAB93or-hCR7QouUjT8DZ5PO-NLCP5HUY~gAjWKPganpjjOugxortYyrW9s5jyExlUxhQps9VrgLVA~gnlt0D2paCxZsusZn5yqrX1CvdZLP~BY4PeK7XzjBc2s~y500mbbJkpjZzYtIzXRKZMVAvM2VPFJwkUrqziCJkO~DwIVAFtTMkKgB4l3CYxxH~GDCYQtSLXZQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/error/default","description":"Colour Styles: --ui-error-default-color (#Token)","created_at":"2022-05-09T18:36:03.516Z","updated_at":"2022-05-09T18:36:03.516Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"X"},{"key":"0a0aba446af46b81639cbdaf5d8e5b586d9c83cd","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20127:7564","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/O36/WjK/DVLAGH9bARus5wYI/style_thumbnail_14.png?Expires=1653868800&Signature=TLdOmSddZv-IEV6h9K1vlOIVCk~nBdSqC7HYDvBPngO7tw9g1FWckkoDlOKTRfJW3agggq0EIhC3WajIbqvTHLZGOE6p7mj8aRvNlQ19WbqbBPsiSSMEqn~DAeQ1gQGGEWV4NMzvljIg3PJ27qR~KDlzivWHCC0kyHy4PiW390MtwKxjJ-6H8I9wZq45Ejab2Y6XxsaXxbCRzzDj8w0eBsL8jzbU~~pj-E2-0w17H199cvRsCv6EZ4h4lbwL0-IQCw8-mBEeSHdO5R68e8ppJgg6uke23qg2P4AYi0V8QwuGrXy0bngOHRNRmP0l~uMV-sM3rXs4rUVcZ3-xZVQ4~A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/error/light","description":"Colour Styles: --ui-error-light-color (#Token)","created_at":"2022-05-09T18:36:03.510Z","updated_at":"2022-05-09T18:36:03.510Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"d"},{"key":"c510581b70f968a40556cddd9ec3829efe91ec11","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10970","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/yQW/TCw/UYZN5MtSPtWoDRUN/style_thumbnail_13.png?Expires=1653868800&Signature=SfJ0MJBE-j9Krn2CXBStQ~we8pKKVMm1gmawU1XCzundSqpnjgiXrOKYSzjeuzsp24--zrSRynA704RGIRvMyh77OMqXJw8ZAd9sPa8fIpyshWXOWzK6yCwlrniC-~DilXKEPAg045ZECDXaDoAvC7SO21m4ErUC27vqfXfBuuyVvVfWsq6kq2vkeVXek8rh7HOPhMCuvgNCxJhKCTjNKll3AanOExcrYpvqCFb95TNBbvGuMpkib9QB7mpsP9Wlp4PVPTxFJDoUE6fOPuXl5T-jpK6ie9ehO-6-yhz7dhlRWchIXd0k-hcREWicgSYPMipdnfNXV7R6ZWGo-bkwBg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"background/1","description":"Colour Styles: --background-1-colour (#Token)","created_at":"2022-05-09T18:36:03.504Z","updated_at":"2022-05-09T18:36:03.504Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"["},{"key":"0adb2bb91a54e4e7fa163676c0779b7033af967f","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20127:7565","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/8Nx/m5c/eOkMkhiu3dT0AC0R/style_thumbnail_12.png?Expires=1653868800&Signature=T~0xWGXDaAS2frF-TV1ujN0Rd9-3L8UbF2mtDg5vkBbI5R888GX3~3eVyaZGnQrkROmJqeguQnTILvgfBSkPtaNhEob-lSQidJvlslXiTZuiMzaStREOzhmOzTyupcCM~-kD1lBvtTSaI4gMXHpNkpPTIEY~vIcYLjqfWW4a5frabWRRwbtByd6ZLtYhb-u6zkMu9TGjP63zK5l3nTVbRpdTJuuEZcFlgik2OnFuEAZFea6MDhlG1SD~KDfFRS0fAkPaB~wsxEV6iKLMiUSjso56xNI9RdBr3sHIV1v3XJwPx4Mv8LWwquWZv5SvD6tfdCDgYwWWOCB-I4WSuDeccQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/error/dark","description":"Colour Styles: --ui-error-dark-color (#Token)","created_at":"2022-05-09T18:36:03.498Z","updated_at":"2022-05-09T18:36:03.498Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"e"},{"key":"076435ccf252656be6b3b8e3c2e74ad4f35153af","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20127:7567","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/Piw/IUp/5mzjRum3l9Or7mH5/style_thumbnail_11.png?Expires=1653868800&Signature=fYhxaltyCyYh4Aso~CrGzHTxTtFjsMuM5zCLIbaV2lbmGcI61A6e2YoCJHMiUIYspKHkL908T3V1hajCKrpLopA~6GSE6B2tBGY7Llnf6mWLm2Dtond8f~X86hV27BgbvPPDqZPsufXuBw-ktwxdNqb6XAD43uupwVkECIGqlKrCoRnKg~E1qmERNE6NqISSb~9MR8yav2BN9kq9PcywBqc82nVqFoK-ROb18J27Oocg-P0ZVtzUkRQwQL4HIePUP6IUjJjdORnBnhyvWuy3RGvYnoFinTOwNT6dmR-m0JgEMFdOj0lLpKROKAJfmAKljSM0tBFaX5BKE4zOWAiiwQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/success/dark","description":"Colour Styles: ui/success/dark (#Token)","created_at":"2022-05-09T18:36:03.493Z","updated_at":"2022-05-09T18:36:03.493Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"Wr"},{"key":"fa55f423c9266499c422d52053b9cc8ea01aae2f","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20127:7568","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/TdZ/4rr/O4hGkR18KmA9VSZt/style_thumbnail_10.png?Expires=1653868800&Signature=a3~1LflWbwRdrbUWiIOiOk~gQ2H4LBhIHFP5LsMiSIlUV8iW7A-EKh8wH-VrAbCThU75rYOsk-qg8QVXB4pGSl~kxIPjRduKpAO4KLnRRDC7UETKUGLTF6DY9a6dgPJCJ35pTUcdzGQ-4r5GhRIBeTlF-2nUfZkOhZjhL9rqyuVKBT57RGCLvqX8mjkcKX1uda47-ByxRgwdnnhCsPiz-VrOhw~E-3UWb4MKyQucq87VDo-9YU-hRThAng6KNRWGUffFMMOZlBGT9SuEcynxb65VUF8PkMjg0FXYHusYL5R7pDPmvzA-0-73VQq9rg1sI7ZkdnDyjwPEDPbglEo9IQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/alert/light","description":"Colour Styles: ui/alert/light (#Token)","created_at":"2022-05-09T18:36:03.488Z","updated_at":"2022-05-09T18:36:03.488Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"h"},{"key":"47afbb4e9d4d9a02e54abd3d3139cf20c1dda89e","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10964","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/wKB/bk4/7ttwj2gvUT4xzras/style_thumbnail_9.png?Expires=1653868800&Signature=I8sWtz0wgZQuKdfBQsp8aAXpx4GaYxJcr4dTc1CXFsEfL3ghYCO6ojMJLKsbxIXMRu5I0ytLQhbbHonyixRG2leNFX7HX3g2nykJpotx33KJvWpaGN8XK6pKzm09qz0BPo2jJ6zD22pukzqhHouoG5MDniuURBxezPpg1iM54NC6RECNClP97M7i7HPv58evx4FnJFcO5smVTD7i1FQktJMFiTPZY-WTQHxYZ0HwzQT3ZsZPxqVO8HfZeSoHQOqtRof4JeU~gFx0lmWfDdgttLf5cVpg8gihJWvsegvgJXKcjdJOGbUlNGyZjSanHey2VOAKQiJXjTdcmCyYAp-WPA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/Grayscale/tertiary","description":"Colour Styles: ui/tertiary (#Token)","created_at":"2022-05-09T18:36:03.482Z","updated_at":"2022-05-09T18:36:03.482Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"U"},{"key":"89c6479821813ffd4246ced68c735a521652f2b5","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20003:10941","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/Y8f/kWQ/7nyQPbznQl19yALp/style_thumbnail_8.png?Expires=1653868800&Signature=RFl2WousRv8NQn301jn9s5WgGff0uMMZdjJ-QOEaF3OR4M97LlaIvUNY0-GPjxoMFbmRb~5r~27-hPIs-NLaV1DlhG-qheDkVdKjff5BBoW6D3BXJ9I0i~JozXtvHyt4HmnWXJ31CkwnUgwUvuXdkAzNH15nK1TRnc~m64rnxxsUb3K5O327EiCKuG4HQkZxCcvkQKhoJbWPjxgOr9DqxfGJhVgCGUhk89FRIHqU6pD2EclYRNU2knNks-LBAOZenf8g-39mGIfBhpzUkdknZMectThpSg1JBU2Ywnf2zLnixilcTrQtLcBxFS-W7Ty3CkpYjPu6K~udU3ovsa08Wg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"brand/primary/main","description":"Colour Styles: brand/primary/main (#Token)","created_at":"2022-05-09T18:36:03.477Z","updated_at":"2022-05-09T18:36:03.477Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"I"},{"key":"fbce4a9e33801e2ef1ba8039b2113c686277b78b","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20519:3926","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/yxb/qYc/aBRE9Ac0iW2TbIT4/style_thumbnail_7.png?Expires=1653868800&Signature=gzMup0Q-9DZkWEBHk4wNK6Gm7F3ZA4RdIdxlRHOTFjt~LoP0z7ZEgH~CtA-n3Tsz7iSnqlT8rN2k6UOyqApsTCaUKs1XOcOW1PhhV13heqJhcxHmDSNPUOeZ5S~442POuzYEGyPZQdDQ5YfxDboQpp6PVZaCzeD3z8k~uMyAT7K~uBrHGRFlo761yMSm6o4HZc~fKJeRuOFbIgq95GpXISQeB~KjR~5ALg29joOWn6~QCVyhVOid3GUU5T59i0Gr1qSoon0XSWkZc~35XI3uWpFyIq8pcyUPUf~j2WkNwhQ7VISPtZeRp0Div8Tmeb-beGkFiBQvVfZGwEfaApXN8w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"inline/m/default","description":"","created_at":"2022-05-09T18:36:03.472Z","updated_at":"2022-05-09T18:36:03.472Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q{"},{"key":"30391beffefd13e8c0c224fc3732183ef79cad2d","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20519:3927","style_type":"TEXT","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/eJi/GSE/ILSTTQkwcVGBVzUt/style_thumbnail_6.png?Expires=1653868800&Signature=eZoW0hIatB-Aruq60EIqob1fMhrMmk3iVFiYR~G0NvwDLdM5DhGQX3mSHQS0XxlrJaIZaWmeJJcqxiR3iwaZCxEShByCq5Ep9-gS9f9hn7hu4CJhSoUYt-7Zxh~c5eaECXlXO6H8TtRiRrnoxbWXpZvndSQ5EzD8zGXeYrypQiKQX87LNwKc8Ku6HTfLp8IQEG2hT7fR0yNoZQI3OEuf7hq6V0GBcBWXXSu2-DVOHkUHH~WCzIVvLZ0fEv1eREoShTgXIcxPKzn33xe1nQjx0Z7xkZVa8w4DwkMPcSqJ7yZo9ts7FiVDgjtDUA~lHE3WYzp6t-BG5h~9FCON0aKybA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"inline/m/hover","description":"","created_at":"2022-05-09T18:36:03.466Z","updated_at":"2022-05-09T18:36:03.466Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~q|"},{"key":"40c6ede7fc447275e33fb9b6afc600e2972693d2","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20029:15096","style_type":"GRID","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/Rle/LKQ/E5tc4MbBJsEcqmUk/style_thumbnail_5.png?Expires=1653868800&Signature=fWRsm5szvmRpZxCXuV9B2GUrEYdmH0hMA8KATr4zaN-z8fca~s1L99l2jj9YewZoddMlUattO9zm0SskU~FVKEscqAe1-4126FY28yQlzEF2~bnUaUqlN6i-F7MPUa8HQOfMTyUUEf3mHGJFgzfO5xAwBh9S09npPqFF3KVui3cyLlXZCiEO98DK1o4-s6s2kfu7Eujqys968Ff1-rZN93TztET1UxbMjqrr0Kqdm9Bw5bc2z9ZcqDiOGn~FsEv8JWiTwyhARGKykIBHmIS332oMOq76hsPOOD2JNRNoVdl7PAzQ2Uuj5yGVnXkSErb~cMlE3SSPDe6LPQ-w96osGw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"Large Desktop (1440px)","description":"Grid Token: --l-desktop-1440px-12-columns (#Token, #large, #grid)","created_at":"2022-05-09T18:36:03.461Z","updated_at":"2022-05-09T18:36:03.461Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~y"},{"key":"d357173388a0b2e95a1ab88b1c09e76074a6fbe2","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20029:15097","style_type":"GRID","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/T8J/Py3/CjSO0EzabWPfxfFv/style_thumbnail_4.png?Expires=1653868800&Signature=SH7OQhE~9-E2i8F2sUvAtXhg8rxXioKefr1Y1To3K4HfqNtJ4AePXzrXHN4J-c1GUEle2GYcLPbyS8KAw6jcFa7IfypHQOfimQD6Cwh8zCpbHqwhP1yZ1rc7P0DIRxrIeNNVLAHzVBNNW-nQ-xzar-Chr08~oHdxul8VysGbpIpyZJGAAddwsog21uyz3Y2Li5Ute1gLpujfdE7eAlDZ9qMK5gEN5IjEoe6p~QsCQe18kKMEXAele-r4yLLqRoxGtXXfX~b6w~dDSRctb057g4q1wqRyAxjRgR1eP2yvsxYsl80dJz~jhOXznV2nEIsqHiUzGpGYZO3tWFAYKXn1Zw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"Tablet (768px)","description":"Grid Token: --m-tablet-768px-8-columns (#Token, #medium, #grid)","created_at":"2022-05-09T18:36:03.455Z","updated_at":"2022-05-09T18:36:03.455Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~z"},{"key":"caa8e9b0cae7cbb0bc56d4ef2df86a162d8fbd7b","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20127:7566","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/lty/tNe/JDUDu7NkkEYcZChn/style_thumbnail_3.png?Expires=1653868800&Signature=abgVUZ16ZrGmQAucpfb92-7D0eQAH~rAph0SpD8TFoGBsXv9nP94kHOCm6E4~pFN5dYXnGpGU2WFqkWYZKwTDRW-Gpbza8A8KcQI873Gq5E4SqSYsape-iZHc-oafvp7U~YtpZIQvvZTIIucZqKZqrOdm6BQsgy5QhApNXms5vRPSnd~Om1acwDdlCMQBIrpbAY8pLi7MBfTN4PxBJk1debDT9QOZIivHhC9gqGDTMo-CdLusE2YtPX0bpy7DsM-WDLStBrRvfAenBbvanOq6kLK9jbH873zU4Nuceq09hvCubcJhrF3t2lH4J1pJKMzs6laJxcIvmvoDPoiptkotQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/success/light","description":"Colour Styles: ui/success/light (#Token)","created_at":"2022-05-09T18:36:03.450Z","updated_at":"2022-05-09T18:36:03.450Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"Wf"},{"key":"e0db952545244f354d49f08bec2860002e22fd6d","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10969","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/5er/8FU/3M1CyQRaGHy4Jx0A/style_thumbnail_2.png?Expires=1653868800&Signature=fwcRgvA9dH~sy-08mMGyblgFtAjeBAIV6YnlhlppW1VUQMqcgTtoo-Oe4-qoF7S6BUo9oNwDWDhOCits8R4RU5dA49Ze6DU1Xdizyybz9aKFWAkJNfGGpZ~ZqnilW4G1690t0holPlU1rBTdPZbGDPzNEoqFEPDa6UGiFAZ7wVW0tt~ia-MeiA5JpPoi8JQ4EkdeN5GYtTEN3vOCwkD5hOgmaaBZMNdGevJmR66OMzwGxWDHd9XVHmWKxiXwbV1htButVS0pg0qA~phLSvcTgBLQPeULj44YoVcEDoenbykm7rudl8FjVpE9WYGzMPj8z2jmE8~scNm0E9yGymDTRg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/alert/default","description":"Colour Styles: ui/alert/default (#Token)","created_at":"2022-05-09T18:36:03.444Z","updated_at":"2022-05-09T18:36:03.444Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"Z"},{"key":"18290da001f3b038eeaa3f1e941761c6812c07be","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20029:15098","style_type":"GRID","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/y0Q/c6C/baJphLvh4J62vYpn/style_thumbnail_1.png?Expires=1653868800&Signature=bMp-dv-rYXFwt1NTaSu4eqaGCK~oeJbydeL631iLy8gl7q2JqZRgr8Ju4me9RSjRGeyE6nBJ7atfJDjEXWwXTmqe3zuWvg~asENwGBpbBUOdTaf3u~qlq1GvZ8VPo1yhA7ugLQWc8TT-WQmpqwkuUOQubBexoJdPV~ZEIob4ExLDoGi8MH~rh~OV3hYVj32p~QyaLd7gxqUGkCxtN1WzD1jlJkycHDiv4LKLBxrjgLc5qY8e5BCoSdNi4HhrUJ7pzlIio0rG690DKYKtUV5RU1jh84xTy07rCoQkyYO5~euwWtg3T9AVb~GW14183AywwirErwvoVpxEykeLp4u1ww__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"Mobile (360px)","description":"Grid Token: --s-mobile-360px-4-columns (#Token, #small, #grid)","created_at":"2022-05-09T18:36:03.438Z","updated_at":"2022-05-09T18:36:03.438Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"!~~{"},{"key":"b495cd185b76fdfb8dd9b058c795baea5d0488e9","file_key":"TJzz7ZB6pJvpLhjI5DWG3F","node_id":"20008:10966","style_type":"FILL","thumbnail_url":"https://s3-alpha-sig.figma.com/checkpoints/eSK/vpa/yhyCltrzTfEro5ZD/style_thumbnail_0.png?Expires=1653868800&Signature=QTvRThliNnD2ZbEMbsPdcI9Ajv6041KUSSncOwYfIyqbNNisBovakHWkecU9xH0CexXMyzwO6UZ4CW6wpjl1xjgJ429bn4On4vIVBkP5wtvqXUxAGwqDWKQWo5Dbev2ylsz1OfbzuaHwdOCfdQ89DRmFAbTV72OO4a-CVnyegZSkVC7fL7JNqiUdJK-Bx8kT6l3W5M~PWHQO7xMmto0KVI4YgHOcbFDb3TsKb6F06im~5rNdhnCPoVf0YbDuutb2fBqOZyNz1-l0vtbaxbJeVC7D47jg8bCil0LUox-v3s33QXbnSpzKau1-Azz3SHBmL78t1f~hOPf6ZKlfLtmfUg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA","name":"UI/Grayscale/disabled","description":"Colour Styles: ui/disabled (#Token)","created_at":"2022-05-09T18:36:03.431Z","updated_at":"2022-05-09T18:36:03.431Z","user":{"id":"716290236385945493","handle":" ","img_url":"https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"},"sort_position":"W"}]},"i18n":null}}
+{
+    "data": {
+        "error": false,
+        "status": 200,
+        "meta": {
+            "styles": [
+                {
+                    "key": "257d2e53f5b342bafeb497a294e38c1ce4e4c298",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "21291:7794",
+                    "style_type": "GRID",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/eCZ/jqo/PDaWSnIvQhr7vZ7r/style_thumbnail_35.png?Expires=1653868800&Signature=XTNOUGJladC4F2DZtcvdS8FRkXgJk41McVUUMKSBGuvcLEi4sXk6KdFhU3EjQ4ikvTs4~xDjXPphsWfaukk-FZ1gftRLWMTgnEzmBmtnwzzB4yCnBMTNsdcEOPbYVEnGnvFJfd2PvA2aRk0pCAUDpTw4QMMEvxpbwq5aGjpei4Hpmbqj9jSIOPUQ0Y~B1M76i0k~4wdFiAEiwXG2oCgggGOuRI2W682-C1MuI8oLwGplBXf8l01G2C~mjCv8EZlF0Xp5ti3~SbJwWEunWEKPrD4moT93Nuyp6-~iblGIw6Fz-PppsVsy7xmzHxoYrjFY7VHGsWKHfRklU~C0FeFciQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "Annotation Grid",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.798Z",
+                    "updated_at": "2022-05-09T18:36:06.798Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~|"
+                },
+                {
+                    "key": "002402f1847b52b00967ce1494b93505c4443704",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20792:7357",
+                    "style_type": "EFFECT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/6Qy/CJV/NvnbRNLv1kW84uys/style_thumbnail_34.png?Expires=1653868800&Signature=Zx3T0FPEp2NRc9i6b4a~NiTNsQ0YpMKpsxvtJ21R9wIqbQPfFIRD6iOjIaVq4sCR0QS0DOBlPHgiz~poOBawSOtFMCe~GPwSPAa-Wp~6pRpj5DY89e9R00TUwYjjA8y2Qn3kZVYcU4wXOqFeIQHeHd3mYlPDf5ELhoGFiATQ4K2nElYCRlXx2tegsRJ-FB3iLNvrs-Ym7e5w1XsgeCCbjCDdZM2wUC3DBmqRWc6V75hPX-5aoYldm1V09AdJ23PmVbxfXITVDPhpKu6f4NsMGZ~9MGxYp7--b45BCXzmaLvB7gzPl45OpIR7neznErBKinaCjtBPLCFQq472O-82eQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "elevation/light/100%",
+                    "description": "Elevation & Shadows Token: --elevation-light-100%\n(#Token, #100%)",
+                    "created_at": "2022-05-09T18:36:06.790Z",
+                    "updated_at": "2022-05-09T18:36:06.790Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~wY"
+                },
+                {
+                    "key": "686c7f2cc60333d4738d29d1331ec75dbc66bd70",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20792:7356",
+                    "style_type": "EFFECT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/Tsb/gnW/xLQOTgNqw4AqR89W/style_thumbnail_33.png?Expires=1653868800&Signature=Nb9LsjMQ9CE~EFlp0H1NaQz9ogZcJ-pU5syx4j~b0rulgCFR3IAx1Jc-L3FhW5yLLK6paAestEDdYrb-0mATjR4HWg4IMFLOrAMTiLFy-JQdZA9HJP55vzTFaHp01BeofblVxObHC1DoVnWnXpPFUCMxTLybOClx9TwwCaYK6mEn5CbfEpWK7sfIMicT0Cz2Ok-ySUCf2zQoiezKF4Md6YQ3q0BHvGP9JwR~skQELgXP~VzX69rhyZa4cykoiD8c7~RnS4EomSNQMgZu8f-6O0T3kzUv22cdwjszGhhnr6Nd8I~wzzZ1v2ySRrgjPfqDSwTJPOZnLNIRdiTqwDq~~g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "elevation/light/80%",
+                    "description": "Elevation & Shadows Token: --elevation-light-80%\n(#Token, #80%)",
+                    "created_at": "2022-05-09T18:36:06.784Z",
+                    "updated_at": "2022-05-09T18:36:06.784Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~wX"
+                },
+                {
+                    "key": "82a866634cc3cd71193b462a15c51e0618df6079",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20499:3480",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/3pk/FVp/9HaqCIyiNJXBKTkH/style_thumbnail_32.png?Expires=1653868800&Signature=Qs2qyu0rVFfJH7g~mxHShczLR5MyJ6~oguUMjMOUgGwhQczS7r92CwNCcRNHu8koW-DnMNfR8cBCJnbS0qDpddmOoSqRS-vBq2LKag9wnanq3StyCiE1vqa9vPxheO3JJU2D0BINtdEooBfadSffp9v3ZcCMQDSnUtOr4gJAtw26EFuZLZiX~SqNIbNU2mrH5QBBES2lT2dGXvnwwD8e6s3cap0zT40MaaN29VMmkRr~pSdGcSNqyxB-amO5qwLQuJRO~ZAP~E2q3Q8MG5lbQtgK01e2e9dV7Pk0xaTKKaNCIcFUn7Rx89MZbZC1GPL2RmBDpJAN8oe~U3xCtj11pQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "labels/s",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.778Z",
+                    "updated_at": "2022-05-09T18:36:06.778Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~quO"
+                },
+                {
+                    "key": "a2df7c0f65f0c1f453ee0daad6fd39e82d3500ba",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20499:3498",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/bLu/bAS/Rxpxec23xkwOWZiO/style_thumbnail_31.png?Expires=1653868800&Signature=dcrLu5Vx1JOz2mf4Bx1wxz-Hfd8BwmtI~YjjV72VmpZL4rCQiXN1G95hDa2Wm1zRgfaJYnmbjOimW8-rna8zPkYsuq0~oMkY46ABnycyLseLz2Q1e7siV0aCYJzO4WBP3i6QsRuMTotSXxF3kgYwdtwfDeJtsJNc3enS~tpxoSO~6DkpZJJ4mq0a3IpOZvrBaHKqcGGYIkM7vYCJkXoW6C08I6anq~pD-Ydf1o9XSaJDWfGgHNusSzxUG8KEBam0wvc0JR9aF6wiOe-AbryRtZ5sWx6ooWQw-3YY16RZNBGyLlZdZHGqmnAcVuglr381qOrSdWdvP42qVI-2dCxjzg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "hint/xs",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.772Z",
+                    "updated_at": "2022-05-09T18:36:06.772Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~qw"
+                },
+                {
+                    "key": "84d8252f0c4d2188a7d4c12802f0d6017cd2a120",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20792:7348",
+                    "style_type": "EFFECT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/p5B/0bW/1p4pIuNc36XWENhn/style_thumbnail_30.png?Expires=1653868800&Signature=VrS9UgnQkcW42CzL21s~EPl30PVyw6py7buKOv8AIphUGdd~fOEQB9nNs1GrWau-QlhAkoujUkockW4Z4PRUE9azSP3G9wV06Qxk9qHJOJXIYzdaai7-gI~ONDf-c93pByPj6S7XpOuJqM5iduruPuUuOqYkCesQfGb2Iwe0YiQIOvaVHCbRlmBLEm5xPjpqfTypjExKQALNK9s~4IQ3UY2xg4whEHNb1RSbG~KsqezK5MJGl9cHg8ckYWTBxM-oDSa46y7zAhlU28GYGDBHV9T9tA13w8rdJxiX9NE72V-M64MuWetH7n7dWh6ekzm0q4NkLCCP2rzuzPw-isxsEw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "elevation/light/20%",
+                    "description": "Elevation & Shadows Token: --elevation-light-20%\n(#Token, #20%)",
+                    "created_at": "2022-05-09T18:36:06.767Z",
+                    "updated_at": "2022-05-09T18:36:06.767Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~wU"
+                },
+                {
+                    "key": "255951ceef11c2eaff33378a2b605fa926ae69c0",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20474:3360",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/akq/RU0/tlorP8eRJzQ4XYvU/style_thumbnail_29.png?Expires=1653868800&Signature=THvXJjQV-KIZCeqiXfUMEfE1vFadig8JDsNX8QpZeBejlRUs7Y3IUlyn3Wu~NRO1iLGwFC3REkLKCQyu268a6jnJUJt6VQfygHqly6MRqsK4jkb5VsNfGqxLG9QUUJF9OVnfPE-lHd~r6oPcWP6mNKaSJ3Prd-x-fdcFRlv2ceGbk~0DRIOly5yKPR3aNpAc0mPiygXrxKRqqShQ7eWh4rvDygBewJzZsgYaXTnnT2lgmYlVRVyEipf-5HLAvtkL8mn-mV1FasswkpIE3Hjp2W2x01afVufseF0B-sUarv3RAWkXkSVeEGtcx5nqHczi3mffr2kvL38savUIGHRv7w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "paragraph/m",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.761Z",
+                    "updated_at": "2022-05-09T18:36:06.761Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~qt"
+                },
+                {
+                    "key": "883829dbe6487e0da67e96f89bcd2794dabf58c6",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20474:3361",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/x6x/h7H/LPTt5jCMEWvWhBBt/style_thumbnail_28.png?Expires=1653868800&Signature=GYf6gPn~YmfVGMN~ihbSCQrVLk4be7Pp5tk9Ohd-pErLb53-yV1cwPdM6Zp5r96Wr4omOz8nBSuoQdSIT83nqMUs52afa6ZE36eJwNiruQRdhrliUR9jI6Sg-FVEgye53ns1Uvj9GrL8WrvgQoy05NPFeoagMTYgeZIl6DPkXHcomkX4Ytfiv4pt2RE4fEsqR3LB2qrxVaj9WDIwOYJZ6jZTOYBX0w6PCggmGCpqiGOPlaKfRMrDWixzzHUPDMza2pcF6jWgbsdQj24hNV6~txx~EzohsYkHQ78~SDRijF3h4yG5Gf0MURl6suKIEDIaF2FKJXj-ZTPm4e~T07C3Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "paragraph/s",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.755Z",
+                    "updated_at": "2022-05-09T18:36:06.755Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~qu"
+                },
+                {
+                    "key": "3e19202910d331f355018d61d5245d15ad3e61fa",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20519:3988",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/wru/fls/5Re3D0nXPcgTe4a5/style_thumbnail_27.png?Expires=1653868800&Signature=O8HSkwxjPhfaUwixLXiakWmfxoCQsVf3JPxzvsMp1AlriQdpZcDob24EFCxNCMpizSIj0ACDlCEtEGEAmcWbGcCJq~2Gr1bTKemZXMyy9LA4Blnx6l6unFxdNOCH~-aQuPGBCMdug~AoNoSiLyJzYZkxGBOjkaGCL5DHrKawb-5oaFGC7KMwsZZdwuv-FtmenOvK1NDWkVbhB7WSYoQsnAvuDsSi3QSGirJNGyZc2b5lymTN1HQWCl8vTuaqVKa45lQXsHr3~E9gsQN2Bq3GJEy3v-RGnQMJduycOq5unL-aEqg6h2iDvRxyPq5uuKEPXMJG5are1NiBVHCMsAcsYA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "navigation/m",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.750Z",
+                    "updated_at": "2022-05-09T18:36:06.750Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q~Q"
+                },
+                {
+                    "key": "ddb12189b15f6d1e6dbba3ab088d870ec3066e8e",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20472:3360",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/DUg/45X/KiyS2CI0pIydOC6F/style_thumbnail_26.png?Expires=1653868800&Signature=X3ABpN3ySOZBCplw6yW5VBFvFIh52CWuqXJv3UJ~xiXpsFwM7VOgyLUM75xRv2q01bNDam3wQAZZpQvTsXFjxx0192RE6EDFP1-Iy3h4ZCqKERsDCn9uRle~8OlsTyuKf3ZSkz1UYtJ74bzDBUYS-6dhRwCRK5Zn~kC1Y-0TlAGtdskjXaOs51sqZzyd5vPkrC2ZBReGCqSLhRW8NTJhVVCfCSN~ZsT~qZTilHvMCfwqi0eqdw3UovtuIUgHXVOrdiQJOhONDuvq9SgeDrrd5i13HQWgzT9OFjyX9S~Pexc9oQewYNlqpidvT~5I1sF9NSka~wfKe~MKJT4LmhgLmg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "header/5xl",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.745Z",
+                    "updated_at": "2022-05-09T18:36:06.745Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~ql"
+                },
+                {
+                    "key": "643a2f079c1ff445d0c7904f5b9a4ddf73f1d891",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20472:3361",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/sZf/K0r/akH2H1HGYATugFO2/style_thumbnail_25.png?Expires=1653868800&Signature=WzJBxFab115mM9vOhCBsMvoQqtYMM-y9Jbanh1qZ9I1u-lVxEsU2wUxAm5pI8-WKR9SNdL7ZY4fWgWfgUYD6IyQkAygF9YV7-9oA2Dfr9Zg4Ut0sXgkA0mZEO8Gl5TicVi-x0W8TFtlVroaen4hRRwzsOcmlu5QWBIoVCnZM90~4a2dCdX7H5WHqblT5ECKeKwVYPOA8S06btWtwYvCma0COLUZKM2YP4aPv5x2Xd8P~4I8IrwW4RcPjmVQNtjoefdvJfYBeLzk6IOaw4211cnPiaqy5bq0G5mK8PgzG~pj2iVD5E68rwSYw8Xq-uBuNC50VLQ7hZa3cjOI891sufQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "header/4xl",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.740Z",
+                    "updated_at": "2022-05-09T18:36:06.740Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~qm"
+                },
+                {
+                    "key": "796182139ad95fe65630898b351054ac68310772",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20472:3362",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/Mij/bbs/X9IeMTuM0Cr1EZrL/style_thumbnail_24.png?Expires=1653868800&Signature=N~Q34WVYETnvzv4FDZ8DfSTE5mQNBR8eYuNYGnzeNV3J6valmlxLp4MPuqX1~lcV-RlvTCDXcZHenbWezXaX5m4p9dVjQE944Zw47wd2jKY5z3TvHFLivmL60cJHAXxOdgkvOyPXcv7r1CsIRHacW~trrH6hjGsEpckewcBPwOMCFme-xXs1xCK3STqFNIL8LpsMmXwQx6eRTDa4pdLoFnIQJtIyaFyQmAZBbeySM40du~Iak4Gz3ItNg2wEur0nSCuXFkEbOTqgRQ8YbZFzMQihu3IyhHuq0Z5yi1GYXyw1oUBnVYAzBLdy7bpVqX0fPg8ugwFy1b9tTuhBRkHatA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "header/3xl",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.735Z",
+                    "updated_at": "2022-05-09T18:36:06.735Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~qn"
+                },
+                {
+                    "key": "6a01cde1036049784471d5fda778883b94e98a77",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20472:3363",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/gDF/m79/gKPj6MyR0ytYSDWn/style_thumbnail_23.png?Expires=1653868800&Signature=RvSe2ioQTEaMRuhW-iH~yahZD62arpErVF5T8HXfWfTFoLCHJOmTQwJrn-J5kTjr4WufzpqUSlGLSnqZ3AXZKxzjRNYHSZjOJq8b7mKdt~rWlR2zVbwQhifxyN61QE9SlfKQEHjLU4d-ZG93ZsprXW~v5HQfCzboPllhC43LH4SdAkl6DJQHEuQf6r-1RQjYGXvsWLsFLN3bsfes8BNrst7upObcjMFx8m-Y5nQj~uIwgvXzHVaBMFaIDwDJ7fq9Fd9r4KM9ILxHcRZsSrY4gppOLTAVGVx3A8yE14DTqJVKYsi~A~voBrRc1w7SS8xTDGuQvOt1cGKVwDvrSldM7g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "header/2xl",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.729Z",
+                    "updated_at": "2022-05-09T18:36:06.729Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~qo"
+                },
+                {
+                    "key": "b690cbc53e8d99e62336d62bc9160e07181740f2",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20472:3364",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/6FL/fjF/9piwfCLOcBVEFptE/style_thumbnail_22.png?Expires=1653868800&Signature=RwQwKzTq52JPG~9n3VSEBka-t2FsYh1qcOBCZ74RwuVSL-krKMMDK2rbOjweftDDTskdbBlBhpIUa69DknuH-AEAgIYaVEFy8EuGy4FkcTnCJ46nm7W84sDB-6w4hU89si5Jz6ufWsTqxvCY6JDDcdO27Q9oH1Z3dnbgz0gL8nkA7fsHKvW2Vsb8I2DViFMiSqVTTnc2LGTfxvl2vJ6e9XzEtzN95LEgzRXKv367Ci4lyABwIA~SSd59zJJjJAfndJHoqslFpDqQRIiafsHQoO-OqSIMJhr4ZgJNKiG0NduGFEBqaSwPThrK8Uf7UlC507C19W8zhU6OWMkQEsC9QA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "header/xl",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.724Z",
+                    "updated_at": "2022-05-09T18:36:06.724Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~qp"
+                },
+                {
+                    "key": "f021a110bc7e1d4bd448468a7ed795576784e561",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20519:3939",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/lCH/HJq/b9oYLFENrKsA2Zw9/style_thumbnail_21.png?Expires=1653868800&Signature=DtolbWW3htCnLSnfKZ72Mh5fIFjVLuOrKh76ZNvfjlSgtknAZkSm~byhLRljwNw2Ro6XJ9BOcdgbiNZ4bmM1P0qCTNnGr8jFnnLcEAH4RiJs5ZO4a6TnKIfLbqjeNECYVwrqb1lVjXA-tjchPL0iZyfYTIGnGX26A7GWjJVaA1K2~Zj68m2pMIy8cz1~lOG2surSsRB5mubEDWMlkzGvPqnvQJU3UWzy49EcFHHwI6hfpBIrDp1GLcqA~A0T~mpc4jQdK0wuz5zaRFUGIQwF9Ik8MnwNHg6kXcQTydRoZvFTXdtF47YOVZqn2TKQpS3~mLFtmczFfQ3c1EVK-nsxPA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "inline/m/active",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.719Z",
+                    "updated_at": "2022-05-09T18:36:06.719Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q}"
+                },
+                {
+                    "key": "368e7108ef7ff5ce2ece6c6db2c80cddaad0d731",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20519:3940",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/OyV/RWL/1cWJh0hPk6yNPrFm/style_thumbnail_20.png?Expires=1653868800&Signature=c12mtO6HMxqEbRRuEit~UKXCuBzXU04DaJiU3nLsHBY0Irqxcfdhr34MRi6WycMvESq7klCGglOi2g8lHawvZMLy1O0ESJZVhC6B6qlQj6r7T~EDGerieoZp3kY9ELO6Gnw0Rv3OuLhcwxzDvjkTwTQCQ8jJzrtWk35Gzs4IRpdTveUObF8Q7I4LcgsNLD0aQCiPQc16GS-K-3VvO-vzKIe-Rx~W4zecRjnum~ubEhRjPN5AuPx3odS0cP-NZKSPey0VK1CTVjCGmLu2~oWZ2A4mzx-FCdOE4D-itN0EAXVptYG6Sv2TlRswpyIfDMZquXKcxSkXyoGe40X6A7d0Vw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "inline/s/default",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.713Z",
+                    "updated_at": "2022-05-09T18:36:06.713Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q~"
+                },
+                {
+                    "key": "cd3d8d595500ce21c7824db2c8a1da1b4d300f1c",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "21287:7661",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/Cyp/Cn8/7XrvcCWX7tSzNnmJ/style_thumbnail_19.png?Expires=1653868800&Signature=gwxjIJSio-0mzRQoStbGkc0CQjc084aOGdS1s9X2w8Xaf~1dUcHWC7piNCwTwf9RUWXJmzbDuToK~NVk3V74uYhbDuOQJNwZThpwAAEUof3ova~5mjnMA~p1esmLvJ4zxU8wTSU-02wddgu0freR4JLYLCY6wrNT-IM9-JTpUEKhU9mDomx0JdjmOgjox9UDUCdN-TVh70MyznxJmp~9Qf-YWBoGxhX3WJooHgnP7iZ0Uj40IC4Id4gl6kvQCtNOYLq9JThYOIwd3IVQGzQD8ZlghsTNNqD4rMoPPoEiajblOqd866jN7bO2sd24jzClo-GegJNQ3cCAoWKErEiasA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "- annotations/Annotation S",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.708Z",
+                    "updated_at": "2022-05-09T18:36:06.708Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q~RO"
+                },
+                {
+                    "key": "6cb98feb81542192b424e5e05019701c7878a985",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "21287:7662",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/id6/Dgb/TAvWjQ1cf5o63hKb/style_thumbnail_18.png?Expires=1653868800&Signature=PMIK4FVsMetV20ci-cWzFYJiTObP-QVLQblDaA-ZKsszeS01X-fpsTbEcOYZLkvrPPrYXA1916sEtiQnBLfs42diukj8JDF~o6iWXHVCcyRUvhWDRKAt7j-O3o6-lcA7wOu-nRxr5gcPHBsDKgb8OXwqaMSF0WEtYVEVqcma2VTTcgDA24hTtiAeCEevI3XoBKoJukyxpnviDk48i5SytCh6hY7G3DhskDuYr5JGr6QB5DGC6xON9ps~FJNPXmFKWCTMMLS-xLIj2cueS8bErcziOKkQNQMkvFPJYeYFNKxByy~wIfZUuO7d0pvpqw0j3AlN6Hxf1Guk1ttfS9bOmw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "- annotations/Annotation L",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.703Z",
+                    "updated_at": "2022-05-09T18:36:06.703Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q~SO"
+                },
+                {
+                    "key": "d69043021a6f3cecd9b580fb59435d5a624cc68d",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20521:4154",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/hXe/JS4/TpEoKtzZrBPcViGB/style_thumbnail_17.png?Expires=1653868800&Signature=eWVD71f2ACJWXBsbl62SgfSD45DoWHwMXrnmeNdF9f0qWORF~qzZovqDNuARfuzrFexSjnzGDuEZBlr6yVs4xRbeXMG5FBIcwHLu8Ja0lTj-WivnP2eYR0~x0XRTBRV6DqRtPQecx~xk7zqbPLXhzUhEYhawpmQEOfJiZ9kz5VLOJgFo8KTcuaXdfO3t4ATqKOOiaNtPmzXIeMuK2dnkDfQ~K-g7L1f8-0Gg0SBrYokq4uq91na4dWkhfBnVb5gA4IH4~Qs0pStBN4~vgDyTUTpKomPUuVU7nszePHDIgiXHcUsmUJSjfBo9Vjn7~OCuzuf~xMHVlHP4SZlqUj-xgA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "labels/m",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.698Z",
+                    "updated_at": "2022-05-09T18:36:06.698Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~qu7"
+                },
+                {
+                    "key": "0021faefe5985d3784e751588729bb25061baf46",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "21287:7660",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/EzL/nD2/wyJYGbXLgw0nHLiI/style_thumbnail_16.png?Expires=1653868800&Signature=GC89Rl4vQL-tdVYYBWZCiGbCo8n8W9JGvBb6MbhIIg1KQyPl~CyqooI1HsHb1mefBTRyqzOc1dk-Yr61yolGyzc5ycJaDu4hFfqe8wK9tL~1ys5cr0UM0NBOHjx0~GWBF7jt3knz3sQLLVU-lvHMB5cULomLG4qvRxzE5xg-PcioKt0qKDHEbGJtIr7bYi5iOmA14yQaRZDo7GwmHHZiqMTOlp5GBhxdQDX1FXdQls836IQ4s2G6-yOk9udsr~JptdLGXCzRa6r1~tGg-8W1y55bwVva8sZKiff6~~IzA7RHpFbJJ4yqoNu6EwY2gOBzFHfCNb5r5gaA5frYKSFauw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "- annotations/Annotation M",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.693Z",
+                    "updated_at": "2022-05-09T18:36:06.693Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q~QO"
+                },
+                {
+                    "key": "64d5eb8c7ec8db18203a0f17917b0ee690214d2a",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "21291:7423",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/9rK/c12/rYImSieW9E50RU8j/style_thumbnail_15.png?Expires=1653868800&Signature=ORb822ZCjnB6w5zyj7qYGoSb8EZGYBY~aqAj4mktNHN46nXx1KaqBjjICifOEEJMZtBDIYfyZFp-1fXwLRqJ5MalMyJHesqrb1aBsVC4rpWojpLG7Nkp~j0LSDqveuzYGWK8wFmzdjoG-SbxXkxM0CLnQJp8kw-R8SQpT9jWTVR5W~fhFeEW0NvlOJzIVL1Jx-kamw2T~S~oIJErYxVE13C6nRKepPgBtPOiEJ3EiBwI~CLJXsW9zyK0CJn3Mo-dAnJQBfAmrpK1AumuZwlKjg7-MrfzmVYdGIE~O83YWLOr2RV4SPPKSMr0YQsQ5fZqfbW~biEu14Am81R3bm1UNg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "- annotations/Annotation XL",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.687Z",
+                    "updated_at": "2022-05-09T18:36:06.687Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q~Sf"
+                },
+                {
+                    "key": "345f2b5d0aff165a9e488eea44bbf78f5952dde5",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "21440:14880",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/aCs/6Wi/foGtkU9O9PZYcK1q/style_thumbnail_14.png?Expires=1653868800&Signature=aRYyMRbnumqAD4stMkS9FaQk37vVVe43lo9cmJyI6I53lZitY-UwrppwUMW3uX6-pvIr9AsNhhdC7F6gujRYr2MipJ-jVWYVPfy5mKNd9U4-6IuS90fnjkSWz4XnafaJJfbNvVmG7mQvLSo9BI8UPa5lYR9ht35QGM~OGOZSmWkDjpdEdGgtOhel4BaJ6JeUoVVDcAvsxxg4IlBo6A7feOs7-p8--u4kr1-VLwkD18DPSXg6Bi8OuW~JwIQO8m87czvGtVds3V1mZ28a3TGIHjd~6hdrmFvGzZAmPTEiuZqQuuzv89Gt7az0x8hDntnL86HMshyjLsWKhu3G-3gIag__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "- annotations/Annotation XXL",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.681Z",
+                    "updated_at": "2022-05-09T18:36:06.681Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q~Sg"
+                },
+                {
+                    "key": "f9b164d248ace903e06565a46e043f59d051e049",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10971",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/F6D/Yul/Kz923k10gfx20QxL/style_thumbnail_13.png?Expires=1653868800&Signature=GNAxo63ilXJ98Mcyc2cO7QVpEZGnN8kbJfP4kz~8L6qNQ10P1tr3f9GCBoTTxNyny82C8XQvdK0M9zopNlaZbJbIVneZxLlKhfh-aYALC5XqRcfAVy3WrEQwJ7YzmZmqrneP2O1WS1WeeKqdhhv8x1xj9XMJnNrLQ2bsLd8aXE2JJq0~CEjje2cPlZc4YoCHGNI3uBW9XHR9sOzKctiU804kxW1SCJTp8vj5vzc3K7yNmWUYrdhcCK5AJBTdksveKGNJ1qUilFGRXFS0Sv6pdwhI134WjX7RP2kPIxWwB6A68PwwsTLchPnt2qfGh~gU7F7pYUrQEplAV7li~2eK4g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "background/2",
+                    "description": "Colour Styles: --background-2-colour (#Token)",
+                    "created_at": "2022-05-09T18:36:06.675Z",
+                    "updated_at": "2022-05-09T18:36:06.675Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "\\"
+                },
+                {
+                    "key": "06a067cbf75e3fda25c50b3dd842a3fcb3db3d22",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20029:15095",
+                    "style_type": "GRID",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/zEV/gnn/QaY9lNmDFVcxE4U3/style_thumbnail_12.png?Expires=1653868800&Signature=I4pXbj8IjoBciDg9d2lKif2R0wx8fb~vR81itpuIN9pnB3B24~7mwZ2C-3EgiHDPlvSIjZuweMk2FhzHpNuFwtKwH-UTHDh4iR59~auo1ZsCsl5Ud-WEVqB6stYWS1Xf8zkct8Xfz0cR0AWOMnf64FZrqVfdJlM8AcIs0P6jZVXAXIpTMRZ2odjDmTq2sUdU8tf20CNnHWZ2W7Tfsk37ByfntKRJ-zr~-ij72orx9CpYFCcMwi~Rwytxunuclc29w22MU7RHYNMYfYN2RsYCb4H~nOHPBBIP8kDj0vEPcqioiSkPpoNzZXhCRdZJhAhN8Tdmckcp062P9LO-CoIqpA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "XL Desktop (1920px)",
+                    "description": "Grid Token: --xl-large-desktop-1920px-12-columns (#Token, #extra-large, #grid)",
+                    "created_at": "2022-05-09T18:36:06.670Z",
+                    "updated_at": "2022-05-09T18:36:06.670Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~x"
+                },
+                {
+                    "key": "9665200a30f37b84b5686d07b8d23ae26f634df2",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10974",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/JAA/eUI/A7uOLd6PZYnzeVKO/style_thumbnail_11.png?Expires=1653868800&Signature=TLi9hIxpuF6Z7dl5EGKSJJqvifm8R1F52Kp~PW-CjwtD9dJ9fwC3pRjzncf~15C1D~ogZ2LIWByokq6z8YrnV-7QuUZJhRJEDsyObSZTxGnk~XBruBjRG64z7ar1P7PA9OFctW7dJsa9F9q~5LlCV4uB~EYGEr6oaXrDfixuyqPrS4Gb6bOyJnQKSmhNMqyU6dwje8pfX~5n5b6BX-VDoMJ2zpOgLZa-tqQUl1uPcjd~tF0bTzpKBi55GAnbCvtCfA2KQfHKWv-1KvXMKQff79KVo0nMS~o4RJlO4qD09BrBzA6JaCPWxNaA377PwILSMuxCVQlxbXxDAvQBEYijKg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "text/disabled",
+                    "description": "Colour Styles: --text-disabled-colour  (#Token)",
+                    "created_at": "2022-05-09T18:36:06.664Z",
+                    "updated_at": "2022-05-09T18:36:06.664Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "_"
+                },
+                {
+                    "key": "3fedd2719778ce41e38a0f58ecb209a3a3006d40",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "21291:7667",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/fNd/vsc/VrmfRXkEteNnSttL/style_thumbnail_10.png?Expires=1653868800&Signature=M-DS7HnPCf4VlXDwgkz-2yDb6B8ZMSEEvnAFzQQatwD8cxKCKdbI2B-KYog13bhsEsHo14UaSM60NldXnXOHWKN0hxeqtAdOy2Nyrmiiczjo-yQUznYANLS4rArUCzNgBwAseseytZRibaJ4b7jFIqYq8-0VQFipa7BeCOi7CuIvp4E0328BFQRNWRD7xyYGeyELo5JYWmJYjQNTv3iXn0U4A4XM~~88g7-FlQ8wlZi3byZ390RDAjxCHbEnfnXP7RldDCP9uEYWCFs2tiemATCZ01JnHGw2SBA4K5yOGsD8VTIrvFrt9kpCPeUNMHzds8pM0ipGmVVPm6bo9jyrLA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "background/- annotation",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.659Z",
+                    "updated_at": "2022-05-09T18:36:06.659Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "\\O"
+                },
+                {
+                    "key": "11ee8ffd6a463a26d1db2b4c07a11fdc7bd47607",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10975",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/PUU/ThC/kzZcKHooGWIaNVyY/style_thumbnail_9.png?Expires=1653868800&Signature=BFa32YNdR95KU~HNSVPIJc6RsAkJaOUF80vjqYkUpSEw3faLOzPM3CbLUXR2WIa41BXGqYbDqFSYmL0pIsH5g-ne7wUpzeZsM6Despg1lxtxRmiF-WAg2KNKqpxNvoKVxyrum5Agi4co8RGEaslYLqFHUnCHi-rizFFKMv69jfklJHrnfvIYP6Ig~zrMIchxl43O85IMXp4YAT5DvWe8DgV2uVCl5E94mF0ccSqxoMpOR9N51bEa1r8-QRaz3LRBnO4F~JUxz29hjVgZTM07qn7f87r5X3ZfQOaBINPB8N-bLWtmXhIk-YMN-8Kx2hxFx1hQWGDCDv9muXzGSyUGNQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "text/inversed",
+                    "description": "Colour Styles: --text-inversed-colour  (#Token)",
+                    "created_at": "2022-05-09T18:36:06.653Z",
+                    "updated_at": "2022-05-09T18:36:06.653Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "`"
+                },
+                {
+                    "key": "c2f61245ce67fef858727d77a065f08e0e3aaf66",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20003:10942",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/r6Y/0MD/NRzUiO5qBn1wHHCD/style_thumbnail_8.png?Expires=1653868800&Signature=dIAdX-P7oClS8K93fONogICJ1bn3YlQbDhXhUn0eE0LJxORlgN47hRcsF2FvttDXevjphYOb98gaD7fvanwoWFx~kFdogV7OS60Yc~r2ltTE2KWzxSZCWbuO2DvbMR9uom-qOw-UXVuzeJeuH~UID5mpOS154jiGdqQwreW2bA9oNTES6iwByLXWmcXqYELJybtKOlzI4-mQp2av~e8VAQwWF5Uzh4HEN4kghpB3rq~0DcS4VnUU8aD60DDI-1yBt8hAqDEDgALgJ~9FEo0G1Eo1MD2ORBE96p2XwT~k9THbZd9H6QI0juGPh0ou5dakTyuP9BA81j4Ap3zxwdKLSg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "brand/primary/light",
+                    "description": "Colour Styles: brand/primary/light (#Token)",
+                    "created_at": "2022-05-09T18:36:06.648Z",
+                    "updated_at": "2022-05-09T18:36:06.648Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "J"
+                },
+                {
+                    "key": "8cdc6d36a7823ce891d1e0eac329c22839ccc449",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10963",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/g0h/y8I/mfWv3Jr45f24Oue2/style_thumbnail_7.png?Expires=1653868800&Signature=FVxJVAjju4ckHtf3iE56QDtl9NnH~3~LcXQ8oDRQUKQ4QS7wyoyFpX0MRIusH6GWILN587zLklyqB17RFmdLHqZqXQfeXuBQPl5fQWIMDwj2v4EUlT41JUFVIQzpMrqVoSpDvzkIOeRps3h3x8DUDvZ6cOPGIyvM2h57f8trJDvwhv4GI2uCiPzy4LXnkjjOo37hH7vBAu6PEPtLaLGXyLlfKlgC1dH6XAsFQILHZVPrH-w6rACJ24nuiUYZtcJ0cssVqPaGklKdZcHQOPWPj1StkbjRmvXwy9i0loffJygXuFoR2cW6NC5EKEWkZB149dWvAhzYF4bJ~vMPE3DJ5w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/Grayscale/secondary",
+                    "description": "Colour Styles: ui/secondary (#Token)",
+                    "created_at": "2022-05-09T18:36:06.643Z",
+                    "updated_at": "2022-05-09T18:36:06.643Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "T"
+                },
+                {
+                    "key": "c443d4526f555a5357e6a0adaa83f73a509b5096",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20668:7336",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/yri/IFm/4szUDIj4s0nqsyCc/style_thumbnail_6.png?Expires=1653868800&Signature=ACagn53Ootg9jAfWqzibw4gPfD34pzdQ-EJXutPx60qOBYH5PiVQwPKwe-DbU2xkU1iDUivhzCrpsf9PEOl8apu3ivlVWOHPKTdtzBi2ApVx5mPNcHdA-PcE--UZIJ5ex25P8zGctk~~R9SJ1IgOpL8rrygvm~w2WHLccRMYGvi0Lb3gbt-5E0Z80O33XGNSlxlITQFteGwA5W0HpCL9ePw2rpuuBaLrxjSjPQpzwvJYynxu-op0nqR5UF9Bzsc4loja6ptyHysMUkCD8u9js5-N1gy-FW12Gm~hZT29YeAGa7hls9S4srJVVuDM2WM4OsCm9lQZJOZLua~B4RrNYw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "text/link",
+                    "description": "Colour Styles: --text-link-colour  (#Token)",
+                    "created_at": "2022-05-09T18:36:06.638Z",
+                    "updated_at": "2022-05-09T18:36:06.638Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "k"
+                },
+                {
+                    "key": "5f0c854e55a71f8bc96195595582bd5b3638ca0e",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20472:3365",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/QEX/RdC/K5NkKzOdseHo6PmR/style_thumbnail_5.png?Expires=1653868800&Signature=dPD4qUlKlKW5U6JflkfCnGAh35EVTD6OnkCAq10rsWZYk2mpY0MPb~RKZr9rGir9Q3SImHyP-VaRajYPK6rXKcxXnRO8Fcy21Ccf2eKum7NLPoXgbCPYtq7SwOiNkZX8QzF7HSbIJwhEieA~9Z8xEXNHpLy0nPPIqq-VWnx3~dw2p7fMDTXCQ-z5kuwOEY4fO0WvOIFSaVXf9oWDY6oo731bYer-M6Im8QuGSia0m1Vt5vPdhdswWm9kWkWFoID4y1AAiuKtfNPjlNPvJOhz8Q9kooWKZe7En~hu5P6G5i8WKTzRPScmCSSRlReGQslggfKrMU4PPKY85ZTo2TEjTQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "header/l",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:06.632Z",
+                    "updated_at": "2022-05-09T18:36:06.632Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~qq"
+                },
+                {
+                    "key": "91821670c1e11f4e729ad2be6b24582132f4cd83",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20003:11700",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/bTH/Cql/WYNi3XYcB56Lw3T5/style_thumbnail_4.png?Expires=1653868800&Signature=CYCwNSEh9HEV-mtOAtBL9kfwSuFu33RzH3CwU9bxxOyvgiDi7u~iz2K53XizJV3mqlxh0lA8H6Dzw7RzU9XNojQbrej1A~TvUWxO9XlwZ0k17NdohLJxb-bANhzF-5-JGENhJUZbrSBEv0xJnxk9mCnU4VXkSmaZh-3hD5YcMtawbMAPHKcVqg9Oo50N4nt~yASzkGwUIj0Fm8MCNF0mDcq69xJt4wTS0urOYmHCLYF4rOsd7cOoKVDICJHyYoHItb1648O3uhAzbHP7lmER19j5FbMbmcXY3rnbcWKKj2tt2lj1i2faeju3RiqY8r-Dh1nboSFNUeus0Ilvh0EzRg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "brand/primary/dark",
+                    "description": "Colour Styles: brand/primary/dark (#Token)",
+                    "created_at": "2022-05-09T18:36:06.627Z",
+                    "updated_at": "2022-05-09T18:36:06.627Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "K"
+                },
+                {
+                    "key": "6c6ef9b8a12aac499427ac682e601499c438b274",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10976",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/sdk/oQS/wfwmpAilX7m043SE/style_thumbnail_3.png?Expires=1653868800&Signature=FBU3afI2ROwusmGKZDQiEkf2AyXfwvLOSeP86aw4aNiSOYuZOyzX1tfG8eW9qHrB4APMf7cVIBr0~px3YdhXETBBGc30Qad6XQ7r7WziQIDGMzH9GG085x8xFDdQp~nre9BA2P1iID2gNg-xpOHjd6s1iFU3-TwPcBJGJ4iubQQSTT7tJ9qJPeNdfxTHCZwcELIGfUX25PEWikBHIlKsrfoNoMGavQZPHCNVfdBvLYlOYXldvuFZHXkOBzWkMQhaMdL3U3ZC1vn0zYNK1l7BPc~iULujk5d9PKAjh1sXIh6afS978d1UM7qMubZ4xv6GuCNXKk0cbUPBPGwu8G-3LQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "text/error",
+                    "description": "Colour Styles: --text-error-colour (#Token)",
+                    "created_at": "2022-05-09T18:36:06.621Z",
+                    "updated_at": "2022-05-09T18:36:06.621Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "a"
+                },
+                {
+                    "key": "74fba58789de53c151206f867ef2396f66bcfb58",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20792:7350",
+                    "style_type": "EFFECT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/A9q/071/7pHIQGk2UiUHFdlc/style_thumbnail_2.png?Expires=1653868800&Signature=R-lV7jJF1NIHILayaDZJKD~jEViL~W0XSfKfawLU~vvgj7DItBh3HLreM2xBHuO9-Avl8TX8c8hpGtBD4LzyyCnQ5yJGRVDWQ1rB45VP2r1Et2fuICZ0dVLWr9-SmRv7YrLf1bguYvxiVuvaUsLNd12SrfaDILYyPrp~Muq3ibwkDT8xssGQQ8DY1WAPwXWzGXaBpQnUhA1ga0Fom3lHJB-r25dKV8RuQbhhCb9hcH7RY8Pi7vCG9xji9mP8VSqFBDTAjriNM5l8eveWOmuGK-Ah1webkUW-YGAe1tyHTD7pfXkc3wcKmDJ1ReYs8759uT5krq2fF0~XQx4cafeH~w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "elevation/light/60%",
+                    "description": "Elevation & Shadows Token: --elevation-light-60%\n(#Token, #60%)",
+                    "created_at": "2022-05-09T18:36:06.616Z",
+                    "updated_at": "2022-05-09T18:36:06.616Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~wW"
+                },
+                {
+                    "key": "fce66bd9067fcf7553be0f7d563e58d48f0ecdd7",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20792:7349",
+                    "style_type": "EFFECT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/2dz/kyI/Vh4jEvifD8Kr6QG7/style_thumbnail_1.png?Expires=1653868800&Signature=XR4G5x8Cr1f7rCW6ArzU6wUKiswec5u-9sYwi9abJ9OqgdMGSrXpHoOnBVGubsQFRto5Q4-SFySzOdf2J-407M76ueX4dPTUh9kvFsy4t2MoKFSQzAtJRcxmUQAQ2SU4kn2Z95fM-3icsv5CUPk~gxQEf9~G7JcAe7JZuJNUkY0WzDhbU6736d0eipLugelAjL4TwU4qg1~0vKSQE4whOh8UOBmgQkfMVOdjzVyylZUFFCW~zk-52RfnLfV5Llm65UCwQnT~35LAldCmiMyNuddXYLVyTHgFqN1SEQ3swC1xb2ibv7fskd1KkT0NvvqdfPAEHtW4VSUyFayYyGKDhg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "elevation/light/40%",
+                    "description": "Elevation & Shadows Token: --elevation-light-40%\n(#Token, #40%)",
+                    "created_at": "2022-05-09T18:36:06.611Z",
+                    "updated_at": "2022-05-09T18:36:06.611Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~wV"
+                },
+                {
+                    "key": "c7bbbab40d232a7b2e245291cfa51c34da18d923",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10977",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/yFB/xsr/Yf6RjN5kYS6q6k3E/style_thumbnail_0.png?Expires=1653868800&Signature=fdifqP9NVMC45xwMVc6uDo39m-8-UzY8BuQNkGpXi~RGmVzwTYihv3KVTBVKC4YOOc20U-P6nQhVQ56LCSj51ViFs8NTveQS50yaA7mCvV-TVQzzv-IpAosZ53tE8Lco3JXgzStOZJN5fEC5W8SKhJJCNVTrEaeC76iHW8IXMksmiIjLqcflkBSN~jQLfAW42FO-sl83TohChzzzmLaV76GMDTZAqr0DGRHbKeoN5PZr5WPXc14rNQG3cAkny0E9lOuOoy8XnfaxcaMgU0t8M2GzSHN4ebjsupsLsqdQWvNJGGkb5m6~YxpeQIamx-RAqXDHXjwiwAwlmVCx4s4X3g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "text/success",
+                    "description": "Colour Styles: --text-success-colour  (#Token)",
+                    "created_at": "2022-05-09T18:36:06.606Z",
+                    "updated_at": "2022-05-09T18:36:06.606Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "b"
+                },
+                {
+                    "key": "cd4245890bf7287b8dea254bf85391682d6be154",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10965",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/XiG/3CV/4zlrlWjACV6fnVqT/style_thumbnail_29.png?Expires=1653868800&Signature=CfGX~XWnGlGQSeNbAcboqmB0iJL6H3G-mC~vznYjdsxkNiUFjFlNJNd10CgXaB6K6UYa77BemkZPLQsp0PqgTGxMplrC28Zh71ZH46jSk8t4ievf7iCUZqYqjwCrRhlQ1F1XRhzfO42yMSd2tEGP~v-RO1KRJlglmp9yKLANrWnNZK4S9ophGgrHa6jJX6e88lzbC3DHLjZxN~WFk5fTd4XrAi4A2yUgEciRypxlCZvdRQx1xIUjJHI6yLiQ2t90kWuM03bP3G9g48vBp2SYM2SF~CdVwZVISRlToxv2PuqDmzBgkkLbI-aLJ-jlZqMXI6XbgTZ2vW~LrQ3Ij14t2A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/Grayscale/quaternary",
+                    "description": "Colour Styles: ui/quaternary (#Token)",
+                    "created_at": "2022-05-09T18:36:03.588Z",
+                    "updated_at": "2022-05-09T18:36:03.588Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "WC"
+                },
+                {
+                    "key": "304add5ac09540eb1818e3c42037898ae94610d7",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20127:7569",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/urm/veq/hF3nsMrNrNy43SoP/style_thumbnail_28.png?Expires=1653868800&Signature=QP-7AY3ffLEgTTu5xgT6~UEAirqLyfUanCvhKWxkamyWkoc2ublgrkHx06OLuSgmB7AIz-ew7hrA98HsL~MQZ3dop7SCYVzM8iLve5F~ivX77AOiZbAuzi~2TXxnx5oQGBd1AhKTn1H0VNLrbgUpH3Vq1X4TQaM3hHrYvOfo84M7hwvDAFUDPQNbo8GHSg7mIeo20RlGpLPWmt9A253VpJu8amMe-e7ped3GGBlxeqrjlyg-HEDbbgtHbCg7jLp-sw03UXvTlEha-G9UgLWbThNXk5IKg3wWNwmyrkVF2lJ7dtTfapgjSE9HiPnCq9E4rw0UyEoddhGH0fJp-eod4g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/alert/dark",
+                    "description": "Colour Styles: ui/alert/dark (#Token)",
+                    "created_at": "2022-05-09T18:36:03.583Z",
+                    "updated_at": "2022-05-09T18:36:03.583Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "i"
+                },
+                {
+                    "key": "9bb1e967a769984f9b0f311da626f3216597f81c",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10973",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/Hk0/Rh9/sNwncEjTDPdDfeui/style_thumbnail_27.png?Expires=1653868800&Signature=aYPg-weMQ32EktZ8jfDpGCVo5L7IUlkPsvAZvXYFxnERFJZz8xO8K7WHetoji2CcaIWOujTxDg6ftEr7AQ5ay75mSeikNX~x5iYKtxhsE-xUJBT4PmU~e8TfU79Q1CBpNLoaEnp8~WyAk6n6pKWY4mZOaWO28MveOVsjIVSYYEjvv~kSdXp-vt2vs65xROP6whIwgzXAbU19lhBTfXLl96b6WqemODDhRtKmmpNgDcGGZBJK-fYroLBcayOUzhkpZtqym~4EizqzW40AyFjat3hDLY0IGyUH~lZ4rEXaghhGF1vl3noyvFbOI4JViWB87iEkAKG9ly4pw~Z~WQxz7w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "text/secondary",
+                    "description": "Colour Styles: --text-secondary-colour  (#Token)",
+                    "created_at": "2022-05-09T18:36:03.578Z",
+                    "updated_at": "2022-05-09T18:36:03.578Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "^"
+                },
+                {
+                    "key": "f14ce4ab6e60abea77dd2ae94d4e61c14ece0913",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20668:7241",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/ZDY/atB/O0YaJ18kzylipxlI/style_thumbnail_26.png?Expires=1653868800&Signature=e3IU7viuv~oEzyI9dWOREWwffghjYp~IiZrgIUXCLX4k3bSZP9w2OPw3FkbXAQTtzF5n~Tg5ICPYND943m2R8K35cBn94icfochhtkxrDdsKUJoN42jt1v394DYrUvPL93y-00VngSPrHb5BD5UZTqIyZnoRBbbkWMNs2XMrm6tEtWHk7zdYY0UhIakNWysH~uu03hzOwtyWIOgiD~2Yq0JKAoFFdEs1oXgZtx4qqmtH6V30ty~ODAf3XxDQXaPoSaCWAma6ieW3SBtY9nKxUGyRCgfP2HHkNTwcfBwTHnA7FDCjtbneIlyPrLie9GJL416SI~Z5k7dbUfPUzNovxA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "sub-navigation/s",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:03.573Z",
+                    "updated_at": "2022-05-09T18:36:03.573Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q~Q7"
+                },
+                {
+                    "key": "cea073fdd51415613e23a22ba7bd9e5733d61b6a",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10972",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/xd6/fBR/LeHImTgs8z0Jnkev/style_thumbnail_25.png?Expires=1653868800&Signature=eBf-8UX4XaxfQs3z9U7ZAVzPeYjsYFcruqubfzx9jcYQ5gjsIdL0ZXE0tLlEFBAjyJQX3nkRFqdcGPp33yjy8OiptuW2PRltvzlY3ymoiMiW3O573YXstf--9owckreYenRNvRac2fVcpjeb-cmd0xea968IbAGkKDkU1CNW7Hd6-lo607GphlcnDLR3ULXXHBG91J4v9lxCCas7S658sMPtZR3F-N6ST2Np8JJzgaOq5nz2RZBCf999A1XqdS~Dj2kv-6JqeF4FjveeIWIF9TL4zVgzyqmW1q9cGiuyOUon4gwq2cT7ZwxMkYlsw6WW7sF7ECSh1j-nnVG~gT1jOg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "text/primary",
+                    "description": "Colour Styles: --text-primary-colour (#Token)",
+                    "created_at": "2022-05-09T18:36:03.567Z",
+                    "updated_at": "2022-05-09T18:36:03.567Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "]"
+                },
+                {
+                    "key": "56d496b6ba2c65284c304d805e36d2a3d3bc7806",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20003:11701",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/sQ3/iLW/IaHS58qFJViWFweK/style_thumbnail_24.png?Expires=1653868800&Signature=W8wsFoWxhiMDHxwPO0vCoFeaWmJP3a5WDGt2tHT5QjfEeS7kmJz1siLI2XgcAEXtg7YU7NcGJXuu89wZgruzPcjNtklHppoIRJthwLApQPL5hmDuVBr2UpeJPeueRRV3BTok-XZKbWh9xRP7OW7p4wS0YkyQiQrOYiMnoL9M-vaCYoiVM1vKe7kepJR0W~9wpSrkownyCeuD99phzaIjfQc7uCMBVFwZwfV2ajLkddjiaEOPLr5ehuUYzIhXM7bnMq4rhXz2UrBfwmmBnoOZ5d-OYx1O-iPhXi5OLI1Py-CeeWNegteK6W-wa-nnztMuH4OSliCrdGGGLjekscWPTQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "brand/primary/darker",
+                    "description": "Colour Styles: brand/primary/darker (#Token)",
+                    "created_at": "2022-05-09T18:36:03.562Z",
+                    "updated_at": "2022-05-09T18:36:03.562Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "L"
+                },
+                {
+                    "key": "576115fb858c1c4b706cd36251f31a159fe6c704",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20003:11702",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/9eA/e5v/0H4LmrdUbvood1Sr/style_thumbnail_23.png?Expires=1653868800&Signature=NpJNlcruup3ozpg1vAvZRez97JwT-e5hgnMOkLfdqh-4SkAjzgDR1uaOvEhj~YkOj3EJrIbboUTtfU2z3ZaBwdYoptK1G9txoIopDzaWSlk1M9VpExveWDgZiD1dTQc~VlPfriODeecWX6bS5FpToveg~FDDFVRG5oYTjAwU1N5kdJWlUM-TIbOWmZvO0GJ3jevwLDW9IBcAMfW0IsVvIaXbhOmS~Pm5Emm2wf5xZspHR~T7g9OUgRxnsK83a2VM5G-qIX9MF7~98g30IWHmhPxO369cOsGm7SVbQ5jETtAfz-wwnmfF6s5rF65gOsgBJMkjvtCGhJN5UMcvz6Kh6w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "brand/secondary/main",
+                    "description": "Colour Styles: --brand-secondary-main-colour (#Token)",
+                    "created_at": "2022-05-09T18:36:03.557Z",
+                    "updated_at": "2022-05-09T18:36:03.557Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "M"
+                },
+                {
+                    "key": "e480c3ad3eee62952ebd89ff18205f317d4f2567",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20003:11703",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/7Mn/ui8/BJeUAT5t1Eo3dI8L/style_thumbnail_22.png?Expires=1653868800&Signature=epNLzesI4l954uVZQca24LZpUEfL-g56xzGN0gWcivpFWV7roTylML23ADvfsSkQCavOpRG-iNxZ5LQEqM4fBHzziz5tSAM7mxPDgOAT-0a-9GU0duffGIA3Cr6imyGszXRWA4y8ajfu6FpYfiNwfUcN~jT91MI2Pnpp0d9gKpJdvjtUcsGdttf71XN6h8ZAB4m25VZtxfzchx13tfd-C9jvxtttlc2u2dAbKjxeFHlx-lfH6cnqRBD9pQUzTVB8eQaNxBwzYSIq1IWqfyyuEuSXG5olzkBUea04YnNgn7ES4x9sLedOZdsy7rqYSbX29nNd0q61~piaKODQPAFgtw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "brand/secondary/light",
+                    "description": "Colour Styles: --brand-secondary-light-colour (#Token)",
+                    "created_at": "2022-05-09T18:36:03.553Z",
+                    "updated_at": "2022-05-09T18:36:03.553Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "N"
+                },
+                {
+                    "key": "b44508ef97101e0055de683d37cb42f29305100e",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20519:3941",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/05o/mW9/T838aKNtpN8rcu3O/style_thumbnail_21.png?Expires=1653868800&Signature=AGjH-4Bal9q7aiKgce6fHpJAvTLUQ3U2HCVrrWFMvSwY3hjuV05TpnjQA9peWAx1nhbjS3rgChSr6ZEddaG-QVNCYTxKaPfULEd5QZ~Fp3MYgjsnftfYZiew1Y0Yo1SElt7Ca2mMazWaW6tcPBA2woP7J3cFySciwyVZ7BKCDOIhTZsze6TlP3U622nW3Cs95qClEHddAtC6yCycmp4FnPLoUMkHhqIXpP6PwbeSC7iTLPIGeHDwEH6qYbQS~~j3uS4NsAsVXFbC2j9o41CfW-Ky0OyWulhtAcn5BFdTrHR5chZTwJvBIGDBBK8R6q3~CjU6ZircEIs9Z0XhlvNR9A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "inline/s/hover",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:03.548Z",
+                    "updated_at": "2022-05-09T18:36:03.548Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q~O"
+                },
+                {
+                    "key": "1bf51ad2358aecfc54a7f794bb3ff1a714987cdd",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20519:3942",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/EIU/gPi/PAUjFU0Hw8Xgwqok/style_thumbnail_20.png?Expires=1653868800&Signature=GzhcDRg1HgswwT16B6E6kwtJYf3lKe-ThZgP5w1Q~FzfOiHDZcfHX~sdi-VjSMrwounhSb-MWzW2wWh4JGaEo0blosJJ-GI0GLwj8Cm4otfONTjDETCHMDSq98qPZ4so7rgWTOdHx0OmOkXDtj-Trhk6DQVcL3qbgZ0jO7a7tRd-UR6Ugn5ip-Rqe0TuuWumHkO3~ccjlVMjBrXs30PUQt5r0M9lZe7Ge6CJiewEKi9qiyTWmXNF4Y8s7LX9badQWyxfT-Yfy2KbNvbu1Kge~to58nNRIR2gD0Rve1e2esOfD3gm-GeT3mRqGY-zM9Qv~Lje1CMXSiybMPNRtYYHgg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "inline/s/active",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:03.543Z",
+                    "updated_at": "2022-05-09T18:36:03.543Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q~P"
+                },
+                {
+                    "key": "072abb33e90400aab1115402bb2492c96a3b1a77",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20003:11705",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/Jfj/w88/4GoPc1yZU4JgkodQ/style_thumbnail_19.png?Expires=1653868800&Signature=EVklVsxC57eVROJF-YSc34p3Pm6fmm1ed0UT6r~atE78K7A3HvTPDe6tigavb9aFRXJjMC-YBpDBIPmb1a-tAtBzoedJoGwEijV2T1sV3v-wormyol1FTUsGkvnzOMuHeWE3qEl2KywUoEVti63pPzzmGhYydkovh4Ebp-fDNCn17FeBeXO~pjPfGo7B2xpHvrPvBhWTJ54-2Ku2yNllgAm37-AB10Bn6LNWNGrNC80JaicZK7xINjviy~zFxMkp1uNfNx6~WHflWYzT7rdlMKh8DwDjcbvmE63zVmEjLL70wdUklFYAtKhIPZS15HrmQ97rJ10yEBECiGsF6qb9Qg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "brand/secondary/dark",
+                    "description": "Colour Styles: --brand-secondary-dark-colour (#Token)",
+                    "created_at": "2022-05-09T18:36:03.537Z",
+                    "updated_at": "2022-05-09T18:36:03.537Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "P"
+                },
+                {
+                    "key": "af84dc2f21b0dabf3a16fb621ada69bb048947ee",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20003:11706",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/cnB/OEz/MhchYNCMccgj9ybh/style_thumbnail_18.png?Expires=1653868800&Signature=XyG2bG9oUYQMQ22xTYaukp1OXyS1odU-aZf1P6NYe~OfTmJVpmBvHednQVjNj0mVcCSvPgEyR-7UvXWtFRrJyqX4B5ENEYkNYa3KYWipkHXrqIV2lp9q97QhX5~lj1PIGx-mpkjc8C5v0J-KPrAVHQq~punTNvXeV~YaQC0i7tF2gEECtcJE25uctdeIi67Fnim2uva-~iLjsCp04YbXdIUmckje6hLEhr2A41fvm8wfcy~veOFA-Zlzi9nHN7bjTuYjfauuqEq1TSwqrLMAfFrHN-K5tt6a33g1L4I7rGt4Tlp0ZX8Vrs9lNtBkzGeHkEZisOtMXpP9MtcxzewBGA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "brand/secondary/darker",
+                    "description": "Colour Styles: --brand-secondary-darker-colour (#Token)",
+                    "created_at": "2022-05-09T18:36:03.532Z",
+                    "updated_at": "2022-05-09T18:36:03.532Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "Q"
+                },
+                {
+                    "key": "631a242ba99e9d34b6a465ba2617a8baee9ff6f9",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10962",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/Cb4/6VZ/4JGEU1BamDK7CHh5/style_thumbnail_17.png?Expires=1653868800&Signature=IJn~e8NvYVY2usKCy6KGFnuqJBFfwDNBMPV5SSmLgG4wSw7Qj0IUS7mutl1481D0h8iW62ODOL1jJX3Vgbm0~0ciJXJSFoTn24otOQdEfkv-zuZiWv4icJ559k3vnJZ0t4h9S1P0VsvyFyfL4nyTGShkJdZqZefhAqv4JqBeprty012kkqJo4g4An2BgJ6-0fkgnmQO7XO~7RmAWJazoLD8wpl~iJYgYQ7IMYoXh6eLi3yaInybwEiIhPnZTqePirXpxlgfWkIleBC3KEhrtfh6V2FcRK4r1M56XqmT~YAwqb7JEBWFaukPQ5iWmhrIgRxL9Q29Kzy73YL0md8iRPQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/Grayscale/primary",
+                    "description": "Colour Styles: ui/primary (#Token)",
+                    "created_at": "2022-05-09T18:36:03.526Z",
+                    "updated_at": "2022-05-09T18:36:03.526Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "W7"
+                },
+                {
+                    "key": "b909c949fafd6f4b43fbf1e54e1cf993c78001c1",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10968",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/47W/2Od/PrbzCwgDonpC6GH7/style_thumbnail_16.png?Expires=1653868800&Signature=DnHD0nNmca3t1ftbpc-tc5Nbx1r6Y3qMo1cj4wyiimnN264ItmoMGPejYzwh3gBzA-10EpLJ~fSS~Ytx-ELZIgXylOLzxW67ABq7tVQ6RLLZH1Ri3Kh5GOXCIYmx4CMWtPRizuUZiAENaWwwbgK7-G~8QVH2KZTSUmJo7OBIfZ34SdUHVaeX3ykOTOXaxj0v0HUdtf5He~Tf3DKt7CMPaqY3q4XFCcN5HR7SMiJoj56SaVlgcXfmQ6FGMrm0nfNhUBGxoxo1AILa5nT77bVmY-DlWGd6M7hMc7P0gylXqJxt6YpYcDTHE0tCUd7tj0vMdSTNa015EtDLXXe1zMsMkg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/success/default",
+                    "description": "Colour Styles: ui/success/default (#Token)",
+                    "created_at": "2022-05-09T18:36:03.521Z",
+                    "updated_at": "2022-05-09T18:36:03.521Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "WO"
+                },
+                {
+                    "key": "288bb1a54a106381689c4a3d0ead7371a991105f",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10967",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/9Pz/xRF/z0wGiH3aNVoNHk96/style_thumbnail_15.png?Expires=1653868800&Signature=grYFx~HqQBuhr15KADnaNOmnMbzjFQupu4UWYC3tMbdnvkMsSwZPgVbQth0eJJmZcEyOytQ-dAPfA0FrlfHOHwucgi8-KkVI9r~TbgLATTQduRoo50TYgxFAWpCq615~0jYcVD-XCAUJ3ZjAB93or-hCR7QouUjT8DZ5PO-NLCP5HUY~gAjWKPganpjjOugxortYyrW9s5jyExlUxhQps9VrgLVA~gnlt0D2paCxZsusZn5yqrX1CvdZLP~BY4PeK7XzjBc2s~y500mbbJkpjZzYtIzXRKZMVAvM2VPFJwkUrqziCJkO~DwIVAFtTMkKgB4l3CYxxH~GDCYQtSLXZQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/error/default",
+                    "description": "Colour Styles: --ui-error-default-color (#Token)",
+                    "created_at": "2022-05-09T18:36:03.516Z",
+                    "updated_at": "2022-05-09T18:36:03.516Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "X"
+                },
+                {
+                    "key": "0a0aba446af46b81639cbdaf5d8e5b586d9c83cd",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20127:7564",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/O36/WjK/DVLAGH9bARus5wYI/style_thumbnail_14.png?Expires=1653868800&Signature=TLdOmSddZv-IEV6h9K1vlOIVCk~nBdSqC7HYDvBPngO7tw9g1FWckkoDlOKTRfJW3agggq0EIhC3WajIbqvTHLZGOE6p7mj8aRvNlQ19WbqbBPsiSSMEqn~DAeQ1gQGGEWV4NMzvljIg3PJ27qR~KDlzivWHCC0kyHy4PiW390MtwKxjJ-6H8I9wZq45Ejab2Y6XxsaXxbCRzzDj8w0eBsL8jzbU~~pj-E2-0w17H199cvRsCv6EZ4h4lbwL0-IQCw8-mBEeSHdO5R68e8ppJgg6uke23qg2P4AYi0V8QwuGrXy0bngOHRNRmP0l~uMV-sM3rXs4rUVcZ3-xZVQ4~A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/error/light",
+                    "description": "Colour Styles: --ui-error-light-color (#Token)",
+                    "created_at": "2022-05-09T18:36:03.510Z",
+                    "updated_at": "2022-05-09T18:36:03.510Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "d"
+                },
+                {
+                    "key": "c510581b70f968a40556cddd9ec3829efe91ec11",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10970",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/yQW/TCw/UYZN5MtSPtWoDRUN/style_thumbnail_13.png?Expires=1653868800&Signature=SfJ0MJBE-j9Krn2CXBStQ~we8pKKVMm1gmawU1XCzundSqpnjgiXrOKYSzjeuzsp24--zrSRynA704RGIRvMyh77OMqXJw8ZAd9sPa8fIpyshWXOWzK6yCwlrniC-~DilXKEPAg045ZECDXaDoAvC7SO21m4ErUC27vqfXfBuuyVvVfWsq6kq2vkeVXek8rh7HOPhMCuvgNCxJhKCTjNKll3AanOExcrYpvqCFb95TNBbvGuMpkib9QB7mpsP9Wlp4PVPTxFJDoUE6fOPuXl5T-jpK6ie9ehO-6-yhz7dhlRWchIXd0k-hcREWicgSYPMipdnfNXV7R6ZWGo-bkwBg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "background/1",
+                    "description": "Colour Styles: --background-1-colour (#Token)",
+                    "created_at": "2022-05-09T18:36:03.504Z",
+                    "updated_at": "2022-05-09T18:36:03.504Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "["
+                },
+                {
+                    "key": "0adb2bb91a54e4e7fa163676c0779b7033af967f",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20127:7565",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/8Nx/m5c/eOkMkhiu3dT0AC0R/style_thumbnail_12.png?Expires=1653868800&Signature=T~0xWGXDaAS2frF-TV1ujN0Rd9-3L8UbF2mtDg5vkBbI5R888GX3~3eVyaZGnQrkROmJqeguQnTILvgfBSkPtaNhEob-lSQidJvlslXiTZuiMzaStREOzhmOzTyupcCM~-kD1lBvtTSaI4gMXHpNkpPTIEY~vIcYLjqfWW4a5frabWRRwbtByd6ZLtYhb-u6zkMu9TGjP63zK5l3nTVbRpdTJuuEZcFlgik2OnFuEAZFea6MDhlG1SD~KDfFRS0fAkPaB~wsxEV6iKLMiUSjso56xNI9RdBr3sHIV1v3XJwPx4Mv8LWwquWZv5SvD6tfdCDgYwWWOCB-I4WSuDeccQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/error/dark",
+                    "description": "Colour Styles: --ui-error-dark-color (#Token)",
+                    "created_at": "2022-05-09T18:36:03.498Z",
+                    "updated_at": "2022-05-09T18:36:03.498Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "e"
+                },
+                {
+                    "key": "076435ccf252656be6b3b8e3c2e74ad4f35153af",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20127:7567",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/Piw/IUp/5mzjRum3l9Or7mH5/style_thumbnail_11.png?Expires=1653868800&Signature=fYhxaltyCyYh4Aso~CrGzHTxTtFjsMuM5zCLIbaV2lbmGcI61A6e2YoCJHMiUIYspKHkL908T3V1hajCKrpLopA~6GSE6B2tBGY7Llnf6mWLm2Dtond8f~X86hV27BgbvPPDqZPsufXuBw-ktwxdNqb6XAD43uupwVkECIGqlKrCoRnKg~E1qmERNE6NqISSb~9MR8yav2BN9kq9PcywBqc82nVqFoK-ROb18J27Oocg-P0ZVtzUkRQwQL4HIePUP6IUjJjdORnBnhyvWuy3RGvYnoFinTOwNT6dmR-m0JgEMFdOj0lLpKROKAJfmAKljSM0tBFaX5BKE4zOWAiiwQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/success/dark",
+                    "description": "Colour Styles: ui/success/dark (#Token)",
+                    "created_at": "2022-05-09T18:36:03.493Z",
+                    "updated_at": "2022-05-09T18:36:03.493Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "Wr"
+                },
+                {
+                    "key": "fa55f423c9266499c422d52053b9cc8ea01aae2f",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20127:7568",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/TdZ/4rr/O4hGkR18KmA9VSZt/style_thumbnail_10.png?Expires=1653868800&Signature=a3~1LflWbwRdrbUWiIOiOk~gQ2H4LBhIHFP5LsMiSIlUV8iW7A-EKh8wH-VrAbCThU75rYOsk-qg8QVXB4pGSl~kxIPjRduKpAO4KLnRRDC7UETKUGLTF6DY9a6dgPJCJ35pTUcdzGQ-4r5GhRIBeTlF-2nUfZkOhZjhL9rqyuVKBT57RGCLvqX8mjkcKX1uda47-ByxRgwdnnhCsPiz-VrOhw~E-3UWb4MKyQucq87VDo-9YU-hRThAng6KNRWGUffFMMOZlBGT9SuEcynxb65VUF8PkMjg0FXYHusYL5R7pDPmvzA-0-73VQq9rg1sI7ZkdnDyjwPEDPbglEo9IQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/alert/light",
+                    "description": "Colour Styles: ui/alert/light (#Token)",
+                    "created_at": "2022-05-09T18:36:03.488Z",
+                    "updated_at": "2022-05-09T18:36:03.488Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "h"
+                },
+                {
+                    "key": "47afbb4e9d4d9a02e54abd3d3139cf20c1dda89e",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10964",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/wKB/bk4/7ttwj2gvUT4xzras/style_thumbnail_9.png?Expires=1653868800&Signature=I8sWtz0wgZQuKdfBQsp8aAXpx4GaYxJcr4dTc1CXFsEfL3ghYCO6ojMJLKsbxIXMRu5I0ytLQhbbHonyixRG2leNFX7HX3g2nykJpotx33KJvWpaGN8XK6pKzm09qz0BPo2jJ6zD22pukzqhHouoG5MDniuURBxezPpg1iM54NC6RECNClP97M7i7HPv58evx4FnJFcO5smVTD7i1FQktJMFiTPZY-WTQHxYZ0HwzQT3ZsZPxqVO8HfZeSoHQOqtRof4JeU~gFx0lmWfDdgttLf5cVpg8gihJWvsegvgJXKcjdJOGbUlNGyZjSanHey2VOAKQiJXjTdcmCyYAp-WPA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/Grayscale/tertiary",
+                    "description": "Colour Styles: ui/tertiary (#Token)",
+                    "created_at": "2022-05-09T18:36:03.482Z",
+                    "updated_at": "2022-05-09T18:36:03.482Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "U"
+                },
+                {
+                    "key": "89c6479821813ffd4246ced68c735a521652f2b5",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20003:10941",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/Y8f/kWQ/7nyQPbznQl19yALp/style_thumbnail_8.png?Expires=1653868800&Signature=RFl2WousRv8NQn301jn9s5WgGff0uMMZdjJ-QOEaF3OR4M97LlaIvUNY0-GPjxoMFbmRb~5r~27-hPIs-NLaV1DlhG-qheDkVdKjff5BBoW6D3BXJ9I0i~JozXtvHyt4HmnWXJ31CkwnUgwUvuXdkAzNH15nK1TRnc~m64rnxxsUb3K5O327EiCKuG4HQkZxCcvkQKhoJbWPjxgOr9DqxfGJhVgCGUhk89FRIHqU6pD2EclYRNU2knNks-LBAOZenf8g-39mGIfBhpzUkdknZMectThpSg1JBU2Ywnf2zLnixilcTrQtLcBxFS-W7Ty3CkpYjPu6K~udU3ovsa08Wg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "brand/primary/main",
+                    "description": "Colour Styles: brand/primary/main (#Token)",
+                    "created_at": "2022-05-09T18:36:03.477Z",
+                    "updated_at": "2022-05-09T18:36:03.477Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "I"
+                },
+                {
+                    "key": "fbce4a9e33801e2ef1ba8039b2113c686277b78b",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20519:3926",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/yxb/qYc/aBRE9Ac0iW2TbIT4/style_thumbnail_7.png?Expires=1653868800&Signature=gzMup0Q-9DZkWEBHk4wNK6Gm7F3ZA4RdIdxlRHOTFjt~LoP0z7ZEgH~CtA-n3Tsz7iSnqlT8rN2k6UOyqApsTCaUKs1XOcOW1PhhV13heqJhcxHmDSNPUOeZ5S~442POuzYEGyPZQdDQ5YfxDboQpp6PVZaCzeD3z8k~uMyAT7K~uBrHGRFlo761yMSm6o4HZc~fKJeRuOFbIgq95GpXISQeB~KjR~5ALg29joOWn6~QCVyhVOid3GUU5T59i0Gr1qSoon0XSWkZc~35XI3uWpFyIq8pcyUPUf~j2WkNwhQ7VISPtZeRp0Div8Tmeb-beGkFiBQvVfZGwEfaApXN8w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "inline/m/default",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:03.472Z",
+                    "updated_at": "2022-05-09T18:36:03.472Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q{"
+                },
+                {
+                    "key": "30391beffefd13e8c0c224fc3732183ef79cad2d",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20519:3927",
+                    "style_type": "TEXT",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/eJi/GSE/ILSTTQkwcVGBVzUt/style_thumbnail_6.png?Expires=1653868800&Signature=eZoW0hIatB-Aruq60EIqob1fMhrMmk3iVFiYR~G0NvwDLdM5DhGQX3mSHQS0XxlrJaIZaWmeJJcqxiR3iwaZCxEShByCq5Ep9-gS9f9hn7hu4CJhSoUYt-7Zxh~c5eaECXlXO6H8TtRiRrnoxbWXpZvndSQ5EzD8zGXeYrypQiKQX87LNwKc8Ku6HTfLp8IQEG2hT7fR0yNoZQI3OEuf7hq6V0GBcBWXXSu2-DVOHkUHH~WCzIVvLZ0fEv1eREoShTgXIcxPKzn33xe1nQjx0Z7xkZVa8w4DwkMPcSqJ7yZo9ts7FiVDgjtDUA~lHE3WYzp6t-BG5h~9FCON0aKybA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "inline/m/hover",
+                    "description": "",
+                    "created_at": "2022-05-09T18:36:03.466Z",
+                    "updated_at": "2022-05-09T18:36:03.466Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~q|"
+                },
+                {
+                    "key": "40c6ede7fc447275e33fb9b6afc600e2972693d2",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20029:15096",
+                    "style_type": "GRID",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/Rle/LKQ/E5tc4MbBJsEcqmUk/style_thumbnail_5.png?Expires=1653868800&Signature=fWRsm5szvmRpZxCXuV9B2GUrEYdmH0hMA8KATr4zaN-z8fca~s1L99l2jj9YewZoddMlUattO9zm0SskU~FVKEscqAe1-4126FY28yQlzEF2~bnUaUqlN6i-F7MPUa8HQOfMTyUUEf3mHGJFgzfO5xAwBh9S09npPqFF3KVui3cyLlXZCiEO98DK1o4-s6s2kfu7Eujqys968Ff1-rZN93TztET1UxbMjqrr0Kqdm9Bw5bc2z9ZcqDiOGn~FsEv8JWiTwyhARGKykIBHmIS332oMOq76hsPOOD2JNRNoVdl7PAzQ2Uuj5yGVnXkSErb~cMlE3SSPDe6LPQ-w96osGw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "Large Desktop (1440px)",
+                    "description": "Grid Token: --l-desktop-1440px-12-columns (#Token, #large, #grid)",
+                    "created_at": "2022-05-09T18:36:03.461Z",
+                    "updated_at": "2022-05-09T18:36:03.461Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~y"
+                },
+                {
+                    "key": "d357173388a0b2e95a1ab88b1c09e76074a6fbe2",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20029:15097",
+                    "style_type": "GRID",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/T8J/Py3/CjSO0EzabWPfxfFv/style_thumbnail_4.png?Expires=1653868800&Signature=SH7OQhE~9-E2i8F2sUvAtXhg8rxXioKefr1Y1To3K4HfqNtJ4AePXzrXHN4J-c1GUEle2GYcLPbyS8KAw6jcFa7IfypHQOfimQD6Cwh8zCpbHqwhP1yZ1rc7P0DIRxrIeNNVLAHzVBNNW-nQ-xzar-Chr08~oHdxul8VysGbpIpyZJGAAddwsog21uyz3Y2Li5Ute1gLpujfdE7eAlDZ9qMK5gEN5IjEoe6p~QsCQe18kKMEXAele-r4yLLqRoxGtXXfX~b6w~dDSRctb057g4q1wqRyAxjRgR1eP2yvsxYsl80dJz~jhOXznV2nEIsqHiUzGpGYZO3tWFAYKXn1Zw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "Tablet (768px)",
+                    "description": "Grid Token: --m-tablet-768px-8-columns (#Token, #medium, #grid)",
+                    "created_at": "2022-05-09T18:36:03.455Z",
+                    "updated_at": "2022-05-09T18:36:03.455Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~z"
+                },
+                {
+                    "key": "caa8e9b0cae7cbb0bc56d4ef2df86a162d8fbd7b",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20127:7566",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/lty/tNe/JDUDu7NkkEYcZChn/style_thumbnail_3.png?Expires=1653868800&Signature=abgVUZ16ZrGmQAucpfb92-7D0eQAH~rAph0SpD8TFoGBsXv9nP94kHOCm6E4~pFN5dYXnGpGU2WFqkWYZKwTDRW-Gpbza8A8KcQI873Gq5E4SqSYsape-iZHc-oafvp7U~YtpZIQvvZTIIucZqKZqrOdm6BQsgy5QhApNXms5vRPSnd~Om1acwDdlCMQBIrpbAY8pLi7MBfTN4PxBJk1debDT9QOZIivHhC9gqGDTMo-CdLusE2YtPX0bpy7DsM-WDLStBrRvfAenBbvanOq6kLK9jbH873zU4Nuceq09hvCubcJhrF3t2lH4J1pJKMzs6laJxcIvmvoDPoiptkotQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/success/light",
+                    "description": "Colour Styles: ui/success/light (#Token)",
+                    "created_at": "2022-05-09T18:36:03.450Z",
+                    "updated_at": "2022-05-09T18:36:03.450Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "Wf"
+                },
+                {
+                    "key": "e0db952545244f354d49f08bec2860002e22fd6d",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10969",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/5er/8FU/3M1CyQRaGHy4Jx0A/style_thumbnail_2.png?Expires=1653868800&Signature=fwcRgvA9dH~sy-08mMGyblgFtAjeBAIV6YnlhlppW1VUQMqcgTtoo-Oe4-qoF7S6BUo9oNwDWDhOCits8R4RU5dA49Ze6DU1Xdizyybz9aKFWAkJNfGGpZ~ZqnilW4G1690t0holPlU1rBTdPZbGDPzNEoqFEPDa6UGiFAZ7wVW0tt~ia-MeiA5JpPoi8JQ4EkdeN5GYtTEN3vOCwkD5hOgmaaBZMNdGevJmR66OMzwGxWDHd9XVHmWKxiXwbV1htButVS0pg0qA~phLSvcTgBLQPeULj44YoVcEDoenbykm7rudl8FjVpE9WYGzMPj8z2jmE8~scNm0E9yGymDTRg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/alert/default",
+                    "description": "Colour Styles: ui/alert/default (#Token)",
+                    "created_at": "2022-05-09T18:36:03.444Z",
+                    "updated_at": "2022-05-09T18:36:03.444Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "Z"
+                },
+                {
+                    "key": "18290da001f3b038eeaa3f1e941761c6812c07be",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20029:15098",
+                    "style_type": "GRID",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/y0Q/c6C/baJphLvh4J62vYpn/style_thumbnail_1.png?Expires=1653868800&Signature=bMp-dv-rYXFwt1NTaSu4eqaGCK~oeJbydeL631iLy8gl7q2JqZRgr8Ju4me9RSjRGeyE6nBJ7atfJDjEXWwXTmqe3zuWvg~asENwGBpbBUOdTaf3u~qlq1GvZ8VPo1yhA7ugLQWc8TT-WQmpqwkuUOQubBexoJdPV~ZEIob4ExLDoGi8MH~rh~OV3hYVj32p~QyaLd7gxqUGkCxtN1WzD1jlJkycHDiv4LKLBxrjgLc5qY8e5BCoSdNi4HhrUJ7pzlIio0rG690DKYKtUV5RU1jh84xTy07rCoQkyYO5~euwWtg3T9AVb~GW14183AywwirErwvoVpxEykeLp4u1ww__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "Mobile (360px)",
+                    "description": "Grid Token: --s-mobile-360px-4-columns (#Token, #small, #grid)",
+                    "created_at": "2022-05-09T18:36:03.438Z",
+                    "updated_at": "2022-05-09T18:36:03.438Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "!~~{"
+                },
+                {
+                    "key": "b495cd185b76fdfb8dd9b058c795baea5d0488e9",
+                    "file_key": "TJzz7ZB6pJvpLhjI5DWG3F",
+                    "node_id": "20008:10966",
+                    "style_type": "FILL",
+                    "thumbnail_url": "https://s3-alpha-sig.figma.com/checkpoints/eSK/vpa/yhyCltrzTfEro5ZD/style_thumbnail_0.png?Expires=1653868800&Signature=QTvRThliNnD2ZbEMbsPdcI9Ajv6041KUSSncOwYfIyqbNNisBovakHWkecU9xH0CexXMyzwO6UZ4CW6wpjl1xjgJ429bn4On4vIVBkP5wtvqXUxAGwqDWKQWo5Dbev2ylsz1OfbzuaHwdOCfdQ89DRmFAbTV72OO4a-CVnyegZSkVC7fL7JNqiUdJK-Bx8kT6l3W5M~PWHQO7xMmto0KVI4YgHOcbFDb3TsKb6F06im~5rNdhnCPoVf0YbDuutb2fBqOZyNz1-l0vtbaxbJeVC7D47jg8bCil0LUox-v3s33QXbnSpzKau1-Azz3SHBmL78t1f~hOPf6ZKlfLtmfUg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+                    "name": "UI/Grayscale/disabled",
+                    "description": "Colour Styles: ui/disabled (#Token)",
+                    "created_at": "2022-05-09T18:36:03.431Z",
+                    "updated_at": "2022-05-09T18:36:03.431Z",
+                    "user": {
+                        "id": "716290236385945493",
+                        "handle": " ",
+                        "img_url": "https://s3-alpha.figma.com/profile/e70a680e-ef91-44a3-aab5-b6be011f33dd"
+                    },
+                    "sort_position": "W"
+                }
+            ]
+        },
+        "i18n": null
+    }
+}

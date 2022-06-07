@@ -1,11 +1,11 @@
 //validator //loader/parse //tokenizer
 import axios, { AxiosError } from 'axios';
-import { StyleMetadata, ComponentMetadata } from 'figma-api/lib/api-types';
+import { StyleMetadata, ComponentMetadata, GetFileComponentsResult } from 'figma-api/lib/api-types';
 import { StyleType } from 'figma-api/lib/ast-types';
 import { groupByType } from '../lib/radius-styles';
 import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot } from './figma.utils';
 import { NodeFilter, DesignTokenFilter } from './types/FigmaTypes';
-import { colorDesignTokenizer,processElevationTokenizer, typographyTokenizer } from './figma.tokenizer';
+import { colorDesignTokenizer,processElevationTokenizer, typographyTokenizer, gridTokenizer } from './figma.tokenizer';
 
 
 //Utility methods 
@@ -15,28 +15,19 @@ export const getFileKey = (url: string) => {
   throw Error('Could not find the file URL in the figma file');
 };
 
-export const generateToken = (name: string) => {
-  return `--${ name.toLowerCase().split('/').join('-').split(' ').join('-') }`;
-};
+
+const isArray = (dToken: DesignToken | DesignToken[]): dToken is DesignToken[] => {
+  if(Array.isArray(dToken)) return true;
+  return false;
+}; 
+
+// export const generateToken = (name: string) => {
+//   return `--${ name.toLowerCase().split('/').join('-').split(' ').join('-') }`;
+// };
 
 // Functions
 export const filterFunctions: NodeFilter[] = [];
-export const designTokenFunctions: DesignTokenFilter[] = [];
-
-
-export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignToken[] | DesignToken | undefined => {
-  switch(type){
-    case 'FILL':
-      return colorDesignTokenizer(data);
-    case 'TEXT':
-      return typographyTokenizer(data);
-    case 'EFFECT':
-      return processElevationTokenizer(data);
-    default:
-      break;
-  }
-}; 
-
+export const designTokenFunctions: DesignTokenFilter[]|undefined = [];
 
 // const colorFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
 //   if(data.type == 'RECTANGLE') {
@@ -54,25 +45,67 @@ export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignTo
 //   return colorToken;
 // };
 
-// export const convertNodesToTokens = (nodes: NodeDocument[]): DesignToken[] => {
-//   const designTokens: DesignToken[] = [];
-//   nodes.forEach((node) => {
-//     filterFunctions.forEach((filterMethod, index) => {
-//       const dToken = filterMethod(node, designTokenFunctions[index]);
-//       designTokens.push(dToken);
-//     });
-//   });
-//   return designTokens;
-// };
+const spacingFilter: NodeFilter = (
+  data: NodeDocument, designTokenFilterFn: DesignTokenFilter
+): DesignToken| undefined => {
+  if(
+    data.type === 'COMPONENT' &&
+    data.absoluteBoundingBox &&
+    data.children.length > 0
+  ) {
+    return designTokenFilterFn(data);
+  }
+  return undefined;
+};
+
+export const spacingTokenizer = (node: NodeDocument): DesignToken|undefined => {
+  const spacingToken: DesignToken = {
+    type: 'spacing' ,
+    name: node.name,
+    node_id: node.id,
+    value: '0'
+  };
+  
+  const width = node?.absoluteBoundingBox ?
+    node.absoluteBoundingBox.width : node.children[0]?.absoluteBoundingBox?.width;
+  if(width) spacingToken.value = `${ width }px`;
+  
+  return spacingToken;
+};
+
+export const convertComponentNodesToTokens = (nodes: NodeDocument[]): DesignToken[] => {
+  let designTokens: DesignToken[] = [];
+  nodes.forEach((node) => {
+    filterFunctions.forEach((filterMethod, index) => {
+      const dToken = filterMethod(node, designTokenFunctions[index]);
+      if(dToken){
+        isArray(dToken) ?
+          designTokens = [...designTokens, ...dToken] : designTokens.push(dToken);
+      }
+    });
+  });
+  return designTokens;
+};
 
 // // These methods have to be passed in order. Methods are run sequentially
-// filterFunctions.push(colorFilter,typographyFilter);
-// designTokenFunctions.push(colorDesignTokenizer);
+filterFunctions.push(spacingFilter);
+designTokenFunctions.push(spacingTokenizer);
 
-const isArray = (dToken: DesignToken | DesignToken[]): dToken is DesignToken[] => {
-  if(Array.isArray(dToken)) return true;
-  return false;
+export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignToken[] | DesignToken | undefined => {
+  switch(type){
+    case 'FILL':
+      return colorDesignTokenizer(data);
+    case 'TEXT':
+      return typographyTokenizer(data);
+    case 'EFFECT':
+      return processElevationTokenizer(data);
+    case 'GRID':
+      return gridTokenizer(data);
+    default:
+      break;
+  }
 }; 
+
 
 export const convertStyleNodesToTokens = (nodes: { [key: string]: NodeRoot }, styles: StyleMetadata[]) => {
   let designTokens: DesignToken[] = [];
@@ -104,8 +137,8 @@ export const figmaAPIFactory = (token: string) => {
       // for saving mock data for testing
       // import fs from 'fs';
       // fs.writeFile(`${ new Date().getTime() }.json`, JSON.stringify({ data:res.data }),{},()=>{console.log(urlInput);});
-    ).catch((error: AxiosError)=>{
-      console.error(`Error ${ error?.response?.data } --- Error Code ${ error?.code }`);
+    ).catch((_error: AxiosError)=>{
+      // console?.error(`Error ${ error?.response?.data } --- Error Code ${ error?.code }`);
       throw new TypeError('Failed to parse figma url');
     });
   };
@@ -120,15 +153,28 @@ export const figmaAPIFactory = (token: string) => {
     });
   };
 
-  const getComponents = (fileKey: string): Promise<ComponentMetadata> => {
+  const getComponents = (fileKey: string): Promise<ComponentMetadata[]|undefined> => {
     if(fileKey.includes('http')){
       fileKey = getFileKey(fileKey);
     }
-    return getData(`https://api.figma.com/v1/files/${ fileKey }/components`).then((data: ComponentMetadata) => {
-      console.log(data);
-      return data;
+    return getData(`https://api.figma.com/v1/files/${ fileKey }/components`).then((data: GetFileComponentsResult) => {
+      if(data?.meta) return data.meta.components;
+      return undefined;
     });
   };
+
+  const DesignTokenComponents = ['spacer','spacers','spacing','border radius','borderradius'];
+  const filterComponentsForDesignTokens = (components: ComponentMetadata[]) => {
+    return components.filter((component: ComponentMetadata) => {
+      if(!component?.containing_frame?.name) return false;
+      if(DesignTokenComponents.includes(component.containing_frame.name.toLowerCase())) return true;
+      return false;
+    });
+  };
+
+
+
+  
 
   const getNodes = (fileKey: string, nodeIds: string[])=> {
     // console.log(fileKey);
@@ -138,11 +184,6 @@ export const figmaAPIFactory = (token: string) => {
       .then((data: FigmaFileNodes) => { return data.nodes;});
   };
 
-  // const flattenNodes = (nodes: FigmaNodeKey): NodeDocument[] => {
-  //   return Object.keys(nodes).map((key) => {
-  //     return nodes[key].document;
-  //   });
-  // };
 
   const processStyles = async (fileKey: string) => {
     const figmaStyles = await getStyles(fileKey);
@@ -155,11 +196,32 @@ export const figmaAPIFactory = (token: string) => {
     return groupByType(designTokens);
   };
 
+  const processComponents = async (fileKey: string) => {
+
+    // Get design tokens from components //Grid, Spacing, Border Radius
+    const figmaComponents = await getComponents(fileKey);
+    if(!figmaComponents) throw Error('Failed to get the components');
+    const dTComponents = filterComponentsForDesignTokens(figmaComponents);
+    const dTComponentNodes = await getNodes(
+      fileKey,
+      dTComponents.map((components: ComponentMetadata) => components.node_id)
+    );
+    const compoentNodeDcuments: NodeDocument[] = [];
+    Object.entries(dTComponentNodes).forEach(
+      (data: [string, NodeRoot]) => compoentNodeDcuments.push(data[1].document)
+    );
+
+    const designTokens = convertComponentNodesToTokens(compoentNodeDcuments);
+    return { designTokens };
+  };
+
+
   return {
     _getComponents: getComponents,
     _getData: getData,
     _getNodes: getNodes,
-    _getStyles:getStyles,
-    processStyles
+    _getStyles: getStyles,
+    processStyles,
+    processComponents
   };
 };

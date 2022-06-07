@@ -37,5 +37,5 @@ export type FigmaStyle = {
   [key: string]: StyleMetadata, 
 };
   
-export type DesignTokenFilter = (node: NodeDocument) => DesignToken;
-export  type NodeFilter = (data: NodeDocument, node: DesignTokenFilter) => DesignToken;
+export type DesignTokenFilter = (node: NodeDocument) => DesignToken|undefined;
+export  type NodeFilter = (data: NodeDocument, node: DesignTokenFilter) => DesignToken|undefined;

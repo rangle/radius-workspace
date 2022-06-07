@@ -10,6 +10,7 @@ import {
   NodeKey,
   TokenTransform
 } from './figmaParser.utils';
+import { LayoutGrid } from 'figma-api/lib/ast-types';
 
 const tokensV2Flag = true;
 
@@ -101,7 +102,15 @@ export type NodeDocument = {
   }>,
   styles: ColorStyle | TypographyStyle,
   children: Array<NodeDocument>,
+  absoluteBoundingBox?: {
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+  },
+  layoutGrids?: LayoutGrid[],
 };
+
 
 export type Styles = ColorStyle | TypographyStyle | ElevationStyle;
 
