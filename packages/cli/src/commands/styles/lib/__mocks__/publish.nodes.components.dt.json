@@ -1,0 +1,1322 @@
+{
+    "data": {
+        "name": "Radius Design Kit V2(WIP)",
+        "lastModified": "2022-06-06T17:51:32Z",
+        "thumbnailUrl": "https://s3-alpha-sig.figma.com/thumbnails/807606ff-5469-448d-8538-f1b9776194f5?Expires=1655683200&Signature=G9qouOWwVUxUD02XtyLbnv7T-DEI5OVqloWgsZxRh2jOc18ajILZu2UzD0~ON5mtmhK4yEfKTvdiT96okqoo3jOQ16nNbMpUXiYzqvkCM-itNfcA6BjVA9jL66GDsUwffAdao0fEbN1Yh9oY6fwmi0SPiTiIxK27xwv0iMA6eM9ObQzH7Pw-txcwfaau36cnD~GbYoDiBKHIXTmfBBjS00hng26Agb8NymbavVGpvj9pM3RuuPuE7OUNTPK1mbrLn27h6Xw7OO4QPYXUX-PP3qAR1oxywTChMUbo00rM83JMaftKxxYqBTaZG5aRlnV953A6Xr1MAZ~5Tf~Sxm~SIw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+        "version": "1953900395",
+        "role": "editor",
+        "editorType": "figma",
+        "linkAccess": "inherit",
+        "nodes": {
+            "19987:11387": {
+                "document": {
+                    "id": "19987:11387",
+                    "name": "Space=5-(20px-1.25rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11374",
+                            "name": "spacing/5-(20px-1.25rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": 71.0,
+                                "width": 20.0,
+                                "height": 20.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 0.0,
+                                        "g": 0.34509804844856262,
+                                        "b": 1.0,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": 71.0,
+                        "width": 20.0,
+                        "height": 20.0
+                    },
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11387": {
+                        "key": "43c6f1013b72a69e8b0e13710fa06122cf574200",
+                        "name": "Space=5-(20px-1.25rem)",
+                        "description": "Spacer-token: spacer/5-(20px-1.25rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            },
+            "19987:11384": {
+                "document": {
+                    "id": "19987:11384",
+                    "name": "Space=2-(8px-0.5rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11371",
+                            "name": "spacing/2-(8px-0.5rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": -61.0,
+                                "width": 8.0,
+                                "height": 8.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 1.0,
+                                        "g": 0.0,
+                                        "b": 0.65490198135375977,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": -61.0,
+                        "width": 8.0,
+                        "height": 8.0
+                    },
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11384": {
+                        "key": "0254674d6fe4dcaf3be5d3e54e3f061d01ffe5dd",
+                        "name": "Space=2-(8px-0.5rem)",
+                        "description": "Spacer-token: spacer/2-(8px-0.5rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            },
+            "19987:11388": {
+                "document": {
+                    "id": "19987:11388",
+                    "name": "Space=6-(24px-1.5rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11375",
+                            "name": "spacing/6-(24px-1.5rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": 123.0,
+                                "width": 24.0,
+                                "height": 24.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 0.0,
+                                        "g": 0.84705883264541626,
+                                        "b": 1.0,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": 123.0,
+                        "width": 24.0,
+                        "height": 24.0
+                    },
+                    "preserveRatio": true,
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11388": {
+                        "key": "25b4044cca28964a64f4dc0d306c91b603309c1e",
+                        "name": "Space=6-(24px-1.5rem)",
+                        "description": "Spacer-token: spacer/6-(24px-1.5rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            },
+            "19987:11390": {
+                "document": {
+                    "id": "19987:11390",
+                    "name": "Space=8-(40px-2.5rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11377",
+                            "name": "spacing/8-(40px-2.5rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": 243.0,
+                                "width": 40.0,
+                                "height": 40.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 0.27058824896812439,
+                                        "g": 1.0,
+                                        "b": 0.0,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": 243.0,
+                        "width": 40.0,
+                        "height": 40.0
+                    },
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11390": {
+                        "key": "3bffcccb258c8bb98880a53c2a9bc82a90644247",
+                        "name": "Space=8-(40px-2.5rem)",
+                        "description": "Spacer-token: spacer/8-(40px-2.5rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            },
+            "19987:11392": {
+                "document": {
+                    "id": "19987:11392",
+                    "name": "Space=10-(64px-4rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11379",
+                            "name": "spacing/10-(64px-4rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": 395.0,
+                                "width": 64.0,
+                                "height": 64.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 1.0,
+                                        "g": 1.0,
+                                        "b": 0.0,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": 395.0,
+                        "width": 64.0,
+                        "height": 64.0
+                    },
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11392": {
+                        "key": "1656a3627aab9c5921a50c4db15d9f537731f205",
+                        "name": "Space=10-(64px-4rem)",
+                        "description": "Spacer-token: spacer/10-(64px-4rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            },
+            "19987:11394": {
+                "document": {
+                    "id": "19987:11394",
+                    "name": "Space=12-(128px-8rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11381",
+                            "name": "spacing/12-(128px-8rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": 619.0,
+                                "width": 152.0,
+                                "height": 152.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 1.0,
+                                        "g": 0.30588236451148987,
+                                        "b": 0.0,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": 619.0,
+                        "width": 128.0,
+                        "height": 128.0
+                    },
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11394": {
+                        "key": "e709dc3744fdf0e51771bbdb8daff43578cb2550",
+                        "name": "Space=12-(128px-8rem)",
+                        "description": "Spacer-token: spacer/12-(128px-8rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            },
+            "19987:11393": {
+                "document": {
+                    "id": "19987:11393",
+                    "name": "Space=11-(96px-6rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11380",
+                            "name": "spacing/11-(96px-6rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": 491.0,
+                                "width": 96.0,
+                                "height": 96.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 1.0,
+                                        "g": 0.65490198135375977,
+                                        "b": 0.0,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": 491.0,
+                        "width": 96.0,
+                        "height": 96.0
+                    },
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11393": {
+                        "key": "fa07ea38d07d5845ecb001c1cb4c2a89c97c537b",
+                        "name": "Space=11-(96px-6rem)",
+                        "description": "Spacer-token: spacer/11-(96px-6rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            },
+            "19987:11391": {
+                "document": {
+                    "id": "19987:11391",
+                    "name": "Space=9-(48px-3rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11378",
+                            "name": "spacing/9-(48px-3rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": 315.0,
+                                "width": 48.0,
+                                "height": 48.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 0.84705883264541626,
+                                        "g": 1.0,
+                                        "b": 0.0,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": 315.0,
+                        "width": 48.0,
+                        "height": 48.0
+                    },
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11391": {
+                        "key": "f4b04d15b18bfcacde35c7172dcdb22a87ab143d",
+                        "name": "Space=9-(48px-3rem)",
+                        "description": "Spacer-token: spacer/9-(48px-3rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            },
+            "19987:11389": {
+                "document": {
+                    "id": "19987:11389",
+                    "name": "Space=7-(32px-2rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11376",
+                            "name": "spacing/7-(32px-2rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": 179.0,
+                                "width": 32.0,
+                                "height": 32.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 0.0,
+                                        "g": 1.0,
+                                        "b": 0.30588236451148987,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": 179.0,
+                        "width": 32.0,
+                        "height": 32.0
+                    },
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11389": {
+                        "key": "85f2eebcabd0010493b0c714e70a7581696e5516",
+                        "name": "Space=7-(32px-2rem)",
+                        "description": "Spacer-token: spacer/7-(32px-2rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            },
+            "19987:11386": {
+                "document": {
+                    "id": "19987:11386",
+                    "name": "Space=4-(16px-1rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11373",
+                            "name": "spacing/4-(16px-1rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": 23.0,
+                                "width": 16.0,
+                                "height": 16.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 0.0,
+                                        "g": 0.078431375324726105,
+                                        "b": 1.0,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": 23.0,
+                        "width": 16.0,
+                        "height": 16.0
+                    },
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11386": {
+                        "key": "48cd4c76e9c56f481404cfe0649f84fe890dc28a",
+                        "name": "Space=4-(16px-1rem)",
+                        "description": "Spacer-token: spacer/4-(16px-1rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            },
+            "19987:11385": {
+                "document": {
+                    "id": "19987:11385",
+                    "name": "Space=3-(12px-0.75rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11372",
+                            "name": "spacing/3-(12px-0.75rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": -21.0,
+                                "width": 12.0,
+                                "height": 12.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 0.46274510025978088,
+                                        "g": 0.0,
+                                        "b": 1.0,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": -21.0,
+                        "width": 12.0,
+                        "height": 12.0
+                    },
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11385": {
+                        "key": "6e5cce302084c4d715e5b348a24bc2e672c1882f",
+                        "name": "Space=3-(12px-0.75rem)",
+                        "description": "Spacer-token: spacer/3-(12px-0.75rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            },
+            "19987:11383": {
+                "document": {
+                    "id": "19987:11383",
+                    "name": "Space=1-(4px-0.25rem)",
+                    "type": "COMPONENT",
+                    "blendMode": "PASS_THROUGH",
+                    "children": [
+                        {
+                            "id": "19987:11370",
+                            "name": "spacing/1-(4px-0.25rem)",
+                            "type": "RECTANGLE",
+                            "blendMode": "PASS_THROUGH",
+                            "absoluteBoundingBox": {
+                                "x": 10194.0,
+                                "y": -97.0,
+                                "width": 4.0,
+                                "height": 4.0
+                            },
+                            "preserveRatio": true,
+                            "constraints": {
+                                "vertical": "SCALE",
+                                "horizontal": "SCALE"
+                            },
+                            "fills": [
+                                {
+                                    "opacity": 0.20000000298023224,
+                                    "blendMode": "NORMAL",
+                                    "type": "SOLID",
+                                    "color": {
+                                        "r": 1.0,
+                                        "g": 0.0,
+                                        "b": 0.0,
+                                        "a": 1.0
+                                    }
+                                }
+                            ],
+                            "strokes": [],
+                            "strokeWeight": 1.0,
+                            "strokeAlign": "INSIDE",
+                            "effects": []
+                        }
+                    ],
+                    "absoluteBoundingBox": {
+                        "x": 10194.0,
+                        "y": -97.0,
+                        "width": 4.0,
+                        "height": 4.0
+                    },
+                    "constraints": {
+                        "vertical": "TOP",
+                        "horizontal": "LEFT"
+                    },
+                    "clipsContent": false,
+                    "background": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "fills": [
+                        {
+                            "blendMode": "NORMAL",
+                            "visible": false,
+                            "type": "SOLID",
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            }
+                        }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 1.0,
+                    "strokeAlign": "INSIDE",
+                    "backgroundColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "effects": []
+                },
+                "components": {
+                    "19987:11383": {
+                        "key": "c7699f9db7602e240ac09a2f15a79f39f08a5a9b",
+                        "name": "Space=1-(4px-0.25rem)",
+                        "description": "Spacer-token: spacer/1-(4px-0.25rem) (#Token)",
+                        "componentSetId": "20057:9044",
+                        "documentationLinks": []
+                    }
+                },
+                "componentSets": {
+                    "20057:9044": {
+                        "key": "5a4eb2412e88d062261b2912799b026551d1a5ba",
+                        "name": "spacer",
+                        "description": ""
+                    }
+                },
+                "schemaVersion": 0,
+                "styles": {}
+            }
+        }
+    }
+}
