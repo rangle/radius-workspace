@@ -5,7 +5,13 @@ import { StyleType } from 'figma-api/lib/ast-types';
 import { groupByType } from '../lib/radius-styles';
 import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot } from './figma.utils';
 import { NodeFilter, DesignTokenFilter } from './types/FigmaTypes';
-import { colorDesignTokenizer,processElevationTokenizer, typographyTokenizer, gridTokenizer } from './figma.tokenizer';
+import { 
+  colorDesignTokenizer,
+  processElevationTokenizer, 
+  typographyTokenizer, 
+  gridTokenizer, 
+  spacingTokenizer 
+} from './figma.tokenizer';
 
 
 //Utility methods 
@@ -58,20 +64,6 @@ const spacingFilter: NodeFilter = (
   return undefined;
 };
 
-export const spacingTokenizer = (node: NodeDocument): DesignToken|undefined => {
-  const spacingToken: DesignToken = {
-    type: 'spacing' ,
-    name: node.name,
-    node_id: node.id,
-    value: '0'
-  };
-  
-  const width = node?.absoluteBoundingBox ?
-    node.absoluteBoundingBox.width : node.children[0]?.absoluteBoundingBox?.width;
-  if(width) spacingToken.value = `${ width }px`;
-  
-  return spacingToken;
-};
 
 export const convertComponentNodesToTokens = (nodes: NodeDocument[]): DesignToken[] => {
   let designTokens: DesignToken[] = [];
@@ -134,9 +126,6 @@ export const figmaAPIFactory = (token: string) => {
       }
     }).then((res) => 
       res.data
-      // for saving mock data for testing
-      // import fs from 'fs';
-      // fs.writeFile(`${ new Date().getTime() }.json`, JSON.stringify({ data:res.data }),{},()=>{console.log(urlInput);});
     ).catch((_error: AxiosError)=>{
       // console?.error(`Error ${ _error?.response?.data } --- Error Code ${ _error?.code }`);
       throw new TypeError(`Failed to parse figma url, ${ urlInput }`);

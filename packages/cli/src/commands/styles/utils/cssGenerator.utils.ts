@@ -1,32 +1,38 @@
 import { DesignToken } from '../utils/figma.utils';
+import { tokenizeName } from './figma.tokenizer';
 
 export const generateColorsCSS = (designToken: DesignToken) => {
-  const key = `--ds-color${ designToken.token?.substring(8) }`;
+  if(!designToken.token) designToken.token = tokenizeName(designToken.name);
+  const key = `--ds-color-${ designToken.token }`;
   const value = designToken.value;
   return `${ key }: ${ value };`;
 };
 
 export const generateTypographyCSS = (designToken: DesignToken) => {
-  const key = `--ds${ designToken.token?.substring(1) }`;
+  if(!designToken.token) designToken.token = tokenizeName(designToken.name);
+  const key = `--ds-${ designToken.token?.substring(1) }`;
   const value = designToken.value;
   return `${ key }: ${ value };`;
 };
 
 export const generateSpacingCSS = (designToken: DesignToken) => {
-  const key = `--ds${ designToken.token?.substring(1) }`;
+  if(!designToken.token) designToken.token = tokenizeName(designToken.name);
+  const key = `--ds-${ designToken.token?.substring(1) }`;
   const value = designToken.value;
   const remValue = Number(value)/16 + 'rem';
   return `${ key }: ${ remValue };`;
 };
 
 export const generateElevationCSS = (designToken: DesignToken) => {
+  if(!designToken.token) designToken.token = tokenizeName(designToken.name);
   const key = `--ds-${ designToken.token }`;
   const value = designToken.value;
   return `${ key }: ${ value };`;
 };
 
 export const generateGridCSS = (designToken: DesignToken) => {
-  const key = `--ds${ designToken.token?.substring(1) }`;
+  if(!designToken.token) designToken.token = tokenizeName(designToken.name);
+  const key = `--ds-${ designToken.token?.substring(1) }`;
   const value = designToken.value+ 'px';
   return `${ key }: ${ value };`;
 };

@@ -2,6 +2,17 @@ import { colorToHex, NodeDocument, DesignToken,  Color, processTypographyDesignT
 // import { DesignToken, , FigmaFileNodes, NodeDocument, FigmaNodeKey,Styles } from './figma.utils';
 import { LayoutGrid } from 'figma-api/lib/ast-types';
 
+
+export const tokenizeName = (text: string) => {
+  return text.toString().replace(/[A-Z]/g, (newText: string) => '-' + newText.toLowerCase())
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '-')
+    .replace(/--+/g, '-')
+    .replace(/^-+/, '-')
+    .replace(/-+$/, '-');
+};
+
+
 export const colorDesignTokenizer = (node: NodeDocument): DesignToken => {
   const colorToken: DesignToken = {
     type: 'color' ,
@@ -84,7 +95,7 @@ export const gridTokenizer = (nodeDoc: NodeDocument): DesignToken[] => {
         type:'breakpoint',
         name: `${ nodeDoc.name }`,
         node_id: nodeDoc.id,
-        value: `${ matched[1] }px`
+        value: `${ matched[1] }`
       } as DesignToken);
     }
   }
@@ -125,4 +136,21 @@ export const gridTokenizer = (nodeDoc: NodeDocument): DesignToken[] => {
   } as DesignToken);
 
   return designTokens;
+};
+
+
+
+export const spacingTokenizer = (node: NodeDocument): DesignToken|undefined => {
+  const spacingToken: DesignToken = {
+    type: 'spacing' ,
+    name: node.name,
+    node_id: node.id,
+    value: '0'
+  };
+  
+  const width = node?.absoluteBoundingBox ?
+    node.absoluteBoundingBox.width : node.children[0]?.absoluteBoundingBox?.width;
+  if(width) spacingToken.value = `${ width }`;
+  
+  return spacingToken;
 };

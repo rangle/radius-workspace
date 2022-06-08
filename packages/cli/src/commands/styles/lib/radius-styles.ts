@@ -39,26 +39,6 @@ export type Options = {
 
 export const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
 
-//TODO -> it is not filtering duplicates 
-// type designTokenTypes = 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation';
-
-// const removeDuplicateTokens = (tokenGroups: DesignTokenGroup, latestTokenGroups: DesignTokenGroup) => {
-//   let key: designTokenTypes;
-//   for(key in tokenGroups) {
-//     if(tokenGroups[key] && latestTokenGroups[key]){
-//       const listOfNames: string[] = [];
-//       tokenGroups[key] = [...tokenGroups[key], ...latestTokenGroups[key]].filter((designToken: DesignToken)=>{
-//         if(listOfNames.includes(designToken.name)){
-//           return false;
-//         }
-//         listOfNames.push(designToken.name);
-//         return true;
-//       });
-//     }
-//   }
-//   return tokenGroups;
-// };
-
 export const generateGlobalStyles = async ({
   url,
   userToken = token,
@@ -78,6 +58,7 @@ export const generateGlobalStyles = async ({
 
   const files = renderTemplate(designTokens);
 
+  if(dryRun) return files;
 
   if (consoleOutput) {
     // files.forEach(([fileName, content]) => {
@@ -87,9 +68,8 @@ export const generateGlobalStyles = async ({
     // });
   } else {
     logger.info(`output directory: ${ chalk.red(outputDir) }`);
-
+        
     files.forEach(([fileName, content]) => {
-
       const filePath = path.resolve(outputDir ?? '.', fileName);
       const fileDir = path.dirname(filePath);
 

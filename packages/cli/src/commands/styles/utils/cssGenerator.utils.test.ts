@@ -9,12 +9,12 @@ import { DesignToken } from '../utils/figma.utils';
 
 describe('CSS Generator', () => {
   it('should generate color variables with the right name and value', () => {
-    const expectedOutput = '--ds-color-text-success: #138000;';
+    const expectedOutput = '--ds-color--colour-text-success: #138000;';
 
     const designToken: DesignToken = {
       type: 'color',
       name: 'color css test',
-      token: '--colour-text-success',
+      token: '-colour-text-success',
       value: '#138000'
     };
 
@@ -27,7 +27,7 @@ describe('CSS Generator', () => {
       {
         type: 'typography',
         name: 'typography css test',
-        token: '--typography-label-font-family',
+        token: '-typography-label-font-family',
         value: 'Roboto'
       };
 
@@ -42,7 +42,7 @@ describe('CSS Generator', () => {
       {
         type: 'spacing',
         name: 'spacing css test',
-        token: '--space-1',
+        token: '-space-1',
         value: '4'
       };
 
@@ -73,7 +73,7 @@ describe('CSS Generator', () => {
       {
         type: 'grid',
         name: 'grid css test',
-        token: '--grid-margin-l',
+        token: '-grid-margin-l',
         value: '154'
       };
 
