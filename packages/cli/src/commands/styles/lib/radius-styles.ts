@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
-  DesignToken,
-  getTokens
+  DesignToken//,
+  // getTokens
 } from '../utils/figma.utils';
-// import { getFileKey, figmaAPIFactory } from '../utils/publish.main';
+import { figmaAPIFactory } from '../utils/publish.main';
 import { assert } from '../utils/common.utils';
 import { groupBy } from '../utils/common.utils';
 import renderers from './templates';
@@ -11,7 +11,7 @@ import path from 'path';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { logger } from '../../../logger';
 import chalk from 'chalk';
-import { loadFile } from '../utils/figma.loader';
+// import { loadFile } from '../utils/figma.loader';
 
 // import { TokenOption } from '../utils/figmaResolver.utils';
 // import { getColor2, getTypography2 } from '../utils/extractors/figmaExtractors';
@@ -39,26 +39,6 @@ export type Options = {
 
 export const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
 
-//TODO -> it is not filtering duplicates 
-// type designTokenTypes = 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation';
-
-// const removeDuplicateTokens = (tokenGroups: DesignTokenGroup, latestTokenGroups: DesignTokenGroup) => {
-//   let key: designTokenTypes;
-//   for(key in tokenGroups) {
-//     if(tokenGroups[key] && latestTokenGroups[key]){
-//       const listOfNames: string[] = [];
-//       tokenGroups[key] = [...tokenGroups[key], ...latestTokenGroups[key]].filter((designToken: DesignToken)=>{
-//         if(listOfNames.includes(designToken.name)){
-//           return false;
-//         }
-//         listOfNames.push(designToken.name);
-//         return true;
-//       });
-//     }
-//   }
-//   return tokenGroups;
-// };
-
 export const generateGlobalStyles = async ({
   url,
   userToken = token,
@@ -71,13 +51,14 @@ export const generateGlobalStyles = async ({
   assert(typeof url === 'string', 'Figma url must be provided');
 
   const renderTemplate = renderers[template];
-  const tokenGroupsFigmaBlob = await loadFile({ url, token: userToken }).then(getTokens).then(groupByType);
-  // const figmaAPI = figmaAPIFactory(userToken);
-  // const tokenGroupsFigmaApi = await figmaAPI.processStyles(getFileKey(url));
-  // console.log(tokenGroupsFigmaApi);
 
-  const files = renderTemplate(tokenGroupsFigmaBlob);
+  const figmaAPI = figmaAPIFactory(userToken);
+  const designTokens = await figmaAPI.processStyles(url);
+  
 
+  const files = renderTemplate(designTokens);
+
+  if(dryRun) return files;
 
   if (consoleOutput) {
     // files.forEach(([fileName, content]) => {
@@ -87,9 +68,8 @@ export const generateGlobalStyles = async ({
     // });
   } else {
     logger.info(`output directory: ${ chalk.red(outputDir) }`);
-
+        
     files.forEach(([fileName, content]) => {
-
       const filePath = path.resolve(outputDir ?? '.', fileName);
       const fileDir = path.dirname(filePath);
 

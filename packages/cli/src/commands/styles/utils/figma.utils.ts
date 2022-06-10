@@ -10,6 +10,8 @@ import {
   NodeKey,
   TokenTransform
 } from './figmaParser.utils';
+import { LayoutGrid } from 'figma-api/lib/ast-types';
+import { tokenizeName } from './figma.tokenizer';
 
 const tokensV2Flag = true;
 
@@ -22,7 +24,7 @@ export type FigmaFileParams = {
 // type Unpromise<T extends Promise<any>> = T extends Promise<infer X> ? X : never;
 export type FigmaFileNodes = {
   nodes: {
-    [key: string]: NodeRoot | any ,
+    [key: string]: NodeRoot,
   },
 };
 
@@ -101,9 +103,18 @@ export type NodeDocument = {
   }>,
   styles: ColorStyle | TypographyStyle,
   children: Array<NodeDocument>,
+  absoluteBoundingBox?: {
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+  },
+  layoutGrids?: LayoutGrid[],
 };
 
+
 export type Styles = ColorStyle | TypographyStyle | ElevationStyle;
+
 
 export type BaseDef = {
   key: string,
@@ -186,17 +197,16 @@ type EffectType = {
   showShadowBehindNode: boolean,
 };
 
-export type NodeDoc = EffectsNode & RectangleNode & NodeDocument & {
-
-};
+export type NodeDoc = EffectsNode & RectangleNode & NodeDocument & {};
 
 export type DesignToken = {
   type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
   name: string,
   viewPort?: string,
   cascade?: boolean,
-  token: string,
+  token?: string,
   value: string,
+  node_id?: string,
 };
 
 export type DesignTokenGroup = GroupOf<DesignToken, 'type'>;
@@ -521,42 +531,40 @@ const generateNodes =
   };
 
 export const processTypographyDesignToken = (nodeDoc: NodeDoc, parent?: string): DesignToken => {
-
-  if(nodeDoc.name?.includes('scale') && nodeDoc.name?.includes('$')) {
+  parent = parent?.toLowerCase();
+  if(parent?.includes('size')) {
     return {
       type: 'typography',
-      name: nodeDoc.name,
+      name: `${ nodeDoc.name } Font scale`,
       value: `${ nodeDoc.style.fontSize.toString() }px`,
-      token: `--${ nodeDoc.name.split(' ').join('-').toLowerCase() }${ nodeDoc.name.toLowerCase() }`
+      token: tokenizeName(`--${ parent }${ nodeDoc.name }`)
     } as DesignToken;
   }
 
   if(parent?.includes('weight')) {
     return {
       type: 'typography',
-      name: nodeDoc.parent,
+      name: `${ nodeDoc.name } ${ parent } Font weight`,
       value: nodeDoc.style.fontWeight.toString(),
-      token: `--${ parent.split(' ').join('-').toLowerCase() }${ nodeDoc.name.toLowerCase().split(' ').join('-') }`
+      token: tokenizeName(`--${ parent }${ nodeDoc.name }`)
     };
   }
 
-  if(parent?.toLowerCase().includes('line')) {
+  if(parent?.toLowerCase().includes('line') && parent?.toLowerCase().includes('percent')) {
     return {
       type: 'typography',
-      name: nodeDoc.parent,
+      name: `${ nodeDoc.name } Line height`,
       value: Math.round(nodeDoc.style.lineHeightPercentFontSize).toString() + '%',
-      token: `--${ parent.split(' ').join('-').toLowerCase() }${ nodeDoc.name.toLowerCase()
-        .split(' ').join('-').replace(/%/g, '') }`
+      token: tokenizeName(`--${ parent }${ nodeDoc.name }`)
     };
   }
 
   if(parent?.toLowerCase().includes('spacing')) {
     return {
       type: 'typography',
-      name: nodeDoc.parent,
+      name: `${ nodeDoc.name } Letter spacing`,
       value:`${ (nodeDoc.style.letterSpacing / 16).toString() }em`,
-      token: `--${ parent.split(' ').join('-').toLowerCase() }${ nodeDoc.name.toLowerCase().split(' ').join('-')
-        .replace(/%/g, '') }`
+      token: tokenizeName(`--${ parent }${ nodeDoc.name }`)
     };
   }
   return {} as DesignToken;

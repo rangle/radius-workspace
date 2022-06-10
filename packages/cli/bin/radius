@@ -2,7 +2,7 @@
 
 "use strict";
 
-const radius = require("../dist/radius");
+const radius = require("../dist/src/radius");
 const parser = radius();
 
 // eslint-disable-next-line no-unused-expressions

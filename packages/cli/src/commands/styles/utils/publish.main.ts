@@ -1,59 +1,121 @@
 //validator //loader/parse //tokenizer
 import axios, { AxiosError } from 'axios';
-import { StyleMetadata } from 'figma-api/lib/api-types';
+import { StyleMetadata, ComponentMetadata, GetFileComponentsResult } from 'figma-api/lib/api-types';
+import { StyleType } from 'figma-api/lib/ast-types';
 import { groupByType } from '../lib/radius-styles';
-import { DesignToken, colorToHex, FigmaFileNodes, NodeDocument, FigmaNodeKey } from './figma.utils';
-import { NodeFilter, DesignTokenFilter, GetStylesListType, FigmaStyle } from './types/FigmaTypes';
+import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot } from './figma.utils';
+import { NodeFilter, DesignTokenFilter } from './types/FigmaTypes';
+import { 
+  colorDesignTokenizer,
+  processElevationTokenizer, 
+  typographyTokenizer, 
+  gridTokenizer, 
+  spacingTokenizer 
+} from './figma.tokenizer';
 
 
 //Utility methods 
 export const getFileKey = (url: string) => {
+  if(!url.includes('http') && url.length < 30) return url; //the url provided already the key
   const fileKey = url.match(/\/file\/(\w*)\//);
   if(fileKey && fileKey.length > 1) return fileKey[1];
   throw Error('Could not find the file URL in the figma file');
 };
 
-export const generateToken = (name: string) => {
-  return `--${ name.toLowerCase().split('/').join('-').split(' ').join('-') }`;
-};
+
+const isArray = (dToken: DesignToken | DesignToken[]): dToken is DesignToken[] => {
+  if(Array.isArray(dToken)) return true;
+  return false;
+}; 
+
+// export const generateToken = (name: string) => {
+//   return `--${ name.toLowerCase().split('/').join('-').split(' ').join('-') }`;
+// };
 
 // Functions
 export const filterFunctions: NodeFilter[] = [];
-export const designTokenFunctions: DesignTokenFilter[] = [];
+export const designTokenFunctions: DesignTokenFilter[]|undefined = [];
 
-const colorDesignTokenizer: DesignTokenFilter = (node: NodeDocument): DesignToken => {
-  colorToHex(node.fills[0].color);
-  const colorToken: DesignToken = {
-    type: 'color' ,
-    name: node.name,
-    token: generateToken(node.name),
-    value: colorToHex(node.fills[0].color)
-  };
-  return colorToken;
-};
+// const colorFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
+//   if(data.type == 'RECTANGLE') {
+//     data.type = 'color';
+//   }
+//   const colorToken = designTokenFilterFn(data);
+//   return colorToken;
+// };
 
-const colorFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
-  if(data.type == 'RECTANGLE') {
-    data.type = 'color';
+// const typographyFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
+//   if(data.type == 'RECTANGLE') {
+//     data.type = 'color';
+//   }
+//   const colorToken = designTokenFilterFn(data);
+//   return colorToken;
+// };
+
+const spacingFilter: NodeFilter = (
+  data: NodeDocument, designTokenFilterFn: DesignTokenFilter
+): DesignToken| undefined => {
+  if(
+    data.type === 'COMPONENT' &&
+    data.absoluteBoundingBox &&
+    data.children.length > 0
+  ) {
+    return designTokenFilterFn(data);
   }
-  const colorToken = designTokenFilterFn(data);
-  return colorToken;
+  return undefined;
 };
 
-export const convertNodesToTokens = (nodes: NodeDocument[]): DesignToken[] => {
-  const designTokens: DesignToken[] = [];
+
+export const convertComponentNodesToTokens = (nodes: NodeDocument[]): DesignToken[] => {
+  let designTokens: DesignToken[] = [];
   nodes.forEach((node) => {
     filterFunctions.forEach((filterMethod, index) => {
       const dToken = filterMethod(node, designTokenFunctions[index]);
-      designTokens.push(dToken);
+      if(dToken){
+        isArray(dToken) ?
+          designTokens = [...designTokens, ...dToken] : designTokens.push(dToken);
+      }
     });
   });
   return designTokens;
 };
 
-// These methods have to be passed in order. Methods are run sequentially
-filterFunctions.push(colorFilter);
-designTokenFunctions.push(colorDesignTokenizer);
+// // These methods have to be passed in order. Methods are run sequentially
+filterFunctions.push(spacingFilter);
+designTokenFunctions.push(spacingTokenizer);
+
+export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignToken[] | DesignToken | undefined => {
+  switch(type){
+    case 'FILL':
+      return colorDesignTokenizer(data);
+    case 'TEXT':
+      return typographyTokenizer(data);
+    case 'EFFECT':
+      return processElevationTokenizer(data);
+    case 'GRID':
+      return gridTokenizer(data);
+    default:
+      break;
+  }
+}; 
+
+
+export const convertStyleNodesToTokens = (nodes: { [key: string]: NodeRoot }, styles: StyleMetadata[]) => {
+  let designTokens: DesignToken[] = [];
+  for(const index in styles){
+    const key = styles[index].node_id;
+    const newDesignToken = processStyleNodes(nodes[key]?.document,styles[index].style_type);
+    if(newDesignToken){
+      isArray(newDesignToken) ?
+        designTokens = [...designTokens, ...newDesignToken] : designTokens.push(newDesignToken);
+    }
+  }
+  return designTokens;
+};
+
+
+
+
 
 //figmaAPIFactory is used in other files 
 export const figmaAPIFactory = (token: string) => {
@@ -66,63 +128,101 @@ export const figmaAPIFactory = (token: string) => {
       }
     }).then((res) => 
       res.data
-      // for saving mock data for testing
-      // import fs from 'fs';
-      // fs.writeFile(`${ new Date().getTime() }.json`, JSON.stringify({ data:res.data }),{},()=>{console.log(urlInput);});
-    ).catch((error: AxiosError)=>{
-      console.error(`Error ${ error?.response?.data } --- Error Code ${ error?.code }`);
-      throw Error('Failed to parse figma url');
+    ).catch((_error: AxiosError)=>{
+      // console?.error(`Error ${ _error?.response?.data } --- Error Code ${ _error?.code }`);
+      throw new TypeError(`Failed to parse figma url, ${ urlInput }`);
     });
   };
 
   // GET 
-  const getStyles = (fileKey: string): Promise<GetStylesListType> =>{
+  const getStyles = (fileKey: string): Promise<StyleMetadata[]> =>{
+    if(fileKey.includes('http')){
+      fileKey = getFileKey(fileKey);
+    }
     return getData(`https://api.figma.com/v1/files/${ fileKey }/styles`).then(({ meta: { styles } }) => {
-      const startingData: GetStylesListType = { nodes: [], styles: {} };
-      return styles.reduce( (previousValue: GetStylesListType, currentStyle: StyleMetadata) => {
-        if(previousValue.styles[currentStyle.node_id]) return previousValue;
-        const styleKey: FigmaStyle = {};
-        styleKey[currentStyle.node_id] = currentStyle;
-        return { 
-          styles: {
-            ...previousValue.styles,
-            ...styleKey
-          }, 
-          nodes: [...previousValue.nodes, currentStyle.node_id] 
-        };
-      }, startingData );
+      if(styles.length === 0) throw Error('There are no styles, make sure the figma file is published.');
+      return styles;
     });
   };
 
+  const getComponents = (fileKey: string): Promise<ComponentMetadata[]|undefined> => {
+    if(fileKey.includes('http')){
+      fileKey = getFileKey(fileKey);
+    }
+    return getData(`https://api.figma.com/v1/files/${ fileKey }/components`).then((data: GetFileComponentsResult) => {
+      return data?.meta?.components;
+    });
+  };
+
+  const DesignTokenComponents = ['spacer','spacers','spacing','border radius','borderradius'];
+  const filterComponentsForDesignTokens = (components: ComponentMetadata[]) => {
+    return components.filter((component: ComponentMetadata) => {
+      if(!component?.containing_frame?.name) return false;
+      if(DesignTokenComponents.includes(component.containing_frame.name.toLowerCase())) return true;
+      return false;
+    });
+  };
+
+
+
+  
+
   const getNodes = (fileKey: string, nodeIds: string[])=> {
-    console.log(fileKey);
     // TODO break the long node requests into small requests
     // https://api.figma.com/v1/files/${fileKey}/nodes?ids=${nodeIds.join(",")}
     return getData(`https://api.figma.com/v1/files/${ fileKey }/nodes?ids=${ nodeIds.join(',') }`)
-      .then((data: FigmaFileNodes) => { return data.nodes;})
-      .then((figmaFileNode) => flattenNodes(figmaFileNode));
+      .then((data: FigmaFileNodes) => { return data.nodes;});
   };
 
-  const flattenNodes = (nodes: FigmaNodeKey): NodeDocument[] => {
-    return Object.keys(nodes).map((key) => {
-      return nodes[key].document;
-    });
-  };
 
   const processStyles = async (fileKey: string) => {
-    const recoveredStyles = await getStyles(fileKey);
-    const nodeIds = recoveredStyles.nodes;
-    const nodes = await getNodes(fileKey, nodeIds);
+    const parsedFileKey = getFileKey(fileKey);  
+    const figmaStyles = await getStyles(parsedFileKey);
+    
+    const nodeIds = figmaStyles.map((style: StyleMetadata)=>style.node_id);
+    const nodes = await getNodes(parsedFileKey, nodeIds);
 
-    const designTokens = convertNodesToTokens(nodes);
+    let designTokens = convertStyleNodesToTokens(nodes,figmaStyles);
+    const componentTokens = await processStyleComponents(parsedFileKey);
+    designTokens = [...designTokens,...componentTokens];
+
+    designTokens.sort((first: DesignToken,second: DesignToken)=>{
+      if(first.name && second.name && first.name.toLowerCase() > second.name.toLowerCase()) return -1;
+      return 1;
+    });
+
     // // groups them all
     return groupByType(designTokens);
   };
 
+  const processStyleComponents = async (fileKey: string) => {
+
+    // Get design tokens from components //Grid, Spacing, Border Radius
+    const figmaComponents = await getComponents(fileKey);
+    if(!figmaComponents) throw Error('Failed to get the components');
+    const dTComponents = filterComponentsForDesignTokens(figmaComponents);
+    const dTComponentNodes = await getNodes(
+      fileKey,
+      dTComponents.map((components: ComponentMetadata) => components.node_id)
+    );
+    const componentNodeDocuments: NodeDocument[] = [];
+    Object.keys(dTComponentNodes).forEach(
+      (nodeKey: string) => {
+        const componentNode = dTComponentNodes[nodeKey];
+        componentNodeDocuments.push(componentNode.document);
+      }
+    );
+
+    return convertComponentNodesToTokens(componentNodeDocuments);
+  };
+
+
   return {
-    getData,
-    getNodes,
-    getStyles,
+    _getComponents: getComponents,
+    _getData: getData,
+    _getNodes: getNodes,
+    _getStyles: getStyles,
+    _processStyleComponents:processStyleComponents,
     processStyles
   };
 };

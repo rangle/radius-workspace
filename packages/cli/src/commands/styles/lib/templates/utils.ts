@@ -6,6 +6,7 @@ export const createTokenContext = (
   tokenGroup: DesignTokenGroup
 ): TokenContext => {
   const { breakpoint } = tokenGroup;
+  if(breakpoint === undefined || !Array.isArray(breakpoint)) return breakpoint;
   const breakpoints = breakpoint.reduce((res, item) => {
     return {
       ...res,

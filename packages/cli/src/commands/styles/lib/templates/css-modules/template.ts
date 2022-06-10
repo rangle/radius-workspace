@@ -96,7 +96,6 @@ export const typography: RenderTokenFile = (tokens, _type, { breakpoints }) => {
     viewPort: k,
     value: breakpoints[k]
   }));
-
   return [
     './_typography.css',
     `
