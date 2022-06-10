@@ -91,7 +91,7 @@ describe('Styles - Utils - generateTypographyTokenBody', () => {
   * @presenter FontSize
   */
 
-       --ds-cale: 50;`);
+       --scale: 50;`);
   });
   
   it('with weight generate weight tokens', async () => {
@@ -102,7 +102,7 @@ describe('Styles - Utils - generateTypographyTokenBody', () => {
   * @presenter FontWeight
   */
 
-       --ds-eight: 50;`);
+       --weight: 50;`);
   });
 
 });

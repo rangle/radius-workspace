@@ -4,12 +4,14 @@ import { LayoutGrid } from 'figma-api/lib/ast-types';
 
 
 export const tokenizeName = (text: string) => {
-  return text.toString().replace(/[A-Z]/g, (newText: string) => '-' + newText.toLowerCase())
+  const out = text.toString().replace(/[A-Z]/g, (newText: string) => '-' + newText.toLowerCase())
     .replace(/\s+/g, '-')
     .replace(/[^\w-]+/g, '-')
     .replace(/--+/g, '-')
     .replace(/^-+/, '-')
     .replace(/-+$/, '-');
+  if(out.charAt(0) === '-') return out.substring(1);
+  return out;
 };
 
 
@@ -64,11 +66,11 @@ export const processElevationTokenizer = (nodeDoc: NodeDocument): DesignToken[] 
 
 
 export const typographyTokenizer = (nodeDoc: NodeDocument): DesignToken[] => {
-  const allTypeography: DesignToken[] = [];
+  const typographyTokens: DesignToken[] = [];
   for(const style in nodeDoc.style){
-    allTypeography.push(processTypographyDesignToken(nodeDoc as NodeDoc,style)); 
+    typographyTokens.push(processTypographyDesignToken(nodeDoc as NodeDoc,style)); 
   }
-  return allTypeography;
+  return typographyTokens;
 };
 
 export const gridTokenizer = (nodeDoc: NodeDocument): DesignToken[] => {

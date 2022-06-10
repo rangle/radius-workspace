@@ -16,6 +16,7 @@ import {
 
 //Utility methods 
 export const getFileKey = (url: string) => {
+  if(!url.includes('http') && url.length < 30) return url; //the url provided already the key
   const fileKey = url.match(/\/file\/(\w*)\//);
   if(fileKey && fileKey.length > 1) return fileKey[1];
   throw Error('Could not find the file URL in the figma file');
@@ -102,7 +103,8 @@ export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignTo
 export const convertStyleNodesToTokens = (nodes: { [key: string]: NodeRoot }, styles: StyleMetadata[]) => {
   let designTokens: DesignToken[] = [];
   for(const index in styles){
-    const newDesignToken = processStyleNodes(nodes[styles[index].node_id]?.document,styles[index].style_type);
+    const key = styles[index].node_id;
+    const newDesignToken = processStyleNodes(nodes[key]?.document,styles[index].style_type);
     if(newDesignToken){
       isArray(newDesignToken) ?
         designTokens = [...designTokens, ...newDesignToken] : designTokens.push(newDesignToken);
@@ -138,6 +140,7 @@ export const figmaAPIFactory = (token: string) => {
       fileKey = getFileKey(fileKey);
     }
     return getData(`https://api.figma.com/v1/files/${ fileKey }/styles`).then(({ meta: { styles } }) => {
+      if(styles.length === 0) throw Error('There are no styles, make sure the figma file is published.');
       return styles;
     });
   };
@@ -147,8 +150,7 @@ export const figmaAPIFactory = (token: string) => {
       fileKey = getFileKey(fileKey);
     }
     return getData(`https://api.figma.com/v1/files/${ fileKey }/components`).then((data: GetFileComponentsResult) => {
-      if(data?.meta) return data.meta.components;
-      return undefined;
+      return data?.meta?.components;
     });
   };
 
@@ -166,7 +168,6 @@ export const figmaAPIFactory = (token: string) => {
   
 
   const getNodes = (fileKey: string, nodeIds: string[])=> {
-    // console.log(fileKey);
     // TODO break the long node requests into small requests
     // https://api.figma.com/v1/files/${fileKey}/nodes?ids=${nodeIds.join(",")}
     return getData(`https://api.figma.com/v1/files/${ fileKey }/nodes?ids=${ nodeIds.join(',') }`)
@@ -175,14 +176,21 @@ export const figmaAPIFactory = (token: string) => {
 
 
   const processStyles = async (fileKey: string) => {
-    const figmaStyles = await getStyles(fileKey);
+    const parsedFileKey = getFileKey(fileKey);  
+    const figmaStyles = await getStyles(parsedFileKey);
     
     const nodeIds = figmaStyles.map((style: StyleMetadata)=>style.node_id);
-    const nodes = await getNodes(fileKey, nodeIds);
+    const nodes = await getNodes(parsedFileKey, nodeIds);
 
     let designTokens = convertStyleNodesToTokens(nodes,figmaStyles);
-    const compoentTokens = await processStyleComponents(fileKey);
-    designTokens = [...designTokens,...compoentTokens];
+    const componentTokens = await processStyleComponents(parsedFileKey);
+    designTokens = [...designTokens,...componentTokens];
+
+    designTokens.sort((first: DesignToken,second: DesignToken)=>{
+      if(first.name && second.name && first.name.toLowerCase() > second.name.toLowerCase()) return -1;
+      return 1;
+    });
+
     // // groups them all
     return groupByType(designTokens);
   };
@@ -197,12 +205,15 @@ export const figmaAPIFactory = (token: string) => {
       fileKey,
       dTComponents.map((components: ComponentMetadata) => components.node_id)
     );
-    const compoentNodeDcuments: NodeDocument[] = [];
-    Object.entries(dTComponentNodes).forEach(
-      (data: [string, NodeRoot]) => compoentNodeDcuments.push(data[1].document)
+    const componentNodeDocuments: NodeDocument[] = [];
+    Object.keys(dTComponentNodes).forEach(
+      (nodeKey: string) => {
+        const componentNode = dTComponentNodes[nodeKey];
+        componentNodeDocuments.push(componentNode.document);
+      }
     );
 
-    return convertComponentNodesToTokens(compoentNodeDcuments);
+    return convertComponentNodesToTokens(componentNodeDocuments);
   };
 
 

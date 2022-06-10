@@ -6,6 +6,7 @@ export const createTokenContext = (
   tokenGroup: DesignTokenGroup
 ): TokenContext => {
   const { breakpoint } = tokenGroup;
+  if(breakpoint === undefined || !Array.isArray(breakpoint)) return breakpoint;
   const breakpoints = breakpoint.reduce((res, item) => {
     return {
       ...res,
@@ -35,7 +36,6 @@ export type typographyMap = {
 
 const extractFontBody = (tokens: DesignToken[], filterType: string, typographyCommentKey: string): string => {
   return tokens.filter((token) => token.name.includes(filterType)).map((token, index)=> {
-    // console.log( token);
     if(index ==0) {
       return `\n${ TYPOGRAPHY_FILE_COMMENTS[typographyCommentKey as keyof typeof TYPOGRAPHY_FILE_COMMENTS] }\n
        ${ generateTypographyCSS(token) }`; 
@@ -45,7 +45,6 @@ const extractFontBody = (tokens: DesignToken[], filterType: string, typographyCo
 };
 
 export const generateTypographyTokenBody = (tokens: DesignToken[]): string => {
-  // console.log(tokens);
   const scale = extractFontBody(tokens, 'Font scale', 'scale');
   const weight = extractFontBody(tokens, 'Font weight', 'weight');
   const spacing = extractFontBody(tokens, 'Letter spacing', 'spacing');
