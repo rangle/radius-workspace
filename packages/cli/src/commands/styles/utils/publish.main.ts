@@ -13,7 +13,6 @@ import {
   spacingTokenizer 
 } from './figma.tokenizer';
 
-
 //Utility methods 
 export const getFileKey = (url: string) => {
   if(!url.includes('http') && url.length < 30) return url; //the url provided already the key
@@ -28,29 +27,9 @@ const isArray = (dToken: DesignToken | DesignToken[]): dToken is DesignToken[] =
   return false;
 }; 
 
-// export const generateToken = (name: string) => {
-//   return `--${ name.toLowerCase().split('/').join('-').split(' ').join('-') }`;
-// };
-
 // Functions
 export const filterFunctions: NodeFilter[] = [];
 export const designTokenFunctions: DesignTokenFilter[]|undefined = [];
-
-// const colorFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
-//   if(data.type == 'RECTANGLE') {
-//     data.type = 'color';
-//   }
-//   const colorToken = designTokenFilterFn(data);
-//   return colorToken;
-// };
-
-// const typographyFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
-//   if(data.type == 'RECTANGLE') {
-//     data.type = 'color';
-//   }
-//   const colorToken = designTokenFilterFn(data);
-//   return colorToken;
-// };
 
 const spacingFilter: NodeFilter = (
   data: NodeDocument, designTokenFilterFn: DesignTokenFilter
@@ -64,7 +43,6 @@ const spacingFilter: NodeFilter = (
   }
   return undefined;
 };
-
 
 export const convertComponentNodesToTokens = (nodes: NodeDocument[]): DesignToken[] => {
   let designTokens: DesignToken[] = [];
@@ -99,7 +77,6 @@ export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignTo
   }
 }; 
 
-
 export const convertStyleNodesToTokens = (nodes: { [key: string]: NodeRoot }, styles: StyleMetadata[]) => {
   let designTokens: DesignToken[] = [];
   for(const index in styles){
@@ -112,10 +89,6 @@ export const convertStyleNodesToTokens = (nodes: { [key: string]: NodeRoot }, st
   }
   return designTokens;
 };
-
-
-
-
 
 //figmaAPIFactory is used in other files 
 export const figmaAPIFactory = (token: string) => {
@@ -136,9 +109,6 @@ export const figmaAPIFactory = (token: string) => {
 
   // GET 
   const getStyles = (fileKey: string): Promise<StyleMetadata[]> =>{
-    if(fileKey.includes('http')){
-      fileKey = getFileKey(fileKey);
-    }
     return getData(`https://api.figma.com/v1/files/${ fileKey }/styles`).then(({ meta: { styles } }) => {
       if(styles.length === 0) throw Error('There are no styles, make sure the figma file is published.');
       return styles;
@@ -146,12 +116,10 @@ export const figmaAPIFactory = (token: string) => {
   };
 
   const getComponents = (fileKey: string): Promise<ComponentMetadata[]|undefined> => {
-    if(fileKey.includes('http')){
-      fileKey = getFileKey(fileKey);
-    }
-    return getData(`https://api.figma.com/v1/files/${ fileKey }/components`).then((data: GetFileComponentsResult) => {
-      return data?.meta?.components;
-    });
+    return getData(`https://api.figma.com/v1/files/${ getFileKey(fileKey) }/components`)
+      .then((data: GetFileComponentsResult) => {
+        return data?.meta?.components;
+      });
   };
 
   const DesignTokenComponents = ['spacer','spacers','spacing','border radius','borderradius'];
@@ -163,14 +131,10 @@ export const figmaAPIFactory = (token: string) => {
     });
   };
 
-
-
-  
-
   const getNodes = (fileKey: string, nodeIds: string[])=> {
     // TODO break the long node requests into small requests
     // https://api.figma.com/v1/files/${fileKey}/nodes?ids=${nodeIds.join(",")}
-    return getData(`https://api.figma.com/v1/files/${ fileKey }/nodes?ids=${ nodeIds.join(',') }`)
+    return getData(`https://api.figma.com/v1/files/${ getFileKey(fileKey) }/nodes?ids=${ nodeIds.join(',') }`)
       .then((data: FigmaFileNodes) => { return data.nodes;});
   };
 
@@ -196,7 +160,6 @@ export const figmaAPIFactory = (token: string) => {
   };
 
   const processStyleComponents = async (fileKey: string) => {
-
     // Get design tokens from components //Grid, Spacing, Border Radius
     const figmaComponents = await getComponents(fileKey);
     if(!figmaComponents) throw Error('Failed to get the components');
@@ -215,7 +178,6 @@ export const figmaAPIFactory = (token: string) => {
 
     return convertComponentNodesToTokens(componentNodeDocuments);
   };
-
 
   return {
     _getComponents: getComponents,

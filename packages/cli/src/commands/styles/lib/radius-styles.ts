@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
-  DesignToken//,
-  // getTokens
+  DesignToken
 } from '../utils/figma.utils';
 import { figmaAPIFactory } from '../utils/publish.main';
 import { assert } from '../utils/common.utils';
@@ -11,11 +10,6 @@ import path from 'path';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { logger } from '../../../logger';
 import chalk from 'chalk';
-// import { loadFile } from '../utils/figma.loader';
-
-// import { TokenOption } from '../utils/figmaResolver.utils';
-// import { getColor2, getTypography2 } from '../utils/extractors/figmaExtractors';
-// import { isColor2, isTypographyFormat2 } from '../utils/validators/figmaValidators';
 
 const token = process.env['FIGMA_TOKEN'] || 'none';
 // const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
@@ -54,7 +48,11 @@ export const generateGlobalStyles = async ({
 
   const figmaAPI = figmaAPIFactory(userToken);
   const designTokens = await figmaAPI.processStyles(url);
-  
+
+  // Using DynamicParser
+  // const retrievedNodes = await getFigmaBlobs(userToken).then((data: FigmaNodeKey[]) => {
+  //   return transformNodes(data); 
+  // });
 
   const files = renderTemplate(designTokens);
 
