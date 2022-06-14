@@ -28,10 +28,6 @@ const isArray = (dToken: DesignToken | DesignToken[]): dToken is DesignToken[] =
   return false;
 }; 
 
-// export const generateToken = (name: string) => {
-//   return `--${ name.toLowerCase().split('/').join('-').split(' ').join('-') }`;
-// };
-
 // Functions
 export const filterFunctions: NodeFilter[] = [];
 export const designTokenFunctions: DesignTokenFilter[]|undefined = [];
@@ -187,6 +183,7 @@ export const figmaAPIFactory = (token: string) => {
     designTokens = [...designTokens,...componentTokens];
 
     designTokens.sort((first: DesignToken,second: DesignToken)=>{
+      if(first.token && second.token && first.token > second.token) return -1;
       if(first.name && second.name && first.name.toLowerCase() > second.name.toLowerCase()) return -1;
       return 1;
     });

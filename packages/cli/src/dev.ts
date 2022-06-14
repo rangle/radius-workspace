@@ -8,7 +8,7 @@ const template = 'css-modules';
 
 // Assign user token
 const userToken = process.env['FIGMA_TOKEN'];
-const outputDir = '';
+const outputDir = './debugstyles';
 
 // Function called by yargs script to generate styles
 generateGlobalStyles({

@@ -22,6 +22,14 @@ export const TOKEN_FILE_COMMENTS: any = {
   elevation: `  /**
   * @tokens Shadow
   * @presenter Shadow
+  */`,
+  breakpoint: `  /**
+  * @tokens Breakpoints
+  * @presenter Breakpoints
+  */`,
+  grid: `  /**
+  * @tokens Grid
+  * @presenter Grid
   */`
 };
 
