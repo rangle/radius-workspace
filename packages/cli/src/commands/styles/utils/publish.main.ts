@@ -163,10 +163,6 @@ export const figmaAPIFactory = (token: string) => {
     });
   };
 
-
-
-  
-
   const getNodes = (fileKey: string, nodeIds: string[])=> {
     // TODO break the long node requests into small requests
     // https://api.figma.com/v1/files/${fileKey}/nodes?ids=${nodeIds.join(",")}
@@ -175,12 +171,103 @@ export const figmaAPIFactory = (token: string) => {
   };
 
 
+  type FontType = {
+    [key: string]: number,
+  };
+  type TypographyMap = {
+    fontSize: FontType,
+    fontWeight: FontType,
+    letterSpacing: FontType,
+  };
+  // type typoMapKey = keyof TypographyMap;
+
+
+  //generateBaseTokens
+  //colors
+  //typography
+  //spacing
+  //elevation
+
+  //generateSemanticTypographyTokens()
+  //
+  //generateResponseTypographyTokens() 
+
+  //
+
+  //generateComponentTokens
+  //
+
+
   const processStyles = async (fileKey: string) => {
     const parsedFileKey = getFileKey(fileKey);  
     const figmaStyles = await getStyles(parsedFileKey);
-    
     const nodeIds = figmaStyles.map((style: StyleMetadata)=>style.node_id);
     const nodes = await getNodes(parsedFileKey, nodeIds);
+
+    const typographyNodes = Object.keys(nodes).map((node) => nodes[node])
+      .filter((node) => node.document.type == 'TEXT');
+
+    console.log(typographyNodes);
+
+    const typoMap: TypographyMap = {
+      fontSize: {},
+      fontWeight: {},
+      letterSpacing: {}
+    };
+
+    typographyNodes.forEach((node) => {
+      const prefix = 'font-size-' + node.document.style.fontSize;
+      console.log('font-size ',  node.document.style.fontSize);
+
+      const typographyKeyArray = ['header','paragraph', 'inline', 'navigation', 'hint'];
+      if(!typoMap.fontSize[node.document.name] 
+        && typographyKeyArray.some((typographyPrefix) => node.document.name.toLowerCase().includes(typographyPrefix))) {
+        typoMap.fontSize[node.document.name] = node.document.style.fontSize;
+      }
+      
+      const fontSizePrefix = 'font-size-' + node.document.style.fontSize;
+      if(!typoMap.fontSize[fontSizePrefix]) {
+        typoMap.fontSize[fontSizePrefix] = node.document.style.fontSize;
+      }
+
+      const fontWeightPrefix = 'font-weight-' + node.document.style.fontWeight;
+      if(!typoMap.fontWeight[prefix]) {
+        typoMap.fontWeight[fontWeightPrefix] = node.document.style.fontWeight;
+      }
+
+      const letterSpacingPrefix = 'letter-spacing-' + node.document.style.letterSpacing;
+      if(!typoMap.fontWeight[letterSpacingPrefix]) {
+        typoMap.letterSpacing[letterSpacingPrefix] = node.document.style.letterSpacing;
+      }
+
+
+      // Object.keys(typoMap.fontSize).some((key, index) => {
+      //   console.log(key);
+
+      //   if(!typoMap.fontSize[prefix]) {
+      //     typoMap.fontSize[prefix] = node.document.style.fontSize;
+      //   }
+      // });
+
+
+      // if(!typoMap.fontSize.includes(node.document.style.fontSize)) {
+      //   typoMap.fontSize.push(node.document.style.fontSize);
+      // }
+      // if(!typoMap.fontWeight.includes(node.document.style.fontWeight)) {
+      //   typoMap.fontWeight.push(node.document.style.fontWeight);
+      // }
+      // if(!typoMap.letterSpacing.includes(node.document.style.letterSpacing)) {
+      //   typoMap.letterSpacing.push(node.document.style.letterSpacing);
+      // }
+    });
+
+    // Object.keys(typoMap).forEach((key) => {
+    //   const keyTypoMapKey = key as typoMapKey;
+    //   typoMap[keyTypoMapKey].sort((a,b)=> a-b);
+    // });
+
+    console.log(typoMap);
+
 
     let designTokens = convertStyleNodesToTokens(nodes,figmaStyles);
     const componentTokens = await processStyleComponents(parsedFileKey);
@@ -196,7 +283,6 @@ export const figmaAPIFactory = (token: string) => {
   };
 
   const processStyleComponents = async (fileKey: string) => {
-
     // Get design tokens from components //Grid, Spacing, Border Radius
     const figmaComponents = await getComponents(fileKey);
     if(!figmaComponents) throw Error('Failed to get the components');

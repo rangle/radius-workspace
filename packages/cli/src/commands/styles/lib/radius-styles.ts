@@ -55,7 +55,6 @@ export const generateGlobalStyles = async ({
   const figmaAPI = figmaAPIFactory(userToken);
   const designTokens = await figmaAPI.processStyles(url);
   
-
   const files = renderTemplate(designTokens);
 
   if(dryRun) return files;
