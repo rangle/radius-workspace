@@ -16,8 +16,12 @@ import {
 //Utility methods 
 export const getFileKey = (url: string) => {
   if(!url.includes('http') && url.length < 30) return url; //the url provided already the key
-  const fileKey = url.match(/\/file\/(\w*)\//);
+  let fileKey = url.match(/\/file\/(\w*)\//);
   if(fileKey && fileKey.length > 1) return fileKey[1];
+
+  fileKey = url.match(/\/files\/(\w*)\//);
+  if(fileKey && fileKey.length > 1) return fileKey[1];
+
   throw Error('Could not find the file URL in the figma file');
 };
 
@@ -103,7 +107,7 @@ export const figmaAPIFactory = (token: string) => {
       res.data
     ).catch((_error: AxiosError)=>{
       // console?.error(`Error ${ _error?.response?.data } --- Error Code ${ _error?.code }`);
-      throw new TypeError(`Failed to parse figma url, ${ urlInput }`);
+      throw new  TypeError(`Failed to parse figma url, ${ urlInput }`);
     });
   };
 
