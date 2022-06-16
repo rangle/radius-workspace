@@ -24,8 +24,8 @@ export const styles: CommandModule<Options, Options> = {
           group: 'Command Options:',
           defaultDescription: 'template',
           describe: 'The template to be used to generate style files',
-          default: 'css-modules',
-          choices: ['css-modules', 'css-in-js'],
+          default: 'all',
+          choices: [ 'all', 'css-modules', 'css-in-js'],
           type: 'string',
           dir: 'string'
         },

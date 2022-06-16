@@ -204,8 +204,9 @@ export type DesignToken = {
   name: string,
   viewPort?: string,
   cascade?: boolean,
-  token?: string,
+  token: string,
   value: string,
+  unit?: 'px'|'em'|'rem'|'variable',
   node_id?: string,
 };
 

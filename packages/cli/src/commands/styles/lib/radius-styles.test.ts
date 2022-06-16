@@ -23,16 +23,14 @@ describe('getStyles, getStyleNodes and processStyles', () => {
       userToken: 'xxxxxx-Token-xxxxxx',
       outputDir: './generatedTokens',
       dryRun:false,
-      consoleOutput:false,
-      template: 'css-in-js'
+      consoleOutput:false
     };
     const files = await generateGlobalStyles(options);
     console.log(files);
     // expect(!!files).toBe(true);
     // if(files){ 
-    //   expect(files.length).toBe(6);
+    //   expect(files.length).toBe(7);
     //   expect(files[0][0]).toBe('./index.css');
     // }
-
   });
 });

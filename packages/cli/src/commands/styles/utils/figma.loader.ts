@@ -1,14 +1,16 @@
 import * as Figma from 'figma-api';
-import { FigmaFileParams } from './figma.utils';
+import { FigmaFileParams, FigmaNodeKey } from './figma.utils';
 import { assert, regexSingleMatch } from './common.utils';
 import { logger } from '../../../logger';
 import figmaConfig from '../../../../figmaFileConfig.json';
+import { figmaAPIFactory } from './publish.main';
 
 export const getFigmaBlobs = (userToken: string) => {
-  const promises = [];
-  for (const url of figmaConfig.urls) {
-    promises.push(loadFile({ url, token: userToken }));
-  }
+  const promises: Promise<FigmaNodeKey>[] = [];
+  const figmaApi = figmaAPIFactory(userToken);
+  figmaConfig.node_ids.forEach((nodeId, index) => {
+    promises.push(figmaApi._getNodes(figmaConfig.urls[index], [nodeId]));
+  });
   return Promise.all(promises);
 };
 

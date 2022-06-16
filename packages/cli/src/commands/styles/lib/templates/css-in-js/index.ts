@@ -10,6 +10,7 @@ type TokensAsJson = {
 };
 
 const setValue = (designToken: DesignToken) => {
+  if( designToken.unit === 'variable') return designToken.value;
   if( 
     !designToken.value.includes('px') && 
     !designToken.value.includes('rem') && 

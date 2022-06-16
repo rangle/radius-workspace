@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
-  DesignToken//,
-  // getTokens
+  DesignToken
 } from '../utils/figma.utils';
 import { figmaAPIFactory } from '../utils/publish.main';
+import { FileTemplate } from './templates/css-in-js/index';
 import { assert } from '../utils/common.utils';
 import { groupBy } from '../utils/common.utils';
 import renderers from './templates';
@@ -11,11 +11,6 @@ import path from 'path';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { logger } from '../../../logger';
 import chalk from 'chalk';
-// import { loadFile } from '../utils/figma.loader';
-
-// import { TokenOption } from '../utils/figmaResolver.utils';
-// import { getColor2, getTypography2 } from '../utils/extractors/figmaExtractors';
-// import { isColor2, isTypographyFormat2 } from '../utils/validators/figmaValidators';
 
 const token = process.env['FIGMA_TOKEN'] || 'none';
 // const figmaFile = './__mocks__/figma-file-2021-09-03T00:53:20.007Z.json';
@@ -34,7 +29,7 @@ export type Options = {
   outputDir?: string,
   dryRun?: boolean,
   consoleOutput?: boolean,
-  template?: 'css-modules' | 'css-in-js',
+  template?: 'css-modules' | 'css-in-js' | 'all',
 };
 
 export const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
@@ -45,18 +40,30 @@ export const generateGlobalStyles = async ({
   outputDir = '.',
   dryRun,
   consoleOutput,
-  template = 'css-modules'
+  template = 'all'
 }: Options) => {
   assert(userToken !== 'none', 'Environment variable FIGMA_TOKEN is empty');
   assert(typeof url === 'string', 'Figma url must be provided');
 
-  const renderTemplate = renderers[template];
 
   const figmaAPI = figmaAPIFactory(userToken);
   const designTokens = await figmaAPI.processStyles(url);
-  
 
-  const files = renderTemplate(designTokens);
+  // Using DynamicParser
+  // const retrievedNodes = await getFigmaBlobs(userToken).then((data: FigmaNodeKey[]) => {
+  //   return transformNodes(data); 
+  // });
+  
+  let files: FileTemplate[] = [];
+  // by default now we render all the modules
+  if(template === 'all'){
+    for(const renderer in renderers){
+      files = [...files,...renderers[renderer as 'css-modules'|'css-in-js'](designTokens)];
+    }
+  } else {
+    const renderTemplate = renderers[template];
+    files = renderTemplate(designTokens);
+  }
 
   if(dryRun) return files;
 
