@@ -151,6 +151,7 @@ export const figmaAPIFactory = (token: string) => {
     designTokens = [...designTokens,...componentTokens];
 
     designTokens.sort((first: DesignToken,second: DesignToken)=>{
+      if(first.token && second.token && first.token > second.token) return -1;
       if(first.name && second.name && first.name.toLowerCase() > second.name.toLowerCase()) return -1;
       return 1;
     });

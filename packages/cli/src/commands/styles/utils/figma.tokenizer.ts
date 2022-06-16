@@ -4,7 +4,11 @@ import { LayoutGrid } from 'figma-api/lib/ast-types';
 
 
 export const tokenizeName = (text: string) => {
-  const out = text.toString().replace(/[A-Z]/g, (newText: string) => '-' + newText.toLowerCase())
+  const out = text.toString()
+    .replace(/[A-Z]/g, (newText: string) => '-' + newText.toLowerCase())//makes everything kabob case
+    .replace(/ *\([^)]*\) */g, '')//removes everything in parentheses
+    .trim()// remove unused spaces
+    .replace(/-+$/, '')// remove trailing dashing
     .replace(/\s+/g, '-')
     .replace(/[^\w-]+/g, '-')
     .replace(/--+/g, '-')
@@ -96,7 +100,9 @@ export const gridTokenizer = (nodeDoc: NodeDocument): DesignToken[] => {
       designTokens.push({
         type:'breakpoint',
         name: `${ nodeDoc.name }`,
+        token: `--${ tokenizeName(nodeDoc.name) }`,
         node_id: nodeDoc.id,
+        unit: 'px',
         value: `${ matched[1] }`
       } as DesignToken);
     }
@@ -117,23 +123,29 @@ export const gridTokenizer = (nodeDoc: NodeDocument): DesignToken[] => {
   designTokens.push({
     type:'grid',
     name: `${ nodeDoc.name } margin`,
+    token: `--${ tokenizeName(`${ nodeDoc.name }-margin`) }`,
     node_id: nodeDoc.id,
-    value: `${ layout.offset }px`
+    unit: 'px',
+    value: `${ layout.offset }`
   } as DesignToken);
 
   // /** Spacing in between columns and rows */
   designTokens.push({
     type:'grid',
     name: `${ nodeDoc.name } gutter`,
+    token: `--${ tokenizeName(`${ nodeDoc.name }-gutter`) }`,
     node_id: nodeDoc.id,
-    value: `${ layout.gutterSize }px`
+    unit: 'px',
+    value: `${ layout.gutterSize }`
   } as DesignToken);
 
   // /** Number of columns or rows */
   designTokens.push({
     type:'grid',
     name: `${ nodeDoc.name } count`,
+    token: `--${ tokenizeName(`${ nodeDoc.name }-count`) }`,
     node_id: nodeDoc.id,
+    unit: 'variable',
     value: `${ layout.count }`
   } as DesignToken);
 

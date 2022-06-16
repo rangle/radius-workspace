@@ -206,6 +206,7 @@ export type DesignToken = {
   cascade?: boolean,
   token?: string,
   value: string,
+  unit?: 'px'|'em'|'rem'|'variable',
   node_id?: string,
 };
 

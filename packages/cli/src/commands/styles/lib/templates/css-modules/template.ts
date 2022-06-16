@@ -9,12 +9,20 @@ import {
   generateTypographyCSS
 } from '../../../utils/cssGenerator.utils';
 import { filterTokenByViewPort, generateTypographyTokenBody } from '../utils';
+import { DesignToken } from '../../../utils/figma.utils';
+
+const getCssValue = (token: DesignToken) => {
+  if(token.unit === 'variable') return `  ${ token.token }: ${ token.value };`;
+  return `  ${ token.token }: ${ token.value }${ token.unit?token.unit:'' };`;
+};
 
 export const template: RenderTokenFile = (tokens, type) =>
   [
 	    `./_${ type }.css`,
-	    `${ TOKEN_FILE_COMMENTS[type] }
-    ${ tokens.map(({ token, value }) => `  ${ token }: ${ value };`).join('\n') }`
+	    `:root {
+${ TOKEN_FILE_COMMENTS[type] }
+${ tokens.map((token) => getCssValue(token)).join('\n') }
+}`
   ] as const;
 
 // Color
