@@ -156,3 +156,19 @@ export const spacingTokenizer = (node: NodeDocument): DesignToken|undefined => {
   
   return spacingToken;
 };
+
+export const buttonTokenizer = (node: NodeDocument): DesignToken|undefined => {
+  const spacingToken: DesignToken = {
+    type: 'spacing' ,
+    name: node.name,
+    node_id: node.id,
+    value: '0'
+  };
+  
+  const width = node?.absoluteBoundingBox ?
+    node.absoluteBoundingBox.width : node.children[0]?.absoluteBoundingBox?.width;
+  if(width) spacingToken.value = `${ width }`;
+  
+  return spacingToken;
+};
+

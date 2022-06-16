@@ -16,6 +16,7 @@ describe('getStyles, getStyleNodes and processStyles', () => {
       .mockResolvedValueOnce(publishStyles)
       .mockResolvedValueOnce(publishNodes)
       .mockResolvedValueOnce(publishComponents)
+      .mockResolvedValueOnce(publishComponentsNodes)
       .mockResolvedValueOnce(publishComponentsNodes);
 
     const options: Options = {

@@ -143,6 +143,7 @@ describe('getStyles, getStyleNodes and processStyles', () => {
       .mockResolvedValueOnce(publishStyles)
       .mockResolvedValueOnce(publishNodes)
       .mockResolvedValueOnce(publishComponents)
+      .mockResolvedValueOnce(publishComponentsNodes)
       .mockResolvedValueOnce(publishComponentsNodes);
 
     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
@@ -179,11 +180,12 @@ describe('get components', () => {
   it('should create design tokens', async () => {
     mockedAxios.get
       .mockResolvedValueOnce(publishComponents)
+      .mockResolvedValueOnce(publishComponentsNodes)
       .mockResolvedValueOnce(publishComponentsNodes);
     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
     const componentsTokens = await figmaAPI._processStyleComponents('TJzz7ZB6pJvpLhjI5DWG3F');
 
-    expect(componentsTokens.length).toEqual(12);
+    expect(componentsTokens.length).toEqual(24);
     expect(!!componentsTokens[0]?.node_id).toEqual(true);
     expect(!!componentsTokens[0]?.type).toEqual(true);
     expect(!!componentsTokens[0]?.name).toEqual(true);

@@ -10,7 +10,8 @@ import {
   processElevationTokenizer, 
   typographyTokenizer, 
   gridTokenizer, 
-  spacingTokenizer 
+  spacingTokenizer ,
+  buttonTokenizer
 } from './figma.tokenizer';
 
 
@@ -65,6 +66,20 @@ const spacingFilter: NodeFilter = (
   return undefined;
 };
 
+const buttonFilter: NodeFilter = (
+  data: NodeDocument, designTokenFilterFn: DesignTokenFilter
+): DesignToken| undefined => {
+  console.log(data);
+  if(
+    data.type === 'COMPONENT' &&
+    data.absoluteBoundingBox &&
+    data.children.length > 0
+  ) {
+    return designTokenFilterFn(data);
+  }
+  return undefined;
+};
+
 
 export const convertComponentNodesToTokens = (nodes: NodeDocument[]): DesignToken[] => {
   let designTokens: DesignToken[] = [];
@@ -83,6 +98,9 @@ export const convertComponentNodesToTokens = (nodes: NodeDocument[]): DesignToke
 // // These methods have to be passed in order. Methods are run sequentially
 filterFunctions.push(spacingFilter);
 designTokenFunctions.push(spacingTokenizer);
+
+filterFunctions.push(buttonFilter);
+designTokenFunctions.push(buttonTokenizer);
 
 export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignToken[] | DesignToken | undefined => {
   switch(type){
@@ -115,7 +133,38 @@ export const convertStyleNodesToTokens = (nodes: { [key: string]: NodeRoot }, st
 
 
 
+// type FigmaComponent = {
+//   componentProperty: string,
+//   components_node_id: string[],
+//   node_id: string[],
+//   node: NodeRoot[],
+//   properties: {
+//     [name: string]: string[],
+//   },
+// };
 
+// const figmaComponent: FigmaComponent = {
+//   componentProperty:"",
+//   components_node_id:[],
+//   node_id:[],
+//   node:[],
+//   properties: {
+//     type: ["primary", "secondary", "tertiary"],
+//     state: [],
+//     size: []
+//   }
+// }
+
+// properties: {
+//   type: {
+//     primary: '#hexadecimal',
+//     secondary: '#dfewrew'
+//   }
+// }
+
+
+// --primary-button-color: var(--primary-)
+// --primary-button-color-3
 
 //figmaAPIFactory is used in other files 
 export const figmaAPIFactory = (token: string) => {
@@ -154,15 +203,28 @@ export const figmaAPIFactory = (token: string) => {
     });
   };
 
-  const DesignTokenComponents = ['spacer','spacers','spacing','border radius','borderradius'];
+  // We filter for name of components
+  // Returns only the componets we are looking for 
+  // TODO - extend what type of components we are filtering
+  const DESIGN_TOKEN_COMPONENTS_ARRAY: string[] = [
+    'spacer','spacers','spacing','border radius','borderradius','button'
+  ];
   const filterComponentsForDesignTokens = (components: ComponentMetadata[]) => {
     return components.filter((component: ComponentMetadata) => {
       if(!component?.containing_frame?.name) return false;
-      if(DesignTokenComponents.includes(component.containing_frame.name.toLowerCase())) return true;
+      if(DESIGN_TOKEN_COMPONENTS_ARRAY.includes(component.containing_frame.name.toLowerCase())) return true;
       return false;
     });
   };
 
+  const FIGMA_COMPONENTS_ARRAY: string[] = ['button'];
+  const filterComponentVariants = (components: ComponentMetadata[]) => {
+    return components.filter((component: ComponentMetadata) => {
+      if(!component?.containing_frame?.name) return false;
+      if(FIGMA_COMPONENTS_ARRAY.includes(component.containing_frame.name.toLowerCase())) return true;
+      return false;
+    });
+  };
 
 
   
@@ -205,6 +267,20 @@ export const figmaAPIFactory = (token: string) => {
       fileKey,
       dTComponents.map((components: ComponentMetadata) => components.node_id)
     );
+
+
+    const ComponentVariants = filterComponentVariants(figmaComponents);
+    const figmaComponentNodes = await getNodes(
+      fileKey,
+      ComponentVariants.map((components: ComponentMetadata) => components.node_id)
+    );
+    console.log(figmaComponentNodes);
+  
+
+    // const figmaComponentProperties = parseProperties(figmaComponents);
+
+
+
     const componentNodeDocuments: NodeDocument[] = [];
     Object.keys(dTComponentNodes).forEach(
       (nodeKey: string) => {
