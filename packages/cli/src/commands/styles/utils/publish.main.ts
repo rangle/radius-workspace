@@ -162,7 +162,7 @@ export const figmaAPIFactory = (token: string) => {
   };
 
   // TypographyMap object used within processStyles
-  const typoMap: TypographyMap = {
+  const typographyMap: TypographyMap = {
     fontSize: {},
     fontWeight: {},
     letterSpacing: {},
@@ -175,10 +175,10 @@ export const figmaAPIFactory = (token: string) => {
     const nodeIds = figmaStyles.map((style: StyleMetadata)=>style.node_id);
     const nodes = await getNodes(parsedFileKey, nodeIds);
 
-    generateBaseTypographyTokens(nodes, typoMap);
-    generateSemanticTypographyTokens(nodes, typoMap);
+    generateBaseTypographyTokens(nodes, typographyMap);
+    generateSemanticTypographyTokens(nodes, typographyMap);
     //translate token map to design tokens
-    const typographyDesignToken = getTypographyDesignTokens(typoMap);
+    const typographyDesignToken = getTypographyDesignTokens(typographyMap);
 
     let designTokens = convertStyleNodesToTokens(nodes,figmaStyles);
     const componentTokens = await processStyleComponents(parsedFileKey);
@@ -209,7 +209,6 @@ export const figmaAPIFactory = (token: string) => {
         componentNodeDocuments.push(componentNode.document);
       }
     );
-
     return convertComponentNodesToTokens(componentNodeDocuments);
   };
 

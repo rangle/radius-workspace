@@ -194,14 +194,16 @@ export const generateSemanticTypographyTokens = (nodes: FigmaNodeKey, typography
   const typographyNodes = Object.keys(nodes).map((node) => nodes[node])
     .filter((node) => node.document.type == 'TEXT');
 
+
   typographyNodes.forEach((node) => {
+
+    //TODO: capture all style typography groups vs specific typography -> future refactor
     const TYPOGRAPHY_TITLE_CONSTANTS_ARRAY = ['header','paragraph', 'inline', 'navigation', 'hint'];
-    const nodeDocName = node.document.name.replaceAll('/', '-');
+    const nodeDocName = node.document.name.replaceAll('/', '-').toLowerCase();
     if(!typographyMap.fontSemanticSize[nodeDocName] 
       && TYPOGRAPHY_TITLE_CONSTANTS_ARRAY
         .some((typographyPrefix) => node.document.name.toLowerCase().includes(typographyPrefix))) {
-      typographyMap.fontSemanticSize[nodeDocName] 
-      = `var(--font-size-${ node.document.style.fontSize })`;
+      typographyMap.fontSemanticSize[nodeDocName] = `var(--font-size-${ node.document.style.fontSize })`;
     }
   });
 };

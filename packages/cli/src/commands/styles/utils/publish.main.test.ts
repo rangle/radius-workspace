@@ -147,7 +147,7 @@ describe('getStyles, getStyleNodes and processStyles', () => {
 
     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
     const values = await figmaAPI.processStyles('TJzz7ZB6pJvpLhjI5DWG3F');
-    expect(Object.keys(values)).toStrictEqual(['typography', 'elevation', 'grid', 'breakpoint','color','spacing']);
+    expect(Object.keys(values)).toStrictEqual(['grid', 'breakpoint','color','spacing', 'typography', 'elevation']);
     expect(values['typography'][0].type).toStrictEqual('typography');
 
   });
