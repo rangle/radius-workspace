@@ -7,7 +7,6 @@ export const camalize = (str: string) => {
 };
 
 export const tokenizeName = (text: string) => {
-  console.log(text);
   const out = text.toString()
     .replace(/[A-Z]/g, (newText: string) => '-' + newText.toLowerCase())//makes everything kabob case
     .replace(/ *\([^)]*\) */g, '')//removes everything in parentheses

@@ -53,6 +53,7 @@ ${ tokens.map(( token ) => `${ generateElevationCSS(token) }`).join('\n') }
 // Grid
 
 export const grid: RenderTokenFile = (tokens, _type) => {
+  // TODO current breakpoints fail if none are found  
   // const queries = Object.keys(breakpoints).map((k) => ({
   //   viewPort: k,
   //   value: breakpoints[k]
@@ -72,6 +73,7 @@ ${ tokens
 
   }
   ${ 
+// TODO current breakpoints fail if none are found    
 //     queries.map(({ viewPort, value }) => {
 //     return `
 //     /* grid tokens for ${ viewPort } (${ value }) */
@@ -104,6 +106,7 @@ ${ tokens.map(( token ) => `${ generateSpacingCSS(token) }`).join('\n') }
 
 // Typography
 export const typography: RenderTokenFile = (tokens, _type) => { 
+  // TODO current breakpoints fail if none are found
   // console.log(breakpoints);
   // const queries = Object.keys(breakpoints).map((k) => ({
   //   viewPort: k,
@@ -116,6 +119,7 @@ export const typography: RenderTokenFile = (tokens, _type) => {
 :root {
   ${ generateTypographyTokenBody(tokens) }
   ${ 
+  // TODO current breakpoints fail if none are found   
   //   queries.map(({ viewPort, value }) => {
   //   return `
   //   /* typography tokens for ${ viewPort } (${ value }) */

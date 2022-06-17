@@ -8,4 +8,5 @@
 	},
 	"editor.formatOnSave": true,
 	"eslint.format.enable": true,
+	"editor.formatOnType": true,
 }

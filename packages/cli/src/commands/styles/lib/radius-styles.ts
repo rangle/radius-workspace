@@ -56,10 +56,10 @@ export const generateGlobalStyles = async ({
   
   let files: FileTemplate[] = [];
   // by default now we render all the modules
-  if(template === 'all'){
-    for(const renderer in renderers){
-      files = [...files,...renderers[renderer as 'css-modules'|'css-in-js'](designTokens)];
-    }
+  if (template === 'all') {
+    Object.values(renderers).forEach( (renderTemplate) => {
+      files = [...files, ...renderTemplate(designTokens)];
+    });
   } else {
     const renderTemplate = renderers[template];
     files = renderTemplate(designTokens);
