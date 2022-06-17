@@ -4,6 +4,8 @@ import { assert, regexSingleMatch } from './common.utils';
 import { logger } from '../../../logger';
 import figmaConfig from '../../../../figmaFileConfig.json';
 
+
+
 export const getFigmaBlobs = (userToken: string) => {
   const promises = [];
   for (const url of figmaConfig.urls) {

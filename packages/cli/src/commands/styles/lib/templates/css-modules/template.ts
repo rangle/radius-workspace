@@ -8,7 +8,7 @@ import {
   generateSpacingCSS,
   generateTypographyCSS
 } from '../../../utils/cssGenerator.utils';
-import { filterTokenByViewPort, generateTypographyTokenBody } from '../utils';
+import { filterTokenByViewPort } from '../utils';
 
 export const template: RenderTokenFile = (tokens, type) =>
   [
@@ -103,7 +103,9 @@ export const typography: RenderTokenFile = (tokens, _type, { breakpoints }) => {
     `
   /* default typography tokens */
   :root {
-  ${ generateTypographyTokenBody(tokens) }
+  ${ tokens.map((token) => {
+    return `--${ token.name }: ${ token.value };`;
+  }).join('\n') }
   ${ queries.map(({ viewPort, value }) => {
     return `
     /* typography tokens for ${ viewPort } (${ value }) */

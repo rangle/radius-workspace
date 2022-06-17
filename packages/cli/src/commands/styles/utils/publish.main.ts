@@ -4,13 +4,15 @@ import { StyleMetadata, ComponentMetadata, GetFileComponentsResult } from 'figma
 import { StyleType } from 'figma-api/lib/ast-types';
 import { groupByType } from '../lib/radius-styles';
 import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot } from './figma.utils';
-import { NodeFilter, DesignTokenFilter } from './types/FigmaTypes';
+import { NodeFilter, DesignTokenFilter, TypographyMap } from './types/FigmaTypes';
 import { 
   colorDesignTokenizer,
   processElevationTokenizer, 
-  typographyTokenizer, 
   gridTokenizer, 
-  spacingTokenizer 
+  spacingTokenizer, 
+  generateBaseTypographyTokens,
+  generateSemanticTypographyTokens,
+  getTypographyDesignTokens
 } from './figma.tokenizer';
 
 
@@ -36,15 +38,8 @@ const isArray = (dToken: DesignToken | DesignToken[]): dToken is DesignToken[] =
 export const filterFunctions: NodeFilter[] = [];
 export const designTokenFunctions: DesignTokenFilter[]|undefined = [];
 
+//TODO: kept for reference 
 // const colorFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
-//   if(data.type == 'RECTANGLE') {
-//     data.type = 'color';
-//   }
-//   const colorToken = designTokenFilterFn(data);
-//   return colorToken;
-// };
-
-// const typographyFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
 //   if(data.type == 'RECTANGLE') {
 //     data.type = 'color';
 //   }
@@ -88,8 +83,8 @@ export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignTo
   switch(type){
     case 'FILL':
       return colorDesignTokenizer(data);
-    case 'TEXT':
-      return typographyTokenizer(data);
+    // case 'TEXT':
+    //   return typographyTokenizer(data);
     case 'EFFECT':
       return processElevationTokenizer(data);
     case 'GRID':
@@ -112,10 +107,6 @@ export const convertStyleNodesToTokens = (nodes: { [key: string]: NodeRoot }, st
   }
   return designTokens;
 };
-
-
-
-
 
 //figmaAPIFactory is used in other files 
 export const figmaAPIFactory = (token: string) => {
@@ -170,33 +161,13 @@ export const figmaAPIFactory = (token: string) => {
       .then((data: FigmaFileNodes) => { return data.nodes;});
   };
 
-
-  type FontType = {
-    [key: string]: number,
+  // TypographyMap object used within processStyles
+  const typoMap: TypographyMap = {
+    fontSize: {},
+    fontWeight: {},
+    letterSpacing: {},
+    fontSemanticSize: {}
   };
-  type TypographyMap = {
-    fontSize: FontType,
-    fontWeight: FontType,
-    letterSpacing: FontType,
-  };
-  // type typoMapKey = keyof TypographyMap;
-
-
-  //generateBaseTokens
-  //colors
-  //typography
-  //spacing
-  //elevation
-
-  //generateSemanticTypographyTokens()
-  //
-  //generateResponseTypographyTokens() 
-
-  //
-
-  //generateComponentTokens
-  //
-
 
   const processStyles = async (fileKey: string) => {
     const parsedFileKey = getFileKey(fileKey);  
@@ -204,74 +175,14 @@ export const figmaAPIFactory = (token: string) => {
     const nodeIds = figmaStyles.map((style: StyleMetadata)=>style.node_id);
     const nodes = await getNodes(parsedFileKey, nodeIds);
 
-    const typographyNodes = Object.keys(nodes).map((node) => nodes[node])
-      .filter((node) => node.document.type == 'TEXT');
-
-    console.log(typographyNodes);
-
-    const typoMap: TypographyMap = {
-      fontSize: {},
-      fontWeight: {},
-      letterSpacing: {}
-    };
-
-    typographyNodes.forEach((node) => {
-      const prefix = 'font-size-' + node.document.style.fontSize;
-      console.log('font-size ',  node.document.style.fontSize);
-
-      const typographyKeyArray = ['header','paragraph', 'inline', 'navigation', 'hint'];
-      if(!typoMap.fontSize[node.document.name] 
-        && typographyKeyArray.some((typographyPrefix) => node.document.name.toLowerCase().includes(typographyPrefix))) {
-        typoMap.fontSize[node.document.name] = node.document.style.fontSize;
-      }
-      
-      const fontSizePrefix = 'font-size-' + node.document.style.fontSize;
-      if(!typoMap.fontSize[fontSizePrefix]) {
-        typoMap.fontSize[fontSizePrefix] = node.document.style.fontSize;
-      }
-
-      const fontWeightPrefix = 'font-weight-' + node.document.style.fontWeight;
-      if(!typoMap.fontWeight[prefix]) {
-        typoMap.fontWeight[fontWeightPrefix] = node.document.style.fontWeight;
-      }
-
-      const letterSpacingPrefix = 'letter-spacing-' + node.document.style.letterSpacing;
-      if(!typoMap.fontWeight[letterSpacingPrefix]) {
-        typoMap.letterSpacing[letterSpacingPrefix] = node.document.style.letterSpacing;
-      }
-
-
-      // Object.keys(typoMap.fontSize).some((key, index) => {
-      //   console.log(key);
-
-      //   if(!typoMap.fontSize[prefix]) {
-      //     typoMap.fontSize[prefix] = node.document.style.fontSize;
-      //   }
-      // });
-
-
-      // if(!typoMap.fontSize.includes(node.document.style.fontSize)) {
-      //   typoMap.fontSize.push(node.document.style.fontSize);
-      // }
-      // if(!typoMap.fontWeight.includes(node.document.style.fontWeight)) {
-      //   typoMap.fontWeight.push(node.document.style.fontWeight);
-      // }
-      // if(!typoMap.letterSpacing.includes(node.document.style.letterSpacing)) {
-      //   typoMap.letterSpacing.push(node.document.style.letterSpacing);
-      // }
-    });
-
-    // Object.keys(typoMap).forEach((key) => {
-    //   const keyTypoMapKey = key as typoMapKey;
-    //   typoMap[keyTypoMapKey].sort((a,b)=> a-b);
-    // });
-
-    console.log(typoMap);
-
+    generateBaseTypographyTokens(nodes, typoMap);
+    generateSemanticTypographyTokens(nodes, typoMap);
+    //translate token map to design tokens
+    const typographyDesignToken = getTypographyDesignTokens(typoMap);
 
     let designTokens = convertStyleNodesToTokens(nodes,figmaStyles);
     const componentTokens = await processStyleComponents(parsedFileKey);
-    designTokens = [...designTokens,...componentTokens];
+    designTokens = [...designTokens,...componentTokens, ...typographyDesignToken ];
 
     designTokens.sort((first: DesignToken,second: DesignToken)=>{
       if(first.name && second.name && first.name.toLowerCase() > second.name.toLowerCase()) return -1;

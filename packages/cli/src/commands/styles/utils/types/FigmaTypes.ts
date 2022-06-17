@@ -39,3 +39,17 @@ export type FigmaStyle = {
   
 export type DesignTokenFilter = (node: NodeDocument) => DesignToken|undefined;
 export  type NodeFilter = (data: NodeDocument, node: DesignTokenFilter) => DesignToken|undefined;
+
+export type FontType = {
+  [key: string]: number,
+};
+export type FontTypeSemantic = {
+  [key: string]: string,
+};
+export type TypographyMap = {
+  fontSize: FontType,
+  fontSemanticSize: FontTypeSemantic,
+  fontWeight: FontType,
+  letterSpacing: FontType,
+};
+
