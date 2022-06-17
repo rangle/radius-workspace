@@ -30,7 +30,7 @@ describe('getStyles, getStyleNodes and processStyles', () => {
     
     expect(!!files).toBe(true);
     if(files){ 
-      expect(files.length).toBe(6);
+      expect(files.length).toBe(7);
       expect(files[0][0]).toBe('./index.css');
     }
 
