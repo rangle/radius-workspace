@@ -4,11 +4,13 @@ import {
 import {
   generateColorsCSS,
   generateElevationCSS,
-  generateGridCSS,
   generateSpacingCSS,
-  generateTypographyCSS
+  generateGridCSS
 } from '../../../utils/cssGenerator.utils';
-import { filterTokenByViewPort, generateTypographyTokenBody } from '../utils';
+  
+//   generateTypographyCSS
+import { generateTypographyTokenBody } from '../utils';
+// filterTokenByViewPort, 
 import { DesignToken } from '../../../utils/figma.utils';
 
 const getCssValue = (token: DesignToken) => {
@@ -50,11 +52,12 @@ ${ tokens.map(( token ) => `${ generateElevationCSS(token) }`).join('\n') }
 
 // Grid
 
-export const grid: RenderTokenFile = (tokens, _type, { breakpoints }) => {
-  const queries = Object.keys(breakpoints).map((k) => ({
-    viewPort: k,
-    value: breakpoints[k]
-  }));
+export const grid: RenderTokenFile = (tokens, _type) => {
+  // TODO current breakpoints fail if none are found  
+  // const queries = Object.keys(breakpoints).map((k) => ({
+  //   viewPort: k,
+  //   value: breakpoints[k]
+  // }));
   return [
     './_grid.css',
     `
@@ -69,20 +72,23 @@ ${ tokens
     .join('\n') }
 
   }
-  ${ queries.map(({ viewPort, value }) => {
-    return `
-    /* grid tokens for ${ viewPort } (${ value }) */
-    @media screen and (min-width: ${ value }) {
-        :root {
-${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
-    .map(
-      (data: any) =>
-        `${ generateGridCSS(data) }`
-    )
-    .join('\n') }
-        }
-    }`;
-  }).join('') }
+  ${ 
+// TODO current breakpoints fail if none are found    
+//     queries.map(({ viewPort, value }) => {
+//     return `
+//     /* grid tokens for ${ viewPort } (${ value }) */
+//     @media screen and (min-width: ${ value }) {
+//         :root {
+// ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
+//     .map(
+//       (data: any) =>
+//         `${ generateGridCSS(data) }`
+//     )
+//     .join('\n') }
+//         }
+//     }`;
+//   }).join('') 
+  '' }
   `
   ] as const;
 };
@@ -99,31 +105,36 @@ ${ tokens.map(( token ) => `${ generateSpacingCSS(token) }`).join('\n') }
   ] as const;
 
 // Typography
-export const typography: RenderTokenFile = (tokens, _type, { breakpoints }) => {  
-  const queries = Object.keys(breakpoints).map((k) => ({
-    viewPort: k,
-    value: breakpoints[k]
-  }));
+export const typography: RenderTokenFile = (tokens, _type) => { 
+  // TODO current breakpoints fail if none are found
+  // console.log(breakpoints);
+  // const queries = Object.keys(breakpoints).map((k) => ({
+  //   viewPort: k,
+  //   value: breakpoints[k]
+  // }));
   return [
     './_typography.css',
     `
-  /* default typography tokens */
-  :root {
+/* default typography tokens */
+:root {
   ${ generateTypographyTokenBody(tokens) }
-  ${ queries.map(({ viewPort, value }) => {
-    return `
-    /* typography tokens for ${ viewPort } (${ value }) */
-    @media screen and (min-width: ${ value }) {
-        :root {
-        ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
-    .map(
-      (data: any) =>
-        `  ${ generateTypographyCSS(data) }`
-    )
-    .join('\n') }
-        }
-    }`;
-  }).join('') }
+  ${ 
+  // TODO current breakpoints fail if none are found   
+  //   queries.map(({ viewPort, value }) => {
+  //   return `
+  //   /* typography tokens for ${ viewPort } (${ value }) */
+  //   @media screen and (min-width: ${ value }) {
+  //       :root {
+  //       ${ filterTokenByViewPort(viewPort as 'l' | 's' | 'm', tokens)
+  //   .map(
+  //     (data: any) =>
+  //       `  ${ generateTypographyCSS(data) }`
+  //   )
+  //   .join('\n') }
+  //       }
+  //   }`;
+  // }).join('') 
+  '' }
 
 }`] as const;
 };

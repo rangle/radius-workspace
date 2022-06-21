@@ -3,6 +3,7 @@ import {
   DesignToken
 } from '../utils/figma.utils';
 import { figmaAPIFactory } from '../utils/publish.main';
+import { FileTemplate } from './templates/css-in-js/index';
 import { assert } from '../utils/common.utils';
 import { groupBy } from '../utils/common.utils';
 import renderers from './templates';
@@ -28,7 +29,7 @@ export type Options = {
   outputDir?: string,
   dryRun?: boolean,
   consoleOutput?: boolean,
-  template?: 'css-modules' | 'css-in-js',
+  template?: 'css-modules' | 'css-in-js' | 'all',
 };
 
 export const groupByType = <T extends DesignToken>(list: T[]) => groupBy(list, 'type');
@@ -39,12 +40,11 @@ export const generateGlobalStyles = async ({
   outputDir = '.',
   dryRun,
   consoleOutput,
-  template = 'css-modules'
+  template = 'all'
 }: Options) => {
   assert(userToken !== 'none', 'Environment variable FIGMA_TOKEN is empty');
   assert(typeof url === 'string', 'Figma url must be provided');
 
-  const renderTemplate = renderers[template];
 
   const figmaAPI = figmaAPIFactory(userToken);
   const designTokens = await figmaAPI.processStyles(url);
@@ -53,8 +53,17 @@ export const generateGlobalStyles = async ({
   // const retrievedNodes = await getFigmaBlobs(userToken).then((data: FigmaNodeKey[]) => {
   //   return transformNodes(data); 
   // });
-
-  const files = renderTemplate(designTokens);
+  
+  let files: FileTemplate[] = [];
+  // by default now we render all the modules
+  if (template === 'all') {
+    Object.values(renderers).forEach( (renderTemplate) => {
+      files = [...files, ...renderTemplate(designTokens)];
+    });
+  } else {
+    const renderTemplate = renderers[template];
+    files = renderTemplate(designTokens);
+  }
 
   if(dryRun) return files;
 
