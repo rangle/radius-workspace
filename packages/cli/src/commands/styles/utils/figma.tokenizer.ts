@@ -1,4 +1,15 @@
-import { colorToHex, NodeDocument, DesignToken,  Color, processTypographyDesignToken, NodeDoc } from './figma.utils';
+import { 
+  colorToHex, 
+  NodeDocument, 
+  DesignToken, 
+  Color, 
+  processTypographyDesignToken, 
+  NodeDoc, 
+  NodeRoot,
+  componentVariants
+} from './figma.utils';
+import { ComponentMetadata } from 'figma-api/lib/api-types';
+
 // import { DesignToken, , FigmaFileNodes, NodeDocument, FigmaNodeKey,Styles } from './figma.utils';
 import { LayoutGrid } from 'figma-api/lib/ast-types';
 
@@ -24,6 +35,7 @@ export const colorDesignTokenizer = (node: NodeDocument): DesignToken => {
     type: 'color' ,
     name: node.name,
     node_id: node.id,
+    token: `--${ tokenizeName(node.name) }`,
     value: colorToHex(node.fills[0].color)
   };
   return colorToken;
@@ -154,7 +166,8 @@ export const gridTokenizer = (nodeDoc: NodeDocument): DesignToken[] => {
 
 
 
-export const spacingTokenizer = (node: NodeDocument): DesignToken|undefined => {
+export const spacingTokenizer = (_component: ComponentMetadata ,nodeRoot: NodeRoot): DesignToken|undefined => {
+  const node = nodeRoot.document;
   const spacingToken: DesignToken = {
     type: 'spacing' ,
     name: node.name,
@@ -167,4 +180,68 @@ export const spacingTokenizer = (node: NodeDocument): DesignToken|undefined => {
   if(width) spacingToken.value = `${ width }`;
   
   return spacingToken;
+};
+
+
+export const findParentNode = (nested_json: any, target: string, currentNode: any): any =>{
+  // const nested_json = 'document' in node ? node.document: node;
+
+  if(Array.isArray(nested_json)){
+    Object.values(nested_json).forEach((child) => {
+      const found = findParentNode(child, target, currentNode);
+      if(found !== undefined) return found;
+    });
+  } else if(typeof nested_json === 'object') {
+    
+    for(const key in nested_json){
+      if(nested_json.type !== undefined) currentNode = nested_json;
+      if(nested_json[key] === target){
+        return currentNode;
+      }
+      const found = findParentNode(nested_json[key], target, currentNode);
+      if(found !== undefined) return found;
+    }
+  }
+  return undefined;
+};
+
+
+export const parseVariantName = (component: ComponentMetadata): componentVariants => {
+  const variantsOut: componentVariants = {};
+  component.name.split(',').forEach((variableString)=>{
+    const subString = variableString.split('=');
+    if(subString.length < 2) return false;
+    variantsOut[tokenizeName(subString[0])] = subString[1];
+  });
+  return variantsOut;
+};
+
+export const genericComponentTokenizer = (component: ComponentMetadata ,node: NodeRoot): DesignToken[] => {
+  
+  const tokeOut: DesignToken[] = [];
+  const styleCount: { [key: string]: number } = { FILL:0,TEXT:0 };
+
+  Object.entries(node.styles).forEach(( [styleName,style] ) => {
+    if(!component.containing_frame) return;
+
+    styleCount[style.styleType] += 1;
+
+    const attentionToken: DesignToken = {
+      componentName: component.containing_frame.name,
+      type: component.containing_frame.name.toLowerCase(),
+      componentVariant: parseVariantName(component),
+      name: `
+${ component.containing_frame.name } 
+${ component.name }`,
+      node_id: styleName,
+      value: 'undefined'
+    };
+
+    attentionToken.token = `--${ tokenizeName(`${ attentionToken.name } 
+    ${ style.styleType.toLowerCase() } 
+    ${ styleCount[style.styleType] }`) }`;
+    tokeOut.push(attentionToken);
+  });
+
+  return tokeOut;
 };

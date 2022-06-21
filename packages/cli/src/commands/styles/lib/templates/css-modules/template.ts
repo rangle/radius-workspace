@@ -20,7 +20,10 @@ export const template: RenderTokenFile = (tokens, type) =>
   [
 	    `./_${ type }.css`,
 	    `:root {
-${ TOKEN_FILE_COMMENTS[type] }
+${ TOKEN_FILE_COMMENTS[type]??`/**
+* @tokens ${ type }
+* @presenter ${ type }
+*/` }
 ${ tokens.map((token) => getCssValue(token)).join('\n') }
 }`
   ] as const;

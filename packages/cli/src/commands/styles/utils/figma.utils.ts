@@ -197,16 +197,19 @@ type EffectType = {
   showShadowBehindNode: boolean,
 };
 
-export type NodeDoc = EffectsNode & RectangleNode & NodeDocument & {};
+export type componentVariants = { [variant: string]: string };
 
+export type NodeDoc = EffectsNode & RectangleNode & NodeDocument & {};
 export type DesignToken = {
-  type: 'typography' | 'color' | 'spacing' | 'breakpoint' | 'grid' | 'elevation',
+  type: string,
   name: string,
+  componentName?: string, //if it's a sub style of a component
+  componentVariant?: componentVariants,
   viewPort?: string,
   cascade?: boolean,
   token?: string,
   value: string,
-  unit?: 'px'|'em'|'rem'|'variable',
+  unit?: 'px'|'em'|'rem'|'variable', // don't add unit to value if used // variable does not add unit to value on render
   node_id?: string,
 };
 

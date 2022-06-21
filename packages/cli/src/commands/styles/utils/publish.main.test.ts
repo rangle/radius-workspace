@@ -37,7 +37,7 @@ describe('getStyles, getStyleNodes and processStyles', () => {
 
     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
     const values = await figmaAPI.processStyles('TJzz7ZB6pJvpLhjI5DWG3F');
-    expect(Object.keys(values)).toStrictEqual(['typography', 'elevation', 'grid', 'breakpoint','color','spacing']);
+    expect(Object.keys(values)).toStrictEqual(['color','typography', 'spacing', 'grid', 'breakpoint','elevation']);
     expect(values['typography'][0].type).toStrictEqual('typography');
 
   });
@@ -71,9 +71,9 @@ describe('get components', () => {
       .mockResolvedValueOnce(publishComponents)
       .mockResolvedValueOnce(publishComponentsNodes);
     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
-    const componentsTokens = await figmaAPI._processStyleComponents('TJzz7ZB6pJvpLhjI5DWG3F');
+    const componentsTokens = await figmaAPI._processStyleComponents('TJzz7ZB6pJvpLhjI5DWG3F',[]);
 
-    expect(componentsTokens.length).toEqual(12);
+    expect(componentsTokens.length).toEqual(148);
     expect(!!componentsTokens[0]?.node_id).toEqual(true);
     expect(!!componentsTokens[0]?.type).toEqual(true);
     expect(!!componentsTokens[0]?.name).toEqual(true);

@@ -25,7 +25,7 @@ export const fileTemplates: RenderTokenGroup = (tokenGroup) => {
   const context = createTokenContext(tokenGroup);
   return [
     rootTemplate(tokenGroup),
-    ...entries(tokenGroup).filter(([_type, tokens])=>{
+    ...Object.entries(tokenGroup).filter(([_type, tokens])=>{
       if(tokens) return true;
       return false;
     }).map(([type, tokens]) => {

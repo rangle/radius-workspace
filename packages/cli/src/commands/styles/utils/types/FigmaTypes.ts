@@ -1,5 +1,5 @@
-import { StyleMetadata } from 'figma-api/lib/api-types';
-import { DesignToken, NodeDocument } from '../figma.utils';
+import { StyleMetadata, ComponentMetadata } from 'figma-api/lib/api-types';
+import { DesignToken, NodeRoot } from '../figma.utils';
 
 export type StyleResponse = {
   meta: {
@@ -37,5 +37,13 @@ export type FigmaStyle = {
   [key: string]: StyleMetadata, 
 };
   
-export type DesignTokenFilter = (node: NodeDocument) => DesignToken|undefined;
-export  type NodeFilter = (data: NodeDocument, node: DesignTokenFilter) => DesignToken|undefined;
+export type DesignTokenFilter = (
+  component: ComponentMetadata, 
+  node: NodeRoot
+) => DesignToken|DesignToken[]|undefined;
+
+export  type NodeFilter = (
+  component: ComponentMetadata, 
+  data: NodeRoot, 
+  node: DesignTokenFilter
+) => DesignToken|DesignToken[]|undefined;
