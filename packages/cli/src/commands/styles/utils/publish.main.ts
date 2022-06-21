@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { StyleMetadata, ComponentMetadata, GetFileComponentsResult } from 'figma-api/lib/api-types';
 import { StyleType } from 'figma-api/lib/ast-types';
 import { groupByType } from '../lib/radius-styles';
-import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot } from './figma.utils';
+import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot, FigmaNodeKey } from './figma.utils';
 import { NodeFilter, DesignTokenFilter } from './types/FigmaTypes';
 import { 
   colorDesignTokenizer,
@@ -37,7 +37,7 @@ export const designTokenFunctions: DesignTokenFilter[]|undefined = [];
 
 const spacingFilter: NodeFilter = (
   data: NodeDocument, designTokenFilterFn: DesignTokenFilter
-): DesignToken| undefined => {
+): DesignToken| DesignToken[] | undefined => {
   if(
     data.type === 'COMPONENT' &&
     data.absoluteBoundingBox &&
@@ -135,8 +135,8 @@ export const figmaAPIFactory = (token: string) => {
     });
   };
 
-  const getNodes = (fileKey: string, nodeIds: string[])=> {
-    if(nodeIds.length === 0) return {} as { [key: string]: NodeRoot };
+  const getNodes = (fileKey: string, nodeIds: string[]): Promise<FigmaNodeKey>=> {
+    if (nodeIds.length === 0) return new Promise((resolve) => { resolve({}); }) as Promise<FigmaNodeKey>;
     // TODO break the long node requests into small requests
     // https://api.figma.com/v1/files/${fileKey}/nodes?ids=${nodeIds.join(",")}
     return getData(`https://api.figma.com/v1/files/${ getFileKey(fileKey) }/nodes?ids=${ nodeIds.join(',') }`)
