@@ -36,9 +36,6 @@ export type GetStylesListType = {
 export type FigmaStyle = {
   [key: string]: StyleMetadata, 
 };
-  
-export type DesignTokenFilter = (node: NodeDocument) => DesignToken|undefined;
-export  type NodeFilter = (data: NodeDocument, node: DesignTokenFilter) => DesignToken|undefined;
 
 export type FontType = {
   [key: string]: number,
@@ -53,3 +50,5 @@ export type TypographyMap = {
   letterSpacing: FontType,
 };
 
+export type DesignTokenFilter = (node: NodeDocument) => DesignToken|DesignToken[]|undefined;
+export  type NodeFilter = (data: NodeDocument, node: DesignTokenFilter) => DesignToken|DesignToken[]|undefined;

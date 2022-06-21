@@ -15,8 +15,8 @@ const entries = mapKeys<DesignTokenGroup>([
 
 const rootTemplate: RenderTokenGroupFile = (tokenGroup) => {
   let content = '';
-  entries(tokenGroup).forEach(([type]) => {
-    content = content + `@import "./_${ type }.css";\n`;
+  Object.keys(tokenGroup).forEach((key: string) => {
+    content = content + `@import "./_${ key }.css";\n`;
   });
   return ['./index.css', content];
 };

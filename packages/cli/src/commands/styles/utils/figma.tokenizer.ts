@@ -10,6 +10,9 @@ import {
 import { LayoutGrid } from 'figma-api/lib/ast-types';
 import { TypographyMap } from './types/FigmaTypes';
 
+export const camalize = (str: string) => {
+  return str.replace(/-./g, (match: string) => match[1].toUpperCase()).replace(/-/g,'');
+};
 
 export const tokenizeName = (text: string) => {
   const out = text.toString()
@@ -32,6 +35,7 @@ export const colorDesignTokenizer = (node: NodeDocument): DesignToken => {
     type: 'color' ,
     name: node.name,
     node_id: node.id,
+    token: tokenizeName(node.name),
     value: colorToHex(node.fills[0].color)
   };
   return colorToken;
@@ -166,6 +170,7 @@ export const spacingTokenizer = (node: NodeDocument): DesignToken|undefined => {
   const spacingToken: DesignToken = {
     type: 'spacing' ,
     name: node.name,
+    token: tokenizeName(node.name),
     node_id: node.id,
     value: '0'
   };
@@ -242,7 +247,8 @@ export const convertTypographyMap = (
     const designToken = {
       name: key,
       value: value,
-      type: 'typography'
+      type: 'typography',
+      token: key
     } as DesignToken;
     return designToken;
   } );

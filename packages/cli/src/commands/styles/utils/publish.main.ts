@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { StyleMetadata, ComponentMetadata, GetFileComponentsResult } from 'figma-api/lib/api-types';
 import { StyleType } from 'figma-api/lib/ast-types';
 import { groupByType } from '../lib/radius-styles';
-import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot } from './figma.utils';
+import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot, FigmaNodeKey } from './figma.utils';
 import { NodeFilter, DesignTokenFilter, TypographyMap } from './types/FigmaTypes';
 import { 
   colorDesignTokenizer,
@@ -48,7 +48,7 @@ export const designTokenFunctions: DesignTokenFilter[]|undefined = [];
 
 const spacingFilter: NodeFilter = (
   data: NodeDocument, designTokenFilterFn: DesignTokenFilter
-): DesignToken| undefined => {
+): DesignToken| DesignToken[] | undefined => {
   if(
     data.type === 'COMPONENT' &&
     data.absoluteBoundingBox &&
@@ -123,14 +123,14 @@ export const figmaAPIFactory = (token: string) => {
   };
 
   // GET 
-  const getStyles = (fileKey: string): Promise<StyleMetadata[]> =>{
+  const getStyles = (fileKey: string): Promise<StyleMetadata[]> => {
     return getData(`https://api.figma.com/v1/files/${ fileKey }/styles`).then(({ meta: { styles } }) => {
-      if(styles.length === 0) throw Error('There are no styles, make sure the figma file is published.');
+      if (styles.length === 0) throw Error('There are no styles, make sure the figma file is published.');
       return styles;
     });
   };
 
-  const getComponents = (fileKey: string): Promise<ComponentMetadata[]|undefined> => {
+  const getComponents = (fileKey: string): Promise<ComponentMetadata[] | undefined> => {
     return getData(`https://api.figma.com/v1/files/${ getFileKey(fileKey) }/components`)
       .then((data: GetFileComponentsResult) => {
         return data?.meta?.components;
@@ -140,17 +140,18 @@ export const figmaAPIFactory = (token: string) => {
   const DesignTokenComponents = ['spacer','spacers','spacing','border radius','borderradius'];
   const filterComponentsForDesignTokens = (components: ComponentMetadata[]) => {
     return components.filter((component: ComponentMetadata) => {
-      if(!component?.containing_frame?.name) return false;
-      if(DesignTokenComponents.includes(component.containing_frame.name.toLowerCase())) return true;
+      if (!component?.containing_frame?.name) return false;
+      if (DesignTokenComponents.includes(component.containing_frame.name.toLowerCase())) return true;
       return false;
     });
   };
 
-  const getNodes = (fileKey: string, nodeIds: string[])=> {
+  const getNodes = (fileKey: string, nodeIds: string[]): Promise<FigmaNodeKey>=> {
+    if (nodeIds.length === 0) return new Promise((resolve) => { resolve({}); }) as Promise<FigmaNodeKey>;
     // TODO break the long node requests into small requests
     // https://api.figma.com/v1/files/${fileKey}/nodes?ids=${nodeIds.join(",")}
     return getData(`https://api.figma.com/v1/files/${ getFileKey(fileKey) }/nodes?ids=${ nodeIds.join(',') }`)
-      .then((data: FigmaFileNodes) => { return data.nodes;});
+      .then((data: FigmaFileNodes) => { return data.nodes; });
   };
 
   // TypographyMap object used within processStyles
@@ -162,7 +163,7 @@ export const figmaAPIFactory = (token: string) => {
   };
 
   const processStyles = async (fileKey: string) => {
-    const parsedFileKey = getFileKey(fileKey);  
+    const parsedFileKey = getFileKey(fileKey);
     const figmaStyles = await getStyles(parsedFileKey);
     const nodeIds = figmaStyles.map((style: StyleMetadata)=>style.node_id);
     const nodes = await getNodes(parsedFileKey, nodeIds);
@@ -176,11 +177,9 @@ export const figmaAPIFactory = (token: string) => {
     const componentTokens = await processStyleComponents(parsedFileKey);
     designTokens = [...designTokens,...componentTokens, ...typographyDesignToken ];
 
-    designTokens.sort((first: DesignToken,second: DesignToken)=>{
-      if(first.token && second.token && first.token > second.token) return -1;
-      if(first.name && second.name && first.name.toLowerCase() > second.name.toLowerCase()) return -1;
-      return 1;
-    });
+    designTokens = designTokens
+      .filter((dsToken: DesignToken) => !!dsToken.token)
+      .sort((first: DesignToken, second: DesignToken) => first.token > second.token ? 1 : -1);
 
     // // groups them all
     return groupByType(designTokens);
@@ -189,12 +188,10 @@ export const figmaAPIFactory = (token: string) => {
   const processStyleComponents = async (fileKey: string) => {
     // Get design tokens from components //Grid, Spacing, Border Radius
     const figmaComponents = await getComponents(fileKey);
-    if(!figmaComponents) throw Error('Failed to get the components');
+    if (!figmaComponents) throw Error('Failed to get the components');
     const dTComponents = filterComponentsForDesignTokens(figmaComponents);
-    const dTComponentNodes = await getNodes(
-      fileKey,
-      dTComponents.map((components: ComponentMetadata) => components.node_id)
-    );
+    const nodes = dTComponents.map((components: ComponentMetadata) => components.node_id);
+    const dTComponentNodes = await getNodes(fileKey, nodes);
     const componentNodeDocuments: NodeDocument[] = [];
     Object.keys(dTComponentNodes).forEach(
       (nodeKey: string) => {
@@ -210,7 +207,7 @@ export const figmaAPIFactory = (token: string) => {
     _getData: getData,
     _getNodes: getNodes,
     _getStyles: getStyles,
-    _processStyleComponents:processStyleComponents,
+    _processStyleComponents: processStyleComponents,
     processStyles
   };
 };

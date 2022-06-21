@@ -23,16 +23,24 @@ describe('getStyles, getStyleNodes and processStyles', () => {
       userToken: 'xxxxxx-Token-xxxxxx',
       outputDir: './generatedTokens',
       dryRun:true,
-      consoleOutput:false,
-      template:'css-modules'
+      consoleOutput:false
     };
     const files = await generateGlobalStyles(options);
-    
     expect(!!files).toBe(true);
     if(files){ 
-      expect(files.length).toBe(7);
+      expect(files.length).toBe(8);
+
+      const fileNames = files.map((file) => file[0]);
+      expect(fileNames).toStrictEqual([
+        './index.css',
+        './_color.css',
+        './_grid.css',
+        './_typography.css',
+        './_spacing.css',
+        './_elevation.css',
+        './_breakpoint.css',
+        'styledTokens.json']);
       expect(files[0][0]).toBe('./index.css');
     }
-
   });
 });
