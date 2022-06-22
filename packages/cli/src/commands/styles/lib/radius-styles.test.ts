@@ -30,9 +30,9 @@ describe('getStyles, getStyleNodes and processStyles', () => {
     };
     const files = await generateGlobalStyles(options);
     expect(!!files).toBe(true);
-
-    if (files) {
+    if(files){ 
       expect(files.length).toBe(8);
+
       const fileNames = files.map((file) => file[0]);
       expect(fileNames).toStrictEqual([
         './index.css',
