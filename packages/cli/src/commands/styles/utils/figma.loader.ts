@@ -5,6 +5,8 @@ import { logger } from '../../../logger';
 import figmaConfig from '../../../../figmaFileConfig.json';
 import { figmaAPIFactory } from './publish.main';
 
+
+
 export const getFigmaBlobs = (userToken: string) => {
   const promises: Promise<FigmaNodeKey>[] = [];
   const figmaApi = figmaAPIFactory(userToken);

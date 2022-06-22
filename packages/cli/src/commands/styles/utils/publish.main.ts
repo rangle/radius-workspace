@@ -4,13 +4,15 @@ import { StyleMetadata, ComponentMetadata, GetFileComponentsResult } from 'figma
 import { StyleType } from 'figma-api/lib/ast-types';
 import { groupByType } from '../lib/radius-styles';
 import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot, FigmaNodeKey } from './figma.utils';
-import { NodeFilter, DesignTokenFilter } from './types/FigmaTypes';
+import { NodeFilter, DesignTokenFilter, TypographyMap } from './types/FigmaTypes';
 import { 
   colorDesignTokenizer,
   processElevationTokenizer, 
-  typographyTokenizer, 
   gridTokenizer, 
-  spacingTokenizer 
+  spacingTokenizer, 
+  generateBaseTypographyTokens,
+  generateSemanticTypographyTokens,
+  getTypographyDesignTokens
 } from './figma.tokenizer';
 
 //Utility methods 
@@ -34,6 +36,15 @@ const isArray = (dToken: DesignToken | DesignToken[]): dToken is DesignToken[] =
 // Functions
 export const filterFunctions: NodeFilter[] = [];
 export const designTokenFunctions: DesignTokenFilter[]|undefined = [];
+
+//TODO: kept for reference 
+// const colorFilter: NodeFilter = (data: NodeDocument, designTokenFilterFn: DesignTokenFilter): DesignToken => {
+//   if(data.type == 'RECTANGLE') {
+//     data.type = 'color';
+//   }
+//   const colorToken = designTokenFilterFn(data);
+//   return colorToken;
+// };
 
 const spacingFilter: NodeFilter = (
   data: NodeDocument, designTokenFilterFn: DesignTokenFilter
@@ -70,8 +81,8 @@ export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignTo
   switch(type){
     case 'FILL':
       return colorDesignTokenizer(data);
-    case 'TEXT':
-      return typographyTokenizer(data);
+    // case 'TEXT':
+    //   return typographyTokenizer(data);
     case 'EFFECT':
       return processElevationTokenizer(data);
     case 'GRID':
@@ -143,17 +154,28 @@ export const figmaAPIFactory = (token: string) => {
       .then((data: FigmaFileNodes) => { return data.nodes; });
   };
 
+  // TypographyMap object used within processStyles
+  const typographyMap: TypographyMap = {
+    fontSize: {},
+    fontWeight: {},
+    letterSpacing: {},
+    fontSemanticSize: {}
+  };
 
   const processStyles = async (fileKey: string) => {
     const parsedFileKey = getFileKey(fileKey);
     const figmaStyles = await getStyles(parsedFileKey);
-    
-    const nodeIds = figmaStyles.map((style: StyleMetadata) => style.node_id);
+    const nodeIds = figmaStyles.map((style: StyleMetadata)=>style.node_id);
     const nodes = await getNodes(parsedFileKey, nodeIds);
 
-    let designTokens = convertStyleNodesToTokens(nodes, figmaStyles);
+    generateBaseTypographyTokens(nodes, typographyMap);
+    generateSemanticTypographyTokens(nodes, typographyMap);
+    //translate token map to design tokens
+    const typographyDesignToken = getTypographyDesignTokens(typographyMap);
+
+    let designTokens = convertStyleNodesToTokens(nodes,figmaStyles);
     const componentTokens = await processStyleComponents(parsedFileKey);
-    designTokens = [...designTokens, ...componentTokens];
+    designTokens = [...designTokens,...componentTokens, ...typographyDesignToken ];
 
     designTokens = designTokens
       .filter((dsToken: DesignToken) => !!dsToken.token)
@@ -177,7 +199,6 @@ export const figmaAPIFactory = (token: string) => {
         componentNodeDocuments.push(componentNode.document);
       }
     );
-
     return convertComponentNodesToTokens(componentNodeDocuments);
   };
 

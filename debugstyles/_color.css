@@ -1,0 +1,40 @@
+:root {
+  /**
+  * @tokens Colors
+  * @presenter Color
+  */
+
+--background-1: #ffffff;
+--background-2: #f1f1f1;
+--background-annotation: #818181;
+--brand-primary-dark: #b73b20;
+--brand-primary-darker: #a3331a;
+--brand-primary-light: #ea5435;
+--brand-primary-main: #d44527;
+--brand-secondary-dark: #1a1919;
+--brand-secondary-darker: #0e0e0e;
+--brand-secondary-light: #3e3e3e;
+--brand-secondary-main: #262626;
+--text-disabled: #9c9c9c;
+--text-error: #d0421b;
+--text-inversed: #ffffff;
+--text-link: #0366d6;
+--text-primary: #262626;
+--text-secondary: #757575;
+--text-success: #138000;
+--u-i-alert-dark: #b16400;
+--u-i-alert-default: #db7c00;
+--u-i-alert-light: #ef9827;
+--u-i-error-dark: #ab1010;
+--u-i-error-default: #d60000;
+--u-i-error-light: #ed1a1a;
+--u-i-grayscale-disabled: #dedede;
+--u-i-grayscale-primary: #262626;
+--u-i-grayscale-quaternary: #ffffff;
+--u-i-grayscale-secondary: #828181;
+--u-i-grayscale-tertiary: #ededed;
+--u-i-success-dark: #105e03;
+--u-i-success-default: #138000;
+--u-i-success-light: #34af1f;
+
+}

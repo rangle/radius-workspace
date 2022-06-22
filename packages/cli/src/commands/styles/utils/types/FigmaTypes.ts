@@ -36,6 +36,19 @@ export type GetStylesListType = {
 export type FigmaStyle = {
   [key: string]: StyleMetadata, 
 };
-  
+
+export type FontType = {
+  [key: string]: number,
+};
+export type FontTypeSemantic = {
+  [key: string]: string,
+};
+export type TypographyMap = {
+  fontSize: FontType,
+  fontSemanticSize: FontTypeSemantic,
+  fontWeight: FontType,
+  letterSpacing: FontType,
+};
+
 export type DesignTokenFilter = (node: NodeDocument) => DesignToken|DesignToken[]|undefined;
 export  type NodeFilter = (data: NodeDocument, node: DesignTokenFilter) => DesignToken|DesignToken[]|undefined;

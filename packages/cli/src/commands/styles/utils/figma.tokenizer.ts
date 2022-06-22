@@ -1,6 +1,14 @@
-import { colorToHex, NodeDocument, DesignToken,  Color, processTypographyDesignToken, NodeDoc } from './figma.utils';
+import { 
+  colorToHex, 
+  NodeDocument, 
+  DesignToken,  
+  Color, 
+  processTypographyDesignToken,
+  NodeDoc, 
+  FigmaNodeKey } from './figma.utils';
 // import { DesignToken, , FigmaFileNodes, NodeDocument, FigmaNodeKey,Styles } from './figma.utils';
 import { LayoutGrid } from 'figma-api/lib/ast-types';
+import { TypographyMap } from './types/FigmaTypes';
 
 export const camalize = (str: string) => {
   return str.replace(/-./g, (match: string) => match[1].toUpperCase()).replace(/-/g,'');
@@ -172,4 +180,76 @@ export const spacingTokenizer = (node: NodeDocument): DesignToken|undefined => {
   if(width) spacingToken.value = `${ width }`;
   
   return spacingToken;
+};
+
+
+export const generateBaseTypographyTokens = (nodes: FigmaNodeKey, typographyMap: TypographyMap) => {
+  const typographyNodes = Object.keys(nodes).map((node) => nodes[node])
+    .filter((node) => node.document.type == 'TEXT');
+
+  typographyNodes.forEach((node) => {
+    const prefix = 'font-size-' + node.document.style.fontSize;
+
+    const fontSizePrefix = 'font-size-' + node.document.style.fontSize;
+    if(!typographyMap.fontSize[fontSizePrefix]) {
+      typographyMap.fontSize[fontSizePrefix] = node.document.style.fontSize;
+    }
+
+    const fontWeightPrefix = 'font-weight-' + node.document.style.fontWeight;
+    if(!typographyMap.fontWeight[prefix]) {
+      typographyMap.fontWeight[fontWeightPrefix] = node.document.style.fontWeight;
+    }
+
+    const letterSpacingPrefix = 'letter-spacing-' + node.document.style.letterSpacing;
+    if(!typographyMap.fontWeight[letterSpacingPrefix]) {
+      typographyMap.letterSpacing[letterSpacingPrefix] = node.document.style.letterSpacing;
+    }
+  });
+};
+
+export const generateSemanticTypographyTokens = (nodes: FigmaNodeKey, typographyMap: TypographyMap) => {
+  const typographyNodes = Object.keys(nodes).map((node) => nodes[node])
+    .filter((node) => node.document.type == 'TEXT');
+
+
+  typographyNodes.forEach((node) => {
+
+    //TODO: capture all style typography groups vs specific typography -> future refactor
+    const TYPOGRAPHY_TITLE_CONSTANTS_ARRAY = ['header','paragraph', 'inline', 'navigation', 'hint'];
+    const nodeDocName = node.document.name.replaceAll('/', '-').toLowerCase();
+    if(!typographyMap.fontSemanticSize[nodeDocName] 
+      && TYPOGRAPHY_TITLE_CONSTANTS_ARRAY
+        .some((typographyPrefix) => node.document.name.toLowerCase().includes(typographyPrefix))) {
+      typographyMap.fontSemanticSize[nodeDocName] = `var(--font-size-${ node.document.style.fontSize })`;
+    }
+  });
+};
+
+export const getTypographyDesignTokens = (typoMap: TypographyMap) => {
+  return [
+    ...convertTypographyMap(typoMap, 'fontSize'),
+    ...convertTypographyMap(typoMap, 'fontWeight'),
+    ...convertTypographyMap(typoMap, 'letterSpacing')
+      .sort((a, b) => Number(a.value) - Number(b.value))
+      .map((letterSpacingElement, index) => {
+        letterSpacingElement.name = 'letter-spacing-' + index;
+        return letterSpacingElement;
+      })
+      .sort((a, b) => Number(b.value) - Number(a.value))
+  ];
+};
+
+export const convertTypographyMap = (
+  typoMap: TypographyMap,
+  fontGroup: 'fontSize' | 'fontSemanticSize' | 'fontWeight' | 'letterSpacing' ): DesignToken[] => {
+  return Object.keys(typoMap[fontGroup]).map((key) => {
+    const value = typoMap[fontGroup][key].toString();
+    const designToken = {
+      name: key,
+      value: value,
+      type: 'typography',
+      token: key
+    } as DesignToken;
+    return designToken;
+  } );
 };

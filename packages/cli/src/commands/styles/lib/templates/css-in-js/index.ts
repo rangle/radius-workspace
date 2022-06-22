@@ -25,6 +25,7 @@ const setToken = (token: string) => {
   return camalize(token);
 };
 
+//TODO: refactor to make it easier to read
 export const fileTemplates = (tokenGroups: DesignTokenGroup): FileTemplate[] => {
   const tokensOut: TokensAsJson = {};
   Object.keys(tokenGroups).forEach((tokenGroup: string)=>{

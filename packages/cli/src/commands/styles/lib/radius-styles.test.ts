@@ -22,15 +22,25 @@ describe('getStyles, getStyleNodes and processStyles', () => {
       url:'https://api.figma.com/v1/file/TJzz7ZB6pJvpLhjI5DWG3F/',
       userToken: 'xxxxxx-Token-xxxxxx',
       outputDir: './generatedTokens',
-      dryRun:false,
+      dryRun:true,
       consoleOutput:false
     };
     const files = await generateGlobalStyles(options);
-    console.log(files);
-    // expect(!!files).toBe(true);
-    // if(files){ 
-    //   expect(files.length).toBe(7);
-    //   expect(files[0][0]).toBe('./index.css');
-    // }
+    expect(!!files).toBe(true);
+    if(files){ 
+      expect(files.length).toBe(8);
+
+      const fileNames = files.map((file) => file[0]);
+      expect(fileNames).toStrictEqual([
+        './index.css',
+        './_color.css',
+        './_grid.css',
+        './_typography.css',
+        './_spacing.css',
+        './_elevation.css',
+        './_breakpoint.css',
+        'styledTokens.json']);
+      expect(files[0][0]).toBe('./index.css');
+    }
   });
 });
