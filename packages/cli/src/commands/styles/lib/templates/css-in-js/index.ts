@@ -1,4 +1,4 @@
-import { DesignTokenGroup, DesignToken } from '../../../utils/figma.utils';
+import { DesignToken } from '../../../utils/figma.utils';
 import { camalize } from '../../../utils/figma.tokenizer';
 
 export type FileTemplate = readonly [fileName: string, content: string];
@@ -26,15 +26,17 @@ const setToken = (token: string) => {
 };
 
 //TODO: refactor to make it easier to read
-export const fileTemplates = (tokenGroups: DesignTokenGroup): FileTemplate[] => {
+export const fileTemplates = (designTokens: DesignToken[]): FileTemplate[] => {
   const tokensOut: TokensAsJson = {};
-  Object.keys(tokenGroups).forEach((tokenGroup: string)=>{
-    const designTokens: DesignToken[] = tokenGroups[tokenGroup as keyof DesignTokenGroup];
-    tokensOut[tokenGroup] = {};
-    designTokens.forEach((designToken: DesignToken) => {
-      const token = designToken.token?designToken.token:'no token';
-      tokensOut[tokenGroup][setToken(token)] = setValue(designToken);
-    });
+
+  designTokens.forEach((designToken) => {
+    const token = designToken.token ? designToken.token : 'no token';
+    const key = setToken(token);
+    const value = setValue(designToken);
+    
+    tokensOut[designToken.type] == undefined
+      ? (tokensOut[designToken.type] = {}, tokensOut[designToken.type][key] = value)
+      : tokensOut[designToken.type][key] = value;
   });
  
   return [['styledTokens.json', JSON.stringify(tokensOut)]];

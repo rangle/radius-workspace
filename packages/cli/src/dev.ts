@@ -4,7 +4,7 @@ import 'dotenv/config';
 // To run in debug mode, add figma file url (located in package.json scripts -> cli: styles)
 const url = process.env['FIGMA_URL'] ? process.env['FIGMA_URL'] : '';
 const dryRun = false;
-const template = 'css-modules';
+const template = 'all';
 
 // Assign user token
 const userToken = process.env['FIGMA_TOKEN'];

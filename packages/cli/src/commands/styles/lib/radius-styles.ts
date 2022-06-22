@@ -45,9 +45,8 @@ export const generateGlobalStyles = async ({
   assert(userToken !== 'none', 'Environment variable FIGMA_TOKEN is empty');
   assert(typeof url === 'string', 'Figma url must be provided');
 
-
   const figmaAPI = figmaAPIFactory(userToken);
-  const designTokens = await figmaAPI.processStyles(url);
+  const { tokenGroup, designTokens } = await figmaAPI.processStyles(url);
 
   // Using DynamicParser
   // const retrievedNodes = await getFigmaBlobs(userToken).then((data: FigmaNodeKey[]) => {
@@ -56,13 +55,19 @@ export const generateGlobalStyles = async ({
   
   let files: FileTemplate[] = [];
   // by default now we render all the modules
+  const jsTemplate = renderers['css-in-js'];
+  const cssModulesTemplate = renderers['css-modules'];
+
   if (template === 'all') {
-    Object.values(renderers).forEach( (renderTemplate) => {
-      files = [...files, ...renderTemplate(designTokens)];
-    });
-  } else {
-    const renderTemplate = renderers[template];
-    files = renderTemplate(designTokens);
+    files = [...cssModulesTemplate(tokenGroup), ...jsTemplate(designTokens) ];
+  }
+
+  if (template === 'css-modules') {
+    files = cssModulesTemplate(tokenGroup);
+  }
+
+  if (template === 'css-in-js') {
+    files = jsTemplate(designTokens);
   }
 
   if(dryRun) return files;
