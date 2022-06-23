@@ -184,17 +184,14 @@ export const spacingTokenizer = (_component: ComponentMetadata ,nodeRoot: NodeRo
 
 
 export const findParentNode = (nested_json: any, target: string, currentNode: any): any =>{
-  // const nested_json = 'document' in node ? node.document: node;
-
   if(Array.isArray(nested_json)){
-    Object.values(nested_json).forEach((child) => {
-      const found = findParentNode(child, target, currentNode);
+    for (const key in Object.values(nested_json)){
+      const found = findParentNode(nested_json[key], target, currentNode);
       if(found !== undefined) return found;
-    });
+    }
   } else if(typeof nested_json === 'object') {
-    
+    if(nested_json && nested_json.type && nested_json.type !== undefined) currentNode = nested_json;
     for(const key in nested_json){
-      if(nested_json.type !== undefined) currentNode = nested_json;
       if(nested_json[key] === target){
         return currentNode;
       }
@@ -217,31 +214,43 @@ export const parseVariantName = (component: ComponentMetadata): componentVariant
 };
 
 export const genericComponentTokenizer = (component: ComponentMetadata ,node: NodeRoot): DesignToken[] => {
-  
   const tokeOut: DesignToken[] = [];
+  if(!component.containing_frame?.name) return tokeOut;
+
   const styleCount: { [key: string]: number } = { FILL:0,TEXT:0 };
+
+  const componentVariant = parseVariantName(component);
 
   Object.entries(node.styles).forEach(( [styleName,style] ) => {
     if(!component.containing_frame) return;
 
     styleCount[style.styleType] += 1;
-
     const attentionToken: DesignToken = {
       componentName: component.containing_frame.name,
       type: component.containing_frame.name.toLowerCase(),
-      componentVariant: parseVariantName(component),
-      name: `
-${ component.containing_frame.name } 
-${ component.name }`,
+      componentVariant,
+      name: `${ component.containing_frame.name } ${ component.name }`,
       node_id: styleName,
       value: 'undefined'
     };
 
+    // use the name of the component is a the token
     attentionToken.token = `--${ tokenizeName(`${ attentionToken.name } 
     ${ style.styleType.toLowerCase() } 
     ${ styleCount[style.styleType] }`) }`;
+
+    const baseNode = findParentNode(node.document,styleName,undefined);
+
+    if(style.styleType === 'FILL'){
+      if( baseNode?.fills && baseNode.fills[0] && baseNode.fills[0].color){
+        attentionToken.value = colorToHex(baseNode.fills[0].color);
+      } else if( baseNode?.background && baseNode.background[0] && baseNode.background[0].color ){
+        attentionToken.value = colorToHex(baseNode.background[0].color);
+      }
+    }
+    // for getting the node text styles since it's not just one style, we'll have to come up with a interesting soultion
+
     tokeOut.push(attentionToken);
   });
-
   return tokeOut;
 };

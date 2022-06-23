@@ -3,7 +3,7 @@ import { tokenizeName } from './figma.tokenizer';
 
 export const generateColorsCSS = (designToken: DesignToken) => {
   if(!designToken.token) designToken.token = tokenizeName(designToken.name);
-  const key = `--${ designToken.token }`;
+  const key = `${ designToken.token }`;
   const value = designToken.value;
   return `${ key }: ${ value };`;
 };

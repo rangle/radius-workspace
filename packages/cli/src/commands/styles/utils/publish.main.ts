@@ -11,7 +11,8 @@ import {
   typographyTokenizer, 
   gridTokenizer, 
   spacingTokenizer,
-  genericComponentTokenizer
+  genericComponentTokenizer,
+  tokenizeName
 } from './figma.tokenizer';
 
 //Utility methods 
@@ -42,10 +43,7 @@ const spacingFilter: NodeFilter = (
   designTokenFilterFn: DesignTokenFilter
 ): DesignToken| DesignToken[] | undefined => {
   if(
-    component.containing_frame?.name.toLowerCase().includes('spacer'),
-    data.document.type === 'COMPONENT' &&
-    data.document.absoluteBoundingBox &&
-    data.document.children.length > 0
+    component.containing_frame?.name?.toLowerCase().includes('spacing')
   ) {
     return designTokenFilterFn(component,data);
   }
@@ -58,7 +56,7 @@ const attentionFilter: NodeFilter = (
   designTokenFilterFn: DesignTokenFilter
 ): DesignToken| DesignToken[] | undefined => {
   if(
-    component.containing_frame?.name.toLowerCase().includes('alert')
+    component.containing_frame?.name?.toLowerCase().includes('alert')
   ) {
     return designTokenFilterFn(component,data);
   }
@@ -94,7 +92,7 @@ filterFunctions.push(attentionFilter);
 designTokenFunctions.push(genericComponentTokenizer);
 
 filterFunctions.push((component,data,returnFunction) => 
-  component.containing_frame?.name.toLowerCase().includes('button')?returnFunction(component,data):undefined);
+  !component.containing_frame?.name?.toLowerCase().includes('spacing')?returnFunction(component,data):undefined);
 designTokenFunctions.push(genericComponentTokenizer);
 
 export const processStyleNodes = (data: NodeDocument, type: StyleType): DesignToken[] | DesignToken | undefined => {
@@ -157,35 +155,12 @@ export const figmaAPIFactory = (token: string) => {
       });
   };
 
-  // const DesignTokenComponents = [
-  //   'spacer',
-  //   'spacers',
-  //   'spacing',
-  //   'border radius',
-  //   'borderradius',
-  //   'button',
-  //   'attention box',
-  //   'alert'
-  // ];
-  // const filterComponentsForDesignTokens = (components: ComponentMetadata[]) => {
-  //   return components.filter((component: ComponentMetadata) => {
-  //     if(!component?.containing_frame?.name) return false;
-  //     // console.log(
-  //     //   component.containing_frame.name.toLowerCase(),
-  //     //   DesignTokenComponents.includes(component.containing_frame.name.toLowerCase())
-  //     // );
-  //     if(DesignTokenComponents.includes(component.containing_frame.name.toLowerCase())) return true;
-  //     return false;
-  //   });
-  // };
-
   const getNodes = (fileKey: string, nodeIds: string[])=> {
     // TODO break the long node requests into small requests
     // https://api.figma.com/v1/files/${fileKey}/nodes?ids=${nodeIds.join(",")}
     return getData(`https://api.figma.com/v1/files/${ getFileKey(fileKey) }/nodes?ids=${ nodeIds.join(',') }`)
       .then((data: FigmaFileNodes) => { return data.nodes;});
   };
-
 
   const processStyles = async (fileKey: string) => {
     const parsedFileKey = getFileKey(fileKey);  
@@ -228,14 +203,16 @@ export const figmaAPIFactory = (token: string) => {
 
     let componentTokens = convertComponentNodesToTokens(figmaComponents,componentNodeDocuments);
 
+    // TODO move all of the finding common components logic into it's own function
 
     // fill in vars for design tokens that don't have values
     // we leave tokens that should reference tokens as undefined
+    // TODO this does not work with text - we'll need to expand it to create multiple tokens for text
     componentTokens.forEach((designToken, index) => {
-      if(designToken.value === 'undefined' && designToken.node_id){
+      if(designToken.componentName && designToken.node_id){
         designTokens.every((findMatchingToken) => {
           if(
-            findMatchingToken.value !== 'undefined' &&
+            findMatchingToken.componentName === undefined &&
             designToken.node_id == findMatchingToken.node_id
           ){
             componentTokens[index].value = `var(${ findMatchingToken.token })`;
@@ -246,78 +223,103 @@ export const figmaAPIFactory = (token: string) => {
       }
     });
 
-    // reduce the common props for components
-    // remove all the repeated component values
-    const components: { [key: string]: DesignToken[] } = {};
+    // remove not set values
+    componentTokens = componentTokens.filter((designToken)=>designToken.value!=='undefined');
+
+
+
+    type ComponentTypes = {
+      [component: string]: {
+        [componentVariant: string]: string[],
+      },
+    };
+    // find all the variants available for the Components
+    // we use this list to help sort the components
+    // we could also use this list to help create a framework for the devs
+    // TODO: Publish this as a comment token, the structure of the data would be very helpful
+    const componentTypes: ComponentTypes = {};
     componentTokens.forEach((designToken)=>{
-      if(designToken.componentName){
-        designToken.componentName in components? 
-          components[designToken.componentName].push(designToken):
-          components[designToken.componentName] = [designToken];
+      if(!designToken.componentName || !designToken.name) return false;
+      if(!(designToken.componentName in componentTypes)) componentTypes[designToken.componentName] = {};
+      for(const variant in designToken.componentVariant){
+        if(!(variant in componentTypes[designToken.componentName])) {
+          componentTypes[designToken.componentName][variant] = [];
+        }
+        if(!componentTypes[designToken.componentName][variant].includes(designToken.componentVariant[variant])){
+          componentTypes[designToken.componentName][variant].push(designToken.componentVariant[variant]);
+        }
       }
     });
 
-    componentTokens = componentTokens.filter((designToken)=>!designToken.componentName);
-
-
-    // type Variants = {
-    //   [component: string]: {
-    //     [variant: string]: {
-    //       [value: string]:  string[],
-    //     },
-    //   },
-    // };
-    type Variants = {
-      [component: string]: {
-        [name: string]: DesignToken[],
-      },
+    type GroupedByName = {
+      [name: string]: DesignToken[],
+    };
+    type GroupedByNameAsValue = {
+      [name: string]: string[],
     };
 
-    
-    const variants: Variants = {};
-    // component
-    // type root (all common for that type)
-    Object.entries(components).forEach(([name ,tokens]: [string,DesignToken[]])=>{
-      variants[name] = {};
-      const currentVariant = variants[name];
-      Object.values(tokens).forEach((designToken: DesignToken) => {
-        if(designToken.componentVariant){
-          const tokenName = designToken.name;
-          if( tokenName in currentVariant){
-            currentVariant[tokenName].push(designToken);
-          } else {
-            currentVariant[tokenName] = [designToken];
+    // we now iterate over all of the token variants
+    // we look at each variant and find common variables
+    Object.entries(componentTypes).forEach(([name,variants])=>{
+      // get just the design tokens for the component
+      const componentTokensVariants = componentTokens.filter(({ componentName }) => componentName === name);
+
+      for(const variant in variants){
+        for(const variantType in variants[variant]){
+          
+          // find the components that match the current variant 
+          const localComponentTokens = componentTokensVariants.filter(({ componentVariant }) =>{
+            if(!componentVariant) return false;
+            return componentVariant[variant] === variants[variant][variantType];
+          });
+
+          // create groups of each type
+          // design tokens names are the same across multiple tokes because they are from the same variant
+          // we group them by variant so we can find the same values across variants
+          const groupedByName = localComponentTokens.reduce((groups: GroupedByName, item) => {
+            const group = groups[item.name] || [];
+            group.push(item);
+            groups[item.name] = group;
+            return groups;
+          }, {});
+
+          // Find just the values of the variants
+          const groupByNameAsValue: GroupedByNameAsValue = {};
+          for( const group in groupedByName ){
+            groupByNameAsValue[group] = groupedByName[group].map((designToken)=>designToken.value);
+          }
+
+          // find the common values
+          // we use the first variant as the starting variant
+          let commonValues: string[] = [];
+          let first = true;
+          for( const group in groupByNameAsValue ){
+            if(first) {
+              commonValues = groupByNameAsValue[group];
+              first = false;
+            }
+            commonValues = commonValues.filter((value)=>groupByNameAsValue[group].includes(value));
+          }
+
+          // create new design tokens for the variants
+          for( const newValue in commonValues ){
+            componentTokens.push({
+              type: componentTokensVariants[0].type,
+              name: `${ componentTokensVariants[0].componentName } ${ variants[variant][variantType] }`,
+              token: `--${ tokenizeName(`
+              ${ componentTokensVariants[0].componentName } 
+              ${ variants[variant][variantType] } 
+              -${ newValue }`) }`,
+              componentName:componentTokensVariants[0].componentName,
+              value: commonValues[newValue]
+            });
           }
         }
-      });
-
-
-      if(!tokens[0].componentVariant) return false;
-      Object.keys(tokens[0].componentVariant).forEach((_variantKey)=>{
-        // const variantComponents = currentVariant.filter((designToken) => 
-        //   designToken.componentVariant[variantKey] === currentVariant
-        // );
-        let componentCommon: string[] = [];
-        let first = true;
-        Object.entries(currentVariant).forEach((data)=>{
-          if(first) {
-            componentCommon = data[1].map((designToken) => designToken.value ).filter((value) => value !== 'undefined');
-            first = false;
-          }
-          const values = data[1].map((designToken) => designToken.value ).filter((value) => value !== 'undefined');
-          componentCommon = componentCommon.filter((value)=>values.includes(value));
-        });
-      });
-      // console.log(componentCommon);
+      }
     });
-
-
-    console.log(variants);
-
-    // for(let index = designTokens.length; index >= 0; index = index - 1){
-    //   if()
-    // }
-
+    
+    // remove the design tokens previously generated, keeping only the shared tokens
+    componentTokens = componentTokens.filter((designToken) => !designToken.componentVariant);
 
     return componentTokens;
   };

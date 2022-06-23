@@ -10,6 +10,7 @@ import {
 } from '../../../utils/cssGenerator.utils';
 import { filterTokenByViewPort, generateTypographyTokenBody } from '../utils';
 import { DesignToken } from '../../../utils/figma.utils';
+import { tokenizeName } from '../../../utils/figma.tokenizer';
 
 const getCssValue = (token: DesignToken) => {
   if(token.unit === 'variable') return `  ${ token.token }: ${ token.value };`;
@@ -18,7 +19,7 @@ const getCssValue = (token: DesignToken) => {
 
 export const template: RenderTokenFile = (tokens, type) =>
   [
-	    `./_${ type }.css`,
+	    `.${ tokens[0].componentName?'/components':'' }/_${ tokenizeName(type) }.css`,
 	    `:root {
 ${ TOKEN_FILE_COMMENTS[type]??`/**
 * @tokens ${ type }

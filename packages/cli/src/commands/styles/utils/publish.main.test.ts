@@ -37,7 +37,9 @@ describe('getStyles, getStyleNodes and processStyles', () => {
 
     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
     const values = await figmaAPI.processStyles('TJzz7ZB6pJvpLhjI5DWG3F');
-    expect(Object.keys(values)).toStrictEqual(['color','typography', 'spacing', 'grid', 'breakpoint','elevation']);
+    expect(Object.keys(values)).toStrictEqual([
+      'color','typography', 'grid', 'breakpoint','spacing','elevation','button','attention box','alert'
+    ]);
     expect(values['typography'][0].type).toStrictEqual('typography');
 
   });
@@ -73,9 +75,18 @@ describe('get components', () => {
     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
     const componentsTokens = await figmaAPI._processStyleComponents('TJzz7ZB6pJvpLhjI5DWG3F',[]);
 
-    expect(componentsTokens.length).toEqual(148);
+    expect(componentsTokens.length).toEqual(62);
     expect(!!componentsTokens[0]?.node_id).toEqual(true);
     expect(!!componentsTokens[0]?.type).toEqual(true);
     expect(!!componentsTokens[0]?.name).toEqual(true);
   });
 }); 
+
+
+// import * as componentsNodesUndefined from '../lib/__mocks__/componentTokens-undefined.json';
+
+// describe('get components groups', () => {
+//   it('parse the componentTokens', async () => {
+//     console.log(componentsNodesUndefined);
+//   });
+// });

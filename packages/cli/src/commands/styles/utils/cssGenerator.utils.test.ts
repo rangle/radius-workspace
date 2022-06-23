@@ -14,7 +14,7 @@ describe('CSS Generator', () => {
     const designToken: DesignToken = {
       type: 'color',
       name: 'color css test',
-      token: 'colour-text-success',
+      token: '--colour-text-success',
       value: '#138000'
     };
 
