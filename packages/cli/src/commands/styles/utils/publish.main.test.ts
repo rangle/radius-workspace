@@ -37,8 +37,9 @@ describe('getStyles, getStyleNodes and processStyles', () => {
 
     const figmaAPI = figmaAPIFactory('x-x-x-x-x-x');
     const values = await figmaAPI.processStyles('TJzz7ZB6pJvpLhjI5DWG3F');
-    expect(Object.keys(values)).toStrictEqual(['grid', 'breakpoint','color','elevation','typography','spacing']);
-    expect(values['typography'][0].type).toStrictEqual('typography');
+    expect(Object.keys(values.tokenGroup))
+      .toStrictEqual(['grid', 'breakpoint', 'color', 'elevation', 'typography', 'spacing']);
+    expect(values.tokenGroup['typography'][0].type).toStrictEqual('typography');
 
   });
 });

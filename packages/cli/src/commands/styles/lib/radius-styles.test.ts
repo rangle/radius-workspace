@@ -11,13 +11,16 @@ jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('getStyles, getStyleNodes and processStyles', () => {
-  it('should fail', async() => {
+
+  beforeEach(() => {
     mockedAxios.get
       .mockResolvedValueOnce(publishStyles)
       .mockResolvedValueOnce(publishNodes)
       .mockResolvedValueOnce(publishComponents)
       .mockResolvedValueOnce(publishComponentsNodes);
-
+  });
+  
+  it('should fail', async () => {    
     const options: Options = {
       url:'https://api.figma.com/v1/file/TJzz7ZB6pJvpLhjI5DWG3F/',
       userToken: 'xxxxxx-Token-xxxxxx',
@@ -42,5 +45,36 @@ describe('getStyles, getStyleNodes and processStyles', () => {
         'styledTokens.json']);
       expect(files[0][0]).toBe('./index.css');
     }
+  });
+
+  it('should have files length of 7 for css-modules template', async () => {
+
+    const options: Options = {
+      url:'https://api.figma.com/v1/file/TJzz7ZB6pJvpLhjI5DWG3F/',
+      userToken: 'xxxxxx-Token-xxxxxx',
+      outputDir: './generatedTokens',
+      dryRun:true,
+      consoleOutput: false,
+      template: 'css-modules'
+    };
+
+    const files = await generateGlobalStyles(options); 
+    expect(files).toBeDefined;
+    expect(files).toHaveLength(7);
+  });
+  
+
+  it('should have files length of 1 for css-in-js template', async () => {
+    const options: Options = {
+      url:'https://api.figma.com/v1/file/TJzz7ZB6pJvpLhjI5DWG3F/',
+      userToken: 'xxxxxx-Token-xxxxxx',
+      outputDir: './generatedTokens',
+      dryRun:true,
+      consoleOutput: false,
+      template: 'css-in-js'
+    };
+
+    const files = await generateGlobalStyles(options);
+    expect(files).toHaveLength(1);
   });
 });

@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { StyleMetadata, ComponentMetadata, GetFileComponentsResult } from 'figma-api/lib/api-types';
 import { StyleType } from 'figma-api/lib/ast-types';
 import { groupByType } from '../lib/radius-styles';
-import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot, FigmaNodeKey } from './figma.utils';
+import { DesignToken, FigmaFileNodes, NodeDocument, NodeRoot, FigmaNodeKey, DesignTokenGroup } from './figma.utils';
 import { NodeFilter, DesignTokenFilter, TypographyMap } from './types/FigmaTypes';
 import { 
   colorDesignTokenizer,
@@ -162,6 +162,11 @@ export const figmaAPIFactory = (token: string) => {
     fontSemanticSize: {}
   };
 
+  type processedStylesType = {
+    tokenGroup: DesignTokenGroup,
+    designTokens: DesignToken[],
+  };
+
   const processStyles = async (fileKey: string) => {
     const parsedFileKey = getFileKey(fileKey);
     const figmaStyles = await getStyles(parsedFileKey);
@@ -181,8 +186,12 @@ export const figmaAPIFactory = (token: string) => {
       .filter((dsToken: DesignToken) => !!dsToken.token)
       .sort((first: DesignToken, second: DesignToken) => first.token > second.token ? 1 : -1);
 
-    // // groups them all
-    return groupByType(designTokens);
+    // groups them all
+    const tokensObj: processedStylesType = {
+      tokenGroup: groupByType(designTokens),
+      designTokens: designTokens
+    };
+    return tokensObj;
   };
 
   const processStyleComponents = async (fileKey: string) => {
