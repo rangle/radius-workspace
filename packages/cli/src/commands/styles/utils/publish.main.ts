@@ -186,17 +186,12 @@ export const figmaAPIFactory = (token: string) => {
       .filter((dsToken: DesignToken) => !!dsToken.token)
       .sort((first: DesignToken, second: DesignToken) => first.token > second.token ? 1 : -1);
 
-    // // groups them all
+    // groups them all
     const tokensObj: processedStylesType = {
       tokenGroup: groupByType(designTokens),
       designTokens: designTokens
     };
     return tokensObj;
-    // return {
-    //   groupedTokens: groupByType(designTokens),
-    //   designTokens: designTokens
-    // };
-    // return groupByType(designTokens);
   };
 
   const processStyleComponents = async (fileKey: string) => {
