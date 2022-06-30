@@ -1,5 +1,5 @@
 import { isInDependencies, getQuestions, defaultSetup } from './radiusCommandParser';
-import { ConfigOptions, Answers } from './radiusCommandParser';
+import { ConfigOptions } from './radiusCommandParser';
 import inquirer from 'inquirer';
 
 jest.mock('inquirer');
@@ -33,6 +33,7 @@ const catOptions: ConfigOptions = [
     question: 'how big of a house do you need?',
     dependencies: [],
     id: 'two bedroom',
+    name: 'two bedroom',    
     resolve: ['pets']
   },
   {
@@ -40,6 +41,7 @@ const catOptions: ConfigOptions = [
     question: 'how big of a house do you need?',
     dependencies: [],
     id: 'one bedroom', // one bedroom needs no cats
+    name: 'one bedroom', // one bedroom needs no cats    
     resolve: ['pets']
   },
 
@@ -49,6 +51,7 @@ const catOptions: ConfigOptions = [
     question: 'What kind of cat',
     dependencies: ['two bedroom'],
     id: 'yellow',
+    name: 'yellow',    
     resolve: ['foodtype']
   },
   {
@@ -56,6 +59,7 @@ const catOptions: ConfigOptions = [
     question: 'What kind of cat',
     dependencies: ['two bedroom'],
     id: 'brown',
+    name: 'brown',    
     resolve: ['foodtype']
   },
   {
@@ -63,6 +67,7 @@ const catOptions: ConfigOptions = [
     question: 'What kind of cat',
     dependencies: ['two bedroom'],
     id: 'black',
+    name: 'black',    
     resolve: ['foodtype']
   },
 
@@ -71,6 +76,7 @@ const catOptions: ConfigOptions = [
     question: 'What kind of small pet do you want?',
     dependencies: ['one bedroom'],
     id: 'mouse',
+    name: 'mouse',    
     resolve: ['foodtype']
   },
   {
@@ -78,6 +84,7 @@ const catOptions: ConfigOptions = [
     question: 'What kind of small pet do you want?',
     dependencies: ['one bedroom'],
     id: 'hamster',
+    name: 'hamster',    
     resolve: ['foodtype']
   },
   {
@@ -85,11 +92,12 @@ const catOptions: ConfigOptions = [
     question: 'What kind of small pet do you want?',
     dependencies: ['one bedroom'],
     id: 'rat',
+    name: 'rat',    
     resolve: ['foodtype']
   }
-]; 
-describe('get questions tests', () => {
+];
 
+describe('get questions tests', () => {
   it('will return the two options that have no dependencies', () => {
     expect(getQuestions(catOptions, undefined, undefined)).toStrictEqual([
       {
@@ -97,6 +105,7 @@ describe('get questions tests', () => {
         question: 'how big of a house do you need?',
         dependencies: [],
         id: 'two bedroom',
+        name: 'two bedroom',
         resolve: ['pets']
       },
       {
@@ -104,6 +113,7 @@ describe('get questions tests', () => {
         question: 'how big of a house do you need?',
         dependencies: [],
         id: 'one bedroom',
+        name: 'one bedroom',
         resolve: ['pets']
       }
     ]);
@@ -116,15 +126,13 @@ describe('get questions tests', () => {
   });
 
   it('will return just the cat questions', () => {
-    const answers: Answers = [{
-      selectedOption:{
-        type: 'house',
-        question: 'how big of a house do you need?',
-        dependencies: [],
-        id: 'two bedroom',
-        resolve: ['pets']
-      },
-      childAnswers:[]
+    const answers: ConfigOptions = [{
+      type: 'house',
+      question: 'how big of a house do you need?',
+      dependencies: [],
+      id: 'two bedroom',
+      name: 'two bedroom',
+      resolve: ['pets']
     }];
     
     //we're mapping the response so we don't have a huge lists
@@ -134,38 +142,33 @@ describe('get questions tests', () => {
   });
 
   it('will return just the cat questions', () => {
-    const answers: Answers = [{
-      selectedOption: {
-        type: 'house',
-        question: 'how big of a house do you need?',
-        dependencies: [],
-        id: 'one bedroom',
-        resolve: ['pets']
-      },
-      childAnswers: []
+    const answers: ConfigOptions = [{
+      type: 'house',
+      question: 'how big of a house do you need?',
+      dependencies: [],
+      id: 'one bedroom',
+      name: 'one bedroom',
+      resolve: ['pets']
     }];
 
     //we're mapping the response so we don't have a huge lists
     expect(
-      getQuestions(catOptions, 'pets', answers).map((options) => options.id)
+      getQuestions(catOptions, 'pets', answers).map((options) => options.name)
     ).toStrictEqual(['mouse', 'hamster', 'rat']);
   });
-
 });
-
-
 
 describe('test the default setup', () => {
   test('default inputs', async () => {
     mockedInquirer.prompt
-      .mockResolvedValueOnce({ value: 'react-v.0.2.9' })
-      .mockResolvedValueOnce({ value: 'react-scss' })
+      .mockResolvedValueOnce({ value: 'react' })
+      .mockResolvedValueOnce({ value: 'scss' })
       .mockResolvedValueOnce({ value: 'chromatic' });
 
     expect(
-      (await defaultSetup()).map((option) => option.selectedOption.id)
+      (await defaultSetup()).map((option) => option.name)
     ).toEqual(
-      ['react-v.0.2.9', 'react-scss', 'chromatic']
+      ['react', 'scss', 'chromatic']
     );
   });
 
@@ -175,9 +178,22 @@ describe('test the default setup', () => {
       .mockResolvedValueOnce({ value: 'rat' });
 
     expect(
-      (await defaultSetup(catOptions)).map((option) => option.selectedOption.id)
+      (await defaultSetup(catOptions)).map((option) => option.name)
+    ).toEqual(
+      ['one bedroom', 'rat']
+    );
+  });
+
+  test('custom inputs', async () => {
+    mockedInquirer.prompt
+      .mockResolvedValueOnce({ value: 'one bedroom' })
+      .mockResolvedValueOnce({ value: 'rat' });
+
+    expect(
+      (await defaultSetup(catOptions)).map((option) => option.name)
     ).toEqual(
       ['one bedroom', 'rat']
     );
   });
 });
+
