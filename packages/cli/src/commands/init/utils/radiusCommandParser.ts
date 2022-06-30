@@ -8,7 +8,7 @@ type ConfigOption = {
   resolve: string[], // the list of things needed to be resolved in order
 };
 
-type ConfigOptions = ConfigOption[];
+export type ConfigOptions = ConfigOption[];
 
 const globalConfig: ConfigOptions = [
   {
@@ -94,7 +94,7 @@ type Answer = {
   childAnswers: ChildAnswer[],
 };
 
-type Answers = Answer[];
+export type Answers = Answer[];
 
 
 export const isInDependencies = (dependencies: string[], answers: string[]) => {
@@ -122,12 +122,17 @@ export const getQuestions = (
     );
 };
 
-export const defaultSetup = async () => {
+export const defaultSetup = async (overRideConfig?: ConfigOptions) => {
   const resolve: string[] = [];
   const answers: Answers = [];
-  return await getAllAnswers(resolve, answers, globalConfig);
+  const options = overRideConfig ? overRideConfig : globalConfig;
+  
+  // we can switch out globalConfig for different data sets
+  return await getAllAnswers(resolve, answers, options);
 };
 
+
+// traverses the tree
 const getAllAnswers = async (resolve: string[], answers: Answers, globalOptions: ConfigOptions) => {
   const foundOptions = getQuestions(globalOptions,resolve[0], answers);
   if (foundOptions.length === 0) return answers;
@@ -147,7 +152,7 @@ const getAllAnswers = async (resolve: string[], answers: Answers, globalOptions:
   };
 
   const response: { value: string } = await inquirer.prompt([questions]);
-  
+  console.log(response);
   const answer = response.value.trim();
 
   const selectedOption: ConfigOption = foundOptions.filter((options) => options.id === answer)[0];
