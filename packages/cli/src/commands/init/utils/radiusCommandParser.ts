@@ -155,10 +155,19 @@ export const defaultSetup = async (overRideConfig?: ConfigOptions) => {
 };
 
 
-// traverses the tree
+/* 
+ * Traverses the tree of the configurations options
+ * If no resolve is given
+ * 
+ * @param { string[] } resolve, is all the types/inputs we are looking to get answers for
+ * each time we add an answer we add the answers resolves to the list (most of the time it's empty) 
+ * @param { ConfigOptions } answers, all the answers we found so far, it's a ConfigOption
+ * @param { ConfigOptions } globalOptions, is all the possible questions/answers
+ */
 const getAllAnswers = async (resolve: string[], answers: ConfigOptions, globalOptions: ConfigOptions) => {
   const foundOptions = getQuestions(globalOptions, resolve[0], answers);
-  // when there is no options for the current question, what to do...
+  
+  // when there are no options for the current question, what to do...
   if (foundOptions.length === 0) {
     // if there is nothing else to resolve end now
     if (resolve.length === 1) return answers;
