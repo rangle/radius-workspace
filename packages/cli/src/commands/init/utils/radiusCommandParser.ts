@@ -1,3 +1,5 @@
+// import inquirer from 'inquirer';
+
 import inquirer from 'inquirer';
 
 type ConfigOption = {
@@ -16,7 +18,7 @@ const globalConfig: ConfigOptions = [
     question: 'What framework would you like to use?',
     dependencies: [],
     id: 'react-v.0.2.9',
-    resolve: ['style', 'packaging', 'testing', 'build']
+    resolve: ['build', 'pipeline', 'style', 'testing' ]
   },
   {
     type: 'framework',
@@ -63,25 +65,60 @@ const globalConfig: ConfigOptions = [
   {
     type: 'packaging',
     question: 'Please select packaging/bundle option',
-    dependencies: ['react-v.0.2.9', 'react-css-modules'],
+    dependencies: ['react-v.0.2.9' ],
     id: 'packaging-react-css-modules',
     resolve: []
   },
   {
     type: 'packaging',
     question: 'Please select packaging/bundle option',
-    dependencies: ['react-v.0.2.9', 'react-css-modules'],
+    dependencies: ['react-v.0.2.9'],
     id: 'packaging-react-css-option2',
     resolve: []
   },
   {
     type: 'packaging',
     question: 'Please select packaging/bundle option',
-    dependencies: ['react-v.0.2.9', 'react-scss'],
+    dependencies: ['react-v.0.2.9'],
     id:'chromatic',
-    resolve: ['input-apikey']
+    resolve: []
+  },
+  {
+    type: 'pipeline',
+    question: 'Please select deployment option',
+    dependencies: ['react-v.0.2.9'],
+    id: 'pipeline-react-github',
+    resolve: []
+  },
+  {
+    type: 'pipeline',
+    question: 'Please select deployment option',
+    dependencies: ['react-v.0.2.9'],
+    id: 'other-pipeline',
+    resolve: []
+  },
+  {
+    type: 'pipeline',
+    question: 'Please select deployment option',
+    dependencies: ['react-v.0.2.9'],
+    id: 'pipeline-react-azure',
+    resolve: ['packaging']
+  },
+  {
+    type: 'build',
+    question: 'Please select deployment option',
+    dependencies: ['react-v.0.2.9'],
+    id: 'pipeline-react-azure',
+    resolve: ['packaging']
   }
 ];
+
+
+// const packageName: any[] = [
+//   {
+//     'packaging-react-css-option': '@react-css'
+//   }
+// ];
 
 
 type ChildAnswer = {
@@ -96,13 +133,10 @@ type Answer = {
 
 type Answers = Answer[];
 
-
 export const isInDependencies = (dependencies: string[], answers: string[]) => {
-  for (const index in dependencies) {
-    if (!answers.includes(dependencies[index])) return false;
-  }
-  return true;
+  return dependencies.every((dependency) => answers.includes(dependency));
 };
+
 
 export const getQuestions = (
   globalOptions: ConfigOptions,
@@ -113,13 +147,13 @@ export const getQuestions = (
     return globalOptions.filter((option) => option.dependencies.length === 0);
   }
   if (!answers) return [];
+  const mappedAnswers = answers.map((answer) => answer.selectedOption.id);
+  console.log('answer ids ', mappedAnswers);
 
   return globalOptions
-    .filter((option) => {
-      if (option.type !== searchForType) return false;
-      return isInDependencies(option.dependencies, answers.map((answer) => answer.selectedOption.id));
-    }
-    );
+    .filter((option): boolean => {
+      return option.type == searchForType && isInDependencies(option.dependencies, mappedAnswers);
+    });
 };
 
 export const defaultSetup = async () => {
@@ -128,8 +162,14 @@ export const defaultSetup = async () => {
   return await getAllAnswers(resolve, answers, globalConfig);
 };
 
+
+const configOptions: ConfigOption[] = [];
+
 const getAllAnswers = async (resolve: string[], answers: Answers, globalOptions: ConfigOptions) => {
-  const foundOptions = getQuestions(globalOptions,resolve[0], answers);
+
+  const foundOptions = getQuestions(globalOptions, resolve[0], answers);
+  // console.log('foundOptions ', foundOptions);
+  // console.log(foundOptions);
   if (foundOptions.length === 0) return answers;
 
   const questions = {
@@ -147,7 +187,6 @@ const getAllAnswers = async (resolve: string[], answers: Answers, globalOptions:
   };
 
   const response: { value: string } = await inquirer.prompt([questions]);
-  
   const answer = response.value.trim();
 
   const selectedOption: ConfigOption = foundOptions.filter((options) => options.id === answer)[0];
@@ -155,9 +194,17 @@ const getAllAnswers = async (resolve: string[], answers: Answers, globalOptions:
     selectedOption,
     childAnswers: []
   });
-  
+
+  configOptions.push(selectedOption);
+
+
+  console.log('resolve ', resolve);
+  console.log('selectionOptions.resolve ', resolve);
+
   resolve.shift(); // remove the option we just resolved before adding the new options
   resolve = [...selectedOption.resolve, ...resolve];
+
+  console.log('resolve after shift ', resolve);
 
   if (resolve.length) await getAllAnswers(resolve, answers, globalOptions);
   return answers;

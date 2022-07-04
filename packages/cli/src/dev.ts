@@ -1,5 +1,8 @@
 import { generateGlobalStyles } from './commands/styles/lib/radius-styles';
 import 'dotenv/config';
+import { askForDesignSystemOptions } from './commands/init/utils/inquirer';
+
+askForDesignSystemOptions();
 
 // To run in debug mode, add figma file url (located in package.json scripts -> cli: styles)
 const url = process.env['FIGMA_URL'] ? process.env['FIGMA_URL'] : '';

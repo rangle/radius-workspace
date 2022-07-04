@@ -1,4 +1,6 @@
+// import inquirer from 'inquirer';
 import inquirer from 'inquirer';
+import { defaultSetup } from './radiusCommandParser';
 
 export const validateDesignSystemNameAnswer = (response: string) => {
   if (response.trim().length) {
@@ -16,7 +18,13 @@ export const isReact = (answers: any) => {
   return answers['ds-framework'] === 'react';
 };
 
-export const askForDesignSystemOptions = () => {
+export const askForDesignSystemOptions = async () => {
+  //get set of questions;
+
+  // await defaultSetup();
+  // inquirer.prompt();
+
+
   return inquirer.prompt(questions);
 };
 
