@@ -1,6 +1,5 @@
 // import inquirer from 'inquirer';
 import inquirer from 'inquirer';
-import { defaultSetup } from './radiusCommandParser';
 
 export const validateDesignSystemNameAnswer = (response: string) => {
   if (response.trim().length) {
