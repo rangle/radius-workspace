@@ -60,7 +60,7 @@ const catOptions: ConfigOption[] = [
     dependencies: ['two bedroom'],
     id: 'brown',
     name: 'brown',    
-    resolve: ['foodtype']
+    resolve: ['inputWhat is the name of your cat?','foodtype']
   },
   {
     type: 'pets',
@@ -77,7 +77,7 @@ const catOptions: ConfigOption[] = [
     dependencies: ['one bedroom'],
     id: 'mouse',
     name: 'mouse',    
-    resolve: ['foodtype']
+    resolve: []
   },
   {
     type: 'pets',
@@ -85,7 +85,7 @@ const catOptions: ConfigOption[] = [
     dependencies: ['one bedroom'],
     id: 'hamster',
     name: 'hamster',    
-    resolve: ['foodtype']
+    resolve: []
   },
   {
     type: 'pets',
@@ -93,8 +93,26 @@ const catOptions: ConfigOption[] = [
     dependencies: ['one bedroom'],
     id: 'rat',
     name: 'rat',    
-    resolve: ['foodtype']
+    resolve: []
+  },
+
+  {
+    type: 'foodtype',
+    question: 'What kind of food will you buy',
+    dependencies: ['two bedroom'],
+    id: 'good',
+    name: 'Good',    
+    resolve: []
+  },
+  {
+    type: 'foodtype',
+    question: 'What kind of food will you buy',
+    dependencies: ['two bedroom'],
+    id: 'bad',
+    name: 'Bad',    
+    resolve: []
   }
+  
 ];
 
 describe('get questions tests', () => {
@@ -162,38 +180,57 @@ describe('test the default setup', () => {
   test('default inputs', async () => {
     mockedInquirer.prompt
       .mockResolvedValueOnce({ value: 'react' }) // framework
+      .mockResolvedValueOnce({ value: 'hello world' }) // framework
       .mockResolvedValueOnce({ value: 'scss' }) // style
       .mockResolvedValueOnce({ value: 'packing 1' }) // packaging
       .mockResolvedValueOnce({ value: 'react-build' }); // build
 
     expect(
-      (await defaultSetup()).map((option) => option.name)
+      (await defaultSetup()).map((option) => option.value?option.value:option.name)
     ).toEqual(
-      ['react', 'scss', 'packing 1','react-build']
+      ['react', 'hello world', 'scss', 'packing 1','react-build']
     );
   });
 
-  test('custom inputs', async () => {
+  test('custom inputs one bedroom', async () => {
     mockedInquirer.prompt
       .mockResolvedValueOnce({ value: 'one bedroom' })
       .mockResolvedValueOnce({ value: 'rat' });
 
     expect(
-      (await defaultSetup(catOptions)).map((option) => option.name)
+      (await defaultSetup(catOptions)).map((option) => option.value?option.value:option.name)
     ).toEqual(
       ['one bedroom', 'rat']
     );
   });
 
-  test('custom inputs', async () => {
+  test('custom input option two bedroom', async () => {
     mockedInquirer.prompt
-      .mockResolvedValueOnce({ value: 'one bedroom' })
-      .mockResolvedValueOnce({ value: 'rat' });
+      .mockResolvedValueOnce({ value: 'two bedroom' })
+      .mockResolvedValueOnce({ value: 'black' })
+      .mockResolvedValueOnce({ value: 'Bad' });
+
+    const answers = await defaultSetup(catOptions);
+    console.log(answers);
+    expect(
+      answers.map((option) => option.value?option.value:option.name)
+    ).toEqual(
+      ['two bedroom', 'black', 'Bad']
+    );
+  });
+
+  test('custom input of text', async () => {
+    mockedInquirer.prompt
+      .mockResolvedValueOnce({ value: 'two bedroom' })
+      .mockResolvedValueOnce({ value: 'brown' })
+      .mockResolvedValueOnce({ value: 'Gigi' })
+      .mockResolvedValueOnce({ value: 'Good' });
+    
 
     expect(
-      (await defaultSetup(catOptions)).map((option) => option.name)
+      (await defaultSetup(catOptions)).map((option) => option.value?option.value:option.name)
     ).toEqual(
-      ['one bedroom', 'rat']
+      ['two bedroom', 'brown','Gigi','Good']
     );
   });
 });

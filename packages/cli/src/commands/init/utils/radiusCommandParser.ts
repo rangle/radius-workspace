@@ -6,8 +6,9 @@ export type ConfigOption = {
   question: string, // the first option is used to display the question
   dependencies: string[], // the ids of other config options
   id: string, // the unique id of the configOption (should be the package name)
-  resolve: string[], // the list of things needed to be resolved in order
+  resolve: string[], // the list of things needed to be resolved in order, if the resolve starts with 'input' it will be treated as a text input
   name: string, // human readable 
+  value?: string, // if there was a response to a quest it gets stored as a value
 };
 
 const globalConfig: ConfigOption[] = [
@@ -17,7 +18,7 @@ const globalConfig: ConfigOption[] = [
     dependencies: [],
     id: 'react-v.0.2.9',
     name: 'react',
-    resolve: ['style', 'packaging', 'testing', 'build']
+    resolve: ['inputProject name','style', 'packaging', 'testing', 'build']
   },
   {
     type: 'framework',
@@ -25,7 +26,7 @@ const globalConfig: ConfigOption[] = [
     dependencies: [],
     id: 'angular-v.0.2.9',
     name: 'angular',
-    resolve: ['style','packaging','testing']
+    resolve: ['inputProject name','style','packaging','testing']
   },
 
   // styles
@@ -181,35 +182,12 @@ export const defaultSetup = async (overRideConfig?: ConfigOption[]) => {
 };
 
 
-/* 
- * Traverses the tree of the configurations options
- * If no resolve is given
- * 
- * @param { string[] } resolve, is all the types/inputs we are looking to get answers for
- * each time we add an answer we add the answers resolves to the list (most of the time it's empty) 
- * @param { ConfigOption[] } answers, all the answers we found so far, it's a ConfigOption
- * @param { ConfigOption[] } globalOptions, is all the possible questions/answers
- */
-const getAllAnswers = async (resolve: string[], answers: ConfigOption[], globalOptions: ConfigOption[]) => {
-  const foundOptions = getQuestions(globalOptions, resolve[0], answers);
-  
-  // when there are no options for the current question, what to do...
-  if (foundOptions.length === 0) {
-    // if there is nothing else to resolve end now
-    if (resolve.length === 1) return answers;
-
-    // if there is more items to be resolved, moved onto the next one
-    resolve.shift();
-    await getAllAnswers(resolve, answers, globalOptions);
-    return answers;
-  }
-  // TODO if it's requesting an input, capture the input
-
+const getAnswerFromOptions = async (options: ConfigOption[]) => {
   const questions = {
     name: 'value',
     type: 'list',
-    choices: foundOptions.map((option) => option.name),
-    message: foundOptions[0].question,
+    choices: options.map((option) => option.name),
+    message: options[0].question,
     validate: (response: string) => {
       if (response.trim().length) {
         return true;
@@ -218,18 +196,71 @@ const getAllAnswers = async (resolve: string[], answers: ConfigOption[], globalO
       }
     }
   };
-
   
   const response: { value: string } = await inquirer.prompt([questions]); // get users response to the question
   const answer = response.value.trim();
 
   // of the current options, which one did the user select
-  const selectedOption: ConfigOption = foundOptions.filter((options) => options.name === answer)[0];
+  const selectedOption: ConfigOption = options.filter((selectOptions) => selectOptions.name === answer)[0];
   if (!selectedOption) throw new Error(`
 An unselectable value of ${ answer } has been given
-It does not match the options: ${ foundOptions.map((option) => option.name) }`);
+It does not match the options: ${ options.map((option) => option.name) }`);
+  return selectedOption;
+};
+
+const getAnswerFromInput = async (resolve: string) => {
+  const questions = {
+    name: 'value',
+    type: 'input',
+    message: resolve.slice(5)
+  };
+
+  const response: { value: string } = await inquirer.prompt([questions]);
+
+  return {
+    type: 'input',
+    id: resolve,
+    question: '',
+    dependencies: [],
+    resolve: [],
+    name: '',
+    value: response.value
+  } as ConfigOption;
+};
+
+/* 
+ * Traverses the tree of the configurations options
+ * If no resolve is given
+ * 
+ * @param { string[] } resolve, is all the types/inputs we are looking to get answers for
+ * each time we add an answer we add the answers resolves to the list (most of the time it's empty) 
+ * @param { ConfigOption[] } answers, all the answers we found so far, it's a ConfigOption
+ * @param { ConfigOption[] } globalOptions, is all the possible questions/answers
+ * 
+ * Returns { ConfigOptions[] } a list of all the configurations options that was selected and all inputs as configOptions with a value 
+ */
+const getAllAnswers = async (resolve: string[], answers: ConfigOption[], globalOptions: ConfigOption[]) => {
+  const foundOptions = getQuestions(globalOptions, resolve[0], answers);
+  const isAnInput = resolve[0]?.slice(0, 5) === 'input';
+
+  console.log(resolve[0], foundOptions.length, isAnInput, answers.map((option)=>option.name));
+
+  // when there are no options for the current question, what to do...
+  if (foundOptions.length === 0 && !isAnInput) {
+
+    // if there is nothing else to resolve end now
+    if (resolve.length === 1) return answers;
+
+    // if there is more items to be resolved, moved onto the next one
+    resolve.shift();
+    await getAllAnswers(resolve, answers, globalOptions);
+    return answers;
+  }
   
-  // TODO Answers should be flat
+  const selectedOption = isAnInput
+    ? await getAnswerFromInput(resolve[0])
+    : await getAnswerFromOptions(foundOptions);
+  
   answers.push(selectedOption);
   
   resolve.shift(); // remove the option we just resolved before adding the new options
