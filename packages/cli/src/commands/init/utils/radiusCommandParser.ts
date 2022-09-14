@@ -11,6 +11,42 @@ export type ConfigOption = {
   value?: string, // if there was a response to a quest it gets stored as a value
 };
 
+// TODO if come to same question again don't ask the question a 2nd time
+// TODO assume it's an input if not found, don't have 2nd requirment
+// TODO IDEA look into using package + version, or a more open ended dependencies - 
+//     Optional version?
+//     Look at how NPM is using the versioning <= nmp is using perfect
+// TODO weighting
+// TODO default paths
+
+// TODO can we use git patch? - what does that look like?
+// Test locally all the combinations of what we build
+
+// TODO Radius can be used to used to create new components
+// TODO Radius can be used to build?
+
+// TODO Radius Contrib - so users can feed back into radius segments
+// TODO Radius Contrib - a URL of additional global configs (add it to our list)
+// TODO Radius Contrib - How do we have new devs - understand how to add content (give check lists on how add things)
+
+
+
+// const globalConfig: ConfigOption[] = [
+//   {
+//     type: 'configfile',
+//     question: 'What config file do you want to use?',
+//     dependencies: [],
+//     id: 'react-v.0.2.9',
+//     name: 'react',
+//     resolve: []
+//   },
+
+// ]
+
+
+
+
+
 const globalConfig: ConfigOption[] = [
   {
     type: 'framework',
@@ -243,7 +279,7 @@ const getAllAnswers = async (resolve: string[], answers: ConfigOption[], globalO
   const foundOptions = getQuestions(globalOptions, resolve[0], answers);
   const isAnInput = resolve[0]?.slice(0, 5) === 'input';
 
-  console.log(resolve[0], foundOptions.length, isAnInput, answers.map((option)=>option.name));
+  // console.log(resolve[0], foundOptions.length, isAnInput, answers.map((option)=>option.name));
 
   // when there are no options for the current question, what to do...
   if (foundOptions.length === 0 && !isAnInput) {
