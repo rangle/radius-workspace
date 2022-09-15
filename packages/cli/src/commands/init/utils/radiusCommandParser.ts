@@ -1,5 +1,6 @@
 
 import inquirer from 'inquirer';
+import commandOptions from './commandOptions.json';
 
 export type ConfigOption = {
   type: string, // used in relation to resolve
@@ -10,6 +11,7 @@ export type ConfigOption = {
   name: string, // human readable 
   value?: string, // if there was a response to a quest it gets stored as a value
 };
+const globalConfig  = commandOptions.options as ConfigOption[];
 
 // TODO if come to same question again don't ask the question a 2nd time
 // TODO assume it's an input if not found, don't have 2nd requirment
@@ -47,139 +49,6 @@ export type ConfigOption = {
 
 
 
-const globalConfig: ConfigOption[] = [
-  {
-    type: 'framework',
-    question: 'What framework would you like to use?',
-    dependencies: [],
-    id: 'react-v.0.2.9',
-    name: 'react',
-    resolve: ['inputProject name','style', 'packaging', 'testing', 'build']
-  },
-  {
-    type: 'framework',
-    question: 'What framework would you like to use?',
-    dependencies: [],
-    id: 'angular-v.0.2.9',
-    name: 'angular',
-    resolve: ['inputProject name','style','packaging','testing']
-  },
-
-  // styles
-  {
-    type: 'style',
-    question: 'Please select style',
-    dependencies: [],
-    id: 'react',
-    name:'other',
-    resolve: []
-  },
-  {
-    type: 'style',
-    question: 'Please select style',
-    dependencies: ['react-v.0.2.9'],
-    id: 'react-css-modules',
-    name:'css modules',
-    resolve: []
-  },
-  {
-    type: 'style',
-    question: '--',
-    dependencies: ['react-v.0.2.9'],
-    id: 'react-scss',
-    name:'scss',
-    resolve: []
-  },
-  {
-    type: 'style',
-    question: 'Which angular style system?',
-    dependencies: ['angular-v.0.2.9'],
-    id: 'angular-scss',
-    name: 'scss',
-    resolve: []
-  },
-  {
-    type: 'style',
-    question: 'Which angular style system?',
-    dependencies: ['angular-v.0.2.9'],
-    id: 'angular-less',
-    name: 'less',
-    resolve: []
-  },
-  {
-    type: 'style',
-    question:'What react style system?',
-    dependencies: ['react-v.0.2.9'],
-    id: 'react-emotion',
-    name: 'emotion',
-    resolve: []
-  },
-  // packaging
-  {
-    type: 'packaging',
-    question: 'Please select packaging/bundle option',
-    dependencies: ['react-v.0.2.9' ],
-    id: 'packaging-react-css-modules',
-    name: 'packing 1',
-    resolve: []
-  },
-  {
-    type: 'packaging',
-    question: 'Please select packaging/bundle option',
-    dependencies: ['react-v.0.2.9'],
-    id: 'packaging-react-css-option2',
-    name: 'packing 2',
-    resolve: []
-  },
-  {
-    type: 'packaging',
-    question: 'Please select packaging/bundle option',
-    dependencies: ['react-v.0.2.9'],
-    name:'chromatic',
-    id:'chromatic-react',
-    resolve: ['input-api-key']
-  },
-  {
-    type: 'packaging',
-    question: 'Please select packaging/bundle option',
-    dependencies: ['angular-v.0.2.9'],
-    id: 'chromatic-angular',
-    name: 'chromatic',
-    resolve: ['input-api-key']
-  },
-  {
-    type: 'pipeline',
-    name: 'react-pipeline-github',
-    question: 'Please select deployment option',
-    dependencies: ['react-v.0.2.9'],
-    id: 'pipeline-react-github',
-    resolve: []
-  },
-  {
-    type: 'pipeline',
-    name:'react-pipeline-other',
-    question: 'Please select deployment option',
-    dependencies: ['react-v.0.2.9'],
-    id: 'other-pipeline',
-    resolve: []
-  },
-  {
-    type: 'pipeline',
-    name: 'react-pipeline azure',
-    question: 'Please select deployment option',
-    dependencies: ['react-v.0.2.9'],
-    id: 'pipeline-react-azure',
-    resolve: ['packaging']
-  },
-  {
-    type: 'build',
-    name: 'react-build',
-    question: 'Please select deployment option',
-    dependencies: ['react-v.0.2.9'],
-    id: 'pipeline-react-azure',
-    resolve: []
-  }
-];
 
 
 
@@ -233,8 +102,8 @@ const getAnswerFromOptions = async (options: ConfigOption[]) => {
     }
   };
   
-  const response: { value: string } = await inquirer.prompt([questions]); // get users response to the question
-  const answer = response.value.trim();
+  const response: { value: string }|undefined = await inquirer.prompt([questions]); // get users response to the question
+  const answer = response?.value.trim();
 
   // of the current options, which one did the user select
   const selectedOption: ConfigOption = options.filter((selectOptions) => selectOptions.name === answer)[0];

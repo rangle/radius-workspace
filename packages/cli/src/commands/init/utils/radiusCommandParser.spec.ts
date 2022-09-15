@@ -181,14 +181,14 @@ describe('test the default setup', () => {
     mockedInquirer.prompt
       .mockResolvedValueOnce({ value: 'react' }) // framework
       .mockResolvedValueOnce({ value: 'hello world' }) // framework
-      .mockResolvedValueOnce({ value: 'scss' }) // style
-      .mockResolvedValueOnce({ value: 'packing 1' }) // packaging
-      .mockResolvedValueOnce({ value: 'react-build' }); // build
+      .mockResolvedValueOnce({ value: 'css modules' }); // style
+    // .mockResolvedValueOnce({ value: 'packing 1' }) // packaging
+    // .mockResolvedValueOnce({ value: 'react-build' }); // build
 
     expect(
       (await defaultSetup()).map((option) => option.value?option.value:option.name)
     ).toEqual(
-      ['react', 'hello world', 'scss', 'packing 1','react-build']
+      ['react', 'hello world','css modules']//, 'scss', 'packing 1','react-build']
     );
   });
 

@@ -1,0 +1,55 @@
+{
+  "options": [
+    {
+      "type": "framework",
+      "question": "What framework would you like to use?",
+      "dependencies": [],
+      "id": "react",
+      "name": "react",
+      "resolve": [
+        "inputProject name",
+        "style"
+      ]
+    },
+    {
+      "type": "framework",
+      "question": "",
+      "dependencies": [],
+      "id": "angular",
+      "name": "angular",
+      "resolve": [
+        "inputProject name"
+      ]
+    },
+    {
+      "type": "style",
+      "question": "Please select style",
+      "dependencies": [
+        "react"
+      ],
+      "id": "css",
+      "name": "css modules",
+      "resolve": []
+    },
+    {
+      "type": "style",
+      "question": "",
+      "dependencies": [
+        "react"
+      ],
+      "id": "emotion",
+      "name": "emotion",
+      "resolve": []
+    },
+    {
+      "type": "style",
+      "question": "",
+      "dependencies": [
+        "react"
+      ],
+      "id": "styled",
+      "name": "styled",
+      "resolve": []
+    }
+  ]
+}
