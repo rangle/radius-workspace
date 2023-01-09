@@ -1,0 +1,10 @@
+{
+  "name": "test-segment-2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "description": "test-segment-2 provides some functionality",
+  "scripts": {
+    "postinstall": "node postinstall.mjs"
+  }
+}

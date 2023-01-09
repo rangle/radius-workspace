@@ -7,6 +7,7 @@
   "scripts": {
     "cli:styles": "lerna run build  && ./packages/cli/bin/radius styles",
     "cli:init": "lerna run build  && ./packages/cli/bin/radius init",
+    "cli:create": "lerna run build  && ./packages/cli/bin/radius create",
     "build-all": "lerna run build",
     "test-all": "lerna run test",
     "lint-all": "lerna run lint",
