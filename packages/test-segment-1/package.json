@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "description": "test-segment-2 provides some functionality",
+  "description": "test-segment-1 is a placeholder for a package that adds new functionality to a project (eg linting, storybook, testing) ",
   "scripts": {
     "postinstall": "node postinstall.mjs"
   }
