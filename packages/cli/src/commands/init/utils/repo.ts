@@ -24,7 +24,7 @@ const REPOS = {
   }
 };
 
-const isKeyof = <T>(val: T) => {
+const isKeyof = <T extends {}>(val: T) => {
   const keys = Object.keys(val);
   return (k: keyof never): k is keyof T => keys.includes(k as never);
 };
