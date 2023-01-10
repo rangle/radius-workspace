@@ -7,10 +7,16 @@ console.log(
   process.env.npm_package_description
 );
 
-const basePath = process.env.radius_project_path ?? '';
+const targetProjectPath = process.env.radius_project_path ?? '';
 
 fs.writeFile(
-  `${ basePath }test-segment-2-post-install-output.txt`,
+  `${ targetProjectPath }test-segment-2-post-install-output.txt`,
   `post install ran at ${ new Date().toISOString() },
+  the path to the target project is '${ targetProjectPath }',
   ${ JSON.stringify(process.env, null, 2) }`
 );
+
+/**
+ * If targetProjectPath exists, add/remove/change files in there are as part of the install process.
+ * If targetProjectPath does not exist, do nothing.
+ */
