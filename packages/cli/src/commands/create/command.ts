@@ -47,8 +47,10 @@ export const create: CommandModule<Options, Options> = {
     const designSystemOptions = await inquirer.askForDesignSystemOptions();
     console.log('chosen options', designSystemOptions);
 
+
     const dir = `packages/${ designSystemOptions['ds-name'] }`;
-    const packageList = designSystemOptions.segments.map((packageName: string) => packageName + '@*');
+    const packageList = [designSystemOptions.starter, ...designSystemOptions.segments]
+      .map((packageName: string) => packageName + '@*');
 
     console.log('project dir:', dir);
     console.log('package list:', packageList);

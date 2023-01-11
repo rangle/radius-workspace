@@ -28,10 +28,17 @@ const questions: QuestionCollection = [
     validate: validateDesignSystemNameAnswer
   },
   {
+    name: 'starter',
+    type: 'list',
+    choices: ['radius-react-vite'],
+    message: 'Which project do you want to use as a base?'
+    // filter
+  },
+  {
     name: 'segments',
     type: 'checkbox',
     choices: ['test-segment-1', 'test-segment-2'],
-    message: 'which segments do you want to npm install?'
+    message: 'Which segments do you want to add?'
     // filter
   }
   // {
