@@ -37,7 +37,7 @@ const questions: QuestionCollection = [
   {
     name: 'segments',
     type: 'checkbox',
-    choices: ['test-segment-1', 'test-segment-2'],
+    choices: ['test-segment-1', 'test-segment-2', 'radius-storybook'],
     message: 'Which segments do you want to add?'
     // filter
   }

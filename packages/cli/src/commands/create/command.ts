@@ -10,6 +10,8 @@ const spawnWithAPromise = (command: string, args: string[], options: SpawnOption
 
   return new Promise((resolve) => {
 
+    console.log('spawning', JSON.stringify({ command, args, options }));
+
     const ls = spawn(command, args, options );
 
     ls.stdout.on('data', function (data) {
@@ -49,7 +51,10 @@ export const create: CommandModule<Options, Options> = {
 
 
     const dir = `packages/${ designSystemOptions['ds-name'] }`;
-    const packageList = [designSystemOptions.starter, ...designSystemOptions.segments]
+
+    const packageListWithoutVersions = [designSystemOptions.starter, ...designSystemOptions.segments];
+
+    const packageList = packageListWithoutVersions
       .map((packageName: string) => packageName + '@*');
 
     console.log('project dir:', dir);
@@ -70,8 +75,56 @@ export const create: CommandModule<Options, Options> = {
     console.info('yarn init result', initResult);
 
     console.info('yarn install');
-    const installResult = await spawnWithAPromise('yarn', ['add', ...packageList], { cwd: dir });
+    const installResult = await spawnWithAPromise(
+      'yarn',
+      ['add', ...packageList, '--foreground-scripts'],
+      { cwd: dir }
+    );
     console.info('yarn install result', installResult);
+
+
+    if (packageListWithoutVersions.includes('radius-storybook')) {
+      await spawnWithAPromise('npx', ['storybook', 'init'], { cwd:dir });
+    }
 
   }
 };
+/**
+ *
+ * @param packageListWithoutVersions
+
+/*
+* what if rather than node postinstall scripts we had our own system?
+* I ran itno a surprising amout of path issues, but I don't think it is imppossible
+
+const runPostInstallScripts = (packageListWithoutVersions: string[]) => {
+
+  console.log('looking for post install scripts');
+
+
+  for (let i = 0; i < packageListWithoutVersions.length; i++) {
+    const packageName = packageListWithoutVersions[i];
+
+    const segmentRelativePath = '../' + packageName;
+    const segmentAbsolutePath = path.resolve(process.env.radius_project_path, '../', packageName);
+
+    console.log({ segmentAbsolutePath, segmentRelativePath });
+
+    const postInstallScriptRelativeToSegment =  'postinstall.mjs';
+    const postinstallScriptAbsolutePath = segmentAbsolutePath + '/postinstall.mjs';
+
+    console.log('how about', postinstallScriptAbsolutePath, '?');
+    if (existsSync(postinstallScriptAbsolutePath)) {
+      console.log('running', postinstallScriptAbsolutePath );
+      await spawnWithAPromise(
+        'node',
+        [postInstallScriptRelativeToSegment],
+        {
+          cwd: segmentAbsolutePath
+        }
+      );
+    }
+  }
+
+};
+*/
