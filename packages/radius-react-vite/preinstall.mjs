@@ -14,8 +14,14 @@ console.log(
 const targetProjectPath = process.env.radius_project_path ?? '';
 if (!targetProjectPath) process.exit();
 
+
+if (fsExtra.existsSync(process.env.radius_project_path + 'index.html')) {
+  console.warn('vite has been set up already. Exiting preinstall script');
+  process.exit();
+}
+
 // copy some files and directories from this project starter to the new project
-const thingsToCopy = await glob('**/!(package*|postinstall*|node_modules|)');
+const thingsToCopy = await glob('**/!(package*|postinstall*|preinstall*|node_modules|)');
 
 for (let i = 0; i < thingsToCopy.length; i += 1) {
   await fsExtra.copy(thingsToCopy[i], targetProjectPath + thingsToCopy[i]);
@@ -41,7 +47,10 @@ const newPackage = JSON.parse(newPackageJsonContents);
 
 const mergedPackageJsonContents = {
   ...newPackage,
-  scripts,
+  scripts: {
+    ...newPackage.scripts,
+    ...scripts
+  },
   dependencies: {
     ...newPackage.dependencies,
     ...dependencies
