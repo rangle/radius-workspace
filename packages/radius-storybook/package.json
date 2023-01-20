@@ -1,0 +1,12 @@
+{
+  "name": "radius-storybook",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "help install storybook",
+  "scripts": {
+    "nopepostinstall": "installing storybook from here did not work, it appeared to freeze"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

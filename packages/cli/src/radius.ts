@@ -6,6 +6,7 @@ import { CommandModule } from 'yargs';
 import 'dotenv/config';
 
 import { styles } from './commands/styles';
+import { create } from './commands/create';
 import { init } from './commands/init';
 
 console.log(
@@ -40,6 +41,7 @@ module.exports = function radius(cwd: string) {
       'A command is required. Pass --help to see all available commands and options.'
     )
     .command(init as CommandModule)
+    .command(create as CommandModule)
     .command(styles as CommandModule);
 
   return parser;

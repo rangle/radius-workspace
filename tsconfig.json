@@ -14,5 +14,6 @@
 		"noEmit": true,
 		"typeRoots": ["./node_modules/@types"]
 	},
-	"include": ["packages"]
+	"include": ["packages"],
+  "exclude": ["packages/radius-react-tsdx", "packages/radius-react-vite", "excludes/**/*"]
 }

@@ -1,0 +1,11 @@
+{
+  "name": "radius-react-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "preinstall": "node preinstall.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
