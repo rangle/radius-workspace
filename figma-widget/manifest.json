@@ -1,0 +1,16 @@
+{
+  "name": "Tokenizer",
+  "id": "1214713512647936858",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "capabilities": [
+  ],
+  "enableProposedApi": false,
+  "editorType": [
+    "figma",
+    "figjam"
+  ],
+  "permissions": ["currentuser"],
+  "containsWidget": true,
+  "widgetApi": "1.0.0"
+}

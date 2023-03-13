@@ -1,0 +1,193 @@
+{
+  "child": {
+    "width": 125,
+    "height": 82,
+    "layoutAlign": "INHERIT",
+    "constrainProportions": false,
+    "layoutGrow": 0,
+    "layoutPositioning": "AUTO",    
+    "id": "417:249",
+    "parent": {
+      "id": "419:439"
+    },
+    "name": "dark red", // name given in figma left pannel
+    "removed": false,
+    "visible": true,
+    "locked": false,
+    "stuckNodes": [],
+    "attachedConnectors": [],
+    "componentPropertyReferences": null,
+    "opacity": 1,
+    "blendMode": "PASS_THROUGH",
+    "isMask": false,
+    "effects": [],
+    "effectStyleId": "",
+    "fills": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 1,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.9647058844566345,
+          "g": 0.3450980484485626,
+          "b": 0.21176470816135406
+        }
+      }
+    ],
+    "fillStyleId": "",
+    "strokes": [],
+    "strokeStyleId": "",
+    "strokeWeight": 1,
+    "strokeAlign": "INSIDE",
+    "strokeJoin": "MITER",
+    "dashPattern": [],
+    "strokeCap": "NONE",
+    "strokeMiterLimit": 4,
+    "fillGeometry": [
+      {
+        "windingRule": "NONZERO",
+        "data": "M0 0L125 0L125 82L0 82L0 0Z"
+      }
+    ],
+    "strokeGeometry": [],
+    "relativeTransform": [
+      [
+        1,
+        0,
+        1872
+      ],
+      [
+        0,
+        1,
+        59
+      ]
+    ],
+    "absoluteTransform": [
+      [
+        1,
+        0,
+        -6718
+      ],
+      [
+        0,
+        1,
+        1470
+      ]
+    ],
+    "x": 1872,
+    "y": 59,
+    "absoluteBoundingBox": {
+      "x": -6718,
+      "y": 1470,
+      "width": 125,
+      "height": 82
+    },
+    "absoluteRenderBounds": {
+      "x": -6718,
+      "y": 1470,
+      "width": 125,
+      "height": 82
+    },
+    "rotation": 0,
+    "exportSettings": [],
+    "constraints": {
+      "horizontal": "MIN",
+      "vertical": "MIN"
+    },
+    "cornerRadius": 0,
+    "cornerSmoothing": 0,
+    "topLeftRadius": 0,
+    "topRightRadius": 0,
+    "bottomLeftRadius": 0,
+    "bottomRightRadius": 0,
+    "reactions": [],
+    "strokeTopWeight": 1,
+    "strokeBottomWeight": 1,
+    "strokeLeftWeight": 1,
+    "strokeRightWeight": 1,
+    "playbackSettings": {
+      "autoplay": true,
+      "loop": true,
+      "muted": false
+    },
+    "type": "RECTANGLE"
+  },
+  "parent": {
+    "id": "419:439",
+    "parent": {
+      "id": "201:61"
+    },
+    "name": "Group 322",
+    "removed": false,
+    "visible": true,
+    "locked": false,
+    "stuckNodes": [],
+    "attachedConnectors": [],
+    "componentPropertyReferences": null,
+    "opacity": 1,
+    "blendMode": "PASS_THROUGH",
+    "isMask": false,
+    "effects": [],
+    "effectStyleId": "",
+    "relativeTransform": [
+      [
+        1,
+        0,
+        1872
+      ],
+      [
+        0,
+        1,
+        59
+      ]
+    ],
+    "absoluteTransform": [
+      [
+        1,
+        0,
+        -6718
+      ],
+      [
+        0,
+        1,
+        1470
+      ]
+    ],
+    "x": 1872,
+    "y": 59,
+    "width": 134,
+    "height": 189,
+    "absoluteBoundingBox": {
+      "x": -6718,
+      "y": 1470,
+      "width": 134,
+      "height": 189
+    },
+    "absoluteRenderBounds": {
+      "x": -6718,
+      "y": 1470,
+      "width": 134,
+      "height": 189
+    },
+    "rotation": 0,
+    "layoutAlign": "INHERIT",
+    "constrainProportions": false,
+    "layoutGrow": 0,
+    "layoutPositioning": "AUTO",
+    "children": [
+      {
+        "id": "417:249"
+      },
+      {
+        "id": "419:426"
+      }
+    ],
+    "exportSettings": [],
+    "reactions": [],
+    "backgrounds": [],
+    "backgroundStyleId": "",
+    "expanded": true,
+    "type": "GROUP"
+  }
+}
